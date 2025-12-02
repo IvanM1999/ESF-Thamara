@@ -12,7 +12,7 @@ services:
         fromDatabase:
           name: esf-thamara-db
           type: postgresql
-  - type: static
+  - type: 
     name: esf-thamara-frontend
     env: static
     repo: https://github.com/IvanM1999/ESF-Thamara
