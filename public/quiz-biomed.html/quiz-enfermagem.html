@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Simulado Enfermagem — Estilo Windows XP</title>
+<style>
+  :root{--bg:#cfe6ff;--taskbar:#b02e2e;--title:#6b0f0f;--panel:#fff0f0}
+  html,body{height:100%;margin:0;font-family: Tahoma, Arial, sans-serif;background:linear-gradient(#ffecec,#ffdede);color:#000}
+  .window{width:900px;margin:30px auto;border:3px solid #d6a6a6;border-radius:6px;background:var(--panel);box-shadow:0 8px 20px rgba(0,0,0,0.25)}
+  .titlebar{background:linear-gradient(#b02e2e,#8b2020);color:#fff;padding:8px;border-top-left-radius:3px;border-top-right-radius:3px;display:flex;align-items:center}
+  .titlebar .icon{width:18px;height:18px;background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="6" fill="%23ffffff"/></svg>') no-repeat center/contain;margin-right:8px}
+  .titlebar h1{font-size:14px;margin:0;flex:1}
+  .titlebar .controls{font-size:12px}
+  .content{padding:18px}
+  .question{background:#fff;border:1px solid #f0cfcf;padding:14px;border-radius:4px;margin-bottom:12px}
+  .opts{margin-top:8px}
+  .opts label{display:block;padding:8px;border-radius:4px;border:1px solid transparent;margin-bottom:6px;cursor:pointer}
+  .opts input{margin-right:8px}
+  .opts label:hover{background:#fff6f6;border-color:#f6d6d6}
+  .controls-row{display:flex;gap:8px;align-items:center;margin-bottom:12px}
+  button{padding:8px 12px;border-radius:4px;border:1px solid #b78f8f;background:linear-gradient(#fff0f0,#ffe6e6);cursor:pointer}
+  button.primary{background:linear-gradient(#ffd36b,#ffb84d);border-color:#b57a1f}
+  .progress{height:14px;background:#fcecec;border-radius:7px;overflow:hidden;border:1px solid #f2cfcf}
+  .progress > i{display:block;height:100%;background:linear-gradient(#ff9b9b,#ff6b6b);width:0%}
+  .footer{background:var(--taskbar);color:#fff;padding:8px;border-bottom-left-radius:3px;border-bottom-right-radius:3px;display:flex;align-items:center}
+  .start{background:linear-gradient(#ffdede,#ffcaca);padding:6px 10px;border-radius:4px;margin-right:10px;color:#000;font-weight:bold}
+  .hidden{display:none}
+  .center{text-align:center}
+  .danger{color:#a00;font-weight:bold}
+  textarea{width:100%;height:120px}
+  @media(max-width:960px){.window{width:95%;}}
+</style>
+</head>
+<body>
+<div class="window" id="app">
+  <div class="titlebar"><div class="icon"></div><h1>Simulado — Enfermagem (Estilo Windows XP)</h1><div class="controls">v1.0</div></div>
+  <div class="content">
+    <div id="intro">
+      <p>Prova: 50 questões (mistura de vestibular e concursos públicos para Enfermagem). Respostas ocultas até o envio. Trocar de aba, minimizar ou inspecionar a página encerra a sessão e apaga os dados (medida anti-cola).</p>
+      <div class="controls-row">
+        <label>Nome do(a) candidato(a): <input id="candidate" type="text"></label>
+        <button id="startBtn" class="primary">Iniciar Avaliação</button>
+        <button id="loadSample">Carregar Amostra</button>
+      </div>
+      <div class="center"><small class="danger">Atenção: proteções do navegador não são infalíveis — use para treino.</small></div>
+    </div>
+
+    <div id="quiz" class="hidden">
+      <div class="controls-row">
+        <div style="flex:1">
+          <div class="progress" aria-hidden><i id="prog"></i></div>
+        </div>
+        <div id="qcount">Questão 0 / 50</div>
+      </div>
+
+      <form id="form">
+        <div id="questionsContainer"></div>
+      </form>
+
+      <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:12px">
+        <button id="prev">Anterior</button>
+        <button id="next">Próxima</button>
+        <button id="submit" class="primary">Enviar Avaliação</button>
+      </div>
+    </div>
+
+    <div id="result" class="hidden">
+      <h2>Resultado</h2>
+      <div id="score"></div>
+      <details>
+        <summary>Mostrar questões e respostas</summary>
+        <div id="answers"></div>
+      </details>
+      <div style="margin-top:12px"><button id="restart">Refazer</button></div>
+    </div>
+  </div>
+  <div class="footer"><div class="start">Iniciar</div><div>Use apenas para estudo. Fontes e temas baseados em provas e bancos: FGV, CEBRASPE, CESPE, AOCP, Quadrix, IFs.</div></div>
+</div>
+
+<script>
+// Proteções (melhor esforço)
+(function(){
+  window.addEventListener('keydown', function(e){
+    if(e.key === 'F12' || (e.ctrlKey && e.shiftKey && (e.key==='I' || e.key==='J')) || (e.ctrlKey && e.key==='u')){ e.preventDefault(); e.stopPropagation(); clearSessionAndKill(); }
+    if(e.ctrlKey && (e.key==='s' || e.key==='p')){ e.preventDefault(); }
+  }, true);
+  window.addEventListener('contextmenu', function(e){ e.preventDefault(); clearSessionAndKill(); }, true);
+  document.addEventListener('visibilitychange', function(){ if(document.hidden){ clearSessionAndKill(); } });
+  window.addEventListener('beforeunload', function(e){ clearStorage(); var msg='Se você sair, tudo será apagado.'; e.returnValue = msg; return msg; });
+  try{ console.log = function(){}; console.warn = function(){}; }catch(e){}
+  function clearStorage(){ try{ sessionStorage.clear(); localStorage.removeItem('simulado:enf'); }catch(e){} }
+  function clearSessionAndKill(){ clearStorage(); try{ document.documentElement.innerHTML = '<body style="display:flex;align-items:center;justify-content:center;height:100vh;background:#fff"><div style="text-align:center;padding:20px;border:1px solid #ccc;border-radius:6px">Sessão encerrada por violação das regras de segurança.<br>Atualize para reiniciar.</div></body>'; }catch(e){} }
+  window._clearSessionAndKill = clearSessionAndKill;
+})();
+
+// 50 questões — Enfermagem (vestibular + concursos)
+const questions = [
+  {q:'Qual é a prioridade imediata na avaliação primária (ABCDE) de um paciente politraumatizado?', opts:['Via aérea com controle cervical (A)','Avaliação neurológica (D)','Exposição do paciente (E)','Controle de temperatura'], a:0},
+  {q:'Em administração de medicamentos intramusculares, o local de aplicação mais indicado para adultos é:', opts:['Vasto lateral da coxa','Deltoide (quando volume pequeno) ou ventroglúteal para adultos','Glúteo superior medial','Fossa antecubital'], a:1},
+  {q:'Qual dispositivo é indicado para oxigenoterapia de alto fluxo e melhor ajuste de FiO2?', opts:['Máscara Venturi','Cateter nasal simples','Máscara facial','Tenda de oxigênio'], a:0},
+  {q:'A técnica asséptica mais importante para prevenção de infecções nosocomiais é:', opts:['Higiene das mãos','Uso de avental estéril','Uso de máscara N95','Limpeza de superfícies apenas'], a:0},
+  {q:'Em escala de coma de Glasgow, a pontuação máxima é:', opts:['15 pontos','12 pontos','10 pontos','8 pontos'], a:0},
+  {q:'Qual é o principal agente etiológico da Pneumonia Hospitalar frequentemente relacionada a ventilação mecânica?', opts:['Pseudomonas aeruginosa','Streptococcus pyogenes','Mycobacterium tuberculosis','Leptospira interrogans'], a:0},
+  {q:'Em aferição de pressão arterial, a posição correta do braço é:', opts:['Ao nível do coração','Acima do nível do coração','Abaixo do nível do coração','Em qualquer altura'], a:0},
+  {q:'A administração de insulina rápida deve ser feita onde e quando indicada?', opts:['Subcutânea, em locais com boa absorção, conforme prescrição médica','Intramuscular em todos os casos','Via oral em jejum','Intravenosa em dose única rotineira'], a:0},
+  {q:'Qual exame é utilizado para identificar presença de anemia microcítica?', opts:['Hemograma (VCM reduzido) e parâmetros eritrocitários','Teste de função renal','Eletroforese de hemoglobina apenas','Radiografia de tórax'], a:0},
+  {q:'Em cuidados com feridas, o que favorece a cicatrização por segunda intenção?', opts:['Deiscência e perda tecidual com granulação','Sutura primária sem perda tecidual','Uso exclusivo de antibiótico tópico','Pressão negativa apenas'], a:0},
+  {q:'Qual medida é indicada para prevenir trombose venosa profunda em paciente imobilizado?', opts:['Mobilização precoce e uso de meias compressivas','Repouso absoluto sem movimentação','Hidratação restrita','Antibióticos profiláticos'], a:0},
+  {q:'Em controle de dor, escala visual analógica (EVA) é usada para:', opts:['Avaliar intensidade da dor relatada pelo paciente','Medir pressão arterial','Avaliar frequência cardíaca','Diagnosticar infecções'], a:0},
+  {q:'Qual é a conduta imediata diante de parada cardiorrespiratória com paciente sem pulso?', opts:['Iniciar RCP (compressões torácicas e ventilação) e acionar equipe de emergência','Aguardar 5 minutos e reavaliar','Administrar antibiótico empírico','Posicionar o paciente em decúbito lateral'], a:0},
+  {q:'Em administração de medicamentos, via que permite biodisponibilidade mais rápida?', opts:['Intravenosa (IV)','Oral','Intramuscular (IM)','Subcutânea (SC)'], a:0},
+  {q:'Qual vacina é indicada para profissionais de saúde por potencial exposição a sangue?', opts:['Hepatite B','Influenza','HPV','Tétano'], a:0},
+  {q:'Em avaliação neurológica, pupilas isocóricas e fotorreagentes indicam:', opts:['Reflexo pupilar preservado','Lesão do tronco encefálico avançada','Hemorrafia subaracnóidea automática','Necrose cerebral'], a:0},
+  {q:'O que é escala Braden utilizada para avaliar?', opts:['Risco de desenvolvimento de úlceras por pressão','Capacidade funcional para alta','Estado nutricional apenas','Risco de infecção'], a:0},
+  {q:'Em doseamento de medicamentos pediátricos, qual princípio é fundamental?', opts:['Cálculo por peso (mg/kg) e verificação dupla','Usar dose adulta por segurança','Duplicar a dose para eficácia','Administrar via intramuscular sempre'], a:0},
+  {q:'Qual isolamento é indicado para paciente com tuberculose ativa pulmonar?', opts:['Respiratório (AS 1) com máscara N95 para profissionais','Contato padrão apenas','Gotejamento (para influenza)','Nenhum isolamento específico'], a:0},
+  {q:'Em sinais vitais, qual é a faixa normal de frequência cardíaca em adultos em repouso?', opts:['60-100 bpm','40-60 bpm','100-140 bpm','30-50 bpm'], a:0},
+  {q:'Qual agente é comumente associado a sepse originada por infecção urinária?', opts:['Escherichia coli','Streptococcus pyogenes','Candida albicans primariamente','Plasmodium falciparum'], a:0},
+  {q:'Em curativos, o uso de curativo oclusivo é indicado para:', opts:['Manter ambiente úmido favorável à cicatrização em feridas não infectadas','Feridas altamente infectadas sem desbridamento','Hemorragia ativa sem controle','Expor a ferida ao ar sempre'], a:0},
+  {q:'Qual sinal é clássico de choque hipovolêmico?', opts:['Taquicardia e pressão arterial baixa (hipotensão)','Bradicardia sem alteração pressão','Hipertermia isolada','Edema periférico sem alterações hemodinâmicas'], a:0},
+  {q:'Em administração de sangue, é obrigatório:', opts:['Conferir identificação do paciente e do produto antes da transfusão','Administrar sem prescrição em urgência absoluta','Misturar sangue com outros líquidos antes de infundir','Armazenar saco aberto por 48 horas à temperatura ambiente'], a:0},
+  {q:'Qual é o procedimento correto ao remover luvas contaminadas?', opts:['Retirar luva externa primeiro e higienizar as mãos após descarte','Remover as duas luvas simultaneamente com as mãos nuas','Deixar luvas no paciente','Trocar luvas somente no fim do turno'], a:0},
+  {q:'Em triagem de emergência (Protocolo de Manchester), paciente com dor torácica e sinais de isquemia recebe qual prioridade?', opts:['Alta prioridade (rápida avaliação e intervenção)','Baixa prioridade','Sempre prioridade mínima','Apenas observação por 24h'], a:0},
+  {q:'Qual é o agente etiológico da sífilis?', opts:['Treponema pallidum','Neisseria gonorrhoeae','Herpes simplex virus','Human papillomavirus'], a:0},
+  {q:'Em controle de infecção, desinfecção de superfícies não críticas geralmente usa:', opts:['Produtos de limpeza com desinfetantes aprovados (ex.: hipoclorito diluído)','Álcool 100% sem diluição','Esterilização a calor úmido','Nenhum produto químico necessário'], a:0},
+  {q:'Qual exame é mais indicado para detectar leucemia em fase inicial?', opts:['Hemograma com contagem diferencial e análise morfológica','Teste de função renal','Eletrocardiograma','Radiografia de tórax'], a:0},
+  {q:'Em obstetrícia, a apresentação cefálica refere-se a:', opts:['Apresentação da cabeça do feto no canal de parto','Apresentação podálica','Apresentação transversa','Apresentação lateral'], a:0},
+  {q:'O que é complicação comum em paciente com diabetes mal controlada?', opts:['Úlceras de pé diabético e infecções','Hipertrofia muscular','Aumento da acuidade visual','Menor risco de infecção'], a:0},
+  {q:'Em administração oral de medicamentos, a via sublingual tem como vantagem:', opts:['Absorção rápida evitando efeito de primeira passagem hepática','Maior conforto estético','Maior retenção gástrica','Maior degradação pela microbiota intestinal'], a:0},
+  {q:'Qual técnica é essencial na aspiração de vias aéreas para prevenir broncoaspiração?', opts:['Posicionar o paciente lateralmente e utilizar técnica estéril conforme protocolo','Aspirar sem cuidados de posição','Utilizar solução quiólica sem técnica','Não realizar aspiração em pacientes com sonda nasogástrica'], a:0},
+  {q:'Em vigilância epidemiológica, taxa de mortalidade é:', opts:['Número de óbitos em uma população num período específico','Número de casos novos','Índice de recuperação','Número de internações apenas'], a:0},
+  {q:'Qual escala é usada para avaliar dor em pacientes não-verbalizantes (ex.: idosos com demência)?', opts:['Escala comportamental ou escala específica como PAINAD','EVA apenas para verbalizantes','Escala de Glasgow','Escala de Braden'], a:0},
+  {q:'Em administração de medicamentos via enteral (SNE), qual cuidado é essencial?', opts:['Confirmar posicionamento do tubo antes da administração','Administrar sem verificar posicionamento','Misturar medicação com alimentação sem controle','Usar sempre via parenteral'], a:0},
+  {q:'Qual é a função das plaquetas?', opts:['Promover hemostasia e formação de tampão plaquetário','Transporte de oxigênio','Síntese de anticorpos','Filtração renal'], a:0},
+  {q:'Em assistência domiciliar, plano de cuidado deve incluir:', opts:['Avaliação de Risco, metas de cuidado, orientações familiares e cronograma de visitas','Apenas prescrição de medicamentos','Somente documentação administrativa','Avaliação fiscal apenas'], a:0},
+  {q:'Qual é o sinal clássico de infecção local aguda?', opts:['Rubor, calor, dor e edema (sinais de inflamação)','Cianose apenas','Hematúria isolada','Icterícia sem outras alterações'], a:0},
+  {q:'Em avaliação nutricional, IMC é calculado por:', opts:['Peso (kg) / altura (m)²','Peso (kg) / idade (anos)','Altura (cm) / peso (kg)','Circunferência abdominal apenas'], a:0},
+  {q:'Qual é a conduta inicial para queimadura térmica extensa?', opts:['Resfriar com água corrente e avaliar extensão e espessura','Aplicar óleo ou manteiga','Expor ao sol','Friccionar a área com pano quente'], a:0},
+  {q:'Em aspecto legal, o prontuário do paciente é:', opts:['Documento legal e confidencial que deve ser devidamente preenchido e preservado','Documento apenas informativo sem valor legal','Documento público sem sigilo','Documento que pode ser destruído após alta imediata'], a:0},
+  {q:'Qual é a importância do consentimento informado em procedimentos de enfermagem?', opts:['Garantir autonomia e compreensão do paciente sobre riscos e benefícios','Substituir registro de enfermagem','Não é necessário em procedimentos simples','Só necessário para cirurgias'], a:0},
+  {q:'Em reanimação neonatal, intervalo recomendado de ventilação inicial e compressões segue protocolo NRP. A prioridade imediata é:', opts:['Ventilar adequadamente antes de compressões se o recém-nascido não respira ou tem frequência cardíaca baixa','Iniciar compressões imediatamente sempre','Administrar antibiótico profílico','Aguardar 10 minutos antes de atuar'], a:0},
+  {q:'Qual medida reduz resistência microbiana relacionada a antibióticos?', opts:['Uso criterioso de antimicrobianos e programas de stewardship','Uso indiscriminado de antibióticos em massa','Emprego de antibióticos de largo espectro em profilaxia contínua','Interrupção de higiene das mãos'], a:0}
+];
+
+// App logic
+let state = { idx:0, answers: Array(questions.length).fill(null), started:false };
+const candidateInput = document.getElementById('candidate');
+const startBtn = document.getElementById('startBtn');
+const loadSample = document.getElementById('loadSample');
+const intro = document.getElementById('intro');
+const quiz = document.getElementById('quiz');
+const questionsContainer = document.getElementById('questionsContainer');
+const qcount = document.getElementById('qcount');
+const prog = document.getElementById('prog');
+const prevBtn = document.getElementById('prev');
+const nextBtn = document.getElementById('next');
+const submitBtn = document.getElementById('submit');
+const result = document.getElementById('result');
+const scoreEl = document.getElementById('score');
+const answersEl = document.getElementById('answers');
+const restartBtn = document.getElementById('restart');
+
+function start(){
+  const name = candidateInput.value.trim();
+  if(!name){ alert('Informe o nome do(a) candidato(a) antes de iniciar.'); return; }
+  state.started=true; sessionStorage.setItem('simulado:started','1');
+  intro.classList.add('hidden'); quiz.classList.remove('hidden'); renderQuestion(0);
+}
+
+function renderQuestion(i){
+  state.idx = i; const Q = questions[i];
+  qcount.textContent = `Questão ${i+1} / ${questions.length}`;
+  prog.style.width = `${Math.round(((i)/questions.length)*100)}%`;
+  questionsContainer.innerHTML = '';
+  const d = document.createElement('div'); d.className='question';
+  d.innerHTML = `<strong>${i+1}. ${escapeHtml(Q.q)}</strong>`;
+  const opts = document.createElement('div'); opts.className='opts';
+  Q.opts.forEach((o,idx)=>{
+    const id = `q${i}_opt${idx}`;
+    const lab = document.createElement('label');
+    lab.htmlFor = id; lab.innerHTML = `<input type="radio" name="q${i}" id="${id}" value="${idx}" ${state.answers[i]===idx? 'checked':''}> ${escapeHtml(o)}`;
+    opts.appendChild(lab);
+  });
+  d.appendChild(opts);
+  questionsContainer.appendChild(d);
+  opts.querySelectorAll('input').forEach(inp=> inp.addEventListener('change', function(){ state.answers[i]=parseInt(this.value); persist(); }));
+  updateButtons();
+}
+
+function updateButtons(){ prevBtn.disabled = state.idx===0; nextBtn.disabled = state.idx===questions.length-1; }
+prevBtn.addEventListener('click', ()=>{ if(state.idx>0) renderQuestion(state.idx-1); });
+nextBtn.addEventListener('click', ()=>{ if(state.idx < questions.length-1) renderQuestion(state.idx+1); });
+
+submitBtn.addEventListener('click', function(e){ e.preventDefault(); if(!confirm('Enviar avaliação e revelar respostas?')) return; grade(); });
+restartBtn.addEventListener('click', ()=>{ location.reload(); });
+startBtn.addEventListener('click', start);
+loadSample.addEventListener('click', ()=>{ candidateInput.value='Candidato Exemplo'; start(); });
+
+function grade(){
+  const qs = questions; let correct=0; const details=[];
+  for(let i=0;i<qs.length;i++){
+    const ans = state.answers[i]; const ok = ans===qs[i].a; if(ok) correct++; details.push({q:qs[i].q, opts:qs[i].opts, a:qs[i].a, given:ans});
+  }
+  quiz.classList.add('hidden'); result.classList.remove('hidden'); scoreEl.innerHTML = `<p>Pontuação: ${correct} / ${qs.length} (${Math.round(correct/qs.length*100)}%)</p>`;
+  answersEl.innerHTML = details.map((d,i)=>{
+    const given = (d.given===null)? '---' : d.opts[d.given];
+    return `<div style="margin-bottom:8px"><strong>${i+1}. ${escapeHtml(d.q)}</strong><br>Resposta correta: <em>${escapeHtml(d.opts[d.a])}</em><br>Sua resposta: ${escapeHtml(given)}</div>`;
+  }).join('');
+  clearStorage();
+}
+
+function persist(){ try{ localStorage.setItem('simulado:enf', JSON.stringify({answers:state.answers, idx:state.idx, candidate:candidateInput.value})); }catch(e){} }
+function clearStorage(){ try{ localStorage.removeItem('simulado:enf'); sessionStorage.clear(); }catch(e){} }
+function escapeHtml(str){ return (str+'').replace(/[&<>"']/g, function(m){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":"&#39;"}[m];}); }
+
+// On load: try to detect session data
+(function(){ try{ const saved = JSON.parse(localStorage.getItem('simulado:enf')||'null'); if(saved){ if(confirm('Existe uma sessão salva. Desejar retomar?')){ candidateInput.value = saved.candidate||''; state.answers = saved.answers || state.answers; start(); renderQuestion(saved.idx||0); } else { localStorage.removeItem('simulado:enf'); } } }catch(e){} })();
+
+// Detect devtools via window size change (best-effort)
+(function(){ let threshold=160; window.addEventListener('resize', function(){ if(window.outerWidth - window.innerWidth > threshold || window.outerHeight - window.innerHeight > threshold){ window._clearSessionAndKill(); } }); })();
+
+</script>
+</body>
+</html>

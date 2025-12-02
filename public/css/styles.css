@@ -1,0 +1,16 @@
+:root{--bg:#f8fafc;--card:#ffffff;--muted:#6b7280;--accent:#0f172a;--primary:#0b5cff}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Inter,system-ui,Arial;background:var(--bg);color:var(--accent);}
+.container{max-width:1100px;margin:28px auto;padding:20px;}
+.header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px;}
+.brand{font-weight:800;font-size:20px;color:var(--primary);}
+.nav{display:flex;gap:8px;align-items:center;}
+.nav a{padding:8px 12px;border-radius:8px;text-decoration:none;color:var(--accent);background:transparent;border:1px solid rgba(11,13,20,0.04);}
+.card{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 6px 18px rgba(15,23,42,0.06);margin-bottom:16px;}
+.grid{display:grid;grid-template-columns:1fr 320px;gap:18px;align-items:start;}
+.toc{background:transparent;padding:12px;border-radius:10px;border:1px solid rgba(11,13,42,0.03);}
+.table{width:100%;border-collapse:collapse;}
+.table th,.table td{padding:8px;border:1px solid #eef2f7;text-align:left}
+.calendar td{height:80px;vertical-align:top;padding:6px}
+.footer{margin-top:28px;padding:18px;text-align:center;color:var(--muted);font-size:13px;}
+@media (max-width:900px){.grid{grid-template-columns:1fr} .nav{flex-wrap:wrap}}

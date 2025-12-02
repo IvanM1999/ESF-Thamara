@@ -1,0 +1,28 @@
+{
+  "siteName": "ESF Thamara Katryne Rodrigues Schmidt",
+  "version": "1.0.0",
+  "theme": "windows-xp",
+  "defaultLanguage": "pt-BR",
+  
+  "contact": {
+    "endereco": "Rua Santa Maria, 2056 – Progresso, Blumenau – SC",
+    "telefone1": "(47) 3381-6751",
+    "telefone2": "(47) 3381-7064",
+    "cep": "89027-202",
+    "cnes": "7105053"
+  },
+  
+  "menus": {
+    "main": [
+      { "label": "Início", "href": "/index.html" },
+      { "label": "Sobre", "href": "/about.html" },
+      { "label": "Equipe", "href": "/equipe.html" },
+      { "label": "Notícias", "href": "/noticias.html" },
+      { "label": "Agenda", "href": "/calendar.html" },
+      { "label": "Blog", "href": "/assets/blog/menu-blog.html" },
+      { "label": "Usuário", "href": "/user_dashboard.html" },
+      { "label": "Médico", "href": "/med_dashboard.html" },
+      { "label": "Admin", "href": "/admin-login.html" }
+    ]
+  }
+}

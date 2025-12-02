@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Dashboard Médico — ESF Thamara</title>
+<link href="/css/xp.css" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link href="assets/menu-superior.css" rel="stylesheet"/></head>
+<body class="xp-wallpaper"><div id="menu-container"></div>
+<div class="xp-window" style="max-width:1100px;margin:20px auto;">
+<div class="xp-titlebar">Dashboard Médico — Triagens</div>
+<div class="xp-content">
+<div id="alerts"></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+<div><h3>Ocorrência por sintoma</h3><canvas id="symptomChart"></canvas></div>
+<div><h3>Triagens recentes</h3><div id="recentList" style="max-height:420px;overflow:auto"></div></div>
+</div>
+</div>
+</div>
+<script>
+async function load(){
+  const token = localStorage.getItem('adm_token') ? 'Bearer ' + localStorage.getItem('adm_token') : null;
+  if(!token){ alert('Faça login ADM em /admin-login.html'); return; }
+  const res = await fetch('/api/triagem', {headers:{Authorization: token}});
+  const data = await res.json();
+  const recent = data;
+  document.getElementById('recentList').innerHTML = recent.map(r=>`<div style="padding:8px;border-bottom:1px solid #ddd"><strong>#${r.id}</strong> ${r.patient_name||'—'} — ${new Date(r.created_at).toLocaleString()}<pre>${JSON.stringify(r.answers,null,2)}</pre></div>`).join('');
+  // simple counts
+  const counts = {};
+  data.forEach(r=>{
+    const txt = JSON.stringify(r.answers).toLowerCase();
+    if(txt.includes('febre')) counts['Febre']=(counts['Febre']||0)+1;
+    if(txt.includes('falta de ar')) counts['Falta de ar']=(counts['Falta de ar']||0)+1;
+    if(txt.includes('dor')) counts['Dor']=(counts['Dor']||0)+1;
+  });
+  const labels = Object.keys(counts);
+  const values = labels.map(l=>counts[l]);
+  const ctx = document.getElementById('symptomChart').getContext('2d');
+  new Chart(ctx, {type:'bar', data:{labels, datasets:[{label:'Ocorrências', data:values}]}, options:{responsive:true}});
+}
+load();
+</script>
+<script src="assets/menu-superior.js"></script></body>
+</html>

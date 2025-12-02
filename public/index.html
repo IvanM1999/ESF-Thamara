@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>ESF Thamara Katryne Rodrigues Schmidt – Início</title>
+    <link rel="stylesheet" href="/css/xp-style.css">
+</head>
+<body>
+
+<!-- MENU SUPERIOR -->
+<div id="menu-superior"></div>
+<script src="/assets/js/menu-superior.js"></script>
+
+<!-- CONTEÚDO -->
+<div class="xp-window" style="max-width: 900px; margin: 20px auto;">
+
+    <h1>Bem-vindo à ESF Thamara Katryne Rodrigues Schmidt</h1>
+
+    <p>
+        A Estratégia Saúde da Família Thamara Katryne Rodrigues Schmidt é responsável pelo atendimento
+        da comunidade do bairro Progresso, em Blumenau (SC). Nosso objetivo é garantir acesso à saúde
+        com acolhimento, respeito e qualidade.
+    </p>
+
+    <hr>
+
+    <h2>📌 Informações da Unidade</h2>
+    <ul>
+        <li><strong>Endereço:</strong> Rua Santa Maria, 2056 – Progresso</li>
+        <li><strong>Telefone 1:</strong> (47) 3381-6751</li>
+        <li><strong>Telefone 2:</strong> (47) 3381-7064</li>
+        <li><strong>CEP:</strong> 89027-202</li>
+        <li><strong>CNES:</strong> 7105053</li>
+    </ul>
+
+    <hr>
+
+    <h2>📰 Últimas Novidades</h2>
+
+    <div id="noticias-recentes">
+        <p>Carregando notícias...</p>
+    </div>
+    <nav class="nav"><ul>
+        <li>
+            <ul><a href="./index.html">Home </a></ul>
+            <ul><a href="./calendar.html"> Calendário </a></ul>
+            <ul><a href="./equipe.html"> Equipe</a></ul>
+            <ul><a href="./noticias.html">Notícias</a></ul>
+        </li>
+    </nav>
+    </div>
+
+
+<h2>BLOG</h2>
+<div id="blog">
+    <div id="menu-blog">
+        <ul>
+            <li><a href="/public/blog/autismo-vs-enxaqueca.html">Autismo ou Enxaqueca?</a></li>
+            <li><a href="#post2">Post 2</a></li>
+            <li><a href="#post3">Post 3</a></li>
+        </ul>
+    </div>
+    <p>Carregando Blog...</p>
+</div>
+
+
+
+    <script>
+        // Carrega posts.json e exibe apenas os primeiros 3
+        fetch("/data/posts.json")
+            .then(res => res.json())
+            .then(posts => {
+                const container = document.getElementById("noticias-recentes");
+                container.innerHTML = "";
+
+                posts.slice(0, 3).forEach(p => {
+                    const item = document.createElement("div");
+                    item.style.marginBottom = "12px";
+                    item.innerHTML = `
+                        <strong>${p.titulo}</strong><br>
+                        <em>${p.data}</em><br>
+                        <a class="xp-button" href="${p.caminho}">Ler mais</a>
+                    `;
+                    container.appendChild(item);
+                });
+            })
+            .catch(() => {
+                document.getElementById("noticias-recentes").innerHTML =
+                    "<p style='color:red;'>Não foi possível carregar as notícias.</p>";
+            });
+    </script>
+
+    <hr>
+
+    <h2>🗺 Mapa</h2>
+    <p>Localização aproximada da unidade:</p>
+
+    <div style="border:2px solid #808080; box-shadow:2px 2px 0 #3a3a3a;">
+        <iframe 
+            width="100%" 
+            height="300" 
+            style="border:0;" 
+            loading="lazy"
+            allowfullscreen
+            src="https://www.google.com/maps?q=Rua+Santa+Maria,+2056,+Blumenau&output=embed">
+        </iframe>
+    </div>
+
+</div>
+
+</body>
+</html>

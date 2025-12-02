@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+<head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Painel ADM</title>
+<link href="/css/xp.css" rel="stylesheet"/>
+<link href="assets/menu-superior.css" rel="stylesheet"/></head>
+<body class="xp-wallpaper"><div id="menu-container"></div>
+<div class="xp-window" style="max-width:1100px;margin:20px auto;">
+<div class="xp-titlebar">Painel Administrativo — ESF Thamara</div>
+<div class="xp-content">
+<div style="display:flex;gap:12px;">
+<div style="flex:1">
+<h3>Triagens Recentes</h3>
+<div id="triagens-list" style="max-height:520px;overflow:auto"></div>
+</div>
+<div style="width:400px">
+<h3>Gerenciar Perguntas</h3>
+<form id="q-form">
+<input id="q-text" placeholder="Pergunta" style="width:100%;padding:8px;margin-bottom:6px"/>
+<select id="q-type" style="width:100%;padding:8px;margin-bottom:6px"><option value="text">text</option><option value="select">select</option></select>
+<input id="q-options" placeholder='["Sim","Não"]' style="width:100%;padding:8px;margin-bottom:6px"/>
+<button class="xp-button" type="submit">Adicionar</button>
+</form>
+<div id="questions-list" style="margin-top:12px"></div>
+</div>
+</div>
+</div>
+</div>
+<script>
+const token = localStorage.getItem('adm_token') ? 'Bearer ' + localStorage.getItem('adm_token') : null;
+if(!token) location.href = '/admin-login.html';
+
+async function loadTriagens(){
+  const res = await fetch('/api/triagem', {headers:{Authorization: token}});
+  const data = await res.json();
+  document.getElementById('triagens-list').innerHTML = data.map(t=>`<div style="padding:8px;border-bottom:1px solid #ddd"><strong>#${t.id}</strong> ${t.patient_name||'—'} — ${new Date(t.created_at).toLocaleString()}<br><a href="${t.pdf_url}" target="_blank">PDF</a><pre>${JSON.stringify(t.answers,null,2)}</pre></div>`).join('');
+}
+
+async function loadQuestions(){
+  const res = await fetch('/api/questions');
+  const data = await res.json();
+  document.getElementById('questions-list').innerHTML = data.map(q=>`<div style="padding:6px;border-bottom:1px solid #eee"><strong>#${q.id}</strong> ${q.text} [${q.type}] <button data-id="${q.id}" class="del">x</button></div>`).join('');
+  document.querySelectorAll('.del').forEach(b=>b.onclick=async ()=>{ await fetch('/api/questions/'+b.dataset.id,{method:'DELETE', headers:{Authorization:token}}); loadQuestions(); });
+}
+
+document.getElementById('q-form').onsubmit = async (e)=>{
+  e.preventDefault();
+  const text = document.getElementById('q-text').value;
+  const type = document.getElementById('q-type').value;
+  let options = document.getElementById('q-options').value || null;
+  try{ options = options ? JSON.parse(options) : null; }catch(e){ alert('JSON inválido'); return; }
+  await fetch('/api/questions', {method:'POST', headers:{'Content-Type':'application/json', Authorization: token}, body: JSON.stringify({text,type,options})});
+  document.getElementById('q-text').value=''; document.getElementById('q-options').value='';
+  loadQuestions();
+};
+
+loadQuestions();
+loadTriagens();
+</script>
+<script src="assets/menu-superior.js"></script></body>
+</html>

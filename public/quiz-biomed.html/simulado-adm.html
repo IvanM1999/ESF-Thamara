@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Simulado Administração — Estilo Windows XP</title>
+<style>
+  :root{--bg:#cfe6ff;--taskbar:#0b67c2;--title:#012a66;--panel:#e9f4ff}
+  html,body{height:100%;margin:0;font-family: Tahoma, Arial, sans-serif;background:linear-gradient(#d8ebff,#bfe0ff);color:#000}
+  .window{width:900px;margin:30px auto;border:3px solid #8fb0d6;border-radius:6px;background:var(--panel);box-shadow:0 8px 20px rgba(0,0,0,0.25)}
+  .titlebar{background:linear-gradient(#0b67c2,#054a9a);color:#fff;padding:8px;border-top-left-radius:3px;border-top-right-radius:3px;display:flex;align-items:center}
+  .titlebar .icon{width:18px;height:18px;background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="6" fill="%23ffffff"/></svg>') no-repeat center/contain;margin-right:8px}
+  .titlebar h1{font-size:14px;margin:0;flex:1}
+  .titlebar .controls{font-size:12px}
+  .content{padding:18px}
+  .question{background:#fff;border:1px solid #c2d6ee;padding:14px;border-radius:4px;margin-bottom:12px}
+  .opts{margin-top:8px}
+  .opts label{display:block;padding:8px;border-radius:4px;border:1px solid transparent;margin-bottom:6px;cursor:pointer}
+  .opts input{margin-right:8px}
+  .opts label:hover{background:#eef6ff;border-color:#b7d6ff}
+  .controls-row{display:flex;gap:8px;align-items:center;margin-bottom:12px}
+  button{padding:8px 12px;border-radius:4px;border:1px solid #6b8bb0;background:linear-gradient(#e9f4ff,#d0e8ff);cursor:pointer}
+  button.primary{background:linear-gradient(#ffd36b,#ffb84d);border-color:#b57a1f}
+  .progress{height:14px;background:#d9eefe;border-radius:7px;overflow:hidden;border:1px solid #b9d6f0}
+  .progress > i{display:block;height:100%;background:linear-gradient(#7fb7ff,#3f8ef2);width:0%}
+  .footer{background:var(--taskbar);color:#fff;padding:8px;border-bottom-left-radius:3px;border-bottom-right-radius:3px;display:flex;align-items:center}
+  .start{background:linear-gradient(#ffefb8,#ffd36b);padding:6px 10px;border-radius:4px;margin-right:10px;color:#000;font-weight:bold}
+  .hidden{display:none}
+  .center{text-align:center}
+  .danger{color:#a00;font-weight:bold}
+  textarea{width:100%;height:120px}
+  @media(max-width:960px){.window{width:95%;}}
+</style>
+</head>
+<body>
+<div class="window" id="app">
+  <div class="titlebar"><div class="icon"></div><h1>Simulado — Administração (Estilo Windows XP)</h1><div class="controls">v1.1</div></div>
+  <div class="content">
+    <div id="intro">
+      <p>Prova: 50 questões. As respostas ficam ocultas até o envio. Trocar de aba, minimizar ou tentar inspecionar a página encerra a sessão e apaga os dados (medida anti-cola).</p>
+      <div class="controls-row">
+        <label>Nome do(a) candidato(a): <input id="candidate" type="text"></label>
+        <button id="startBtn" class="primary">Iniciar Avaliação</button>
+        <button id="loadSample">Carregar Amostra</button>
+      </div>
+      <div class="center"><small class="danger">Atenção: proteções do navegador não são infalíveis — use para treino.</small></div>
+    </div>
+
+    <div id="quiz" class="hidden">
+      <div class="controls-row">
+        <div style="flex:1">
+          <div class="progress" aria-hidden><i id="prog"></i></div>
+        </div>
+        <div id="qcount">Questão 0 / 50</div>
+      </div>
+
+      <form id="form">
+        <div id="questionsContainer"></div>
+      </form>
+
+      <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:12px">
+        <button id="prev">Anterior</button>
+        <button id="next">Próxima</button>
+        <button id="submit" class="primary">Enviar Avaliação</button>
+      </div>
+    </div>
+
+    <div id="result" class="hidden">
+      <h2>Resultado</h2>
+      <div id="score"></div>
+      <details>
+        <summary>Mostrar questões e respostas</summary>
+        <div id="answers"></div>
+      </details>
+      <div style="margin-top:12px"><button id="restart">Refazer</button></div>
+    </div>
+  </div>
+  <div class="footer"><div class="start">Iniciar</div><div>Use apenas para estudo. Proteções ativas: bloqueio de teclas, contexto e monitoramento de visibilidade.</div></div>
+</div>
+
+<script>
+// Proteções (melhor esforço)
+(function(){
+  window.addEventListener('keydown', function(e){
+    if(e.key === 'F12' || (e.ctrlKey && e.shiftKey && (e.key==='I' || e.key==='J')) || (e.ctrlKey && e.key==='u')){
+      e.preventDefault(); e.stopPropagation(); clearSessionAndKill();
+    }
+    if(e.ctrlKey && (e.key==='s' || e.key==='p')){ e.preventDefault(); }
+  }, true);
+  window.addEventListener('contextmenu', function(e){ e.preventDefault(); clearSessionAndKill(); }, true);
+  document.addEventListener('visibilitychange', function(){ if(document.hidden){ clearSessionAndKill(); } });
+  window.addEventListener('beforeunload', function(e){ clearStorage(); var msg='Se você sair, tudo será apagado.'; e.returnValue = msg; return msg; });
+  try{ console.log = function(){}; console.warn = function(){}; }catch(e){}
+  function clearStorage(){ try{ sessionStorage.clear(); localStorage.removeItem('simulado:data'); }catch(e){} }
+  function clearSessionAndKill(){ clearStorage(); try{ document.documentElement.innerHTML = '<body style="display:flex;align-items:center;justify-content:center;height:100vh;background:#fff"><div style="text-align:center;padding:20px;border:1px solid #ccc;border-radius:6px">Sessão encerrada por violação das regras de segurança.<br>Atualize para reiniciar.</div></body>'; }catch(e){} }
+  window._clearSessionAndKill = clearSessionAndKill;
+})();
+
+// Conjunto de 50 questões de caráter prático/teórico, escritas para simular questões de vestibular de Administração.
+const questions = [
+  {q:'Qual é a principal função do planejamento dentro da administração?', opts:['Definir objetivos e as estratégias para alcançá-los','Controlar estritamente os funcionários','Aumentar preços de produtos','Emitir relatórios contábeis'], a:0},
+  {q:'O que representa a sigla SWOT em planejamento estratégico?', opts:['Forças, Fraquezas, Oportunidades e Ameaças','Satisfação, Wages, Output, Turnover','Sales, Work, Operations, Tax','Sistema, Workflow, Output, Tempo'], a:0},
+  {q:'Qual é o objetivo do controle de gestão?', opts:['Assegurar que os resultados estejam alinhados às metas','Criar novas oportunidades de negócio','Aumentar o capital social','Reduzir a carga tributária'], a:0},
+  {q:'O que é capital de giro?', opts:['Recursos necessários para financiar as operações do dia a dia','Investimento em ativos fixos','Lucros acumulados distribuídos','Capital mínimo exigido por lei'], a:0},
+  {q:'Qual ferramenta é usada para visualizar tarefas em colunas como To Do, Doing, Done?', opts:['Kanban','Matriz BCG','Análise PEST','Fluxograma de valor'], a:0},
+  {q:'O que mede o índice de liquidez corrente?', opts:['Capacidade de pagamento de curto prazo','Rentabilidade de longo prazo','Endividamento de longo prazo','Margem de contribuição'], a:0},
+  {q:'O que é margem de contribuição?', opts:['Preço de venda menos os custos variáveis por unidade','Lucro líquido após impostos','Total de ativos menos passivos','Percentual de vendas estrangeiras'], a:0},
+  {q:'Qual o principal objetivo do marketing?', opts:['Identificar e satisfazer necessidades dos clientes para gerar valor','Controlar a produção','Gerenciar o caixa','Fazer auditoria interna'], a:0},
+  {q:'O que significa ROI?', opts:['Return on Investment (Retorno sobre o investimento)','Rate of Input','Revenue of Industry','Ratio of Income'], a:0},
+  {q:'O que é benchmarking?', opts:['Comparar processos e práticas com os melhores do mercado','Diminuir o preço dos produtos','Aumentar o estoque de segurança','Realizar auditoria fiscal'], a:0},
+  {q:'Qual a finalidade do plano de negócios?', opts:['Avaliar a viabilidade e orientar a implementação de um empreendimento','Controlar ponto eletrônico','Regular tributos','Gerar notas fiscais eletrônicas'], a:0},
+  {q:'O que é capital humano?', opts:['Conjunto de conhecimentos, habilidades e atitudes dos colaboradores','Patrimônio líquido da empresa','Capital financeiro em conta corrente','Quantidade de máquinas e equipamentos'], a:0},
+  {q:'Qual instrumento evidencia a situação patrimonial de uma empresa?', opts:['Balanço patrimonial','DRE (Demonstração do Resultado do Exercício)','Fluxo de caixa projetado','Mapa estratégico'], a:0},
+  {q:'O que avalia a DRE?', opts:['A formação do lucro ou prejuízo em um período','A posição de caixa da empresa','O inventário físico','O índice de satisfação do cliente'], a:0},
+  {q:'O que significa ERP?', opts:['Enterprise Resource Planning (sistema integrado de gestão)','Estimated Revenue Projection','External Resource Pool','Economic Return Program'], a:0},
+  {q:'Qual a diferença entre custo fixo e custo variável?', opts:['Custo fixo não varia com o volume; custo variável varia conforme a produção','Custo fixo é pago anualmente; variável é mensal','Custo fixo é somente salários; variável é somente matéria-prima','Não há diferença significativa'], a:0},
+  {q:'O que é PEST (análise)?', opts:['Análise de fatores Políticos, Econômicos, Sociais e Tecnológicos','Ferramenta de controle de estoque','Métrica de desempenho de vendas','Modelo de precificação'], a:0},
+  {q:'O que é cadeia de suprimentos (supply chain)?', opts:['Rede que envolve fornecedores, produção, distribuição e clientes','Departamento financeiro','Estratégia de marketing digital','Conjunto de políticas de RH'], a:0},
+  {q:'O que é política de preços por concorrência?', opts:['Definir preço com base no que o mercado está praticando','Preço calculado apenas pelo custo','Preço fixado pelo governo','Precificação por demanda interna'], a:0},
+  {q:'Qual o objetivo da logística reversa?', opts:['Gerenciar devoluções e reaproveitamento de produtos e embalagens','Aumentar o estoque','Exportar mercadorias','Controlar fraudes internas'], a:0},
+  {q:'O que é compliance nas empresas?', opts:['Conformidade com leis, normas e políticas internas','Programa de incentivo à venda','Estratégia de marketing','Plano de produção'], a:0},
+  {q:'O que é turnover de pessoal?', opts:['Rotatividade de colaboradores na empresa','Crescimento de vendas','Percentual de lucro distribuído','Quantidade de clientes novos'], a:0},
+  {q:'Qual é a finalidade do fluxo de caixa?', opts:['Registrar entradas e saídas de caixa para gerenciar liquidez','Calcular imposto de renda','Definir cargos e salários','Medir satisfação do cliente'], a:0},
+  {q:'O que é análise de custo-benefício?', opts:['Comparação entre custos e benefícios esperados de um projeto','Relatório contábil anual','Auditoria operacional','Pesquisa de satisfação'], a:0},
+  {q:'O que caracteriza uma estratégia de diferenciação?', opts:['Oferecer algo percebido como único frente aos concorrentes','Reduzir custos ao máximo','Padronizar produtos sem inovação','Aumentar apenas a distribuição'], a:0},
+  {q:'O que é capital social de uma empresa?', opts:['Recursos aportados pelos sócios para constituir a empresa','Reserva de lucros','Lucro líquido do período','Passivo circulante'], a:0},
+  {q:'Qual o objetivo dos indicadores (KPIs)?', opts:['Medir desempenho em relação a metas estratégicas','Registrar apenas operações contábeis','Substituir o plano de negócios','Reduzir a equipe de gestão'], a:0},
+  {q:'O que é margem bruta?', opts:['Receita líquida menos custo dos produtos vendidos','Lucro após impostos','Receita total acumulada','Despesas operacionais'], a:0},
+  {q:'Qual técnica organiza cronograma e dependências de um projeto?', opts:['Diagrama de Gantt','Análise SWOT','Kanban','Fluxograma simples'], a:0},
+  {q:'O que é due diligence?', opts:['Análise detalhada de uma empresa antes de uma aquisição ou investimento','Campanha de marketing','Pesquisa de clima organizacional','Rotina de auditoria interna anual'], a:0},
+  {q:'O que é market share?', opts:['Participação relativa de uma empresa no mercado','Valor contábil do estoque','Margem de contribuição','Fluxo de caixa operacional'], a:0},
+  {q:'O que é merchandising no varejo?', opts:['Conjunto de técnicas para exposição e promoção no ponto de venda','Apenas redução de preço','Gestão de pessoas','Logística internacional'], a:0},
+  {q:'O que é custo de oportunidade?', opts:['Valor do melhor uso alternativo dos recursos quando se escolhe uma opção','Despesa extra não planejada','Custo fixo anual','Remuneração de acionistas'], a:0},
+  {q:'O que é planejamento estratégico?', opts:['Processo de definição de direção, objetivos e alocação de recursos','Relatório mensal de vendas','Controle de ponto','Operação logística diária'], a:0},
+  {q:'O que é gestão por processos?', opts:['Foco em otimizar fluxos de trabalho para entregar valor ao cliente','Gerenciar somente o financeiro','Apenas terceirizar atividades','Reduzir quadro de colaboradores'], a:0},
+  {q:'O que é EBITDA?', opts:['Lucros antes de juros, impostos, depreciação e amortização','Margem de contribuição por produto','Fluxo de caixa descontado','Lucro líquido após impostos'], a:0},
+  {q:'Qual documento formaliza a política de remuneração e benefícios?', opts:['Plano de cargos e salários','Balanço patrimonial','Fluxo de caixa','DRE'], a:0},
+  {q:'O que é inventário?', opts:['Levantamento físico ou contábil de estoques','Relatório de RH','Plano de negócios','Estratégia de marketing digital'], a:0},
+  {q:'O que é alavancagem financeira?', opts:['Uso de recursos de terceiros para ampliar resultados','Aumento de capital social','Investimento em ativos fixos','Plano de previdência privada'], a:0},
+  {q:'O que é análise de sensibilidade em projetos?', opts:['Avaliar como variações em premissas afetam resultados','Montar a equipe do projeto','Definir layout da fábrica','Calcular impostos'], a:0},
+  {q:'O que é política de crédito para clientes?', opts:['Conjunto de regras para concessão de vendas a prazo','Plano de marketing digital','Meta de vendas diárias','Controle de ponto de funcionários'], a:0},
+  {q:'O que é lead time?', opts:['Tempo entre início e conclusão de um processo ou entrega','Margem de lucro por produto','Prazo para pagamento de fornecedores','Tempo de resposta do SAC'], a:0},
+  {q:'O que é just-in-time (JIT)?', opts:['Sistema que busca reduzir estoques entregando materiais conforme demanda','Aumento de estoques para segurança','Tipo de sistema de ficha financeira','Política de vendas agressiva'], a:0},
+  {q:'Qual a função do orçamento empresarial?', opts:['Planejar receitas e despesas e servir de referência para o controle','Registrar apenas impostos','Gestão de estoques','Gerenciar logística reversa'], a:0},
+  {q:'O que é contrato de prestação de serviços?', opts:['Acordo que estabelece obrigações entre contratante e contratado','Apenas documento interno sem cláusulas','Relatório de qualidade','Plano de marketing'], a:0},
+  {q:'O que é matriz de responsabilidades (RACI)?', opts:['Ferramenta para definir responsáveis e níveis de envolvimento em tarefas','Modelo de precificação','Relatório contábil anual','Sistema de ERP'], a:0},
+  {q:'O que é fluxo de valor (value stream)?', opts:['Sequência de atividades que agregam valor ao cliente','Balanço de pagamentos','Relatório de vendas semanais','Análise de crédito'], a:0},
+  {q:'Qual a finalidade de uma pesquisa de mercado?', opts:['Identificar oportunidades, comportamento e necessidades dos consumidores','Controlar produção interna','Gerar notas fiscais','Calcular salários'], a:0},
+  {q:'O que é governança corporativa?', opts:['Conjunto de práticas que visam transparência, prestação de contas e equilíbrio entre partes interessadas','Sistema de logística','Plano de produção','Política de vendas'], a:0},
+  {q:'O que é plano de continuidade de negócios (BCP)?', opts:['Estratégia para manter operações em caso de incidentes graves','Apenas plano de marketing','Relatório financeiro anual','Programa de benefícios'], a:0}
+];
+
+// App logic
+let state = { idx:0, answers: Array(questions.length).fill(null), started:false };
+const candidateInput = document.getElementById('candidate');
+const startBtn = document.getElementById('startBtn');
+const loadSample = document.getElementById('loadSample');
+const intro = document.getElementById('intro');
+const quiz = document.getElementById('quiz');
+const questionsContainer = document.getElementById('questionsContainer');
+const qcount = document.getElementById('qcount');
+const prog = document.getElementById('prog');
+const prevBtn = document.getElementById('prev');
+const nextBtn = document.getElementById('next');
+const submitBtn = document.getElementById('submit');
+const result = document.getElementById('result');
+const scoreEl = document.getElementById('score');
+const answersEl = document.getElementById('answers');
+const restartBtn = document.getElementById('restart');
+
+function start(){
+  const name = candidateInput.value.trim();
+  if(!name){ alert('Informe o nome do(a) candidato(a) antes de iniciar.'); return; }
+  state.started=true; sessionStorage.setItem('simulado:started','1');
+  intro.classList.add('hidden'); quiz.classList.remove('hidden'); renderQuestion(0);
+}
+
+function renderQuestion(i){
+  state.idx = i; const Q = questions[i];
+  qcount.textContent = `Questão ${i+1} / ${questions.length}`;
+  prog.style.width = `${Math.round(((i)/questions.length)*100)}%`;
+  questionsContainer.innerHTML = '';
+  const d = document.createElement('div'); d.className='question';
+  d.innerHTML = `<strong>${i+1}. ${escapeHtml(Q.q)}</strong>`;
+  const opts = document.createElement('div'); opts.className='opts';
+  Q.opts.forEach((o,idx)=>{
+    const id = `q${i}_opt${idx}`;
+    const lab = document.createElement('label');
+    lab.htmlFor = id; lab.innerHTML = `<input type="radio" name="q${i}" id="${id}" value="${idx}" ${state.answers[i]===idx? 'checked':''}> ${escapeHtml(o)}`;
+    opts.appendChild(lab);
+  });
+  d.appendChild(opts);
+  questionsContainer.appendChild(d);
+  opts.querySelectorAll('input').forEach(inp=> inp.addEventListener('change', function(){ state.answers[i]=parseInt(this.value); persist(); }));
+  updateButtons();
+}
+
+function updateButtons(){ prevBtn.disabled = state.idx===0; nextBtn.disabled = state.idx===questions.length-1; }
+prevBtn.addEventListener('click', ()=>{ if(state.idx>0) renderQuestion(state.idx-1); });
+nextBtn.addEventListener('click', ()=>{ if(state.idx < questions.length-1) renderQuestion(state.idx+1); });
+
+submitBtn.addEventListener('click', function(e){ e.preventDefault(); if(!confirm('Enviar avaliação e revelar respostas?')) return; grade(); });
+restartBtn.addEventListener('click', ()=>{ location.reload(); });
+startBtn.addEventListener('click', start);
+loadSample.addEventListener('click', ()=>{ candidateInput.value='Candidato Exemplo'; start(); });
+
+function grade(){
+  const qs = questions; let correct=0; const details=[];
+  for(let i=0;i<qs.length;i++){
+    const ans = state.answers[i]; const ok = ans===qs[i].a; if(ok) correct++; details.push({q:qs[i].q, opts:qs[i].opts, a:qs[i].a, given:ans});
+  }
+  quiz.classList.add('hidden'); result.classList.remove('hidden'); scoreEl.innerHTML = `<p>Pontuação: ${correct} / ${qs.length} (${Math.round(correct/qs.length*100)}%)</p>`;
+  answersEl.innerHTML = details.map((d,i)=>{
+    const given = (d.given===null)? '---' : d.opts[d.given];
+    return `<div style="margin-bottom:8px"><strong>${i+1}. ${escapeHtml(d.q)}</strong><br>Resposta correta: <em>${escapeHtml(d.opts[d.a])}</em><br>Sua resposta: ${escapeHtml(given)}</div>`;
+  }).join('');
+  clearStorage();
+}
+
+function persist(){ try{ localStorage.setItem('simulado:data', JSON.stringify({answers:state.answers, idx:state.idx, candidate:candidateInput.value})); }catch(e){} }
+function clearStorage(){ try{ localStorage.removeItem('simulado:data'); sessionStorage.clear(); }catch(e){} }
+function escapeHtml(str){ return (str+'').replace(/[&<>"']/g, function(m){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":"&#39;"}[m];}); }
+
+// On load: try to detect session data
+(function(){ try{ const saved = JSON.parse(localStorage.getItem('simulado:data')||'null'); if(saved){ if(confirm('Existe uma sessão salva. Desejar retomar?')){ candidateInput.value = saved.candidate||''; state.answers = saved.answers || state.answers; start(); renderQuestion(saved.idx||0); } else { localStorage.removeItem('simulado:data'); } } }catch(e){} })();
+
+// Detect devtools via window size change (best-effort)
+(function(){ let threshold=160; window.addEventListener('resize', function(){ if(window.outerWidth - window.innerWidth > threshold || window.outerHeight - window.innerHeight > threshold){ window._clearSessionAndKill(); } }); })();
+
+</script>
+</body>
+</html>

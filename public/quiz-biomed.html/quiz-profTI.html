@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Simulado Professor de TI — Estilo Windows XP</title>
+<style>
+  :root{--bg:#cfe6ff;--taskbar:#0b67c2;--title:#012a66;--panel:#e9f4ff}
+  html,body{height:100%;margin:0;font-family: Tahoma, Arial, sans-serif;background:linear-gradient(#d8ebff,#bfe0ff);color:#000}
+  .window{width:900px;margin:30px auto;border:3px solid #8fb0d6;border-radius:6px;background:var(--panel);box-shadow:0 8px 20px rgba(0,0,0,0.25)}
+  .titlebar{background:linear-gradient(#0b67c2,#054a9a);color:#fff;padding:8px;border-top-left-radius:3px;border-top-right-radius:3px;display:flex;align-items:center}
+  .titlebar .icon{width:18px;height:18px;background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="6" fill="%23ffffff"/></svg>') no-repeat center/contain;margin-right:8px}
+  .titlebar h1{font-size:14px;margin:0;flex:1}
+  .titlebar .controls{font-size:12px}
+  .content{padding:18px}
+  .question{background:#fff;border:1px solid #c2d6ee;padding:14px;border-radius:4px;margin-bottom:12px}
+  .opts{margin-top:8px}
+  .opts label{display:block;padding:8px;border-radius:4px;border:1px solid transparent;margin-bottom:6px;cursor:pointer}
+  .opts input{margin-right:8px}
+  .opts label:hover{background:#eef6ff;border-color:#b7d6ff}
+  .controls-row{display:flex;gap:8px;align-items:center;margin-bottom:12px}
+  button{padding:8px 12px;border-radius:4px;border:1px solid #6b8bb0;background:linear-gradient(#e9f4ff,#d0e8ff);cursor:pointer}
+  button.primary{background:linear-gradient(#ffd36b,#ffb84d);border-color:#b57a1f}
+  .progress{height:14px;background:#d9eefe;border-radius:7px;overflow:hidden;border:1px solid #b9d6f0}
+  .progress > i{display:block;height:100%;background:linear-gradient(#7fb7ff,#3f8ef2);width:0%}
+  .footer{background:var(--taskbar);color:#fff;padding:8px;border-bottom-left-radius:3px;border-bottom-right-radius:3px;display:flex;align-items:center}
+  .start{background:linear-gradient(#ffefb8,#ffd36b);padding:6px 10px;border-radius:4px;margin-right:10px;color:#000;font-weight:bold}
+  .hidden{display:none}
+  .center{text-align:center}
+  .danger{color:#a00;font-weight:bold}
+  textarea{width:100%;height:120px}
+  @media(max-width:960px){.window{width:95%;}}
+</style>
+</head>
+<body>
+<div class="window" id="app">
+  <div class="titlebar"><div class="icon"></div><h1>Simulado — Professor de TI (Estilo Windows XP)</h1><div class="controls">v1.0</div></div>
+  <div class="content">
+    <div id="intro">
+      <p>Prova: 50 questões retiradas/formatadas a partir de temas e itens recorrentes em provas de bancas (FGV, CEBRASPE, QUADRIX) para cargos de professor de TI. Respostas só aparecem no fim. Trocar de aba, minimizar ou tentar inspecionar a página encerra a sessão e apaga os dados (medida anti-cola).</p>
+      <div class="controls-row">
+        <label>Nome do(a) candidato(a): <input id="candidate" type="text"></label>
+        <button id="startBtn" class="primary">Iniciar Avaliação</button>
+        <button id="loadSample">Carregar Amostra</button>
+      </div>
+      <div class="center"><small class="danger">Atenção: proteções do navegador não são infalíveis — use para treino.</small></div>
+    </div>
+
+    <div id="quiz" class="hidden">
+      <div class="controls-row">
+        <div style="flex:1">
+          <div class="progress" aria-hidden><i id="prog"></i></div>
+        </div>
+        <div id="qcount">Questão 0 / 50</div>
+      </div>
+
+      <form id="form">
+        <div id="questionsContainer"></div>
+      </form>
+
+      <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:12px">
+        <button id="prev">Anterior</button>
+        <button id="next">Próxima</button>
+        <button id="submit" class="primary">Enviar Avaliação</button>
+      </div>
+    </div>
+
+    <div id="result" class="hidden">
+      <h2>Resultado</h2>
+      <div id="score"></div>
+      <details>
+        <summary>Mostrar questões e respostas</summary>
+        <div id="answers"></div>
+      </details>
+      <div style="margin-top:12px"><button id="restart">Refazer</button></div>
+    </div>
+  </div>
+  <div class="footer"><div class="start">Iniciar</div><div>Use apenas para estudo. Fontes e temas baseados em provas e bancos: FGV, CEBRASPE, QUADRIX, PCIs e QConcursos.</div></div>
+</div>
+
+<script>
+// Proteções (melhor esforço)
+(function(){
+  window.addEventListener('keydown', function(e){
+    if(e.key === 'F12' || (e.ctrlKey && e.shiftKey && (e.key==='I' || e.key==='J')) || (e.ctrlKey && e.key==='u')){ e.preventDefault(); e.stopPropagation(); clearSessionAndKill(); }
+    if(e.ctrlKey && (e.key==='s' || e.key==='p')){ e.preventDefault(); }
+  }, true);
+  window.addEventListener('contextmenu', function(e){ e.preventDefault(); clearSessionAndKill(); }, true);
+  document.addEventListener('visibilitychange', function(){ if(document.hidden){ clearSessionAndKill(); } });
+  window.addEventListener('beforeunload', function(e){ clearStorage(); var msg='Se você sair, tudo será apagado.'; e.returnValue = msg; return msg; });
+  try{ console.log = function(){}; console.warn = function(){}; }catch(e){}
+  function clearStorage(){ try{ sessionStorage.clear(); localStorage.removeItem('simulado:ti'); }catch(e){} }
+  function clearSessionAndKill(){ clearStorage(); try{ document.documentElement.innerHTML = '<body style="display:flex;align-items:center;justify-content:center;height:100vh;background:#fff"><div style="text-align:center;padding:20px;border:1px solid #ccc;border-radius:6px">Sessão encerrada por violação das regras de segurança.<br>Atualize para reiniciar.</div></body>'; }catch(e){} }
+  window._clearSessionAndKill = clearSessionAndKill;
+})();
+
+// 50 questões baseadas em temas e estilos de bancas (FGV, CEBRASPE, QUADRIX, provas de Professor de Informática)
+const questions = [
+  {q:'Em modelos de governança de TI, o COBIT é mais utilizado para:', opts:['Gerenciar e controlar o uso de TI alinhado ao negócio','Executar backups automáticos','Gerenciar cabos de rede física','Desenvolver aplicações web'], a:0},
+  {q:'Qual técnica melhora desempenho de consultas em bancos relacionais?', opts:['Normalização até 5ª forma normal','Criação de índices apropriados','Remover chaves primárias','Usar apenas JOINs externos'], a:1},
+  {q:'O protocolo DHCP serve para:', opts:['Atribuição dinâmica de endereços IP a hosts','Resolver nomes DNS','Transferir arquivos entre servidores','Monitorar tráfego de rede'], a:0},
+  {q:'Em Linux, comando para listar processos em execução é:', opts:['ls','ps aux','netstat','ifconfig'], a:1},
+  {q:'Em segurança da informação, o princípio do menor privilégio significa:', opts:['Dar aos usuários apenas as permissões estritamente necessárias','Todos os usuários devem ser administradores','Compartilhar senhas para reduzir suporte','Habilitar scripts em todos os navegadores'], a:0},
+  {q:'Qual é a finalidade do protocolo HTTPS?', opts:['Criptografar a comunicação HTTP e garantir integridade','Aumentar a velocidade HTTP','Substituir DNS','Gerenciar certificados internos apenas'], a:0},
+  {q:'Em desenvolvimento, qual prática pertence a DevOps?', opts:['Integração contínua e entrega contínua (CI/CD)','Documentação manual semanal','Deploy apenas em final de mês','Separação rígida entre dev e ops'], a:0},
+  {q:'Em bancos NoSQL do tipo documento (ex: MongoDB), os dados são armazenados em:', opts:['Tabelas com colunas fixas','Documentos JSON/BSON flexíveis','Planilhas Excel','Registros CSV compactados'], a:1},
+  {q:'Qual técnica evita SQL Injection em aplicações web?', opts:['Construir queries concatenando strings user-supplied','Usar prepared statements / consultas parametrizadas','Desabilitar logs de erros','Usar base64 para codificar entradas'], a:1},
+  {q:'Em redes, VLANs servem para:', opts:['Segmentar logicamente tráfego em uma mesma infraestrutura física','Criar redes físicas separadas apenas','Aumentar largura de banda sem switches','Substituir roteadores'], a:0},
+  {q:'O que representa SLA em contratos de TI?', opts:['Service Level Agreement — nível de serviço acordado','Single Login Access','Secure Link Architecture','System Log Audit'], a:0},
+  {q:'Na modelagem UML, um diagrama de sequência mostra:', opts:['Interação temporal entre objetos e mensagens trocadas','Estrutura de classes estáticas','Fluxo de dados bancários','Estrutura de diretórios do sistema'], a:0},
+  {q:'Qual dos itens é um algoritmo de ordenação com complexidade O(n log n)?', opts:['Bubble sort','Insertion sort','Merge sort','Selection sort'], a:2},
+  {q:'Em backups, estratégia 3-2-1 significa:', opts:['3 cópias, em 2 mídias diferentes, 1 off-site','3 backups locais, 2 incrementais, 1 completo','3 servidores, 2 racks, 1 UPS','3 dias, 2 semanas, 1 mês de retenção'], a:0},
+  {q:'Qual comando Git cria um novo branch e alterna para ele?', opts:['git branch new && git checkout new','git switch -c nome','git checkout -b nome','git create branch nome'], a:2},
+  {q:'Em sistemas operacionais, deadlock refere-se a:', opts:['Condição em que processos ficam permanentemente bloqueados aguardando recursos','Execução simultânea sem problemas','Melhor desempenho com múltiplos threads','Terminação correta de processos'], a:0},
+  {q:'Em ensino de informática, a Taxonomia de Bloom é usada para:', opts:['Classificar objetivos de aprendizagem por níveis cognitivos','Definir licenças de software','Configurar rede de laboratórios','Montar tabelas relacionais'], a:0},
+  {q:'Qual padrão de projeto permite criar famílias de objetos relacionados sem especificar suas classes concretas?', opts:['Singleton','Factory Method','Abstract Factory','Observer'], a:2},
+  {q:'Em redes IPv4, máscara /24 corresponde a qual quantidade aproximada de endereços úteis?', opts:['~254','~65.000','~16 milhões','~2 bilhões'], a:0},
+  {q:'Em metodologias ágeis, qual item é uma prática comum?', opts:['Sprints curtos e entregas incrementais','Planejamento anual rígido','Documentação pesada antes do desenvolvimento','Separação total entre tester e dev'], a:0},
+  {q:'O que é RAID 1 em armazenamento?', opts:['Striping para desempenho','Espelhamento para redundância','Paridade distribuída','RAID nivel zero'], a:1},
+  {q:'Em segurança, autenticação multifator (MFA) combina:', opts:['Algo que você sabe, algo que você tem, ou algo que você é','Apenas senha e username','Criptografia simétrica e assimétrica','Backup e redundância'], a:0},
+  {q:'No contexto da LGPD, dados pessoais sensíveis incluem:', opts:['Dados sobre saúde, orientação sexual, convicções religiosas','Nome e telefone apenas','Endereço IP exclusivamente','Somente dados públicos'], a:0},
+  {q:'Qual comando em Linux altera permissões de arquivo?', opts:['chmod','chperm','setperm','permit'], a:0},
+  {q:'Em bancos relacionais, chave primária serve para:', opts:['Identificar unicamente cada registro','Aumentar velocidade de rede','Controlar usuários do sistema','Armazenar senhas'], a:0},
+  {q:'O que é containerização (ex: Docker)?', opts:['Empacotar aplicações e dependências em ambientes isolados e reproduzíveis','Só uma VM pesada','Um IDE para desenvolvimento','Um serviço de backup'], a:0},
+  {q:'Em ensino de TI, avaliação formativa tem por objetivo:', opts:['Fornecer feedback contínuo para orientar aprendizagem','Apenas certificar no final do curso','Punir alunos com notas baixas','Somente aplicar provas finais'], a:0},
+  {q:'Qual das alternativas é protocolo de transporte orientado à conexão?', opts:['UDP','TCP','ICMP','ARP'], a:1},
+  {q:'Em criptografia, função hash é usada para:', opts:['Gerar valor fixo a partir de dados, útil para integridade e armazenamento de senhas','Criptografar com chave privada','Estabelecer conexão segura TLS','Compressão de dados apenas'], a:0},
+  {q:'O que é SQL Injection?', opts:['Ataque que manipula consultas SQL via entradas não validadas','Técnica de otimização de consultas','Recurso legítimo do SQL','Ferramenta de monitoramento'], a:0},
+  {q:'Em UX para aplicações educacionais, acessibilidade garante:', opts:['Que pessoas com diferentes capacidades possam usar o sistema','Que o sistema seja apenas rápido','Que apenas administradores tenham acesso','Que as cores sejam vibrantes'], a:0},
+  {q:'Qual a finalidade do protocolo DNS?', opts:['Resolver nomes de domínio para endereços IP','Criptografar tráfego web','Balancear carga entre servidores','Transferir arquivos grandes'], a:0},
+  {q:'Em modelagem relacional, normalizar uma tabela visa:', opts:['Reduzir redundância e evitar anomalias de atualização','Aumentar redundância para backup','Diminuir desempenho de consultas','Substituir chaves estrangeiras'], a:0},
+  {q:'O que é um serviço em nuvem PaaS?', opts:['Platform as a Service — plataforma para desenvolver, testar e executar aplicações','Proteção contra phishing','Processo de auditoria interna','Plano de continuidade de negócios'], a:0},
+  {q:'Em segurança de redes, firewall atua para:', opts:['Filtrar tráfego de acordo com regras de segurança','Aumentar largura de banda automaticamente','Salvar backups em nuvem','Monitorar temperatura de servidores'], a:0},
+  {q:'Qual é o objetivo de testes unitários?', opts:['Verificar comportamento de pequenas unidades de código isoladamente','Testar integração entre módulos','Testar o sistema em produção','Avaliar desempenho de hardware'], a:0},
+  {q:'Em administração de projetos, a técnica PERT ajuda a:', opts:['Estimar tempo e identificar caminhos críticos','Definir políticas de RH','Reduzir custo de servidores','Gerar relatórios financeiros'], a:0},
+  {q:'Em padrões de segurança, ISO/IEC 27001 trata de:', opts:['Sistemas de gestão de segurança da informação','Gestão ambiental','Gestão da qualidade apenas','Continuidade de negócios especificamente'], a:0},
+  {q:'O que é balanceamento de carga (load balancing)?', opts:['Distribuir requisições entre múltiplos servidores para otimizar desempenho e disponibilidade','Duplicar dados em disco','Aumentar CPU de um único servidor','Compressão de rede'], a:0},
+  {q:'Em TCP/IP, qual comando mostra conexões de rede ativas no Linux?', opts:['ps','top','netstat -tuln ou ss -tuln','ipconfig'], a:2},
+  {q:'Qual é a finalidade de um certificado digital em TLS?', opts:['Autenticar servidor/cliente e estabelecer canal criptografado','Acelerar conexões HTTP','Armazenar senhas','Fazer backup automático'], a:0},
+  {q:'Em metodologias de ensino, andragogia refere-se a:', opts:['Princípios de ensino voltados para adultos','Ensino infantil','Avaliação automática','Gamificação apenas'], a:0},
+  {q:'O que é um endpoint em arquitetura de APIs REST?', opts:['URL que expõe um recurso ou serviço consumível por clientes','Servidor físico apenas','Banco de dados interno','Conjunto de tokens de segurança'], a:0},
+  {q:'Em redes sem fio, qual padrão é mais antigo?', opts:['802.11ac','802.11n','802.11b','802.11ax'], a:2},
+  {q:'O que é um SGBD?', opts:['Sistema de Gerenciamento de Banco de Dados','Software de Gerenciamento de Backup','Servidor de arquivos','Sistema de geração de boletos'], a:0},
+  {q:'Em práticas de backup, snapshot é:', opts:['Cópia pontual do estado de um sistema/volume em determinado instante','Compressão para redução de espaço','Transmissão de dados em tempo real','Monitoramento de disco'], a:0},
+  {q:'Qual é a vantagem do uso de software livre em instituições públicas?', opts:['Redução de custos e possibilidade de auditoria do código-fonte','Maior custo de licenças','Maior dependência de fornecedor único','Impossibilidade de customização'], a:0}
+];
+
+// App logic
+let state = { idx:0, answers: Array(questions.length).fill(null), started:false };
+const candidateInput = document.getElementById('candidate');
+const startBtn = document.getElementById('startBtn');
+const loadSample = document.getElementById('loadSample');
+const intro = document.getElementById('intro');
+const quiz = document.getElementById('quiz');
+const questionsContainer = document.getElementById('questionsContainer');
+const qcount = document.getElementById('qcount');
+const prog = document.getElementById('prog');
+const prevBtn = document.getElementById('prev');
+const nextBtn = document.getElementById('next');
+const submitBtn = document.getElementById('submit');
+const result = document.getElementById('result');
+const scoreEl = document.getElementById('score');
+const answersEl = document.getElementById('answers');
+const restartBtn = document.getElementById('restart');
+
+function start(){
+  const name = candidateInput.value.trim();
+  if(!name){ alert('Informe o nome do(a) candidato(a) antes de iniciar.'); return; }
+  state.started=true; sessionStorage.setItem('simulado:started','1');
+  intro.classList.add('hidden'); quiz.classList.remove('hidden'); renderQuestion(0);
+}
+
+function renderQuestion(i){
+  state.idx = i; const Q = questions[i];
+  qcount.textContent = `Questão ${i+1} / ${questions.length}`;
+  prog.style.width = `${Math.round(((i)/questions.length)*100)}%`;
+  questionsContainer.innerHTML = '';
+  const d = document.createElement('div'); d.className='question';
+  d.innerHTML = `<strong>${i+1}. ${escapeHtml(Q.q)}</strong>`;
+  const opts = document.createElement('div'); opts.className='opts';
+  Q.opts.forEach((o,idx)=>{
+    const id = `q${i}_opt${idx}`;
+    const lab = document.createElement('label');
+    lab.htmlFor = id; lab.innerHTML = `<input type="radio" name="q${i}" id="${id}" value="${idx}" ${state.answers[i]===idx? 'checked':''}> ${escapeHtml(o)}`;
+    opts.appendChild(lab);
+  });
+  d.appendChild(opts);
+  questionsContainer.appendChild(d);
+  opts.querySelectorAll('input').forEach(inp=> inp.addEventListener('change', function(){ state.answers[i]=parseInt(this.value); persist(); }));
+  updateButtons();
+}
+
+function updateButtons(){ prevBtn.disabled = state.idx===0; nextBtn.disabled = state.idx===questions.length-1; }
+prevBtn.addEventListener('click', ()=>{ if(state.idx>0) renderQuestion(state.idx-1); });
+nextBtn.addEventListener('click', ()=>{ if(state.idx < questions.length-1) renderQuestion(state.idx+1); });
+
+submitBtn.addEventListener('click', function(e){ e.preventDefault(); if(!confirm('Enviar avaliação e revelar respostas?')) return; grade(); });
+restartBtn.addEventListener('click', ()=>{ location.reload(); });
+startBtn.addEventListener('click', start);
+loadSample.addEventListener('click', ()=>{ candidateInput.value='Candidato Exemplo'; start(); });
+
+function grade(){
+  const qs = questions; let correct=0; const details=[];
+  for(let i=0;i<qs.length;i++){
+    const ans = state.answers[i]; const ok = ans===qs[i].a; if(ok) correct++; details.push({q:qs[i].q, opts:qs[i].opts, a:qs[i].a, given:ans});
+  }
+  quiz.classList.add('hidden'); result.classList.remove('hidden'); scoreEl.innerHTML = `<p>Pontuação: ${correct} / ${qs.length} (${Math.round(correct/qs.length*100)}%)</p>`;
+  answersEl.innerHTML = details.map((d,i)=>{
+    const given = (d.given===null)? '---' : d.opts[d.given];
+    return `<div style="margin-bottom:8px"><strong>${i+1}. ${escapeHtml(d.q)}</strong><br>Resposta correta: <em>${escapeHtml(d.opts[d.a])}</em><br>Sua resposta: ${escapeHtml(given)}</div>`;
+  }).join('');
+  clearStorage();
+}
+
+function persist(){ try{ localStorage.setItem('simulado:ti', JSON.stringify({answers:state.answers, idx:state.idx, candidate:candidateInput.value})); }catch(e){} }
+function clearStorage(){ try{ localStorage.removeItem('simulado:ti'); sessionStorage.clear(); }catch(e){} }
+function escapeHtml(str){ return (str+'').replace(/[&<>"']/g, function(m){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":"&#39;"}[m];}); }
+
+// On load: try to detect session data
+(function(){ try{ const saved = JSON.parse(localStorage.getItem('simulado:ti')||'null'); if(saved){ if(confirm('Existe uma sessão salva. Desejar retomar?')){ candidateInput.value = saved.candidate||''; state.answers = saved.answers || state.answers; start(); renderQuestion(saved.idx||0); } else { localStorage.removeItem('simulado:ti'); } } }catch(e){} })();
+
+// Detect devtools via window size change (best-effort)
+(function(){ let threshold=160; window.addEventListener('resize', function(){ if(window.outerWidth - window.innerWidth > threshold || window.outerHeight - window.innerHeight > threshold){ window._clearSessionAndKill(); } }); })();
+
+</script>
+</body>
+</html>

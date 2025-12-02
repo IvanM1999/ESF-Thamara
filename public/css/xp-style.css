@@ -1,0 +1,128 @@
+/* ================================
+   ESTILO GERAL – WINDOWS XP
+   ================================ */
+
+body {
+    margin: 0;
+    font-family: Tahoma, sans-serif;
+    background: #c0c0c0;
+    color: #000;
+}
+
+/* ================================
+   BARRA DE TÍTULO AZUL XP
+   ================================ */
+
+.xp-window-titlebar {
+    background: linear-gradient(to bottom, #0a246a, #245edb);
+    color: white;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    user-select: none;
+}
+
+.xp-window-titlebar .logo {
+    height: 22px;
+    margin-right: 10px;
+}
+
+.xp-window-titlebar .title {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* ================================
+   MENU SUPERIOR XP
+   ================================ */
+
+.xp-menu-bar {
+    background: #ece9d8;
+    border-bottom: 2px solid #808080;
+    box-shadow: inset 0 1px #ffffff;
+}
+
+.xp-menu {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+}
+
+.xp-menu li {
+    margin: 0;
+    padding: 0;
+}
+
+.xp-menu li a {
+    padding: 6px 14px;
+    color: black;
+    display: block;
+    background: #ece9d8;
+    text-decoration: none;
+    border-right: 1px solid #b4b4b4;
+    font-size: 14px;
+
+    box-shadow: 
+        inset -1px -1px 1px rgba(0,0,0,0.2),
+        inset 1px 1px 1px rgba(255,255,255,0.6);
+}
+
+.xp-menu li a:hover {
+    background: #c3c7cb;
+}
+
+/* ================================
+   JANELAS E CONTEÚDO
+   ================================ */
+
+.xp-window {
+    background: white;
+    border: 2px solid #808080;
+    padding: 20px;
+    margin: 20px;
+    box-shadow: 
+        2px 2px 0 #3a3a3a,
+        -1px -1px 0 #d7d7d7;
+}
+
+/* ================================
+   BOTÕES ESTILO XP
+   ================================ */
+
+.xp-button {
+    background: #ece9d8;
+    border: 2px solid #d3d3d3;
+    padding: 6px 14px;
+    cursor: pointer;
+    font-family: Tahoma;
+    box-shadow:
+        inset -1px -1px 1px rgba(0,0,0,0.3),
+        inset 1px 1px 1px rgba(255,255,255,0.6);
+}
+
+.xp-button:hover {
+    background: #dcd9c8;
+}
+
+/* ================================
+   RESPONSIVIDADE
+   ================================ */
+
+@media (max-width: 700px) {
+    
+    .xp-menu {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .xp-menu li a {
+        border-right: 0;
+        border-bottom: 1px solid #b4b4b4;
+    }
+
+    .xp-window {
+        margin: 10px;
+        padding: 15px;
+    }
+}
