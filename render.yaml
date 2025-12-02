@@ -12,12 +12,15 @@ services:
         fromDatabase:
           name: esf-thamara-db
           type: postgresql
-  - type: web-service
+
+  - type: web
     name: esf-thamara-frontend
     env: static
+    plan: free
     repo: https://github.com/IvanM1999/ESF-Thamara
     branch: main
     publishPath: public
+
 databases:
   - type: postgresql
     name: esf-thamara-db
