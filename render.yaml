@@ -3,7 +3,7 @@ services:
     name: esf-thamara-backend
     env: node
     plan: free
-    repo: https://github.com/SEU_USUARIO/esf-thamara-rodriguez
+    repo: https://github.com/IvanM1999/ESF-Thamara
     branch: main
     buildCommand: 'cd backend && npm install'
     startCommand: 'cd backend && node server.js'
@@ -15,7 +15,7 @@ services:
   - type: static
     name: esf-thamara-frontend
     env: static
-    repo: https://github.com/SEU_USUARIO/esf-thamara-rodriguez
+    repo: https://github.com/IvanM1999/ESF-Thamara
     branch: main
     publishPath: public
 databases:
