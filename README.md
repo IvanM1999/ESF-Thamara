@@ -1,7 +1,9 @@
 # ESF-Thamara
 Site público para apoio ás equipes médica 
+
 🌐 ESF Thamara Katryne Rodrigues Schmidt – Portal Comunitário
-Este projeto nasceu com o propósito de informar e apoiar a comunidade do bairro Progresso, em Blumenau (SC). Mais do que um sistema técnico, ele é um espaço digital que reúne informações de saúde, notícias, calendário de atendimentos e blogs explicativos, tudo em uma linguagem acessível e acolhedora.
+
+> Este projeto nasceu com o propósito de informar e apoiar a comunidade do bairro Progresso, em Blumenau (SC). Mais do que um sistema técnico, ele é um espaço digital que reúne informações de saúde, notícias, calendário de atendimentos e blogs explicativos, tudo em uma linguagem acessível e acolhedora.
 
 🎯 Objetivo
 Garantir que a comunidade tenha acesso fácil às informações da Estratégia Saúde da Família (ESF).
@@ -12,7 +14,7 @@ Promover transparência sobre os atendimentos, horários e dinâmicas da unidade
 
 Apoiar entidades sociais brasileiras com uma ferramenta digital gratuita e aberta.
 
-📂 Estrutura do Projeto
+📂 Estrutura básica do Projeto
 public/ → Frontend estático (site estilo Windows XP vítreo).
 
 backend/ → Aplicação Node.js/Express com autenticação administrativa, triagem e geração de PDFs.
@@ -21,8 +23,7 @@ server_sql/ → Scripts SQL para criação de tabelas e dados iniciais.
 
 render.yaml → Configuração de exemplo para deploy no Render.com..
 
-🚀 Como usar
-Localmente
+🚀 Como usar Localmente
 Clone o repositório:
 
 bash
