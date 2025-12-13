@@ -26,7 +26,7 @@ Localmente
 Clone o repositório:
 
 bash
-git clone https://github.com/seuusuario/esf-thamara.git
+git clone https://github.com/IvanM1999/esf-thamara.git
 cd esf-thamara
 Instale dependências do backend:
 
