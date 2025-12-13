@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aviso de Recesso – ESF Thamara</title>
+
+  <!-- Estilos pensados para impressão (A4) e visual profissional -->
+  <style>
+    :root{
+      --primary:#0b5fa5;
+      --accent:#d35400;
+      --paper:#ffffff;
+      --ink:#1a1a1a;
+      --muted:#666;
+    }
+
+    /* Reset simples */
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      background: #f2f4f7;
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    /* Container central */
+    .wrap {
+      min-height: 100%;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+
+    /* Cartaz */
+    .poster {
+      width: 900px;
+      max-width: 100%;
+      background: var(--paper);
+      border: 2px solid #c9d3df;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.15);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    /* Cabeçalho */
+    .poster-header {
+      background: linear-gradient(90deg, var(--primary), #3b85d6);
+      color: #fff;
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .poster-title {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
+    .poster-sub {
+      font-size: 14px;
+      opacity: 0.95;
+    }
+
+    /* Conteúdo */
+    .poster-body {
+      padding: 24px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 24px;
+    }
+
+    /* Bloco de aviso (Natal) */
+    .holiday {
+      background: #f9f2ec;
+      border: 2px solid var(--accent);
+      padding: 16px;
+      border-radius: 10px;
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.10);
+    }
+    .holiday h2 {
+      margin: 0 0 10px 0;
+      color: var(--accent);
+      font-size: 22px;
+    }
+    .holiday p {
+      font-size: 16px;
+      line-height: 1.55;
+      margin: 8px 0;
+    }
+    .holiday ul {
+      font-size: 15px;
+      margin: 12px 0 0 0;
+      padding-left: 18px;
+    }
+    .holiday li { margin: 6px 0; }
+    .btn-map {
+      display: inline-block;
+      margin-top: 8px;
+      background: var(--primary);
+      color: #fff;
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-weight: 600;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+
+    /* Bloco do QR */
+    .qr-box {
+      background: #fff;
+      border: 2px solid #e2e6ea;
+      border-radius: 12px;
+      padding: 16px;
+      display: grid;
+      place-items: center;
+      gap: 12px;
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.10);
+    }
+    .qr-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #222;
+      text-align: center;
+    }
+    .qr-sub {
+      font-size: 14px;
+      color: var(--muted);
+      text-align: center;
+      margin-top: -4px;
+    }
+
+    /* Área da imagem de QR com “zona silenciosa” */
+    .qr-canvas {
+      background: #fff;
+      padding: 18px;            /* Quiet zone ao redor do QR */
+      border: 1px dashed #c7cdd4;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+    }
+    .qr-canvas img {
+      width: 320px;             /* ajuste conforme a qualidade do QR */
+      height: auto;
+      display: block;
+    }
+
+    /* Rodapé com URL em texto (fallback) */
+    .footer {
+      padding: 16px 24px 24px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .site-link {
+      font-weight: 700;
+      color: #0b5fa5;
+      text-decoration: none;
+      word-break: break-all;
+    }
+
+    /* Responsivo */
+    @media (max-width: 900px) {
+      .poster-body { grid-template-columns: 1fr; }
+    }
+
+    /* Regras de impressão */
+    @page { size: A4; margin: 14mm; }
+    @media print {
+      body { background: #fff; }
+      .poster { box-shadow: none; border-color: #b6c2cf; }
+      .btn-map { color: #fff !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="poster" role="article" aria-label="Aviso de recesso da ESF Thamara com QR Code para site oficial">
+      <header class="poster-header">
+        <div>
+          <div class="poster-title">ESF Thamara Katryne Rodrigues Schmidt</div>
+          <div class="poster-sub">Aviso oficial de recesso e direção de atendimento</div>
+        </div>
+        <div class="poster-sub" aria-hidden="true">Documento para impressão</div>
+      </header>
+
+      <section class="poster-body">
+        <!-- Lado esquerdo: aviso -->
+        <div class="holiday">
+          <h2>🎄 Aviso de Recesso Natalino</h2>
+          <p>
+            Informamos que a <strong>ESF Thamara Katryne Rodrigues Schmidt</strong> entrará em recesso
+            a partir do dia <strong>20 de Dezembro de 2025</strong>, retornando às atividades em
+            <strong>05 de Janeiro de 2026</strong>.
+          </p>
+          <p>
+            Durante este período, todos os atendimentos devem ser <strong>redirecionados aos plantonistas</strong>
+            da rede de serviço do <strong>Ambulatório Geral do Garcia</strong>.
+          </p>
+          <ul>
+            <li><strong>Endereço:</strong> Rua Amazonas, 300 – Garcia, Blumenau (SC)</li>
+            <li><strong>Telefone:</strong> (47) 3333-1234</li>
+            <li>
+              <a class="btn-map" href="https://www.google.com/maps/dir/ESF+Progresso/AG+Garcia" target="_blank" rel="noopener">
+                📍 Ver rota no Google Maps
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Lado direito: QR centralizado -->
+        <div class="qr-box" aria-label="QR Code para acesso ao site oficial da ESF Thamara">
+          <div class="qr-title">Aponte a câmera do seu celular</div>
+          <div class="qr-sub">Este QR leva ao site oficial para informações atualizadas do recesso</div>
+
+          <div class="qr-canvas">
+            <!-- Substitua o src pelo link público do OneDrive para a imagem do QR -->
+            <!-- Exemplo de comentário: Cole aqui o link do seu QR gerado -->
+            <img id="qrImage"
+                 src="https://onedrive.seu-link-publico/qr-code.png"
+                 alt="QR Code para acesso ao site oficial da ESF Thamara (https://esf-thamara.onrender.com)" />
+          </div>
+
+          <div class="qr-sub" style="margin-top: 6px;">
+            Caso o QR não funcione, acesse:
+          </div>
+          <div class="qr-title" style="font-size:16px;">
+            https://esf-thamara.onrender.com
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        Em caso de dúvidas, procure a recepção da unidade. Este cartaz é oficial e destinado à exposição aos pacientes.
+      </footer>
+    </div>
+  </div>
+</body>
+</html>
