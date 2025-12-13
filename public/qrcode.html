@@ -140,7 +140,20 @@
       height: auto;
       display: block;
     }
-
+    
+    .qrImageMaps{
+      background: #fff;
+      padding: 8px;
+      border: 1px dashed #c7cdd4;
+      border-radius: 5px;
+      display: grid;
+      place-items: center;
+    }
+    .qr-canvas img {
+      width: 420px;
+      height: auto;
+      display: block;
+    }
     .footer {
       padding: 16px 24px 24px;
       color: var(--muted);
@@ -213,7 +226,7 @@
             </li>
           </ul>
           <div class="qr-canvas">
-            <img id="qrImage"
+            <img id="qrImageMaps"
                  src="/src/maps.png"
                  alt="mapa do google" />
           </div>
