@@ -70,12 +70,5 @@ O uso é destinado exclusivamente a entidades sociais brasileiras.
 
 Transparência é obrigatória: cada fork deve manter uma página de apresentação vinculando ao projeto original.
 
-👥 Equipe
-Coordenação ESF I: Daianny Vaz
-
-Coordenação ESF II: Elen Linaltevich
-
-Equipe multiprofissional: médicos de família, enfermeiros, dentistas, agentes comunitários de saúde e técnicos de enfermagem.
-
 ✨ Comunidade
 Este portal é feito para e pela comunidade. Ele busca ser um espaço digital de confiança, onde qualquer pessoa possa encontrar informações úteis, compreender sua rotina de atendimento e sentir-se parte de um projeto coletivo de saúde e cidadania.
