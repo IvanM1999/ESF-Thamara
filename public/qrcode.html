@@ -142,18 +142,24 @@
     }
     
     .qrImageMaps{
-      background: #fff;
-      padding: 8px;
-      border: 1px dashed #c7cdd4;
-      border-radius: 5px;
-      display: grid;
-      place-items: center;
-    }
-    .qr-canvas img {
-      width: 420px;
-      height: auto;
-      display: block;
-    }
+  background: #fff;
+  padding: 0;              /* remove a margem interna */
+  border: 1px dashed #c7cdd4;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  width: 100%;             /* garante que ocupe todo o espaço do container */
+  height: 100%;            /* altura total */
+}
+
+.qr-canvas img {
+  width: 100%;             /* imagem ocupa toda a largura */
+  height: 100%;            /* imagem ocupa toda a altura */
+  object-fit: cover;       /* ajusta para preencher sem distorcer */
+  border-radius: 10px;     /* acompanha o arredondamento do container */
+}
+
+
     .footer {
       padding: 16px 24px 24px;
       color: var(--muted);
