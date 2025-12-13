@@ -15,7 +15,6 @@
       --muted:#666;
     }
 
-    /* Reset simples */
     * { box-sizing: border-box; }
     html, body { height: 100%; }
     body {
@@ -27,7 +26,6 @@
       print-color-adjust: exact;
     }
 
-    /* Container central */
     .wrap {
       min-height: 100%;
       display: grid;
@@ -35,7 +33,6 @@
       padding: 24px;
     }
 
-    /* Cartaz */
     .poster {
       width: 900px;
       max-width: 100%;
@@ -46,7 +43,6 @@
       overflow: hidden;
     }
 
-    /* Cabeçalho */
     .poster-header {
       background: linear-gradient(90deg, var(--primary), #3b85d6);
       color: #fff;
@@ -66,7 +62,6 @@
       opacity: 0.95;
     }
 
-    /* Conteúdo */
     .poster-body {
       padding: 24px;
       display: grid;
@@ -74,7 +69,6 @@
       gap: 24px;
     }
 
-    /* Bloco de aviso (Natal) */
     .holiday {
       background: #f9f2ec;
       border: 2px solid var(--accent);
@@ -110,7 +104,6 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.15);
     }
 
-    /* Bloco do QR */
     .qr-box {
       background: #fff;
       border: 2px solid #e2e6ea;
@@ -134,22 +127,20 @@
       margin-top: -4px;
     }
 
-    /* Área da imagem de QR com “zona silenciosa” */
     .qr-canvas {
       background: #fff;
-      padding: 18px;            /* Quiet zone ao redor do QR */
+      padding: 18px;
       border: 1px dashed #c7cdd4;
       border-radius: 10px;
       display: grid;
       place-items: center;
     }
     .qr-canvas img {
-      width: 320px;             /* ajuste conforme a qualidade do QR */
+      width: 320px;
       height: auto;
       display: block;
     }
 
-    /* Rodapé com URL em texto (fallback) */
     .footer {
       padding: 16px 24px 24px;
       color: var(--muted);
@@ -162,21 +153,35 @@
       word-break: break-all;
     }
 
-    /* Responsivo */
     @media (max-width: 900px) {
       .poster-body { grid-template-columns: 1fr; }
     }
 
-    /* Regras de impressão */
     @page { size: A4; margin: 14mm; }
     @media print {
       body { background: #fff; }
       .poster { box-shadow: none; border-color: #b6c2cf; }
       .btn-map { color: #fff !important; }
+      button { display: none; }
+    }
+
+    button {
+      margin:20px auto;
+      display:block;
+      padding:10px 20px;
+      font-size:16px;
+      background:#0b5fa5;
+      color:#fff;
+      border:none;
+      border-radius:6px;
+      cursor:pointer;
     }
   </style>
 </head>
 <body>
+  <!-- Botão para imprimir/salvar em PDF -->
+  <button onclick="window.print()">🖨️ Imprimir / Salvar em PDF</button>
+
   <div class="wrap">
     <div class="poster" role="article" aria-label="Aviso de recesso da ESF Thamara com QR Code para site oficial">
       <header class="poster-header">
@@ -188,7 +193,6 @@
       </header>
 
       <section class="poster-body">
-        <!-- Lado esquerdo: aviso -->
         <div class="holiday">
           <h2>🎄 Aviso de Recesso Natalino</h2>
           <p>
@@ -211,24 +215,22 @@
           </ul>
         </div>
 
-        <!-- Lado direito: QR centralizado -->
         <div class="qr-box" aria-label="QR Code para acesso ao site oficial da ESF Thamara">
           <div class="qr-title">Aponte a câmera do seu celular</div>
           <div class="qr-sub">Este QR leva ao site oficial para informações atualizadas do recesso</div>
 
           <div class="qr-canvas">
-            <!-- Substitua o src pelo link público do OneDrive para a imagem do QR -->
-            <!-- Exemplo de comentário: Cole aqui o link do seu QR gerado -->
             <img id="qrImage"
-                 src="https://onedrive.seu-link-publico/qr-code.png"
+                 src="/src/qrcode.png"
                  alt="QR Code para acesso ao site oficial da ESF Thamara (https://esf-thamara.onrender.com)" />
           </div>
-
           <div class="qr-sub" style="margin-top: 6px;">
             Caso o QR não funcione, acesse:
           </div>
           <div class="qr-title" style="font-size:16px;">
-            https://esf-thamara.onrender.com
+            <a href="https://esf-thamara.onrender.com" target="_blank" class="site-link">
+              https://esf-thamara.onrender.com
+            </a>
           </div>
         </div>
       </section>
