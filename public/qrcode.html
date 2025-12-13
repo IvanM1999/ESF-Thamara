@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Aviso de Recesso – ESF Thamara</title>
 
-  <!-- Estilos pensados para impressão (A4) e visual profissional -->
   <style>
     :root{
       --primary:#0b5fa5;
@@ -92,16 +91,17 @@
       padding-left: 18px;
     }
     .holiday li { margin: 6px 0; }
-    .btn-map {
-      display: inline-block;
-      margin-top: 8px;
-      background: var(--primary);
-      color: #fff;
-      text-decoration: none;
-      padding: 8px 12px;
-      border-radius: 8px;
-      font-weight: 600;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+
+    .map-box {
+      margin-top: 16px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .map-box img {
+      width: 100%;
+      height: auto;
+      display: block;
     }
 
     .qr-box {
@@ -126,11 +126,9 @@
       text-align: center;
       margin-top: -4px;
     }
-
     .qr-canvas {
       background: #fff;
       padding: 18px;
-      border: 1px dashed #c7cdd4;
       border-radius: 10px;
       display: grid;
       place-items: center;
@@ -140,25 +138,6 @@
       height: auto;
       display: block;
     }
-    
-    .qrImageMaps{
-  background: #fff;
-  padding: 0;              /* remove a margem interna */
-  border: 1px dashed #c7cdd4;
-  border-radius: 10px;
-  display: grid;
-  place-items: center;
-  width: 100%;             /* garante que ocupe todo o espaço do container */
-  height: 100%;            /* altura total */
-}
-
-.qr-canvas img {
-  width: 100%;             /* imagem ocupa toda a largura */
-  height: 100%;            /* imagem ocupa toda a altura */
-  object-fit: cover;       /* ajusta para preencher sem distorcer */
-  border-radius: 10px;     /* acompanha o arredondamento do container */
-}
-
 
     .footer {
       padding: 16px 24px 24px;
@@ -180,11 +159,10 @@
     @media print {
       body { background: #fff; }
       .poster { box-shadow: none; border-color: #b6c2cf; }
-      .btn-map { color: #fff !important; }
-      button { display: none; }
+      .print-btn { display: none !important; }
     }
 
-    button {
+    .print-btn {
       margin:20px auto;
       display:block;
       padding:10px 20px;
@@ -199,7 +177,7 @@
 </head>
 <body>
   <!-- Botão para imprimir/salvar em PDF -->
-  <button onclick="window.print()">🖨️ Imprimir / Salvar em PDF</button>
+  <button class="print-btn" onclick="window.print()">🖨️ Imprimir / Salvar em PDF</button>
 
   <div class="wrap">
     <div class="poster" role="article" aria-label="Aviso de recesso da ESF Thamara com QR Code para site oficial">
@@ -212,6 +190,7 @@
       </header>
 
       <section class="poster-body">
+        <!-- Bloco de aviso com mapa -->
         <div class="holiday">
           <h2>🎄 Aviso de Recesso Natalino</h2>
           <p>
@@ -226,18 +205,13 @@
           <ul>
             <li><strong>Endereço:</strong> Rua Amazonas, 300 – Garcia, Blumenau (SC)</li>
             <li><strong>Telefone:</strong> (47) 3333-1234</li>
-            <li>
-                📍 Ver rota no Google Maps
-              </a>
-            </li>
           </ul>
-          <div class="qr-canvas">
-            <img id="qrImageMaps"
-                 src="/src/maps.png"
-                 alt="mapa do google" />
+          <div class="map-box">
+            <img src="/src/maps.png" alt="Mapa do Ambulatório Geral do Garcia" />
           </div>
         </div>
 
+        <!-- QR Code -->
         <div class="qr-box" aria-label="QR Code para acesso ao site oficial da ESF Thamara">
           <div class="qr-title">Aponte a câmera do seu celular</div>
           <div class="qr-sub">Este QR leva ao site oficial para informações atualizadas do recesso</div>
