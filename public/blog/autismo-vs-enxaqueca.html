@@ -2,24 +2,108 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shutdown Autista vs Enxaqueca — Blog ESF</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f9;
+      margin: 0;
+    }
+
+    nav {
+      background: #0b5fa5;
+      color: #fff;
+      padding: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      font-weight: bold;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .container {
+      max-width: 900px;
+      width: 100%;
+      margin: 20px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .alert {
+      background: #fff3cd;
+      border: 1px solid #ffeeba;
+      padding: 10px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+    }
+
+    /* Tabela responsiva */
+    .table-wrapper {
+      overflow-x: auto;
+      margin-bottom: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 600px;
+    }
+
+    th, td {
+      padding: 8px;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+    }
+
+    th {
+      background: #0b5fa5;
+      color: #fff;
+    }
+
+    /* Quiz */
+    label {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    /* Ajustes para telas pequenas */
+    @media (max-width: 600px) {
+      h1 { font-size: 1.6rem; }
+      h2 { font-size: 1.3rem; }
+      nav a { font-size: 1rem; }
+      body { padding: 0 10px; }
+      button { padding: 10px 14px; font-size: 1rem; }
+    }
+  </style>
 </head>
-<body style="font-family: Arial, sans-serif; background:#f4f4f9; margin:0;">
+
+<body>
 
   <!-- Barra de menus -->
-  <nav style="background:#0b5fa5; color:#fff; padding:10px; display:flex; justify-content:center; gap:20px; font-weight:bold;">
-    <a href="/public/index.html" style="color:#fff; text-decoration:none;">🏠 Início</a>
-    <a href="/public/calendar.html" style="color:#fff; text-decoration:none;">ℹ️ Agenda</a>
-    <a href="/public/equipe.html" style="color:#fff; text-decoration:none;">👩‍⚕️ Nossa Equipe</a>
+  <nav>
+    <a href="/public/index.html">🏠 Início</a>
+    <a href="/public/calendar.html">ℹ️ Agenda</a>
+    <a href="/public/equipe.html">👩‍⚕️ Nossa Equipe</a>
   </nav>
-  
 
   <!-- Container principal -->
-  <div style="max-width:900px; margin:20px auto; background:#fff; padding:20px; border-radius:8px; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
-
+  <div class="container">
 
     <!-- Aviso geral -->
-    <div style="background:#fff3cd; border:1px solid #ffeeba; padding:10px; border-radius:6px; margin-bottom:20px;">
+    <div class="alert">
       <strong>⚠️ Nota importante:</strong> Este guia é informativo e não substitui avaliação médica. 
       Em caso de piora súbita ou dor intensa, procure atendimento imediato.
     </div>
@@ -29,153 +113,137 @@
     <hr style="border:0; border-top:1px solid #ddd; margin:20px 0;">
 
     <h2 style="color:#d35400;">Comparação direta</h2>
-    <table style="width:100%; border-collapse:collapse; margin-bottom:20px;">
-      <thead>
-        <tr style="background:#0b5fa5; color:#fff;">
-          <th style="padding:8px; text-align:left;">Aspecto</th>
-          <th style="padding:8px; text-align:left;">Shutdown</th>
-          <th style="padding:8px; text-align:left;">Enxaqueca</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td style="padding:8px; border-bottom:1px solid #ddd;">Origem</td><td>Sobrecarga sensorial/emocional</td><td>Crise neurológica (estresse, fadiga)</td></tr>
-        <tr><td style="padding:8px; border-bottom:1px solid #ddd;">Consciência</td><td>Acordado, em defesa</td><td>Acordado, dor incapacitante</td></tr>
-        <tr><td style="padding:8px; border-bottom:1px solid #ddd;">Interação</td><td>Silêncio, fala mínima</td><td>Limitada pela dor</td></tr>
-        <tr><td style="padding:8px; border-bottom:1px solid #ddd;">Sensações</td><td>Fraqueza, vontade de dormir</td><td>Dor latejante, náusea, fotofobia</td></tr>
-        <tr><td style="padding:8px; border-bottom:1px solid #ddd;">Duração</td><td>Minutos a horas</td><td>Horas a dias</td></tr>
-        <tr><td style="padding:8px; border-bottom:1px solid #ddd;">Alívio</td><td>Silêncio, descanso, hidratação</td><td>Medicamentos, repouso, compressas</td></tr>
-      </tbody>
-    </table>
 
-<div class="xp-window" style="max-width: 900px; margin: 20px auto;">
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Aspecto</th>
+            <th>Shutdown</th>
+            <th>Enxaqueca</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Origem</td><td>Sobrecarga sensorial/emocional</td><td>Crise neurológica (estresse, fadiga)</td></tr>
+          <tr><td>Consciência</td><td>Acordado, em defesa</td><td>Acordado, dor incapacitante</td></tr>
+          <tr><td>Interação</td><td>Silêncio, fala mínima</td><td>Limitada pela dor</td></tr>
+          <tr><td>Sensações</td><td>Fraqueza, vontade de dormir</td><td>Dor latejante, náusea, fotofobia</td></tr>
+          <tr><td>Duração</td><td>Minutos a horas</td><td>Horas a dias</td></tr>
+          <tr><td>Alívio</td><td>Silêncio, descanso, hidratação</td><td>Medicamentos, repouso, compressas</td></tr>
+        </tbody>
+      </table>
+    </div>
 
+    <div class="xp-window">
 
-    <p>
+      <p>
         Embora o Transtorno do Espectro Autista (TEA) e a enxaqueca sejam condições diferentes,
         algumas pessoas observam semelhanças em como os sintomas aparecem ou interferem no dia a dia.
         Compreender esses pontos de convergência ajuda profissionais de saúde, familiares e pacientes a
         identificar sinais e buscar o atendimento adequado.
-    </p>
+      </p>
 
-    <h2>🔵 Autismo (TEA)</h2>
-    <p>O TEA envolve características como:</p>
-    <ul>
+      <h2>🔵 Autismo (TEA)</h2>
+      <p>O TEA envolve características como:</p>
+      <ul>
         <li>Dificuldades na comunicação social</li>
-        <li>Padrões repetitivos de comportamento</li>
+        <li>Padrãos repetitivos de comportamento</li>
         <li>Hiper ou hipo sensibilidade sensorial</li>
         <li>Desafios na adaptação a mudanças*</li>
         <li>Desafios na adaptação social*</li>
-        <li>outros</li>
-    </ul>
+        <li>Outros</li>
+      </ul>
 
-    <h2>🔶 Enxaqueca</h2>
-    <p>A enxaqueca é um tipo de dor de cabeça neurológica, recorrente e intensa, caracterizada por:</p>
-    <ul>
+      <h2>🔶 Enxaqueca</h2>
+      <p>A enxaqueca é um tipo de dor de cabeça neurológica, recorrente e intensa, caracterizada por:</p>
+      <ul>
         <li>Dor latejante unilateral ou bilateral</li>
         <li>Náuseas ou vômitos</li>
         <li>Sensibilidade à luz (fotofobia) e ao som (fonofobia)</li>
         <li>Pode durar horas a dias</li>
-    </ul>
+      </ul>
 
-    <h2>🔍 Pontos de Sobreposição</h2>
-    <p>Apesar de diferentes, alguns sintomas se parecem:</p>
-    <ul>
+      <h2>🔍 Pontos de Sobreposição</h2>
+      <p>Apesar de diferentes, alguns sintomas se parecem:</p>
+      <ul>
         <li>Ambos podem envolver forte sensibilidade a estímulos sensoriais</li>
         <li>Ambos podem ser desencadeados por estresse</li>
         <li>Pessoas autistas têm maior chance estatística de sofrer de enxaqueca</li>
-    </ul>
+      </ul>
 
-    <h2>🧠 Por que essa relação existe?</h2>
-    <p>
+      <h2>🧠 Por que essa relação existe?</h2>
+      <p>
         Estudos neurocientíficos sugerem que tanto o TEA quanto a enxaqueca envolvem diferenças
         na forma como o cérebro processa estímulos, especialmente luz, som e toque.
-    </p>
+      </p>
 
-    <h2>📌 Quando procurar atendimento?</h2>
-    <p>Procure avaliação médica quando houver:</p>
-    <ul>
+      <h2>📌 Quando procurar atendimento?</h2>
+      <p>Procure avaliação médica quando houver:</p>
+      <ul>
         <li>Dores de cabeça recorrentes e incapacitantes</li>
         <li>Sintomas súbitos ou diferentes do habitual</li>
         <li>Crises acompanhadas de vômitos frequentes</li>
         <li>Dificuldades sensoriais intensas</li>
-    </ul>
-    </div>
-
-<!--     <h2 style="color:#d35400;">Painel rápido</h2>
-    <div style="background:#eef; padding:15px; border-radius:6px; margin-bottom:20px;">
-      <p><strong>Estado atual:</strong></p>
-      <label><input name="estado" type="radio" value="shutdown"/> Shutdown</label>
-      <label><input name="estado" type="radio" value="enxaqueca"/> Enxaqueca</label>
-      <label><input name="estado" type="radio" value="ambos"/> Ambos</label>
-
-      <p style="margin-top:10px;"><strong>Intensidade:</strong></p>
-      <label><input name="intensidade" type="radio" value="leve"/> Leve</label>
-      <label><input name="intensidade" type="radio" value="moderada"/> Moderada</label>
-      <label><input name="intensidade" type="radio" value="intensa"/> Intensa</label>
-
-      <div id="statusInfo" style="margin-top:10px; font-weight:bold; color:#333;">Selecione estado e intensidade.</div>
-      <button id="btnSugestoes" style="margin-top:10px; padding:8px 12px; background:#0b5fa5; color:#fff; border:none; border-radius:4px; cursor:pointer;">Ver sugestões</button>
-    </div>
-
-    <h2 style="color:#d35400;">Ações imediatas</h2>
-    <div style="background:#eef; padding:15px; border-radius:6px; margin-bottom:20px;">
-      <label><input type="checkbox"/> Luz baixa</label><br>
-      <label><input type="checkbox"/> Silêncio</label><br>
-      <label><input type="checkbox"/> Temperatura confortável</label><br>
-      <label><input type="checkbox"/> Cobertor</label><br>
-      <div style="margin-top:10px;">
-        <button style="margin:5px; padding:6px 10px;">Descanso 20 min</button>
-        <button style="margin:5px; padding:6px 10px;">Respiração 3 min</button>
-        <button style="margin:5px; padding:6px 10px;">Hidratar</button>
-        <button style="margin:5px; padding:6px 10px;">Compressa</button>
-      </div>
-    </div>
-  -->
-<h2 style="color:#d35400;">Estimativa de criticidade</h2>
-<div style="background:#fff3cd; padding:15px; border-radius:6px; margin-bottom:20px;">
-  <button id="toggleQuiz" style="padding:8px 12px; background:#0b5fa5; color:#fff; border:none; border-radius:4px; cursor:pointer;">Mostrar/ocultar</button>
-  
-  <form class="hidden" id="quizForm" style="margin-top:10px;">
-    <h3>Responda de forma simples</h3>
-    <div class="controls">
-      <!-- Shutdown autista -->
-      <label><input data-score="2" type="checkbox"/> Sensibilidade extrema a luz ou som</label><br>
-      <label><input data-score="2" type="checkbox"/> Silêncio total / mutismo</label><br>
-      <label><input data-score="2" type="checkbox"/> Corpo pesado ou quase imóvel</label><br>
-      <label><input data-score="1" type="checkbox"/> Dificuldade em interagir ou responder</label><br>
-      <label><input data-score="2" type="checkbox"/> Necessidade urgente de ambiente seguro e silencioso</label><br>
-
-      <!-- Enxaqueca -->
-      <label><input data-score="2" type="checkbox"/> Dor de cabeça intensa e latejante</label><br>
-      <label><input data-score="1" type="checkbox"/> Náusea ou vômito</label><br>
-      <label><input data-score="2" type="checkbox"/> Fotofobia (sensibilidade à luz)</label><br>
-      <label><input data-score="2" type="checkbox"/> Fonofobia (sensibilidade ao som)</label><br>
-      <label><input data-score="2" type="checkbox"/> Aura visual ou vertigem</label><br>
-
-      <!-- Criticidade geral -->
-      <label><input data-score="3" type="checkbox"/> Confusão, desorientação ou sinais neurológicos incomuns</label><br>
-      <label><input data-score="5" type="checkbox"/> Dor súbita considerada “a pior da vida”</label><br>
-      <label><input data-score="1" type="checkbox"/> Estresse alto ou falta de sono recente</label><br>
-    </div>
-
-    <div style="margin-top:8px;">
-      <button class="btn primary" id="calcScore" type="button" style="padding:6px 12px; background:#0b5fa5; color:#fff; border:none; border-radius:4px;">Calcular pontuação</button>
-      <button class="btn" type="reset" style="padding:6px 12px; margin-left:6px;">Limpar</button>
-    </div>
-
-    <div class="status" id="quizResult" style="margin-top:8px; font-weight:bold;">Resultado aparecerá aqui.</div>
-
-    <div class="footer" style="margin-top:10px; font-size:14px;">
-      <strong>Interpretação geral:</strong>
-      <ul>
-        <li><strong>0–4 pontos:</strong> leve — conforto ambiental e descanso.</li>
-        <li><strong>5–8 pontos:</strong> moderado — reduzir estímulos e considerar contato médico se não melhorar.</li>
-        <li><strong>9+ pontos:</strong> alto — procurar atendimento médico imediato, especialmente com sinais neurológicos ou dor muito intensa.</li>
       </ul>
-      Este resultado é apenas orientativo e não substitui avaliação médica.
     </div>
-  </form>
-</div>
+
+    <h2 style="color:#d35400;">Estimativa de criticidade</h2>
+
+    <div class="alert">
+      <button id="toggleQuiz" style="padding:8px 12px; background:#0b5fa5; color:#fff; border:none; border-radius:4px;">
+        Mostrar/ocultar
+      </button>
+
+      <form class="hidden" id="quizForm" style="margin-top:10px;">
+        <h3>Responda de forma simples</h3>
+
+        <div class="controls">
+          <!-- Shutdown autista -->
+          <label><input data-score="2" type="checkbox"/> Sensibilidade extrema a luz ou som</label>
+          <label><input data-score="2" type="checkbox"/> Silêncio total / mutismo</label>
+          <label><input data-score="2" type="checkbox"/> Corpo pesado ou quase imóvel</label>
+          <label><input data-score="1" type="checkbox"/> Dificuldade em interagir ou responder</label>
+          <label><input data-score="2" type="checkbox"/> Necessidade urgente de ambiente seguro e silencioso</label>
+
+          <!-- Enxaqueca -->
+          <label><input data-score="2" type="checkbox"/> Dor de cabeça intensa e latejante</label>
+          <label><input data-score="1" type="checkbox"/> Náusea ou vômito</label>
+          <label><input data-score="2" type="checkbox"/> Fotofobia (sensibilidade à luz)</label>
+          <label><input data-score="2" type="checkbox"/> Fonofobia (sensibilidade ao som)</label>
+          <label><input data-score="2" type="checkbox"/> Aura visual ou vertigem</label>
+
+          <!-- Criticidade geral -->
+          <label><input data-score="3" type="checkbox"/> Confusão, desorientação ou sinais neurológicos incomuns</label>
+          <label><input data-score="9" type="checkbox"/> Dor súbita considerada “a pior da vida”</label>
+          <label><input data-score="1" type="checkbox"/> Estresse alto ou falta de sono recente</label>
+        </div>
+
+        <div style="margin-top:8px;">
+          <button id="calcScore" type="button" style="padding:6px 12px; background:#0b5fa5; color:#fff; border:none; border-radius:4px;">
+            Calcular pontuação
+          </button>
+          <button type="reset" style="padding:6px 12px; margin-left:6px;">Limpar</button>
+        </div>
+
+        <div id="quizResult" style="margin-top:8px; font-weight:bold;">
+          Resultado aparecerá aqui.
+        </div>
+
+        <div style="margin-top:10px; font-size:14px;">
+          <strong>Interpretação geral:</strong>
+          <ul>
+            <li><strong>0–4 pontos:</strong> leve — conforto ambiental e descanso.</li>
+            <li><strong>5–8 pontos:</strong> moderado — reduzir estímulos e considerar contato médico se não melhorar.</li>
+            <li><strong>9+ pontos:</strong> alto — procurar atendimento médico imediato, especialmente com sinais neurológicos ou dor muito intensa.</li>
+          </ul>
+          Este resultado é apenas orientativo e não substitui avaliação médica.
+        </div>
+      </form>
+    </div>
+
+
+
+
 <script>
   // Mostrar/ocultar quiz
   const toggleQuiz = document.getElementById('toggleQuiz');
