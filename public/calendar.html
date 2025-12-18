@@ -8,13 +8,36 @@
   <link href="assets/menu-superior.css" rel="stylesheet"/>
 </head>
 <body>
-  <div id="menu-container"></div>
-  <div class="container">
-    <div class="header">
-      <div class="brand">Calendário Semanal</div>
-      <nav class="nav"><a href="/index.html">Home</a></nav>
-    </div>
-
+  <!-- Barra de menus -->
+  <nav style="background:#0b5fa5; color:#fff; padding:10px; display:flex; justify-content:center; gap:20px; font-weight:bold;">
+    <a href="/index.html" style="color:#fff; text-decoration:none;">🏠 Início</a>
+    <a href="/public/calendar.html" style="color:#fff; text-decoration:none;">ℹ️ Agenda</a>
+    <a href="/public/equipe.html" style="color:#fff; text-decoration:none;">👩‍⚕️ Nossa Equipe</a>
+  </nav>
+  
+  <!-- Seção natalina de recesso -->
+  <hr>
+  
+  <h2>🎄 Aviso de Recesso Natalino</h2>
+  <div style="background:#f9f2ec; border:2px solid #d35400; padding:15px; border-radius:8px; box-shadow:2px 2px 6px rgba(0,0,0,0.2);">
+    <p style="font-size:16px; line-height:1.6;">
+      Informamos que a <strong>ESF Thamara Katryne Rodrigues Schmidt</strong> entrará em recesso
+      a partir do dia <strong>22 de Dezembro de 2025</strong>, retornando às atividades em
+      <strong>09 de Janeiro de 2026</strong>.
+    </p>
+    <p style="font-size:16px; line-height:1.6;">
+      Durante este período, todos os atendimentos devem ser <strong>redirecionados aos plantonistas</strong>
+      da rede de serviço do <strong>Ambulatório Geral do Garcia</strong>.
+    </p>
+    <ul style="font-size:15px; margin-top:10px;">
+      <li><strong>Endereço:</strong> Rua Amazonas, 300 – Garcia, Blumenau (SC)</li>
+      <li><strong>Telefone:</strong> (47) 3333-1234</li>
+      <p> </p>
+      <li><a class="xp-button" href="https://www.google.com/maps/dir/ESF+Progresso/AG+Garcia" target="_blank">
+          📍 Ver rota no Google Maps
+        </a></li>
+    </ul>
+  </div>
     <div class="card">
       <h1>CALENDÁRIO SEMANAL DE ATENDIMENTO</h1>
       <table class="table calendar" style="width:100%">
@@ -24,70 +47,57 @@
           <th>Quarta</th>
           <th>Quinta</th>
           <th>Sexta</th>
-          <th>Sábado</th>
-          <th>Domingo</th>
-        </tr>
+       </tr>
         <tr>
           <!-- Segunda -->
           <td>
-            <strong>Segunda-feira</strong>
             <ul>
-              <li>08:00 – Intercorrências e agendamentos (clínico, enfermagem, dentista, curativos)</li>
-              <li>14:00 – Agendamentos e enfermagem</li>
+              <li>07:00 – Intercorrências e agendamentos (clínico, enfermagem, dentista, curativos)</li>
+              <li>13:00 – Agendamentos e enfermagem</li>
+              <li>18:00 – Encerramento das atividades de saúde</li>
+
             </ul>
           </td>
           <!-- Terça -->
           <td>
-            <strong>Terça-feira</strong>
             <ul>
-              <li>08:00 – Intercorrências e agendamentos (clínico, enfermagem, dentista, curativos)</li>
-              <li>14:00 – Agendamentos e enfermagem</li>
+              <li>07:00 – Intercorrências e agendamentos (clínico, enfermagem, dentista, curativos)</li>
+              <li>13:00 – Agendamentos e enfermagem</li>
+              <li>18:00 – Encerramento das atividades de saúde</li>
+
             </ul>
           </td>
           <!-- Quarta -->
           <td>
-            <strong>Quarta-feira</strong>
             <ul>
-              <li>08:00 – Intercorrências</li>
-              <li>14:00 – Atendimento domiciliar</li>
+              <li>07:00 – Intercorrências</li>
+              <li>13:00 – Atendimento domiciliar</li>
+              <li>18:00 – Encerramento das atividades de saúde</li>
+
             </ul>
           </td>
           <!-- Quinta -->
           <td>
-            <strong>Quinta-feira</strong>
             <ul>
-              <li>08:00 – Intercorrências e agendamentos (clínico, enfermagem, dentista, curativos)</li>
-              <li>14:00 – Agendamentos e enfermagem</li>
+              <li>07:00 – Intercorrências e agendamentos (clínico, enfermagem, dentista, curativos)</li>
+              <li>13:00 – Agendamentos e enfermagem</li>
+              <li>18:00 – Encerramento das atividades de saúde</li>
+
             </ul>
+
           </td>
           <!-- Sexta -->
           <td>
-            <strong>Sexta-feira</strong>
             <ul>
-              <li>08:00 – Intercorrências</li>
-              <li>14:00 – Formação dos profissionais de saúde</li>
-            </ul>
-          </td>
-          <!-- Sábado -->
-          <td>
-            <strong>Sábado</strong>
-            <ul>
-              <li>Sem atendimento programado</li>
-            </ul>
-          </td>
-          <!-- Domingo -->
-          <td>
-            <strong>Domingo</strong>
-            <ul>
-              <li>Sem atendimento programado</li>
-            </ul>
-          </td>
-        </tr>
-      </table>
-      <p>Exportar: <a href="/events.ics">Baixar iCal</a></p>
-    </div>
+              <li>07:00 – Intercorrências</li>
+              <li>13:00 – Formação dos profissionais de saúde</li>
+              <li>18:00 – Encerramento das atividades de saúde</li>
 
-    <div class="footer">Edite eventos no banco de dados 'data.db'.</div>
+            </ul>
+          </td>
+
+        </tr>
+      </table
   </div>
 
   <script src="/assets/js/main.js"></script>
