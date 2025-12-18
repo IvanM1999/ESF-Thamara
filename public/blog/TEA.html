@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Autismo (TEA): sinais, diagnóstico, tratamento e apoio às famílias</title>
+  <meta name="description" content="Blog sobre Transtorno do Espectro Autista (TEA): conceito, sinais, diagnóstico, tratamento baseado em evidências e orientações para famílias, com base em diretrizes e centros de referência." />
+  <style>
+    :root {
+      --primary: #005fa3;
+      --primary-light: #e6f2fb;
+      --accent: #ff8c42;
+      --bg: #ffffff;
+      --text: #222222;
+      --muted: #555555;
+      --border: #e0e0e0;
+      --radius: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(120deg, var(--primary) 0%, #0085d9 100%);
+      color: #ffffff;
+      padding: 32px 16px;
+    }
+
+    .container {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 16px 40px;
+    }
+
+    header .container {
+      padding-bottom: 24px;
+    }
+
+    h1, h2, h3, h4 {
+      margin-top: 0;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      font-size: 1.6rem;
+      margin: 32px 0 16px;
+    }
+
+    h3 {
+      font-size: 1.25rem;
+      margin: 24px 0 12px;
+    }
+
+    h4 {
+      font-size: 1.05rem;
+      margin: 18px 0 8px;
+    }
+
+    p {
+      margin: 0 0 12px;
+      color: var(--muted);
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .tag {
+      display: inline-block;
+      background-color: rgba(255, 255, 255, 0.16);
+      color: #f5f5f5;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      max-width: 680px;
+      font-size: 0.98rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 1.6fr);
+      gap: 32px;
+      margin-top: 24px;
+    }
+
+    @media (max-width: 880px) {
+      .grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .card {
+      background-color: #ffffff;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 18px 18px 16px;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+      margin-bottom: 16px;
+    }
+
+    .card-highlight {
+      border-color: rgba(0, 95, 163, 0.25);
+      background: linear-gradient(135deg, var(--primary-light), #ffffff);
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .pill {
+      padding: 4px 10px;
+      border-radius: 999px;
+      background-color: var(--primary-light);
+      color: #174366;
+      font-size: 0.8rem;
+      white-space: nowrap;
+    }
+
+    ul, ol {
+      padding-left: 20px;
+      margin-top: 6px;
+      margin-bottom: 12px;
+      color: var(--muted);
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+
+    .note {
+      border-left: 3px solid var(--primary);
+      padding-left: 12px;
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin: 10px 0 14px;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 0.78rem;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background-color: #f3f4f6;
+      color: #374151;
+      margin-bottom: 6px;
+    }
+
+    .table-wrapper {
+      overflow-x: auto;
+      margin: 12px 0 16px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      background-color: #ffffff;
+    }
+
+    th, td {
+      padding: 9px 10px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    th {
+      background-color: #f9fafb;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 18px 16px 30px;
+      background-color: #fafafa;
+      font-size: 0.85rem;
+      color: #6b7280;
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.85rem;
+      background-color: #f3f4f6;
+      padding: 1px 4px;
+      border-radius: 4px;
+    }
+
+    .toc {
+      font-size: 0.9rem;
+    }
+
+    .toc ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .toc li {
+      margin-bottom: 4px;
+    }
+
+    .toc a {
+      color: var(--primary);
+    }
+
+    .label {
+      font-weight: 600;
+      color: #374151;
+    }
+
+    .tag-inline {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #6b7280;
+    }
+
+    .flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px 12px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .chip {
+      font-size: 0.78rem;
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid #e5e7eb;
+      color: #4b5563;
+      background-color: #f9fafb;
+    }
+
+    .emphasis {
+      color: #111827;
+    }
+  </style>
+</head>
+<body>
+    <!-- Barra de menus -->
+  <nav style="background:#0b5fa5; color:#fff; padding:10px; display:flex; justify-content:center; gap:20px; font-weight:bold;">
+    <a href="/public/index.html" style="color:#fff; text-decoration:none;">🏠 Início</a>
+    <a href="/public/calendar.html" style="color:#fff; text-decoration:none;">ℹ️ Agenda</a>
+    <a href="/public/equipe.html" style="color:#fff; text-decoration:none;">👩‍⚕️ Nossa Equipe</a>
+  </nav>
+  
+  <header>
+    <div class="container">
+      <span class="tag">Transtorno do Espectro Autista (TEA)</span>
+      <h1>Autismo: o que é, como reconhecer e quais cuidados buscar</h1>
+      
+      
+        <!-- Container principal -->
+  <div class="container">
+
+    <!-- Aviso geral -->
+    <div class="alert">
+      <strong>⚠️ Nota importante:</strong> Este guia é informativo e não substitui avaliação médica. 
+    </div>
+      <p class="subtitle">
+        Este artigo reúne informações de diretrizes nacionais, sociedades médicas e centros de referência para explicar,
+        de forma clara e profissional, o que é o Transtorno do Espectro Autista (TEA), quais sinais merecem atenção,
+        como é feito o diagnóstico e quais abordagens têm evidência científica para o cuidado.
+            <a href="https://www.gov.br/saude/pt-br/assuntos/noticias/2025/setembro/ministerio-da-saude-orienta-teste-a-todas-as-criancas-para-identificar-possiveis-sinais-de-autismo-com-foco-na-intervencao-precoce?citationMarker=43dcd9a7-70db-4a1f-b0ae-981daa162054&citationId=1&citationId=2&citationId=3" style="color:#fff; text-decoration:none;">👩‍⚕️ veja mais</a>
+      </p>
+      <div class="flex">
+        <span class="chip">Conteúdo informativo – não substitui avaliação médica</span>
+        <span class="chip">Baseado em evidências científicas recentes</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="grid">
+      <article>
+        <section id="o-que-e-autismo" class="card card-highlight">
+          <h2>O que é o Transtorno do Espectro Autista (TEA)?</h2>
+          <p>
+            O Transtorno do Espectro Autista (TEA) é uma condição do neurodesenvolvimento caracterizada, principalmente,
+            por diferenças na comunicação social e por padrões de comportamentos, interesses e atividades mais
+            restritos ou repetitivos. Trata-se de um <span class="emphasis">espectro</span>, ou seja, há grande
+            variedade na forma como essas características aparecem em cada pessoa.
+          </p>
+          <p>
+            As classificações diagnósticas atuais, como o DSM‑5, descrevem três níveis de suporte (1, 2 e 3), que indicam
+            o quanto a pessoa precisa de ajuda no dia a dia. No entanto, especialistas alertam que essa classificação
+            pode mudar ao longo do tempo, conforme o desenvolvimento, o contexto e o acesso a intervenções. Por isso, o
+            nível de suporte representa uma foto de um momento específico, e não algo fixo. <a href="https://saude.abril.com.br/mente-saudavel/autismo-nova-diretriz-tratamento-diagnostico/?citationMarker=43dcd9a7-70db-4a1f-b0ae-981daa162054&citationId=2 " style="color:#fff; text-decoration:none;">Veja Saude</a>
+                </p>
+          <p class="note">
+            O TEA não é causado por “falta de carinho” ou “erro dos pais” e não tem relação com vacinas.
+            A ciência mostra que a origem é multifatorial, com forte componente biológico, envolvendo fatores genéticos
+            e ambientais ainda em estudo.
+          </p>
+        </section>
+
+        <section id="sinais" class="card">
+          <h2>Sinais de autismo em diferentes fases da infância</h2>
+          <p>
+            Os sinais de TEA podem aparecer nos primeiros anos de vida, mas variam muito entre as crianças. Diretrizes
+            brasileiras recentes reforçam a importância de observar o desenvolvimento, a comunicação e a interação social,
+            e não apenas um ou outro comportamento isolado. <a href=https://www.gov.br/saude/pt-br/assuntos/noticias/2025/setembro/ministerio-da-saude-orienta-teste-a-todas-as-criancas-para-identificar-possiveis-sinais-de-autismo-com-foco-na-intervencao-precoce?citationMarker=43dcd9a7-70db-4a1f-b0ae-981daa162054&citationId=1&citationId=2&citationId=3>veja mais </a>
+          </p>
+
+          <h3>Possíveis sinais entre 12 e 24 meses</h3>
+          <ul>
+            <li><span class="label">Contato visual:</span> pouco contato visual ou olhar que não se sustenta por muito tempo.</li>
+            <li><span class="label">Atenção conjunta:</span> não aponta para mostrar algo interessante, não olha quando o adulto aponta.</li>
+            <li><span class="label">Resposta ao nome:</span> parece “não ouvir” quando é chamado, mesmo em ambiente tranquilo.</li>
+            <li><span class="label">Brincadeiras:</span> pouco interesse em brincadeiras interativas (como “cadê-achou”, “esconde-esconde”).</li>
+            <li><span class="label">Comunicação:</span> atraso na fala ou perda de palavras que já utilizava.</li>
+          </ul>
+
+          <h3>Sinais comuns em crianças maiores</h3>
+          <ul>
+            <li><span class="label">Dificuldades sociais:</span> dificuldade para iniciar ou manter conversas; tendência ao isolamento; dificuldade em entender regras sociais não ditas.</li>
+            <li><span class="label">Linguagem:</span> fala muito literal, dificuldade com piadas, metáforas ou ironias; ecolalia (repetir frases ou trechos de vídeos).</li>
+            <li><span class="label">Interesses restritos:</span> foco intenso em temas específicos (por exemplo, mapas, horários, personagens, números), com muita repetição.</li>
+            <li><span class="label">Comportamentos repetitivos:</span> movimentos repetitivos (balançar as mãos, alinhar objetos, girar coisas), necessidade de rotinas rígidas.</li>
+            <li><span class="label">Sensibilidades sensoriais:</span> incômodo intenso com barulhos, luzes, texturas de roupas ou alimentos, ou busca exagerada por determinados estímulos.</li>
+          </ul>
+
+          <p class="note">
+            A presença de um ou alguns desses sinais não significa, por si só, que a criança está no espectro.
+            O diagnóstico depende de avaliação clínica detalhada, realizada por profissional habilitado.
+          </p>
+        </section>
+
+        <section id="rastreio-precoce" class="card">
+          <h2>Rastreamento e intervenção precoce no Brasil</h2>
+          <p>
+            O Ministério da Saúde lançou um <a href=https://www.gov.br/saude/pt-br/assuntos/noticias/2025/setembro/ministerio-da-saude-orienta-teste-a-todas-as-criancas-para-identificar-possiveis-sinais-de-autismo-com-foco-na-intervencao-precoce?citationMarker=43dcd9a7-70db-4a1f-b0ae-981daa162054&citationId=3> "linha de cuidado específica para o TEA"</a> e orienta que
+            <span class="emphasis">todas as crianças entre 16 e 30 meses</span> passem por teste de rastreio de sinais de autismo na atenção primária. O objetivo é identificar precocemente possíveis sinais e iniciar estímulos e           intervenções mesmo antes de um diagnóstico fechado, quando necessário.
+          </p>
+          <p>
+            Um dos instrumentos recomendados é o questionário M‑CHAT, já incorporado à rotina do SUS e disponível na
+            Caderneta Digital da Criança e no prontuário eletrônico e‑SUS. O teste funciona como triagem: não fecha
+            diagnóstico, mas indica se a criança deve ser encaminhada para avaliação mais aprofundada com equipe
+            especializada.
+          </p>
+          <p class="note">
+            Se a família tem preocupações com o desenvolvimento, é importante falar com o pediatra ou com a equipe da
+            unidade de saúde, mesmo que o rastreio não tenha sido solicitado ainda. A percepção dos pais e cuidadores
+            é valorizada nas diretrizes atuais.
+          </p>
+        </section>
+
+        <section id="diagnostico" class="card">
+          <h2>Como é feito o diagnóstico de TEA?</h2>
+          <p>
+            As diretrizes recentes da Sociedade Brasileira de Neurologia Infantil (SBNI) reforçam que o diagnóstico de
+            TEA é <span class="emphasis">essencialmente clínico</span>. Isso significa que o foco está na história de
+            desenvolvimento da pessoa, na observação do comportamento e na aplicação de critérios diagnósticos, e não na
+            dependência de exames laboratoriais ou de imagem.<a href=(https://saude.abril.com.br/mente-saudavel/autismo-nova-diretriz-tratamento-diagnostico/?citationMarker=43dcd9a7-70db-4a1f-b0ae-981daa162054&citationId=1&citationId=2> "Veja a Nova Diretriz"</a>
+          </p>
+
+          <h3>Principais etapas da avaliação</h3>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Etapa</th>
+                  <th>O que costuma envolver</th>
+                  <th>Quem pode participar</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>História clínica e do desenvolvimento</td>
+                  <td>Gestação, parto, marcos do desenvolvimento, antecedentes familiares, contexto social e escolar.</td>
+                  <td>Médico (neurologia infantil, psiquiatria da infância, pediatria) e família/cuidador.</td>
+                </tr>
+                <tr>
+                  <td>Observação clínica</td>
+                  <td>Interação, comunicação, brincadeiras, respostas sensoriais, comportamentos repetitivos.</td>
+                  <td>Profissional de saúde em consultório ou ambiente estruturado.</td>
+                </tr>
+                <tr>
+                  <td>Escalas e testes padronizados</td>
+                  <td>M‑CHAT, CARS‑2, ADI‑R, ADOS‑2, entre outros, usados como <em>apoio</em> à avaliação clínica.</td>
+                  <td>Equipe multidisciplinar treinada.</td>
+                </tr>
+                <tr>
+                  <td>Investigação complementar</td>
+                  <td>Exames laboratoriais ou de imagem apenas quando há suspeita de outras condições associadas.</td>
+                  <td>Definida caso a caso por especialista.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="note">
+            As escalas e testes são ferramentas de apoio: nenhuma delas, isoladamente, é suficiente para confirmar ou
+            excluir o diagnóstico de autismo em todos os contextos. A avaliação sempre considera o conjunto de
+            informações sobre a pessoa e sua trajetória de desenvolvimento.
+          </p>
+        </section>
+
+        <section id="nivel-de-suporte" class="card">
+          <h2>Níveis de suporte e perfil de funcionalidade</h2>
+          <p>
+            O DSM‑5 descreve três níveis de suporte para o TEA (1, 2 e 3), baseados na quantidade de ajuda que a pessoa
+            necessita na comunicação social e na flexibilidade de comportamentos. A SBNI orienta cautela ao definir
+            níveis em crianças pequenas, pois o desenvolvimento é dinâmico e pode mudar com o tempo e com as
+            intervenções.
+          </p>
+          <p>
+            Mais do que o rótulo numérico, centros de referência têm recomendado descrever o
+            <span class="emphasis">perfil de funcionalidade</span>: habilidades de comunicação, autonomia, adaptação
+            escolar, apoio familiar disponível, comorbidades (como TDAH, epilepsia, deficiência intelectual) e
+            necessidades específicas em diferentes contextos. Essa visão amplia o planejamento de cuidados e evita
+            reduzir a pessoa apenas ao diagnóstico.
+          </p>
+        </section>
+
+        <section id="tratamento" class="card">
+          <h2>Tratamento: o que tem evidência e o que exige cautela</h2>
+          <p>
+            As diretrizes brasileiras em TEA enfatizam a importância de intervenções
+            <span class="emphasis">baseadas em evidências científicas</span>, integrando diferentes profissionais
+            (abordagem multidisciplinar) e evitando tratamentos sem comprovação ou potencialmente danosos. Os planos de
+            cuidado devem ser individualizados, levando em conta idade, perfil de habilidades, contexto familiar e
+            escolar.
+          </p>
+
+          <h3>Abordagens com boa sustentação científica</h3>
+          <ul>
+            <li>
+              <span class="label">Intervenções precoces mediadas pela família:</span>
+              programas que orientam pais e cuidadores a transformar situações do cotidiano em oportunidades de
+              comunicação, interação e aprendizagem, com acompanhamento técnico.
+            </li>
+            <li>
+              <span class="label">Terapia fonoaudiológica:</span>
+              foco em comunicação (oral, alternativa/aumentativa), compreensão de linguagem, interação social e uso
+              funcional da fala.
+            </li>
+            <li>
+              <span class="label">Terapia ocupacional:</span>
+              apoio à autonomia (alimentação, vestuário, higiene), organização sensorial, habilidades motoras finas e
+              participação nas atividades diárias.
+            </li>
+            <li>
+              <span class="label">Psicologia:</span>
+              intervenções voltadas para habilidades sociais, regulação emocional, manejo de ansiedade e adaptação às
+              demandas da escola e da vida diária.
+            </li>
+            <li>
+              <span class="label">Abordagens educacionais estruturadas:</span>
+              estratégias de organização visual (rotinas, pistas visuais), adaptação curricular e apoio pedagógico
+              individualizado.
+            </li>
+          </ul>
+
+          <h3>Uso de medicação</h3>
+          <p>
+            Não existe medicação que “cure” o autismo. Medicamentos podem ser utilizados para tratar condições associadas
+            (comorbidades), como irritabilidade intensa, agressividade, insônia importante, crises de ansiedade ou
+            depressão, entre outras, sempre a partir de avaliação individual com médico especializado. Diretrizes
+            reforçam que a prescrição deve ser criteriosa e acompanhada de perto.
+          </p>
+
+          <h3>Práticas sem comprovação ou com risco</h3>
+          <p>
+            Documentos recentes alertam para o uso de intervenções
+            <span class="emphasis">sem evidência robusta</span> ou potencialmente nocivas, como dietas muito restritivas
+            sem indicação específica, terapias com supostos “desintoxicantes”, protocolos invasivos, tratamentos
+            milagrosos caros e sem respaldo científico. Antes de iniciar qualquer abordagem, é recomendável discutir com
+            profissionais de saúde de confiança e verificar se há suporte em pesquisas de qualidade.
+          </p>
+        </section>
+
+        <section id="familias" class="card">
+          <h2>Orientações práticas para famílias e cuidadores</h2>
+          <p>
+            Receber a hipótese ou o diagnóstico de TEA pode despertar muitas dúvidas, medos e também alívio por, enfim,
+            encontrar uma explicação para o que vinha sendo percebido no dia a dia. A seguir, alguns pontos-chave
+            apontados por centros de referência e diretrizes de cuidado.
+          </p>
+
+          <h3>1. Cuidado com a saúde mental da família</h3>
+          <ul>
+            <li><span class="label">Apoio emocional:</span> buscar grupos de apoio, serviços psicológicos e redes de famílias pode reduzir a sensação de isolamento.</li>
+            <li><span class="label">Carga de cuidado:</span> dividir tarefas entre cuidadores tanto quanto possível; reconhecer limites e sinais de exaustão.</li>
+            <li><span class="label">Informação de qualidade:</span> priorizar materiais de universidades, hospitais, sociedades médicas e órgãos oficiais de saúde.</li>
+          </ul>
+
+          <h3>2. Parceria com a escola</h3>
+          <ul>
+            <li><span class="label">Comunicação constante:</span> compartilhar laudos e orientações (com consentimento da família) e construir estratégias conjuntas.</li>
+            <li><span class="label">Adaptações razoáveis:</span> uso de recursos visuais, previsibilidade de rotina, flexibilidade em avaliações e atividades.</li>
+            <li><span class="label">Combate ao bullying:</span> projetos de inclusão, rodas de conversa e ações de sensibilização com toda a comunidade escolar.</li>
+          </ul>
+
+          <h3>3. No dia a dia em casa</h3>
+          <ul>
+            <li><span class="label">Rotinas:</span> estabelecer rotinas previsíveis, com quadros visuais quando possível, ajudando a reduzir ansiedade.</li>
+            <li><span class="label">Comunicação:</span> usar frases simples, claras e concretas; dar tempo para a criança responder.</li>
+            <li><span class="label">Interesses da criança:</span> aproveitar interesses específicos como porta de entrada para ensinar novas habilidades.</li>
+            <li><span class="label">Autonomia:</span> incentivar pequenas responsabilidades compatíveis com a idade e o perfil, passo a passo.</li>
+          </ul>
+
+          <p class="note">
+            O caminho de cada família é único. O importante é construir, junto com a rede de saúde e educação, um plano
+            realista, que respeite o ritmo da criança e as possibilidades do contexto familiar.
+          </p>
+        </section>
+
+        <section id="mitos" class="card">
+          <h2>Desfazendo mitos comuns sobre autismo</h2>
+          <ul>
+            <li>
+              <span class="label">“Autismo é causado por vacinas” – mito.</span>
+              Grandes estudos em diferentes países não encontraram relação causal entre vacinas e TEA. As principais
+              entidades científicas e órgãos de saúde são unânimes em recomendar a <a href=https://www.gov.br/saude/pt-br/assuntos/noticias/2025/setembro/ministerio-da-saude-orienta-teste-a-todas-as-criancas-para-identificar-possiveis-sinais-de-autismo-com-foco-na-intervencao-precoce >vacinação.</a>
+            </li>
+            <li>
+              <span class="label">“Toda pessoa autista tem deficiência intelectual” – mito.</span>
+              Há perfis muito variados: algumas pessoas têm deficiência intelectual associada, outras têm inteligência na
+              média ou acima, com particularidades na forma de aprender.
+            </li>
+            <li>
+              <span class="label">“Autismo é uma doença que tem cura” – mito.</span>
+              O TEA é uma forma de funcionamento neurológico ao longo da vida. Intervenções adequadas podem ampliar
+              autonomia, comunicação e qualidade de vida, mas não se fala em “cura”.
+            </li>
+            <li>
+              <span class="label">“Autistas não sentem afeto” – mito.</span>
+              Pessoas autistas sentem afeto, empatia e desejo de conexão, mas podem expressar e perceber emoções de
+              maneira diferente, o que exige sensibilidade e aprendizado mútuo.
+            </li>
+          </ul>
+        </section>
+      </article>
+
+      <aside>
+        <section class="card toc">
+          <h3>Conteúdo deste artigo</h3>
+          <ul>
+            <li><a href="#o-que-e-autismo">O que é o TEA</a></li>
+            <li><a href="#sinais">Sinais em bebês e crianças</a></li>
+            <li><a href="#rastreio-precoce">Rastreamento e intervenção precoce</a></li>
+            <li><a href="#diagnostico">Diagnóstico clínico</a></li>
+            <li><a href="#nivel-de-suporte">Níveis de suporte</a></li>
+            <li><a href="#tratamento">Tratamento e intervenções</a></li>
+            <li><a href="#familias">Orientações para famílias</a></li>
+            <li><a href="#mitos">Mitos e verdades</a></li>
+          </ul>
+        </section>
+
+        <section class="card">
+          <h3>Diretrizes e referências utilizadas</h3>
+          <p class="tag-inline">Fontes técnicas</p>
+          <ul>
+            <li>
+              <span class="label">Sociedade Brasileira de Neurologia Infantil (SBNI):</span> recomendações para diagnóstico, investigação e abordagem terapêutica do TEA.<a href=https://saude.abril.com.br/mente-saudavel/autismo-nova-diretriz-tratamento-diagnostico/?citationMarker=43dcd9a7-70db-4a1f-b0ae-981daa162054&citationId=1&citationId=2> veja mais </a>
+            </li>
+            <li>
+              <span class="label">Ministério da Saúde – Linha de Cuidado TEA:</span> orientações para rastreio entre 16 e 30 meses na atenção primária.<a href=https://www.gov.br/saude/pt-br/assuntos/noticias/2025/setembro/ministerio-da-saude-orienta-teste-a-todas-as-criancas-para-identificar-possiveis-sinais-de-autismo-com-foco-na-intervencao-precoce?citationMarker=43dcd9a7-70db-4a1f-b0ae-981daa162054&citationId=3> "veja mais" </a>
+            </li>
+            <li>
+              <span class="label">Critérios DSM‑5:</span> definição dos níveis de suporte e critérios diagnósticos para TEA.<a href=https://saude.abril.com.br/mente-saudavel/autismo-nova-diretriz-tratamento-diagnostico/?citationMarker=43dcd9a7-70db-4a1f-b0ae-981daa162054&citationId=1&citationId=2 > veja mais </a>
+            </li>
+          </ul>
+          <p class="note">
+            Para aprofundar, consulte diretamente os documentos técnicos no site da SBNI, do Ministério da Saúde e de
+            hospitais universitários da sua região.
+          </p>
+        </section>
+
+        <section class="card">
+          <h3>Como usar este texto no seu site ou blog</h3>
+          <p>
+            Você pode incorporar este conteúdo em sua página HTML copiando o código desta página ou adaptando os trechos
+            em seu gerenciador de conteúdo. Para destacar a natureza informativa, é útil incluir avisos como:
+          </p>
+          <p>
+            <code>&lt;small&gt;Este conteúdo é informativo e não substitui avaliação médica individual.&lt;/small&gt;</code>
+          </p>
+        </section>
+      </aside>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>
+        Este conteúdo tem caráter informativo e não substitui consulta com profissionais de saúde. Em caso de dúvidas sobre
+        desenvolvimento, comportamento ou aprendizagem, procure atendimento em serviços de saúde, hospitais universitários
+        ou centros especializados na sua região.
+      </p>
+      <p>
+        Baseado em diretrizes e materiais de sociedades médicas, Ministério da Saúde e centros de referência em
+        neurodesenvolvimento.[43dcd9a7-70db-4a1f-b0ae-981daa162054](https://www.gov.br/saude/pt-br/assuntos/noticias/2025/setembro/ministerio-da-saude-orienta-teste-a-todas-as-criancas-para-identificar-possiveis-sinais-de-autismo-com-foco-na-intervencao-precoce?citationMarker=43dcd9a7-70db-4a1f-b0ae-981daa162054&citationId=1&citationId=2&citationId=3 "G1")
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
