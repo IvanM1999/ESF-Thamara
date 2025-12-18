@@ -6,173 +6,211 @@
   <title>Aviso de Recesso – ESF Thamara</title>
 
   <style>
-    :root{
-      --primary:#0b5fa5;
-      --accent:#d35400;
-      --paper:#ffffff;
-      --ink:#1a1a1a;
-      --muted:#666;
-    }
+:root{
+  --primary:#0b5fa5;
+  --accent:#d35400;
+  --paper:#ffffff;
+  --ink:#1a1a1a;
+  --muted:#666;
+}
 
-    * { box-sizing: border-box; }
-    html, body { height: 100%; }
-    body {
-      margin: 0;
-      background: #f2f4f7;
-      color: var(--ink);
-      font-family: Arial, Helvetica, sans-serif;
-      -webkit-print-color-adjust: exact;
-      print-color-adjust: exact;
-    }
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  background: #f2f4f7;
+  color: var(--ink);
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
 
-    .wrap {
-      min-height: 100%;
-      display: grid;
-      place-items: center;
-      padding: 24px;
-    }
+.wrap {
+  min-height: 100%;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
 
-    .poster {
-      width: 900px;
-      max-width: 100%;
-      background: var(--paper);
-      border: 2px solid #c9d3df;
-      box-shadow: 0 6px 24px rgba(0,0,0,0.15);
-      border-radius: 14px;
-      overflow: hidden;
-    }
+.poster {
+  width: 900px;
+  max-width: 100%;
+  background: var(--paper);
+  border: 2px solid #c9d3df;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.15);
+  border-radius: 14px;
+  overflow: hidden;
+}
 
-    .poster-header {
-      background: linear-gradient(90deg, var(--primary), #3b85d6);
-      color: #fff;
-      padding: 18px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
-    .poster-title {
-      font-size: 22px;
-      font-weight: 700;
-      letter-spacing: 0.2px;
-    }
-    .poster-sub {
-      font-size: 14px;
-      opacity: 0.95;
-    }
+.poster-header {
+  background: linear-gradient(90deg, var(--primary), #3b85d6);
+  color: #fff;
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.poster-title {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+.poster-sub {
+  font-size: 14px;
+  opacity: 0.95;
+}
 
-    .poster-body {
-      padding: 24px;
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 24px;
-    }
+.poster-body {
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 24px;
+}
 
-    .holiday {
-      background: #f9f2ec;
-      border: 2px solid var(--accent);
-      padding: 16px;
-      border-radius: 10px;
-      box-shadow: 2px 2px 8px rgba(0,0,0,0.10);
-    }
-    .holiday h2 {
-      margin: 0 0 10px 0;
-      color: var(--accent);
-      font-size: 22px;
-    }
-    .holiday p {
-      font-size: 16px;
-      line-height: 1.55;
-      margin: 8px 0;
-    }
-    .holiday ul {
-      font-size: 15px;
-      margin: 12px 0 0 0;
-      padding-left: 18px;
-    }
-    .holiday li { margin: 6px 0; }
+.holiday {
+  background: #f9f2ec;
+  border: 2px solid var(--accent);
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.10);
+}
+.holiday h2 {
+  margin: 0 0 10px 0;
+  color: var(--accent);
+  font-size: 22px;
+}
+.holiday p {
+  font-size: 16px;
+  line-height: 1.55;
+  margin: 8px 0;
+}
+.holiday ul {
+  font-size: 15px;
+  margin: 12px 0 0 0;
+  padding-left: 18px;
+}
+.holiday li { margin: 6px 0; }
 
-    .map-box {
-      margin-top: 16px;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    }
-    .map-box img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
+.map-box {
+  margin-top: 16px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+.map-box img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
 
-    .qr-box {
-      background: #fff;
-      border: 2px solid #e2e6ea;
-      border-radius: 12px;
-      padding: 16px;
-      display: grid;
-      place-items: center;
-      gap: 12px;
-      box-shadow: 2px 2px 8px rgba(0,0,0,0.10);
-    }
-    .qr-title {
-      font-size: 18px;
-      font-weight: 700;
-      color: #222;
-      text-align: center;
-    }
-    .qr-sub {
-      font-size: 14px;
-      color: var(--muted);
-      text-align: center;
-      margin-top: -4px;
-    }
-    .qr-canvas {
-      background: #fff;
-      padding: 18px;
-      border-radius: 10px;
-      display: grid;
-      place-items: center;
-    }
-    .qr-canvas img {
-      width: 320px;
-      height: auto;
-      display: block;
-    }
+.qr-box {
+  background: #fff;
+  border: 2px solid #e2e6ea;
+  border-radius: 12px;
+  padding: 16px;
+  display: grid;
+  place-items: center;
+  gap: 12px;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.10);
+}
+.qr-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #222;
+  text-align: center;
+}
+.qr-sub {
+  font-size: 14px;
+  color: var(--muted);
+  text-align: center;
+  margin-top: -4px;
+}
+.qr-canvas {
+  background: #fff;
+  padding: 18px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+}
+.qr-canvas img {
+  width: 320px;
+  height: auto;
+  display: block;
+}
 
-    .footer {
-      padding: 16px 24px 24px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-    .site-link {
-      font-weight: 700;
-      color: #0b5fa5;
-      text-decoration: none;
-      word-break: break-all;
-    }
+.footer {
+  padding: 16px 24px 24px;
+  color: var(--muted);
+  font-size: 14px;
+}
+.site-link {
+  font-weight: 700;
+  color: #0b5fa5;
+  text-decoration: none;
+  word-break: break-all;
+}
 
-    @media (max-width: 900px) {
-      .poster-body { grid-template-columns: 1fr; }
-    }
+@media (max-width: 900px) {
+  .poster-body { grid-template-columns: 1fr; }
+}
 
-    @page { size: A4; margin: 14mm; }
-    @media print {
-      body { background: #fff; }
-      .poster { box-shadow: none; border-color: #b6c2cf; }
-      .print-btn { display: none !important; }
-    }
+@page { size: A4; margin: 14mm; }
 
-    .print-btn {
-      margin:20px auto;
-      display:block;
-      padding:10px 20px;
-      font-size:16px;
-      background:#0b5fa5;
-      color:#fff;
-      border:none;
-      border-radius:6px;
-      cursor:pointer;
-    }
+/* ============================
+   AJUSTES DE IMPRESSÃO
+   ============================ */
+@media print {
+
+  /* Reduz tudo para caber em 1 página */
+  body {
+    background: #fff;
+    zoom: 0.78;
+  }
+
+  .wrap {
+    padding: 0 !important;
+  }
+
+  .poster {
+    box-shadow: none;
+    border-color: #b6c2cf;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    page-break-inside: avoid;
+  }
+
+  /* Evita quebras internas */
+  .poster-body,
+  .holiday,
+  .qr-box {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* Força 1 coluna para reduzir altura */
+  .poster-body {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Oculta botão */
+  .print-btn {
+    display: none !important;
+  }
+}
+
+.print-btn {
+  margin:20px auto;
+  display:block;
+  padding:10px 20px;
+  font-size:16px;
+  background:#0b5fa5;
+  color:#fff;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+}
   </style>
 </head>
 <body>
