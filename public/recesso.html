@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Horários de Atendimento - SEMUS Blumenau</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    :root {
+      --azul-escuro: #0f3d63;
+      --azul-medio: #1f5d8f;
+      --cinza-fundo: #f2f4f7;
+      --branco: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background-color: var(--cinza-fundo);
+      color: #222;
+    }
+
+    header {
+      background-color: var(--branco);
+      padding: 16px;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .section {
+      background-color: var(--branco);
+      border-radius: 6px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+
+    .section-title {
+      background-color: var(--azul-escuro);
+      color: var(--branco);
+      padding: 12px;
+      border-radius: 4px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .section p {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin: 10px 0;
+    }
+
+    .highlight {
+      font-weight: bold;
+      color: var(--azul-medio);
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      font-size: 0.85rem;
+      color: #666;
+    }
+
+    @media (max-width: 600px) {
+      .section {
+        padding: 15px;
+      }
+
+      .section-title {
+        font-size: 1.05rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>SEMUS – Prefeitura de Blumenau</h1>
+</header>
+
+<main>
+
+  <section class="section">
+    <div class="section-title">Atendimento aos finais de semana</div>
+
+    <p>
+      <span class="highlight">Garcia e Velha</span> abrem nos dias
+      <strong>6 e 7, 13 e 14, 20 e 21 de dezembro</strong> e
+      <strong>10 e 11 de janeiro</strong>,
+      das <strong>8h às 17h</strong>.
+    </p>
+
+    <p>
+      <span class="highlight">AGF Itoupava</span> abre apenas nos sábados
+      <strong>6, 13 e 20 de dezembro</strong> e
+      <strong>10 de janeiro</strong>,
+      das <strong>8h às 17h</strong>.
+    </p>
+  </section>
+
+  <section class="section">
+    <div class="section-title">Atendimento em dias úteis</div>
+
+    <p>
+      <span class="highlight">AGFs Garcia, Velha e Itoupava</span> funcionam
+      de <strong>segunda a sexta</strong>, das <strong>7h às 19h</strong>.
+    </p>
+
+    <p>
+      Nos dias <strong>24 e 31</strong>, o horário será das
+      <strong>7h às 12h</strong>.
+    </p>
+  </section>
+
+  <section class="section">
+    <div class="section-title">Unidades fechadas</div>
+
+    <p>
+      <span class="highlight">ESFs e AGFs</span> não abrem nos dias
+      <strong>25, 27 e 28 de dezembro</strong> e
+      <strong>1º, 3 e 4 de janeiro</strong>.
+    </p>
+  </section>
+
+</main>
+
+<footer>
+  © Prefeitura de Blumenau — Secretaria Municipal de Saúde
+</footer>
+<!-- BOTÃO FLUTUANTE DE VOLTAR | INÍCIO -->
+<style>
+  .btn-voltar-flutuante {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 52px;
+    height: 52px;
+    background-color: #0f3d63;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 22px;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .btn-voltar-flutuante:hover {
+    background-color: #1f5d8f;
+    transform: scale(1.05);
+  }
+
+  .btn-voltar-flutuante:active {
+    transform: scale(0.95);
+  }
+
+  .btn-voltar-flutuante:focus {
+    outline: none;
+  }
+</style>
+
+<button
+  class="btn-voltar-flutuante"
+  aria-label="Voltar página anterior"
+  title="Voltar"
+  onclick="voltarPagina()"
+>
+  ←
+</button>
+
+<script>
+  function voltarPagina() {
+    if (window.history.length > 1) {
+      window.history.back();
+    } else {
+      window.location.href = "/public/index.html";
+    }
+  }
+</script>
+<!-- BOTÃO FLUTUANTE DE VOLTAR | FIM -->
+</body>
+</html>
