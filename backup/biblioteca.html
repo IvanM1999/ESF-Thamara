@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Biblioteca Comunitária</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+  :root {
+    --bg: #f5f7fa;
+    --card-bg: #ffffff;
+    --primary: #005c8a;
+    --secondary: #0a8f65;
+    --text: #222;
+    --muted: #666;
+    --border: #d9d9d9;
+    --radius: 10px;
+    --shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+  
+  body {
+    background: var(--bg);
+    color: var(--text);
+    padding: 16px;
+    line-height: 1.6;
+  }
+  
+  header {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  
+  header h1 {
+    font-size: 1.8rem;
+    color: var(--primary);
+    margin-bottom: 6px;
+  }
+  
+  header p {
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+  
+  /* ============================
+     BUSCA E FILTROS
+  ============================ */
+  
+  .search-section {
+    background: var(--card-bg);
+    padding: 16px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 24px;
+  }
+  
+  .search-row {
+    margin-bottom: 16px;
+  }
+  
+  .search-row label {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  
+  #search-input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 1rem;
+  }
+  
+  .filters-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+    margin-top: 10px;
+  }
+  
+  .filter-group label {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  
+  .filter-group input,
+  .filter-group select {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 0.95rem;
+  }
+  
+  #clear-filters-btn {
+    width: 100%;
+    padding: 10px;
+    background: var(--secondary);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.2s;
+  }
+  
+  #clear-filters-btn:hover {
+    opacity: 0.9;
+  }
+  
+  .search-summary {
+    margin-top: 12px;
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+  
+  /* ============================
+     GRID DE LIVROS
+  ============================ */
+  
+  .books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+  }
+  
+  .book-card {
+    background: var(--card-bg);
+    padding: 16px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .book-card header h2 {
+    font-size: 1.1rem;
+    color: var(--primary);
+    margin-bottom: 4px;
+  }
+  
+  .book-card header p {
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  
+  .book-genres {
+    font-size: 0.85rem;
+    color: var(--secondary);
+    margin-bottom: 12px;
+  }
+  
+  .book-actions {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  
+  .book-actions a {
+    flex: 1;
+    text-align: center;
+    padding: 8px;
+    border-radius: var(--radius);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: 0.2s;
+  }
+  
+  .btn-read {
+    background: var(--primary);
+    color: #fff;
+  }
+  
+  .btn-read:hover {
+    opacity: 0.9;
+  }
+  
+  .btn-pdf {
+    background: #e8e8e8;
+    color: var(--text);
+  }
+  
+  .btn-pdf:hover {
+    background: #dcdcdc;
+  }
+  
+  .book-status {
+    display: flex;
+    gap: 8px;
+    margin-top: auto;
+  }
+  
+  .btn-status {
+    flex: 1;
+    padding: 8px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: #fafafa;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: 0.2s;
+  }
+  
+  .btn-status:hover {
+    background: #f0f0f0;
+  }
+  
+  /* ============================
+     RESULTADOS
+  ============================ */
+  
+  #no-results {
+    text-align: center;
+    padding: 20px;
+    color: var(--muted);
+    font-size: 1rem;
+  }
+  
+  /* ============================
+     FOOTER
+  ============================ */
+  
+  footer {
+    text-align: center;
+    margin-top: 32px;
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+  
+  /* ============================
+     RESPONSIVIDADE
+  ============================ */
+  
+  @media (max-width: 480px) {
+    header h1 {
+      font-size: 1.4rem;
+    }
+    
+    .books-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <h1>Biblioteca Comunitária</h1>
+      <p>Busque por título, autor, ano ou gênero. Todos os livros em domínio público.</p>
+    </div>
+  </header>
+
+  <main>
+    <!-- Barra de busca principal -->
+    <section class="search-section" aria-label="Busca de livros">
+      <form id="search-form">
+        <!-- Campo de texto livre -->
+        <div class="search-row">
+          <label for="search-input">Buscar</label>
+          <input
+            type="text"
+            id="search-input"
+            name="q"
+            placeholder="Digite título, autor, ano ou qualquer termo..."
+            autocomplete="off"
+          >
+        </div>
+
+        <!-- Linha de filtros -->
+        <div class="filters-row">
+          <!-- Filtro por gênero (preenchido via genres.json) -->
+          <div class="filter-group">
+            <label for="genre-select">Gênero</label>
+            <select id="genre-select" name="genre">
+              <option value="">Todos os gêneros</option>
+              <!-- Opções serão inseridas via JavaScript com base em genres.json -->
+            </select>
+          </div>
+
+          <!-- Filtro por ano (intervalo) -->
+          <div class="filter-group">
+            <label for="year-from">Ano (de)</label>
+            <input
+              type="number"
+              id="year-from"
+              name="yearFrom"
+              placeholder="Ex.: 1800"
+              inputmode="numeric"
+            >
+          </div>
+
+          <div class="filter-group">
+            <label for="year-to">Ano (até)</label>
+            <input
+              type="number"
+              id="year-to"
+              name="yearTo"
+              placeholder="Ex.: 1950"
+              inputmode="numeric"
+            >
+          </div>
+
+          <!-- Botão de limpar filtros -->
+          <div class="filter-actions">
+            <button type="button" id="clear-filters-btn">
+              Limpar filtros
+            </button>
+          </div>
+        </div>
+      </form>
+
+      <!-- Resumo da busca -->
+      <div class="search-summary">
+        <span id="results-count">Mostrando todos os livros</span>
+        <span id="active-filters"></span>
+      </div>
+    </section>
+
+    <!-- Área de resultados -->
+    <section class="results-section" aria-label="Resultados da busca">
+      <!-- Mensagem quando nada é encontrado -->
+      <div id="no-results" style="display: none;">
+        Nenhum livro encontrado com esses critérios. Tente mudar os filtros ou a busca.
+      </div>
+
+      <!-- Lista onde os cards de livros serão renderizados via JavaScript -->
+      <div id="books-container" class="books-grid">
+        <!-- Exemplo de estrutura de card (comentado, só modelo de referência)
+        <article class="book-card" data-book-id="dom-casmurro">
+          <header>
+            <h2 class="book-title">Dom Casmurro</h2>
+            <p class="book-author">Machado de Assis • 1899</p>
+          </header>
+
+          <p class="book-genres">Romance • Realismo • Literatura Brasileira</p>
+
+          <div class="book-actions">
+            <a class="btn-read" href="#" target="_blank" rel="noopener noreferrer">Ler online</a>
+            <a class="btn-pdf" href="#" target="_blank" rel="noopener noreferrer">Baixar PDF</a>
+          </div>
+
+          <footer class="book-status">
+            <button type="button" class="btn-status btn-favorito">Favorito</button>
+            <button type="button" class="btn-status btn-quero-ler">Quero ler</button>
+            <button type="button" class="btn-status btn-li">Já li</button>
+          </footer>
+        </article>
+        -->
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>
+      Conteúdo em domínio público, organizado para uso comunitário.
+    </p>
+  </footer>
+
+<script>
+  async function loadJSON(url) {
+    const response = await fetch(url);
+    return response.json();
+  }
+  
+  let library = {};
+  let genres = {};
+  let allGenres = new Set();
+  
+  // Elementos da interface
+  const searchInput = document.getElementById("search-input");
+  const genreSelect = document.getElementById("genre-select");
+  const yearFrom = document.getElementById("year-from");
+  const yearTo = document.getElementById("year-to");
+  const clearFiltersBtn = document.getElementById("clear-filters-btn");
+  const booksContainer = document.getElementById("books-container");
+  const noResults = document.getElementById("no-results");
+  const resultsCount = document.getElementById("results-count");
+  
+  // Inicialização
+  async function init() {
+    library = await loadJSON("library.json");
+    genres = await loadJSON("genres.json");
+    
+    // Coletar todos os gêneros existentes
+    Object.values(genres).forEach(list => {
+      list.forEach(g => allGenres.add(g));
+    });
+    
+    // Preencher dropdown de gêneros
+    [...allGenres].sort().forEach(g => {
+      const option = document.createElement("option");
+      option.value = g;
+      option.textContent = g;
+      genreSelect.appendChild(option);
+    });
+    
+    renderBooks();
+  }
+  
+  // Renderização dos livros
+  function renderBooks() {
+    booksContainer.innerHTML = "";
+    
+    const query = searchInput.value.toLowerCase().trim();
+    const selectedGenre = genreSelect.value;
+    const yearStart = parseInt(yearFrom.value) || null;
+    const yearEnd = parseInt(yearTo.value) || null;
+    
+    const entries = Object.entries(library);
+    
+    const filtered = entries.filter(([id, book]) => {
+      const bookGenres = genres[id] || [];
+      
+      // Filtro por texto livre
+      const textMatch =
+        book.title.toLowerCase().includes(query) ||
+        book.author.toLowerCase().includes(query) ||
+        String(book.year).includes(query) ||
+        bookGenres.some(g => g.toLowerCase().includes(query));
+      
+      if (!textMatch) return false;
+      
+      // Filtro por gênero
+      if (selectedGenre && !bookGenres.includes(selectedGenre)) return false;
+      
+      // Filtro por ano
+      if (yearStart && book.year < yearStart) return false;
+      if (yearEnd && book.year > yearEnd) return false;
+      
+      return true;
+    });
+    
+    // Atualizar contagem
+    if (filtered.length === entries.length) {
+      resultsCount.textContent = "Mostrando todos os livros";
+    } else {
+      resultsCount.textContent = `Encontrados ${filtered.length} livro(s)`;
+    }
+    
+    // Mostrar mensagem se nada encontrado
+    noResults.style.display = filtered.length === 0 ? "block" : "none";
+    
+    // Criar cards
+    filtered.forEach(([id, book]) => {
+      const card = document.createElement("article");
+      card.className = "book-card";
+      card.dataset.bookId = id;
+      
+      const bookGenres = genres[id]?.join(" • ") || "Sem gênero";
+      
+      card.innerHTML = `
+      <header>
+        <h2 class="book-title">${book.title}</h2>
+        <p class="book-author">${book.author} • ${book.year}</p>
+      </header>
+
+      <p class="book-genres">${bookGenres}</p>
+
+      <div class="book-actions">
+        <a class="btn-read" href="${book.read}" target="_blank">Ler online</a>
+        <a class="btn-pdf" href="${book.pdf}" target="_blank">PDF</a>
+      </div>
+
+      <footer class="book-status">
+        <button class="btn-status btn-favorito">Favorito</button>
+        <button class="btn-status btn-quero-ler">Quero ler</button>
+        <button class="btn-status btn-li">Já li</button>
+      </footer>
+    `;
+      
+      booksContainer.appendChild(card);
+    });
+  }
+  
+  // Eventos
+  searchInput.addEventListener("input", renderBooks);
+  genreSelect.addEventListener("change", renderBooks);
+  yearFrom.addEventListener("input", renderBooks);
+  yearTo.addEventListener("input", renderBooks);
+  
+  clearFiltersBtn.addEventListener("click", () => {
+    searchInput.value = "";
+    genreSelect.value = "";
+    yearFrom.value = "";
+    yearTo.value = "";
+    renderBooks();
+  });
+  
+  // Iniciar app
+  init();
+</script
+
+<script>
+// ===============================
+// SISTEMA DE STATUS (localStorage)
+// ===============================
+
+// Estrutura padrão:
+// {
+//   "dom-casmurro": { favorito: true, quero: false, li: true },
+//   "iracema": { favorito: false, quero: true, li: false }
+// }
+
+function loadStatus() {
+  return JSON.parse(localStorage.getItem("bookStatus") || "{}");
+}
+
+function saveStatus(status) {
+  localStorage.setItem("bookStatus", JSON.stringify(status));
+}
+
+function toggleStatus(bookId, key) {
+  const status = loadStatus();
+
+  if (!status[bookId]) {
+    status[bookId] = { favorito: false, quero: false, li: false };
+  }
+
+  status[bookId][key] = !status[bookId][key];
+  saveStatus(status);
+  renderBooks(); // Atualiza visualmente
+}
+
+function applyStatusStyles(card, bookId) {
+  const status = loadStatus()[bookId] || {
+    favorito: false,
+    quero: false,
+    li: false
+  };
+
+  const btnFav = card.querySelector(".btn-favorito");
+  const btnQuero = card.querySelector(".btn-quero-ler");
+  const btnLi = card.querySelector(".btn-li");
+
+  // Estilos visuais quando ativo
+  if (status.favorito) {
+    btnFav.style.background = "#ffd700";
+    btnFav.style.borderColor = "#e6c200";
+  } else {
+    btnFav.style.background = "#fafafa";
+    btnFav.style.borderColor = "var(--border)";
+  }
+
+  if (status.quero) {
+    btnQuero.style.background = "#cce8ff";
+    btnQuero.style.borderColor = "#99d0ff";
+  } else {
+    btnQuero.style.background = "#fafafa";
+    btnQuero.style.borderColor = "var(--border)";
+  }
+
+  if (status.li) {
+    btnLi.style.background = "#c8f7c5";
+    btnLi.style.borderColor = "#8edb8a";
+  } else {
+    btnLi.style.background = "#fafafa";
+    btnLi.style.borderColor = "var(--border)";
+  }
+}
+
+// ===============================
+// INTEGRAR STATUS AO RENDER
+// ===============================
+
+// Substitua dentro da função renderBooks(), logo após criar o card:
+
+// card.innerHTML = ` ... `;
+// booksContainer.appendChild(card);
+
+// ADICIONE ESTA PARTE:
+
+function attachStatusEvents(card, bookId) {
+  card.querySelector(".btn-favorito")
+    .addEventListener("click", () => toggleStatus(bookId, "favorito"));
+
+  card.querySelector(".btn-quero-ler")
+    .addEventListener("click", () => toggleStatus(bookId, "quero"));
+
+  card.querySelector(".btn-li")
+    .addEventListener("click", () => toggleStatus(bookId, "li"));
+}
+
+// Agora modifique o final do renderBooks():
+
+// Depois de booksContainer.appendChild(card);
+
+attachStatusEvents(card, id);
+applyStatusStyles(card, id);
+
+</script>
+
+</body>
+</html>

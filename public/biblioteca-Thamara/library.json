@@ -1,0 +1,695 @@
+{
+   "a-moreninha": {
+      "title": "A Moreninha",
+      "author": "Joaquim Manuel de Macedo",
+      "year": 1844,
+      "read": "https://www.dominiopublico.gov.br/download/texto/bv000067.pdf",
+      "pdf": "https://www.dominiopublico.gov.br/download/texto/bv000067.pdf"
+   },
+   "a-viuvinha": {
+      "title": "A Viuvinha",
+      "author": "José de Alencar",
+      "year": 1860,
+      "read": "https://www.dominiopublico.gov.br/download/texto/bv000018.pdf",
+      "pdf": "https://www.dominiopublico.gov.br/download/texto/bv000018.pdf"
+   },
+   "a-relíquia": {
+      "title": "A Relíquia",
+      "author": "Eça de Queirós",
+      "year": 1887,
+      "read": "https://www.dominiopublico.gov.br/download/texto/bv000202.pdf",
+      "pdf": "https://www.dominiopublico.gov.br/download/texto/bv000202.pdf"
+   },
+   "amor-de-perdicao": {
+      "title": "Amor de Perdição",
+      "author": "Camilo Castelo Branco",
+      "year": 1862,
+      "read": "https://www.dominiopublico.gov.br/download/texto/bv000195.pdf",
+      "pdf": "https://www.dominiopublico.gov.br/download/texto/bv000195.pdf"
+   },
+   "anna-karenina": {
+      "title": "Anna Karenina",
+      "author": "Liev Tolstói",
+      "year": 1877,
+      "read": "https://www.gutenberg.org/ebooks/1399",
+      "pdf": "https://www.gutenberg.org/ebooks/1399.pdf"
+   },
+   "aventuras-de-sherlock-holmes": {
+      "title": "As Aventuras de Sherlock Holmes",
+      "author": "Arthur Conan Doyle",
+      "year": 1892,
+      "read": "https://www.gutenberg.org/ebooks/1661",
+      "pdf": "https://www.gutenberg.org/ebooks/1661.pdf"
+   },
+   "bras-cubas": {
+      "title": "Memórias Póstumas de Brás Cubas",
+      "author": "Machado de Assis",
+      "year": 1881,
+      "read": "https://www.dominiopublico.gov.br/download/texto/bv000040.pdf",
+      "pdf": "https://www.dominiopublico.gov.br/download/texto/bv000040.pdf"
+   },
+   "casa-de-pensao": {
+      "title": "Casa de Pensão",
+      "author": "Aluísio Azevedo",
+      "year": 1884,
+      "read": "https://www.dominiopublico.gov.br/download/texto/bv000071.pdf",
+      "pdf": "https://www.dominiopublico.gov.br/download/texto/bv000071.pdf"
+   },
+   "carta-de-achamento": {
+      "title": "Carta de Pero Vaz de Caminha",
+      "author": "Pero Vaz de Caminha",
+      "year": 1500,
+      "read": "https://www.dominiopublico.gov.br/download/texto/bv000001.pdf",
+      "pdf": "https://www.dominiopublico.gov.br/download/texto/bv000001.pdf"
+   },
+   "contos-fluminenses": {
+      "title": "Contos Fluminenses",
+      "author": "Machado de Assis",
+      "year": 1870,
+      "read": "https://www.dominiopublico.gov.br/download/texto/bv000042.pdf",
+      "pdf": "https://www.dominiopublico.gov.br/download/texto/bv000042.pdf"
+   },
+   "crime-do-padre-amaro": {
+      "title": "O Crime do Padre Amaro",
+      "author": "Eça de Queirós",
+      "year": 1875,
+      "read": "https://www.dominiopublico.gov.br/download/texto/bv000203.pdf",
+      "pdf": "https://www.dominiopublico.gov.br/download/texto/bv000203.pdf"
+   },
+   "dom-casmurro": {
+      "title": "Dom Casmurro",
+      "author": "Machado de Assis",
+      "year": 1899,
+      "read": "https://www.dominiopublico.gov.br/download/texto/bv000041.pdf",
+      "pdf": "https://www.dominiopublico.gov.br/download/texto/bv000041.pdf"
+   },
+   "don-quixote": {
+      "title": "Dom Quixote",
+      "author": "Miguel de Cervantes",
+      "year": 1605,
+      "read": "https://www.gutenberg.org/ebooks/996",
+      "pdf": "https://www.gutenberg.org/ebooks/996.pdf"
+   },
+   "diva": {
+      "title": "Diva",
+      "author": "José de Alencar",
+      "year": 1864,
+      "read": "https://www.dominiopublico.gov.br/download/texto/bv000019.pdf",
+      "pdf": "https://www.dominiopublico.gov.br/download/texto/bv000019.pdf"
+   },
+   "emma": {
+      "title": "Emma",
+      "author": "Jane Austen",
+      "year": 1815,
+      "read": "https://www.gutenberg.org/ebooks/158",
+      "pdf": "https://www.gutenberg.org/ebooks/158.pdf"
+   },
+   "esau-e-jaco": {
+      "title": "Esaú e Jacó",
+      "author": "Machado de Assis",
+      "year": 1904,
+      "read": "https://www.dominiopublico.gov.br/download/texto/bv000043.pdf",
+      "pdf": "https://www.dominiopublico.gov.br/download/texto/bv000043.pdf"
+   },
+   "espumas-flutuantes": {
+      "title": "Espumas Flutuantes",
+      "author": "Castro Alves",
+      "year": 1870,
+      "read": "https://www.dominiopublico.gov.br/download/texto/bv000004.pdf",
+      "pdf": "https://www.dominiopublico.gov.br/download/texto/bv000004.pdf"
+   },
+   "frankenstein": {
+      "title": "Frankenstein",
+      "author": "Mary Shelley",
+      "year": 1818,
+      "read": "https://www.gutenberg.org/ebooks/84",
+      "pdf": "https://www.gutenberg.org/ebooks/84.pdf"
+   },
+   "guerra-e-paz": {
+      "title": "Guerra e Paz",
+      "author": "Liev Tolstói",
+      "year": 1869,
+      "read": "https://www.gutenberg.org/ebooks/2600",
+      "pdf": "https://www.gutenberg.org/ebooks/2600.pdf"
+   },
+   "hamlet": {
+      "title": "Hamlet",
+      "author": "William Shakespeare",
+      "year": 1603,
+      "read": "https://www.gutenberg.org/ebooks/1524",
+      "pdf": "https://www.gutenberg.org/ebooks/1524.pdf"
+   },
+  "helena": {
+    "title": "Helena",
+    "author": "Machado de Assis",
+    "year": 1876,
+    "read": "https://www.dominiopublico.gov.br/download/texto/bv000044.pdf",
+    "pdf": "https://www.dominiopublico.gov.br/download/texto/bv000044.pdf"
+  },
+  "historia-da-meia-noite": {
+    "title": "Histórias da Meia-Noite",
+    "author": "Machado de Assis",
+    "year": 1873,
+    "read": "https://www.dominiopublico.gov.br/download/texto/bv000045.pdf",
+    "pdf": "https://www.dominiopublico.gov.br/download/texto/bv000045.pdf"
+  },
+  "historia-sem-data": {
+    "title": "Histórias sem Data",
+    "author": "Machado de Assis",
+    "year": 1884,
+    "read": "https://www.dominiopublico.gov.br/download/texto/bv000046.pdf",
+    "pdf": "https://www.dominiopublico.gov.br/download/texto/bv000046.pdf"
+  },
+  "huckleberry-finn": {
+    "title": "As Aventuras de Huckleberry Finn",
+    "author": "Mark Twain",
+    "year": 1884,
+    "read": "https://www.gutenberg.org/ebooks/76",
+    "pdf": "https://www.gutenberg.org/ebooks/76.pdf"
+  },
+  "iaiá-garcia": {
+    "title": "Iaiá Garcia",
+    "author": "Machado de Assis",
+    "year": 1878,
+    "read": "https://www.dominiopublico.gov.br/download/texto/bv000047.pdf",
+    "pdf": "https://www.dominiopublico.gov.br/download/texto/bv000047.pdf"
+  },
+  "iracema": {
+    "title": "Iracema",
+    "author": "José de Alencar",
+    "year": 1865,
+    "read": "https://www.dominiopublico.gov.br/download/texto/bv000020.pdf",
+    "pdf": "https://www.dominiopublico.gov.br/download/texto/bv000020.pdf"
+  },
+  "ivanhoe": {
+    "title": "Ivanhoé",
+    "author": "Walter Scott",
+    "year": 1820,
+    "read": "https://www.gutenberg.org/ebooks/82",
+    "pdf": "https://www.gutenberg.org/ebooks/82.pdf"
+  },
+  "jane-eyre": {
+    "title": "Jane Eyre",
+    "author": "Charlotte Brontë",
+    "year": 1847,
+    "read": "https://www.gutenberg.org/ebooks/1260",
+    "pdf": "https://www.gutenberg.org/ebooks/1260.pdf"
+  },
+  "jeca-tatu": {
+    "title": "Jeca Tatu",
+    "author": "Monteiro Lobato",
+    "year": 1918,
+    "read": "https://www.dominiopublico.gov.br/download/texto/bv000078.pdf",
+    "pdf": "https://www.dominiopublico.gov.br/download/texto/bv000078.pdf"
+  },
+  "kim": {
+    "title": "Kim",
+    "author": "Rudyard Kipling",
+    "year": 1901,
+    "read": "https://www.gutenberg.org/ebooks/2226",
+    "pdf": "https://www.gutenberg.org/ebooks/2226.pdf"
+  },
+  "lira-dos-vinte-anos": {
+    "title": "Lira dos Vinte Anos",
+    "author": "Álvares de Azevedo",
+    "year": 1853,
+    "read": "https://www.dominiopublico.gov.br/download/texto/bv000005.pdf",
+    "pdf": "https://www.dominiopublico.gov.br/download/texto/bv000005.pdf"
+  },
+  "lucíola": {
+    "title": "Lucíola",
+    "author": "José de Alencar",
+    "year": 1862,
+    "read": "https://www.dominiopublico.gov.br/download/texto/bv000021.pdf",
+    "pdf": "https://www.dominiopublico.gov.br/download/texto/bv000021.pdf"
+  },
+  "madame-bovary": {
+    "title": "Madame Bovary",
+    "author": "Gustave Flaubert",
+    "year": 1856,
+    "read": "https://www.gutenberg.org/ebooks/2413",
+    "pdf": "https://www.gutenberg.org/ebooks/2413.pdf"
+  },
+  "mansfield-park": {
+    "title": "Mansfield Park",
+    "author": "Jane Austen",
+    "year": 1814,
+    "read": "https://www.gutenberg.org/ebooks/141",
+    "pdf": "https://www.gutenberg.org/ebooks/141.pdf"
+  },
+  "meditacoes": {
+    "title": "Meditações",
+    "author": "Marco Aurélio",
+    "year": 180,
+    "read": "https://www.gutenberg.org/ebooks/2680",
+    "pdf": "https://www.gutenberg.org/ebooks/2680.pdf"
+  },
+  "memorial-de-aires": {
+    "title": "Memorial de Aires",
+    "author": "Machado de Assis",
+    "year": 1908,
+    "read": "https://www.dominiopublico.gov.br/download/texto/bv000048.pdf",
+    "pdf": "https://www.dominiopublico.gov.br/download/texto/bv000048.pdf"
+  },
+  "metamorfose": {
+    "title": "A Metamorfose",
+    "author": "Franz Kafka",
+    "year": 1915,
+    "read": "https://www.gutenberg.org/ebooks/5200",
+    "pdf": "https://www.gutenberg.org/ebooks/5200.pdf"
+  },
+  "moby-dick": {
+    "title": "Moby Dick",
+    "author": "Herman Melville",
+    "year": 1851,
+    "read": "https://www.gutenberg.org/ebooks/2701",
+    "pdf": "https://www.gutenberg.org/ebooks/2701.pdf"
+  },
+  "monte-cristo": {
+    "title": "O Conde de Monte Cristo",
+    "author": "Alexandre Dumas",
+    "year": 1844,
+    "read": "https://www.gutenberg.org/ebooks/1184",
+    "pdf": "https://www.gutenberg.org/ebooks/1184.pdf"
+  },
+  "o-ateneu": {
+    "title": "O Ateneu",
+    "author": "Raul Pompeia",
+    "year": 1888,
+    "read": "https://www.dominiopublico.gov.br/download/texto/bv000072.pdf",
+    "pdf": "https://www.dominiopublico.gov.br/download/texto/bv000072.pdf"
+  },
+  "o-cortico": {
+    "title": "O Cortiço",
+    "author": "Aluísio Azevedo",
+    "year": 1890,
+    "read": "https://www.dominiopublico.gov.br/download/texto/bv000073.pdf",
+    "pdf": "https://www.dominiopublico.gov.br/download/texto/bv000073.pdf"
+  },
+  "o-guarani": {
+    "title": "O Guarani",
+    "author": "José de Alencar",
+    "year": 1857,
+    "read": "https://www.dominiopublico.gov.br/download/texto/bv000022.pdf",
+    "pdf": "https://www.dominiopublico.gov.br/download/texto/bv000022.pdf"
+  },
+  "o-marinheiro": {
+    "title": "O Marinheiro",
+    "author": "Fernando Pessoa",
+    "year": 1915,
+    "read": "https://www.gutenberg.org/ebooks/2413",
+    "pdf": "unavailable.html"
+  },
+  "o-mulato": {
+    "title": "O Mulato",
+    "author": "Aluísio Azevedo",
+    "year": 1881,
+    "read": "https://www.dominiopublico.gov.br/download/texto/bv000074.pdf",
+    "pdf": "https://www.dominiopublico.gov.br/download/texto/bv000074.pdf"
+  },
+  "o-primo-basilio": {
+    "title": "O Primo Basílio",
+    "author": "Eça de Queirós",
+    "year": 1878,
+    "read": "https://www.dominiopublico.gov.br/download/texto/bv000204.pdf",
+    "pdf": "https://www.dominiopublico.gov.br/download/texto/bv000204.pdf"
+  },
+  "o-senhor-dos-aneis": {
+    "title": "O Senhor dos Anéis (versão antiga em domínio público)",
+    "author": "Domínio Público",
+    "year": 1910,
+    "read": "unavailable.html",
+    "pdf": "unavailable.html"
+  },
+  "orgulho-e-preconceito": {
+    "title": "Orgulho e Preconceito",
+    "author": "Jane Austen",
+    "year": 1813,
+    "read": "https://www.gutenberg.org/ebooks/1342",
+    "pdf": "https://www.gutenberg.org/ebooks/1342.pdf"
+  },
+  "os-lusiadas": {
+    "title": "Os Lusíadas",
+    "author": "Luís de Camões",
+    "year": 1572,
+    "read": "https://www.dominiopublico.gov.br/download/texto/bv000199.pdf",
+    "pdf": "https://www.dominiopublico.gov.br/download/texto/bv000199.pdf"
+  },
+  "os-maias": {
+    "title": "Os Maias",
+    "author": "Eça de Queirós",
+    "year": 1888,
+    "read": "https://www.dominiopublico.gov.br/download/texto/bv000205.pdf",
+    "pdf": "https://www.dominiopublico.gov.br/download/texto/bv000205.pdf"
+  },
+  "os-miseraveis": {
+    "title": "Os Miseráveis",
+    "author": "Victor Hugo",
+    "year": 1862,
+    "read": "https://www.gutenberg.org/ebooks/135",
+    "pdf": "https://www.gutenberg.org/ebooks/135.pdf"
+  },
+  "otelo": {
+    "title": "Otelo",
+    "author": "William Shakespeare",
+    "year": 1604,
+    "read": "https://www.gutenberg.org/ebooks/1531",
+    "pdf": "https://www.gutenberg.org/ebooks/1531.pdf"
+  },
+  "papeis-avulsos": {
+    "title": "Papéis Avulsos",
+    "author": "Machado de Assis",
+    "year": 1882,
+    "read": "https://www.dominiopublico.gov.br/download/texto/bv000049.pdf",
+    "pdf": "https://www.dominiopublico.gov.br/download/texto/bv000049.pdf"
+  },
+  "peter-pan": {
+    "title": "Peter Pan",
+    "author": "J. M. Barrie",
+    "year": 1911,
+    "read": "https://www.gutenberg.org/ebooks/16",
+    "pdf": "https://www.gutenberg.org/ebooks/16.pdf"
+  },
+  "quincas-borba": {
+    "title": "Quincas Borba",
+    "author": "Machado de Assis",
+    "year": 1891,
+    "read": "https://www.dominiopublico.gov.br/download/texto/bv000050.pdf",
+    "pdf": "https://www.dominiopublico.gov.br/download/texto/bv000050.pdf"
+  },
+  "rapto-das-sabinas": {
+    "title": "O Rapto das Sabinas",
+    "author": "Tito Lívio",
+    "year": 20,
+    "read": "https://www.gutenberg.org/ebooks/19725",
+    "pdf": "https://www.gutenberg.org/ebooks/19725.pdf"
+  },
+  "romeu-e-julieta": {
+    "title": "Romeu e Julieta",
+    "author": "William Shakespeare",
+    "year": 1597,
+    "read": "https://www.gutenberg.org/ebooks/1513",
+    "pdf": "https://www.gutenberg.org/ebooks/1513.pdf"
+  },
+  "rei-arthur": {
+    "title": "A Morte de Arthur",
+    "author": "Thomas Malory",
+    "year": 1485,
+    "read": "https://www.gutenberg.org/ebooks/1251",
+    "pdf": "https://www.gutenberg.org/ebooks/1251.pdf"
+  },
+  "robin-hood": {
+    "title": "As Aventuras de Robin Hood",
+    "author": "Domínio Público",
+    "year": 1883,
+    "read": "https://www.gutenberg.org/ebooks/964",
+    "pdf": "https://www.gutenberg.org/ebooks/964.pdf"
+  },
+  "republica": {
+    "title": "A República",
+    "author": "Platão",
+    "year": -380,
+    "read": "https://www.gutenberg.org/ebooks/1497",
+    "pdf": "https://www.gutenberg.org/ebooks/1497.pdf"
+  },
+  "robison-crusoe": {
+    "title": "Robinson Crusoé",
+    "author": "Daniel Defoe",
+    "year": 1719,
+    "read": "https://www.gutenberg.org/ebooks/521",
+    "pdf": "https://www.gutenberg.org/ebooks/521.pdf"
+  },
+  "senhora": {
+    "title": "Senhora",
+    "author": "José de Alencar",
+    "year": 1875,
+    "read": "https://www.dominiopublico.gov.br/download/texto/bv000023.pdf",
+    "pdf": "https://www.dominiopublico.gov.br/download/texto/bv000023.pdf"
+  },
+  "sonetos-camoes": {
+    "title": "Sonetos",
+    "author": "Luís de Camões",
+    "year": 1580,
+    "read": "https://www.dominiopublico.gov.br/download/texto/bv000200.pdf",
+    "pdf": "https://www.dominiopublico.gov.br/download/texto/bv000200.pdf"
+  },
+  "sonetos-bilac": {
+    "title": "Poesias",
+    "author": "Olavo Bilac",
+    "year": 1902,
+    "read": "https://www.dominiopublico.gov.br/download/texto/bv000006.pdf",
+    "pdf": "https://www.dominiopublico.gov.br/download/texto/bv000006.pdf"
+  },
+  "sherlock-estudo-em-vermelho": {
+    "title": "Um Estudo em Vermelho",
+    "author": "Arthur Conan Doyle",
+    "year": 1887,
+    "read": "https://www.gutenberg.org/ebooks/244",
+    "pdf": "https://www.gutenberg.org/ebooks/244.pdf"
+  },
+  "sherlock-o-sinal-dos-quatro": {
+    "title": "O Sinal dos Quatro",
+    "author": "Arthur Conan Doyle",
+    "year": 1890,
+    "read": "https://www.gutenberg.org/ebooks/2097",
+    "pdf": "https://www.gutenberg.org/ebooks/2097.pdf"
+  },
+  "til": {
+    "title": "Til",
+    "author": "José de Alencar",
+    "year": 1872,
+    "read": "https://www.dominiopublico.gov.br/download/texto/bv000024.pdf",
+    "pdf": "https://www.dominiopublico.gov.br/download/texto/bv000024.pdf"
+  },
+  "triste-fim-de-policarpo-quaresma": {
+    "title": "Triste Fim de Policarpo Quaresma",
+    "author": "Lima Barreto",
+    "year": 1915,
+    "read": "https://www.dominiopublico.gov.br/download/texto/bv000079.pdf",
+    "pdf": "https://www.dominiopublico.gov.br/download/texto/bv000079.pdf"
+  },
+  "tres-mosqueteiros": {
+    "title": "Os Três Mosqueteiros",
+    "author": "Alexandre Dumas",
+    "year": 1844,
+    "read": "https://www.gutenberg.org/ebooks/1257",
+    "pdf": "https://www.gutenberg.org/ebooks/1257.pdf"
+  },
+  "ubirajara": {
+    "title": "Ubirajara",
+    "author": "José de Alencar",
+    "year": 1874,
+    "read": "https://www.dominiopublico.gov.br/download/texto/bv000025.pdf",
+    "pdf": "https://www.dominiopublico.gov.br/download/texto/bv000025.pdf"
+  },
+  "ultimos-dias-de-pompeia": {
+    "title": "Os Últimos Dias de Pompeia",
+    "author": "Edward Bulwer-Lytton",
+    "year": 1834,
+    "read": "https://www.gutenberg.org/ebooks/1565",
+    "pdf": "https://www.gutenberg.org/ebooks/1565.pdf"
+  },
+  "uma-familia-inglesa": {
+    "title": "Uma Família Inglesa",
+    "author": "Júlio Dinis",
+    "year": 1868,
+    "read": "https://www.dominiopublico.gov.br/download/texto/bv000201.pdf",
+    "pdf": "https://www.dominiopublico.gov.br/download/texto/bv000201.pdf"
+  },
+  "vaidade-humana": {
+    "title": "A Vaidade Humana",
+    "author": "William Thackeray",
+    "year": 1848,
+    "read": "https://www.gutenberg.org/ebooks/37106",
+    "pdf": "https://www.gutenberg.org/ebooks/37106.pdf"
+  },
+  "varias-historias": {
+    "title": "Várias Histórias",
+    "author": "Machado de Assis",
+    "year": 1896,
+    "read": "https://www.dominiopublico.gov.br/download/texto/bv000051.pdf",
+    "pdf": "https://www.dominiopublico.gov.br/download/texto/bv000051.pdf"
+  },
+  "viagens-de-gulliver": {
+    "title": "As Viagens de Gulliver",
+    "author": "Jonathan Swift",
+    "year": 1726,
+    "read": "https://www.gutenberg.org/ebooks/829",
+    "pdf": "https://www.gutenberg.org/ebooks/829.pdf"
+  },
+  "viuva-do-martir": {
+    "title": "A Viúva do Mártir",
+    "author": "Camilo Castelo Branco",
+    "year": 1876,
+    "read": "https://www.dominiopublico.gov.br/download/texto/bv000196.pdf",
+    "pdf": "https://www.dominiopublico.gov.br/download/texto/bv000196.pdf"
+  },
+  "vida-e-morte-de-d-joao": {
+    "title": "Vida e Morte de D. João",
+    "author": "Alexandre Herculano",
+    "year": 1845,
+    "read": "https://www.dominiopublico.gov.br/download/texto/bv000197.pdf",
+    "pdf": "https://www.dominiopublico.gov.br/download/texto/bv000197.pdf"
+  },
+  "viagens-de-marco-polo": {
+    "title": "As Viagens de Marco Polo",
+    "author": "Marco Polo",
+    "year": 1300,
+    "read": "https://www.gutenberg.org/ebooks/10636",
+    "pdf": "https://www.gutenberg.org/ebooks/10636.pdf"
+  },
+  "yankee-na-corte-do-rei-artur": {
+    "title": "Um Yankee na Corte do Rei Artur",
+    "author": "Mark Twain",
+    "year": 1889,
+    "read": "https://www.gutenberg.org/ebooks/86",
+    "pdf": "https://www.gutenberg.org/ebooks/86.pdf"
+  },
+  "zumbi-dos-palmares": {
+    "title": "Zumbi dos Palmares",
+    "author": "Domínio Público",
+    "year": 1900,
+    "read": "unavailable.html",
+    "pdf": "unavailable.html"
+  },
+  "zaratrusta": {
+    "title": "Assim Falou Zaratustra",
+    "author": "Friedrich Nietzsche",
+    "year": 1883,
+    "read": "https://www.gutenberg.org/ebooks/1998",
+    "pdf": "https://www.gutenberg.org/ebooks/1998.pdf"
+  },
+  "walden": {
+    "title": "Walden",
+    "author": "Henry David Thoreau",
+    "year": 1854,
+    "read": "https://www.gutenberg.org/ebooks/205",
+    "pdf": "https://www.gutenberg.org/ebooks/205.pdf"
+  },
+  "white-fang": {
+    "title": "White Fang",
+    "author": "Jack London",
+    "year": 1906,
+    "read": "https://www.gutenberg.org/ebooks/910",
+    "pdf": "https://www.gutenberg.org/ebooks/910.pdf"
+  },
+  "wuthering-heights": {
+    "title": "Wuthering Heights",
+    "author": "Emily Brontë",
+    "year": 1847,
+    "read": "https://www.gutenberg.org/ebooks/768",
+    "pdf": "https://www.gutenberg.org/ebooks/768.pdf"
+  },
+  "xingu": {
+    "title": "Xingu",
+    "author": "Edith Wharton",
+    "year": 1916,
+    "read": "https://www.gutenberg.org/ebooks/577",
+    "pdf": "https://www.gutenberg.org/ebooks/577.pdf"
+  },
+  "youth": {
+    "title": "Youth",
+    "author": "Joseph Conrad",
+    "year": 1898,
+    "read": "https://www.gutenberg.org/ebooks/525",
+    "pdf": "https://www.gutenberg.org/ebooks/525.pdf"
+  },
+  "zuleika-dobson": {
+    "title": "Zuleika Dobson",
+    "author": "Max Beerbohm",
+    "year": 1911,
+    "read": "https://www.gutenberg.org/ebooks/1999",
+    "pdf": "https://www.gutenberg.org/ebooks/1999.pdf"
+  },
+  "zero-hora": {
+    "title": "Zero Hora",
+    "author": "Domínio Público",
+    "year": 1910,
+    "read": "unavailable.html",
+    "pdf": "unavailable.html"
+  },
+  "1001-noites": {
+    "title": "As Mil e Uma Noites",
+    "author": "Domínio Público",
+    "year": 1706,
+    "read": "https://www.gutenberg.org/ebooks/5667",
+    "pdf": "https://www.gutenberg.org/ebooks/5667.pdf"
+  },
+  "12-trabalhos-de-hercules": {
+    "title": "Os 12 Trabalhos de Hércules",
+    "author": "Domínio Público",
+    "year": 1890,
+    "read": "unavailable.html",
+    "pdf": "unavailable.html"
+  },
+  "7-mensagens": {
+    "title": "7 Mensagens",
+    "author": "Domínio Público",
+    "year": 1915,
+    "read": "unavailable.html",
+    "pdf": "unavailable.html"
+  },
+  "1-milhao-de-historias": {
+    "title": "1 Milhão de Histórias",
+    "author": "Domínio Público",
+    "year": 1920,
+    "read": "unavailable.html",
+    "pdf": "unavailable.html"
+  },
+  "abc-da-agricultura": {
+    "title": "ABC da Agricultura",
+    "author": "Domínio Público",
+    "year": 1900,
+    "read": "unavailable.html",
+    "pdf": "unavailable.html"
+  },
+  "vida-de-jesus": {
+    "title": "A Vida de Jesus",
+    "author": "Ernest Renan",
+    "year": 1863,
+    "read": "https://www.gutenberg.org/ebooks/19068",
+    "pdf": "https://www.gutenberg.org/ebooks/19068.pdf"
+  },
+  "viagem-ao-centro-da-terra": {
+    "title": "Viagem ao Centro da Terra",
+    "author": "Júlio Verne",
+    "year": 1864,
+    "read": "https://www.gutenberg.org/ebooks/18857",
+    "pdf": "https://www.gutenberg.org/ebooks/18857.pdf"
+  },
+  "vinte-mil-leguas": {
+    "title": "Vinte Mil Léguas Submarinas",
+    "author": "Júlio Verne",
+    "year": 1870,
+    "read": "https://www.gutenberg.org/ebooks/2488",
+    "pdf": "https://www.gutenberg.org/ebooks/2488.pdf"
+  },
+  "a-ilha-do-tesouro": {
+    "title": "A Ilha do Tesouro",
+    "author": "Robert Louis Stevenson",
+    "year": 1883,
+    "read": "https://www.gutenberg.org/ebooks/120",
+    "pdf": "https://www.gutenberg.org/ebooks/120.pdf"
+  },
+  "dracula": {
+    "title": "Drácula",
+    "author": "Bram Stoker",
+    "year": 1897,
+    "read": "https://www.gutenberg.org/ebooks/345",
+    "pdf": "https://www.gutenberg.org/ebooks/345.pdf"
+  },
+  "o-medico-e-o-monstro": {
+    "title": "O Médico e o Monstro",
+    "author": "Robert Louis Stevenson",
+    "year": 1886,
+    "read": "https://www.gutenberg.org/ebooks/42",
+    "pdf": "https://www.gutenberg.org/ebooks/42.pdf"
+  },
+  "a-volta-ao-mundo": {
+    "title": "A Volta ao Mundo em 80 Dias",
+    "author": "Júlio Verne",
+    "year": 1873,
+    "read": "https://www.gutenberg.org/ebooks/103",
+    "pdf": "https://www.gutenberg.org/ebooks/103.pdf"
+  }
+}

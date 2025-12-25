@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Biblioteca Virtual - ESF Thamara</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #f5f7fa;
+      --card-bg: #ffffff;
+      --primary: #005c8a;
+      --secondary: #0a8f65;
+      --text: #222222;
+      --muted: #666666;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 16px;
+    }
+
+    header {
+      max-width: 960px;
+      margin: 0 auto 24px auto;
+      text-align: center;
+    }
+
+    header h1 {
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+
+    header p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--secondary);
+      color: #fff;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      margin-bottom: 8px;
+    }
+
+    main {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .info-box {
+      background: #e7f3ff;
+      color: #123456;
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      margin-bottom: 24px;
+      border-left: 4px solid var(--primary);
+    }
+
+    .category {
+      margin-bottom: 32px;
+    }
+
+    .category h2 {
+      font-size: 1.2rem;
+      margin-bottom: 4px;
+      color: var(--primary);
+    }
+
+    .category small {
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    .books-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .book-card {
+      background: var(--card-bg);
+      border-radius: 8px;
+      padding: 10px 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .book-title {
+      font-weight: 600;
+      margin-bottom: 4px;
+      font-size: 0.98rem;
+    }
+
+    .book-meta {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .book-actions a {
+      text-decoration: none;
+      font-size: 0.8rem;
+      color: #ffffff;
+      background: var(--primary);
+      padding: 4px 8px;
+      border-radius: 999px;
+      margin-right: 4px;
+      display: inline-block;
+      margin-top: 4px;
+    }
+
+    .book-actions a.secondary {
+      background: #ffffff;
+      color: var(--primary);
+      border: 1px solid var(--primary);
+    }
+
+    footer {
+      max-width: 960px;
+      margin: 32px auto 8px auto;
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      body {
+        background: #101218;
+        color: #f4f4f4;
+      }
+      .info-box {
+        background: #082033;
+        color: #e0ecff;
+      }
+      .book-card {
+        background: #181c24;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.6);
+      }
+      .category small,
+      header p,
+      footer {
+        color: #a0a7b4;
+      }
+    }
+    
+    .menu-opcoes {
+  display: none;
+  position: absolute;
+  background: #ffffff;
+  border: 1px solid #ccc;
+  padding: 8px;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  z-index: 10;
+}
+
+.menu-opcoes button {
+  display: block;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 6px;
+  text-align: left;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.menu-opcoes button:hover {
+  background: #f0f0f0;
+}
+    
+    
+    
+  </style>
+</head>
+<body>
+  <header>
+    <span class="badge">Serviço público • Acesso gratuito à leitura</span>
+    <h1>Biblioteca Virtual - ESF Thamara</h1>
+    <p>
+      Acervo de livros em domínio público, selecionados para a comunidade.
+      Todos os títulos abaixo podem ser acessados gratuitamente em repositórios
+      oficiais como o Portal Domínio Público (MEC) e a Biblioteca Nacional Digital.
+    </p>
+  </header>
+
+  <main>
+    <section class="info-box">
+      <strong>Como usar:</strong> ao publicar este site, substitua os links
+      <code>href="#"</code> pelos links dos livros no Portal Domínio Público,
+      Biblioteca Nacional Digital ou outros repositórios oficiais em domínio público.
+    </section>
+
+    <!-- 1) MACHADO DE ASSIS -->
+    <section class="category">
+      <h2>Machado de Assis</h2>
+      <small>Romances e coletâneas em domínio público</small>
+      <div class="books-grid">
+
+        <article class="book-card">
+          <div>
+            <div class="book-title">Dom Casmurro</div>
+            <div class="book-meta">Machado de Assis • Romance • 1899</div>
+          </div>
+          <div class="book-actions">
+            <a href="#" target="_blank" rel="noopener">Ler online</a>
+            <a href="#" class="secondary" target="_blank" rel="noopener">Baixar PDF</a>
+          </div>
+        </article>
+
+        <article class="book-card">
+          <div>
+            <div class="book-title">Memórias Póstumas de Brás Cubas</div>
+            <div class="book-meta">Machado de Assis • Romance • 1881</div>
+          </div>
+          <div class="book-actions">
+            <a href="#" target="_blank" rel="noopener">Ler online</a>
+            <a href="#" class="secondary" target="_blank" rel="noopener">Baixar PDF</a>
+          </div>
+        </article>
+
+        <article class="book-card">
+          <div>
+            <div class="book-title">Quincas Borba</div>
+            <div class="book-meta">Machado de Assis • Romance • 1891</div>
+          </div>
+          <div class="book-actions">
+            <a href="#" target="_blank" rel="noopener">Ler online</a>
+            <a href="#" class="secondary" target="_blank" rel="noopener">Baixar PDF</a>
+          </div>
+        </article>
+
+        <article class="book-card">
+          <div>
+            <div class="book-title">Esaú e Jacó</div>
+            <div class="book-meta">Machado de Assis • Romance • 1904</div>
+          </div>
+          <div class="book-actions">
+            <a href="#" target="_blank" rel="noopener">Ler online</a>
+            <a href="#" class="secondary" target="_blank" rel="noopener">Baixar PDF</a>
+          </div>
+        </article>
+
+        <article class="book-card">
+          <div>
+            <div class="book-title">Memorial de Aires</div>
+            <div class="book-meta">Machado de Assis • Romance • 1908</div>
+          </div>
+          <div class="book-actions">
+            <a href="#" target="_blank" rel="noopener">Ler online</a>
+            <a href="#" class="secondary" target="_blank" rel="noopener">Baixar PDF</a>
+          </div>
+        </article>
+
+        <article class="book-card">
+          <div>
+            <div class="book-title">Helena</div>
+            <div class="book-meta">Machado de Assis • Romance • 1876</div>
+          </div>
+          <div class="book-actions">
+            <a href="#" target="_blank" rel="noopener">Ler online</a>
+            <a href="#" class="secondary" target="_blank" rel="noopener">Baixar PDF</a>
+          </div>
+        </article>
+
+        <article class="book-card">
+          <div>
+            <div class="book-title">Iaiá Garcia</div>
+            <div class="book-meta">Machado de Assis • Romance • 1878</div>
+          </div>
+          <div class="book-actions">
+            <a href="#" target="_blank" rel="noopener">Ler online</a>
+            <a href="#" class="secondary" target="_blank" rel="noopener">Baixar PDF</a>
+          </div>
+        </article>
+
+        <article class="book-card">
+          <div>
+            <div class="book-title">A Mão e a Luva</div>
+            <div class="book-meta">Machado de Assis • Romance • 1874</div>
+          </div>
+          <div class="book-actions">
+            <a href="#" target="_blank" rel="noopener">Ler online</a>
+            <a href="#" class="secondary" target="_blank" rel="noopener">Baixar PDF</a>
+          </div>
+        </article>
+
+        <article class="book-card">
+          <div>
+            <div class="book-title">Ressurreição</div>
+            <div class="book-meta">Machado de Assis • Romance • 1872</div>
+          </div>
+          <div class="book-actions">
+            <a href="#" target="_blank" rel="noopener">Ler online</a>
+            <a href="#" class="secondary" target="_blank" rel="noopener">Baixar PDF</a>
+          </div>
+        </article>
+
+        <article class="book-card">
+          <div>
+            <div class="book-title">Contos Fluminenses</div>
+            <div class="book-meta">Machado de Assis • Contos • 1870</div>
+          </div>
+          <div class="book-actions">
+            <a href="#" target="_blank" rel="noopener">Ler online</a>
+            <a href="#" class="secondary" target="_blank" rel="noopener">Baixar PDF</a>
+          </div>
+        </article>
+
+        <article class="book-card">
+          <div>
+            <div class="book-title">Papéis Avulsos</div>
+            <div class="book-meta">Machado de Assis • Contos • 1882</div>
+          </div>
+          <div class="book-actions">
+            <a href="#" target="_blank" rel="noopener">Ler online</a>
+            <a href="#" class="secondary" target="_blank" rel="noopener">Baixar PDF</a>
+          </div>
+        </article>
+
+        <article class="book-card">
+          <div>
+            <div class="book-title">Histórias da Meia-Noite</div>
+            <div class="book-meta">Machado de Assis • Contos • 1873</div>
+          </div>
+          <div class="book-actions">
+            <a href="#" target="_blank" rel="noopener">Ler online</a>
+            <a href="#" class="secondary" target="_blank" rel="noopener">Baixar PDF</a>
+          </div>
+        </article>
+
+        <article class="book-card">
+          <div>
+            <div class="book-title">Várias Histórias</div>
+            <div class="book-meta">Machado de Assis • Contos • 1896</div>
+          </div>
+          <div class="book-actions">
+            <a href="#" target="_blank" rel="noopener">Ler online</a>
+            <a href="#" class="secondary" target="_blank" rel="noopener">Baixar PDF</a>
+          </div>
+        </article>
+
+        <article class="book-card">
+          <div>
+            <div class="book-title">Histórias sem Data</div>
+            <div class="book-meta">Machado de Assis • Contos • 1884</div>
+          </div>
+          <div class="book-actions">
+            <a href="#" target="_blank" rel="noopener">Ler online</a>
+            <a href="#" class="secondary" target="_blank" rel="noopener">Baixar PDF</a>
+          </div>
+        </article>
+
+        <article class="book-card">
+          <div>
+            <div class="book-title">Páginas Recolhidas</div>
+            <div class="book-meta">Machado de Assis • Miscelânea • 1899</div>
+          </div>
+          <div class="book-actions">
+            <a href="#" target="_blank" rel="noopener">Ler online</a>
+            <a href="#" class="secondary" target="_blank" rel="noopener">Baixar PDF</a>
+          </div>
+        </article>
+
+        <article class="book-card">
+          <div>
+            <div class="book-title">Relíquias de Casa Velha</div>
+            <div class="book-meta">Machado de Assis • Contos • 1906</div>
+          </div>
+          <div class="book-actions">
+            <a href="#" target="_blank" rel="noopener">Ler online</a>
+            <a href="#" class="secondary" target="_blank" rel="noopener">Baixar PDF</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- 2) JOSÉ DE ALENCAR -->
+    <section class="category">
+      <h2>José de Alencar</h2>
+      <small>Clássicos do romantismo brasileiro</small>
+      <div class="books-grid">
+
+        <article class="book-card">
+          <div>
+            <div class="book-title">Iracema</div>
+            <div class="book-meta">José de Alencar • Romance • 1865</div>
+          </div>
+          <div class="book-actions">
+            <a href="#" target="_blank" rel="noopener">Ler online</a>
+            <a href="#" class="secondary" target="_blank" rel="noopener">Baixar PDF</a>
+          </div>
+        </article>
+
+        <article class="book-card">
+          <div>
+            <div class="book-title">O Guarani</div>
+            <div class="book-meta">José de Alencar • Romance • 1857</div>
+          </div>
+          <div class="book-actions">
+            <a href="#" target="_blank" rel="noopener">Ler online</a>
+            <a href="#" class="secondary" target="_blank" rel="noopener">Baixar PDF</a>
+          </div>
+        </article>
+
+        <article class="book-card">
+          <div>
+            <div class="book-title">Ubirajara</div>
+            <div class="book-meta">José de Alencar • Romance indígena • 1874</div>
+          </div>
+          <div class="book-actions">
+            <a href="#" target="_blank" rel="noopener">Ler online</a>
+            <a href="#" class="secondary" target="_blank" rel="noopener">Baixar PDF</a>
+          </div>
+        </article>
+
+        <article class="book-card">
+          <div>
+            <div class="book-title">Senhora</div>
+            <div class="book-meta">José de Alencar • Romance urbano • 1875</div>
+          </div>
+          <div class="book-actions">
+            <a href="#" target="_blank" rel="noopener">Ler online</a>
+            <a href="#" class="secondary" target="_blank" rel="noopener">Baixar PDF</a>
+          </div>
+        </article>
+
+        <article class="book-card">
+          <div>
+            <div class="book-title">Lucíola</div>
+            <div class="book-meta">José de Alencar • Romance urbano • 1862</div>
+          </div>
+          <div class="book-actions">
+            <a href="#" target="_blank" rel="noopener">Ler online</a>
+            <a href="#" class="secondary" target="_blank" rel="noopener">Baixar PDF</a>
+          </div>
+        </article>
+
+        <article class="book-card">
+          <div>
+            <div class="book-title">Diva</div>
+            <div class="book-meta">José de Alencar • Romance urbano • 1864</div>
+          </div>
+          <div class="book-actions">
+            <a href="#" target="_blank" rel="noopener">Ler online</a>
+            <a href="#" class="secondary" target="_blank" rel="noopener">Baixar PDF</a>
+          </div>
+        </article>
+
+        <article class="book-card">
+          <div>
+            <div class="book-title">Cinco Minutos</div>
+            <div class="book-meta">José de Alencar • Novela • 1856</div>
+          </div>
+          <div class="book-actions">
+            <a href="#" target="_blank" rel="noopener">Ler online</a>
+            <a href="#" class="secondary" target="_blank" rel="noopener">Baixar PDF</a>
+          </div>
+        </article>
+
+        <article class="book-card">
+          <div>
+            <div class="book-title">A Viuvinha</div>
+            <div class="book-meta">José de Alencar • Novela • 1860</div>
+          </div>
+          <div class="book-actions">
+            <a href="#" target="_blank" rel="noopener">Ler online</a>
+            <a href="#" class="secondary" target="_blank" rel="noopener">Baixar PDF</a>
+          </div>
+        </article>
+
+        <article class="book-card">
+          <div>
+            <div class="book-title">O Tronco do Ipê</div>
+            <div class="book-meta">José de Alencar • Romance regionalista • 1871</div>
+          </div>
+          <div class="book-actions">
+            <a href="#" target="_blank" rel="noopener">Ler online</a>
+            <a href="#" class="secondary" target="_blank" rel="noopener">Baixar PDF</a>
+          </div>
+        </article>
+
+        <article class="book-card">
+          <div>
+            <div class="book-title">Til</div>
+            <div class="book-meta">José de Alencar • Romance regionalista • 1872</div>
+          </div>
+          <div class="book-actions">
+            <a href="#" target="_blank" rel="noopener">Ler online</a>
+            <a href="#" class="secondary" target="_blank" rel="noopener">Baixar PDF</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- 3) NATURALISMO E REALISMO BRASILEIROS -->
+    <section class="category">
+      <h2>Realismo e Naturalismo brasileiros</h2>
+      <small>Aluísio Azevedo, Lima Barreto e outros</small>
+      <div class="books-grid">
+
+        <article class="book-card">
+          <div>
+            <div class="book-title">O Cortiço</div>
+            <div class="book-meta">Aluísio Azevedo • Romance naturalista • 1890</div>
+          </div>
+          <div class="book-actions">
+            <a href="#" target="_blank" rel="noopener">Ler online</a>
+            <a href="#" class="secondary" target="_blank" rel="noopener">Baixar PDF</a>
+          </div>
+        </article>
+
+        <article class="book-card">
+          <div>
+            <div class="book-title">Casa de Pensão</div>
+            <div class="book-meta">Aluísio Azevedo • Romance • 1884</div>
+          </div>
+          <div class="book-actions">
+            <a href="#" target="_blank" rel="noopener">Ler online</a>
+            <a href="#" class="secondary" target="_blank" rel="noopener">Baixar PDF</a>
+          </div>
+        </article>
+
+        <article class="book-card">
+          <div>
+            <div class="book-title">O Mulato</div>
+            <div class="book-meta">Aluísio Azevedo • Romance • 1881</div>
+          </div>
+          <div class="book-actions">
+            <a href="#" target="_blank" rel="noopener">Ler online</a>
+            <a href="#" class="secondary" target="_blank" rel="noopener">Baixar PDF</a>
+          </div>
+        </article>
+
+        <article class="book-card">
+          <div>
+            <div class="book-title">Triste Fim de Policarpo Quaresma</div>
+            <div class="book-meta">Lima Barreto • Romance • 1915</div>
+          </div>
+          <div class="book-actions">
+            <a href="#" target="_blank" rel="noopener">Ler online</a>
+            <a href="#" class="secondary" target="_blank" rel="noopener">Baixar PDF</a>
+          </div>
+        </article>
+
+        <article class="book-card">
+          <div>
+            <div class="book-title">Recordações do Escrivão Isaías Caminha</div>
+            <div class="book-meta">Lima Barreto • Romance • 1909</div>
+          </div>
+          <div class="book-actions">
+            <a href="#" target="_blank" rel="noopener">Ler online</a>
+            <a href="#" class="secondary" target="_blank" rel="noopener">Baixar PDF</a>
+          </div>
+        </article>
+
+        <article class="book-card">
+          <div>
+            <div class="book-title">Clara dos Anjos</div>
+            <div class="book-meta">Lima Barreto • Romance • póstumo (1922)</div>
+          </div>
+          <div class="book-actions">
+            <a href="#" target="_blank" rel="noopener">Ler online</a>
+            <a href="#" class="secondary" target="_blank" rel="noopener">Baixar PDF</a>
+          </div>
+        </article>
+
+        <article class="book-card">
+          <div>
+            <div class="book-title">O Ateneu</div>
+            <div class="book-meta">Raul Pompeia • Romance • 1888</div>
+          </div>
+          <div class="book-actions">
+            <a href="#" target="_blank" rel="noopener">Ler online</a>
+            <a href="#" class="secondary" target="_blank" rel="noopener">Baixar PDF</a>
+          </div>
+        </article>
+
+        <article class="book-card">
+          <div>
+            <div class="book-title">A Moreninha</div>
+            <div class="book-meta">Joaquim Manuel de Macedo • Romance • 1844</div>
+          </div>
+          <div class="book-actions">
+            <a href="#" target="_blank" rel="noopener">Ler online</a>
+            <a href="#" class="secondary" target="_blank" rel="noopener">Baixar PDF</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- 4) LITERATURA PORTUGUESA EM DOMÍNIO PÚBLICO -->
+    <section class="category">
+      <h2>Literatura portuguesa em domínio público</h2>
+      <small>Eça de Queirós, Camilo Castelo Branco e outros</small>
+      <div class="books-grid">
+
+        <article class="book-card">
+          <div>
+            <div class="book-title">Os Maias</div>
+            <div class="book-meta">Eça de Queirós • Romance • 1888</div>
+          </div>
+          <div class="book-actions">
+            <a href="#" target="_blank" rel="noopener">Ler online</a>
+            <a href="#" class="secondary" target="_blank" rel="noopener">Baixar PDF</a>
+          </div>
+        </article>
+
+        <article class="book-card">
+          <div>
+            <div class="book-title">O Crime do Padre Amaro</div>
+            <div class="book-meta">Eça de Queirós • Romance • 1875</div>
+          </div>
+          <div class="book-actions">
+            <a href="#" target="_blank" rel="noopener">Ler online</a>
+            <a href="#" class="secondary" target="_blank" rel="noopener">Baixar PDF</a>
+          </div>
+        </article>
+
+        <article class="book-card">
+          <div>
+            <div class="book-title">O Primo Basílio</div>
+            <div class="book-meta">Eça de Queirós • Romance • 1878</div>
+          </div>
+          <div class="book-actions">
+            <a href="#" target="_blank" rel="noopener">Ler online</a>
+            <a href="#" class="secondary" target="_blank" rel="noopener">Baixar PDF</a>
+          </div>
+        </article>
+
+        <article class="book-card">
+          <div>
+            <div class="book-title">Amor de Perdição</div>
+            <div class="book-meta">Camilo Castelo Branco • Romance • 1862</div>
+          </div>
+          <div class="book-actions">
+            <a href="#" target="_blank" rel="noopener">Ler online</a>
+            <a href="#" class="secondary" target="_blank" rel="noopener">Baixar PDF</a>
+          </div>
+        </article>
+
+        <article class="book-card">
+          <div>
+            <div class="book-title">Coração, Cabeça e Estômago</div>
+            <div class="book-meta">Camilo Castelo Branco • Romance • 1862</div>
+          </div>
+          <div class="book-actions">
+            <a href="#" target="_blank" rel="noopener">Ler online</a>
+            <a href="#" class="secondary" target="_blank" rel="noopener">Baixar PDF</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- 5) POESIA BRASILEIRA EM DOMÍNIO PÚBLICO -->
+    <section class="category">
+      <h2>Poesia brasileira em domínio público</h2>
+      <small>Castro Alves, Olavo Bilac e outros</small>
+      <div class="books-grid">
+
+        <article class="book-card">
+          <div>
+            <div class="book-title">Espumas Flutuantes</div>
+            <div class="book-meta">Castro Alves • Poesia • 1870</div>
+          </div>
+          <div class="book-actions">
+            <a href="#" target="_blank" rel="noopener">Ler online</a>
+            <a href="#" class="secondary" target="_blank" rel="noopener">Baixar PDF</a>
+          </div>
+        </article>
+
+        <article class="book-card">
+          <div>
+            <div class="book-title">Os Escravos</div>
+            <div class="book-meta">Castro Alves • Poesia • 1883 (póstumo)</div>
+          </div>
+          <div class="book-actions">
+            <a href="#" target="_blank" rel="noopener">Ler online</a>
+            <a href="#" class="secondary" target="_blank" rel="noopener">Baixar PDF</a>
+          </div>
+        </article>
+
+        <article class="book-card">
+          <div>
+            <div class="book-title">Poesias</div>
+            <div class="book-meta">Olavo Bilac • Coletânea poética • séc. XIX-XX</div>
+          </div>
+          <div class="book-actions">
+            <a href="#" target="_blank" rel="noopener">Ler online</a>
+            <a href="#" class="secondary" target="_blank" rel="noopener">Baixar PDF</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+  </main>
+  
+  <!-- lista de opções menu -->
+  <script>
+   // ================================
+   // SISTEMA DE LISTAS (localStorage)
+   // ================================
+   
+   const STORAGE_KEYS = {
+      favoritos: "biblioteca_favoritos",
+      queroLer: "biblioteca_quero_ler",
+      lidos: "biblioteca_lidos"
+   };
+   
+   function loadList(key) {
+      return JSON.parse(localStorage.getItem(key) || "[]");
+   }
+   
+   function saveList(key, list) {
+      localStorage.setItem(key, JSON.stringify(list));
+   }
+   
+   function toggleItem(listKey, bookId) {
+      const list = loadList(listKey);
+      const index = list.indexOf(bookId);
+      
+      if (index === -1) {
+         list.push(bookId);
+      } else {
+         list.splice(index, 1);
+      }
+      
+      saveList(listKey, list);
+      updateUI();
+   }
+   
+   // ================================
+   // ATUALIZAÇÃO VISUAL
+   // ================================
+   
+   function updateUI() {
+      const favoritos = loadList(STORAGE_KEYS.favoritos);
+      const queroLer = loadList(STORAGE_KEYS.queroLer);
+      const lidos = loadList(STORAGE_KEYS.lidos);
+      
+      document.querySelectorAll("[data-book-id]").forEach(card => {
+         const id = card.dataset.bookId;
+         
+         card.querySelector(".fav-status").textContent =
+            favoritos.includes(id) ? "⭐ Favorito" : "";
+         
+         card.querySelector(".ler-status").textContent =
+            queroLer.includes(id) ? "📘 Quero ler" : "";
+         
+         card.querySelector(".lido-status").textContent =
+            lidos.includes(id) ? "✔️ Lido" : "";
+      });
+   }
+   
+   // ================================
+   // MENU "VER MAIS"
+   // ================================
+   
+   function openMenu(id) {
+      const menu = document.getElementById("menu-" + id);
+      menu.style.display = menu.style.display === "block" ? "none" : "block";
+   }
+   
+   // Fecha menus ao clicar fora
+   document.addEventListener("click", function(e) {
+      if (!e.target.classList.contains("ver-mais-btn")) {
+         document.querySelectorAll(".menu-opcoes").forEach(menu => {
+            menu.style.display = "none";
+         });
+      }
+   });
+   
+   // Inicializa interface
+   document.addEventListener("DOMContentLoaded", updateUI);
+</script>
+
+  <footer>
+    Biblioteca Virtual do ESF Thamara • Somente obras em domínio público, para uso educacional e comunitário.
+  </footer>
+</body>
+</html>
