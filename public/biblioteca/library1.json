@@ -1,0 +1,100 @@
+{
+  "memorias-postumas-bras-cubas": {
+    "title": "Memórias Póstumas de Brás Cubas",
+    "author": "Machado de Assis",
+    "year": 1881,
+    "read": "https://www.dominiopublico.gov.br/pesquisa/PesquisaObraForm.do?select_action=&co_autor=Machado+de+Assis",
+    "pdf": "https://www.dominiopublico.gov.br"
+  },
+  "dom-casmurro": {
+    "title": "Dom Casmurro",
+    "author": "Machado de Assis",
+    "year": 1899,
+    "read": "https://www.dominiopublico.gov.br/pesquisa/PesquisaObraForm.do?select_action=&co_autor=Machado+de+Assis",
+    "pdf": "https://www.dominiopublico.gov.br"
+  },
+  "quincas-borba": {
+    "title": "Quincas Borba",
+    "author": "Machado de Assis",
+    "year": 1891,
+    "read": "https://www.dominiopublico.gov.br/pesquisa/PesquisaObraForm.do?select_action=&co_autor=Machado+de+Assis",
+    "pdf": "https://www.dominiopublico.gov.br"
+  },
+  "o-cortico": {
+    "title": "O Cortiço",
+    "author": "Aluísio Azevedo",
+    "year": 1890,
+    "read": "https://www.dominiopublico.gov.br/pesquisa/PesquisaObraForm.do?select_action=&co_autor=Alu%C3%ADsio+Azevedo",
+    "pdf": "https://www.dominiopublico.gov.br"
+  },
+  "iracema": {
+    "title": "Iracema",
+    "author": "José de Alencar",
+    "year": 1865,
+    "read": "https://www.dominiopublico.gov.br/pesquisa/PesquisaObraForm.do?select_action=&co_autor=Jos%C3%A9+de+Alencar",
+    "pdf": "https://www.dominiopublico.gov.br"
+  },
+  "senhora": {
+    "title": "Senhora",
+    "author": "José de Alencar",
+    "year": 1875,
+    "read": "https://www.dominiopublico.gov.br/pesquisa/PesquisaObraForm.do?select_action=&co_autor=Jos%C3%A9+de+Alencar",
+    "pdf": "https://www.dominiopublico.gov.br"
+  },
+  "o-guarani": {
+    "title": "O Guarani",
+    "author": "José de Alencar",
+    "year": 1857,
+    "read": "https://www.dominiopublico.gov.br/pesquisa/PesquisaObraForm.do?select_action=&co_autor=Jos%C3%A9+de+Alencar",
+    "pdf": "https://www.dominiopublico.gov.br"
+  },
+  "os-lusíadas": {
+    "title": "Os Lusíadas",
+    "author": "Luís de Camões",
+    "year": 1572,
+    "read": "https://www.dominiopublico.gov.br/pesquisa/PesquisaObraForm.do?select_action=&co_autor=Lu%C3%ADs+de+Cam%C3%B5es",
+    "pdf": "https://www.dominiopublico.gov.br"
+  },
+  "cartas-chile": {
+    "title": "Cartas Chilenas",
+    "author": "Tomás Antônio Gonzaga",
+    "year": 1789,
+    "read": "https://www.dominiopublico.gov.br/pesquisa/PesquisaObraForm.do?select_action=&co_autor=Tom%C3%A1s+Ant%C3%B4nio+Gonzaga",
+    "pdf": "https://www.dominiopublico.gov.br"
+  },
+  "marilia-de-dirceu": {
+    "title": "Marília de Dirceu",
+    "author": "Tomás Antônio Gonzaga",
+    "year": 1792,
+    "read": "https://www.dominiopublico.gov.br/pesquisa/PesquisaObraForm.do?select_action=&co_autor=Tom%C3%A1s+Ant%C3%B4nio+Gonzaga",
+    "pdf": "https://www.dominiopublico.gov.br"
+  },
+  "a-moreninha": {
+    "title": "A Moreninha",
+    "author": "Joaquim Manuel de Macedo",
+    "year": 1844,
+    "read": "https://www.dominiopublico.gov.br/pesquisa/PesquisaObraForm.do?select_action=&co_autor=Joaquim+Manuel+de+Macedo",
+    "pdf": "https://www.dominiopublico.gov.br"
+  },
+  "noites-na-taverna": {
+    "title": "Noites na Taverna",
+    "author": "Álvares de Azevedo",
+    "year": 1855,
+    "read": "https://www.dominiopublico.gov.br/pesquisa/PesquisaObraForm.do?select_action=&co_autor=%C3%81lvares+de+Azevedo",
+    "pdf": "https://www.dominiopublico.gov.br"
+  },
+  "o-alienista": {
+    "title": "O Alienista",
+    "author": "Machado de Assis",
+    "year": 1882,
+    "read": "https://www.dominiopublico.gov.br/pesquisa/PesquisaObraForm.do?select_action=&co_autor=Machado+de+Assis",
+    "pdf": "https://www.dominiopublico.gov.br"
+  },
+  "vidas-secas": {
+    "title": "Vidas Secas",
+    "author": "Graciliano Ramos",
+    "year": 1938,
+    "read": "https://www.dominiopublico.gov.br",
+    "pdf": ""
+  }
+}

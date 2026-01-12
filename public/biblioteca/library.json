@@ -1,0 +1,1139 @@
+{
+  "dom-casmurro": {
+    "title": "Dom Casmurro",
+    "author": "Machado de Assis",
+    "year": 1899,
+    "lang": "PT",
+    "read": "https://bdlb.bn.gov.br/acervo/handle/20.500.12156.3/18683",
+    "pdf": "https://digital.bbm.usp.br/handle/bbm/4828/002038_COMPLETO.pdf"
+  },
+  "memorias-postumas-bras-cubas": {
+    "title": "Memórias Póstumas de Brás Cubas",
+    "author": "Machado de Assis",
+    "year": 1881,
+    "lang": "PT",
+    "read": "https://www1.curso-objetivo.br/vestibular/assets/download/obras-literarias/machado-de-assis/memorias-postumas-de-bras-cubas.pdf",
+    "pdf": "https://www1.curso-objetivo.br/vestibular/assets/download/obras-literarias/machado-de-assis/memorias-postumas-de-bras-cubas.pdf"
+  },
+  "o-cortico": {
+    "title": "O Cortiço",
+    "author": "Aluísio Azevedo",
+    "year": 1890,
+    "lang": "PT",
+    "read": "https://pt.wikisource.org/wiki/O_Cortiço",
+    "pdf": "https://files.livrosdominiopublico.com.br/livros/pt/azevedo-aluisio/o-cortico.pdf"
+  },
+  "iracema": {
+    "title": "Iracema",
+    "author": "José de Alencar",
+    "year": 1865,
+    "lang": "PT",
+    "read": "https://pt.wikisource.org/wiki/Iracema",
+    "pdf": "https://files.livrosdominiopublico.com.br/livros/pt/alencar-jose/iracema.pdf"
+  },
+  "o-guarani": {
+    "title": "O Guarani",
+    "author": "José de Alencar",
+    "year": 1857,
+    "lang": "PT",
+    "read": "https://pt.wikisource.org/wiki/O_Guarani",
+    "pdf": "https://files.livrosdominiopublico.com.br/livros/pt/alencar-jose/o-guarani.pdf"
+  },
+  "senhora": {
+    "title": "Senhora",
+    "author": "José de Alencar",
+    "year": 1875,
+    "lang": "PT",
+    "read": "https://pt.wikisource.org/wiki/Senhora",
+    "pdf": "https://files.livrosdominiopublico.com.br/livros/pt/alencar-jose/senhora.pdf"
+  },
+  "a-moreninha": {
+    "title": "A Moreninha",
+    "author": "Joaquim Manuel de Macedo",
+    "year": 1844,
+    "lang": "PT",
+    "read": "https://pt.wikisource.org/wiki/A_Moreninha",
+    "pdf": "https://files.livrosdominiopublico.com.br/livros/pt/macedo-joaquim-m/a-moreninha.pdf"
+  },
+  "lira-dos-vinte-anos": {
+    "title": "Lira dos Vinte Anos",
+    "author": "Álvares de Azevedo",
+    "year": 1853,
+    "lang": "PT",
+    "read": "https://pt.wikisource.org/wiki/Lira_dos_vinte_anos",
+    "pdf": "https://files.livrosdominiopublico.com.br/livros/pt/azevedo-alvares/lira-dos-vinte-anos.pdf"
+  },
+  "noites-na-taverna": {
+    "title": "Noites na Taverna",
+    "author": "Álvares de Azevedo",
+    "year": 1855,
+    "lang": "PT",
+    "read": "https://pt.wikisource.org/wiki/Noites_na_taverna",
+    "pdf": "https://files.livrosdominiopublico.com.br/livros/pt/azevedo-alvares/noites-na-taverna.pdf"
+  },
+  "cartas-de-caminha": {
+    "title": "Carta de Pero Vaz de Caminha",
+    "author": "Pero Vaz de Caminha",
+    "year": 1500,
+    "lang": "PT",
+    "read": "https://pt.wikisource.org/wiki/Carta_de_Pero_Vaz_de_Caminha",
+    "pdf": "https://files.livrosdominiopublico.com.br/livros/pt/caminha-pero-vaz/carta-de-pero-vaz-de-caminha.pdf"
+  },
+  "os-lusiadas": {
+    "title": "Os Lusíadas",
+    "author": "Luís de Camões",
+    "year": 1572,
+    "lang": "PT",
+    "read": "https://pt.wikisource.org/wiki/Os_Lus%C3%ADadas",
+    "pdf": "https://files.livrosdominiopublico.com.br/livros/pt/camoes-luis-de/os-lusiadas.pdf"
+  },
+  "cancioneiro-fernando-pessoa": {
+    "title": "Cancioneiro",
+    "author": "Fernando Pessoa",
+    "year": 1918,
+    "lang": "PT",
+    "read": "https://pt.wikisource.org/wiki/Cancioneiro_(Fernando_Pessoa)",
+    "pdf": "https://files.livrosdominiopublico.com.br/livros/pt/pessoa-fernando/cancioneiro.pdf"
+  },
+  "mensagem-fernando-pessoa": {
+    "title": "Mensagem",
+    "author": "Fernando Pessoa",
+    "year": 1934,
+    "lang": "PT",
+    "read": "https://pt.wikisource.org/wiki/Mensagem_(Fernando_Pessoa)",
+    "pdf": "https://files.livrosdominiopublico.com.br/livros/pt/pessoa-fernando/mensagem.pdf"
+  },
+  "cartas-chilenas": {
+    "title": "Cartas Chilenas",
+    "author": "Tomás Antônio Gonzaga",
+    "year": 1789,
+    "lang": "PT",
+    "read": "https://pt.wikisource.org/wiki/Cartas_Chilenas",
+    "pdf": "https://files.livrosdominiopublico.com.br/livros/pt/gonzaga-tomas-antonio/cartas-chilenas.pdf"
+  },
+  "marilia-de-dirceu": {
+    "title": "Marília de Dirceu",
+    "author": "Tomás Antônio Gonzaga",
+    "year": 1792,
+    "lang": "PT",
+    "read": "https://pt.wikisource.org/wiki/Mar%C3%ADlia_de_Dirceu",
+    "pdf": "https://files.livrosdominiopublico.com.br/livros/pt/gonzaga-tomas-antonio/marilia-de-dirceu.pdf"
+  },
+  "auto-da-barca-do-inferno": {
+    "title": "Auto da Barca do Inferno",
+    "author": "Gil Vicente",
+    "year": 1517,
+    "lang": "PT",
+    "read": "https://pt.wikisource.org/wiki/Auto_da_Barca_do_Inferno",
+    "pdf": "https://files.livrosdominiopublico.com.br/livros/pt/vicente-gil/auto-da-barca-do-inferno.pdf"
+  },
+  "farsa-de-ines-pereira": {
+    "title": "Farsa de Inês Pereira",
+    "author": "Gil Vicente",
+    "year": 1523,
+    "lang": "PT",
+    "read": "https://pt.wikisource.org/wiki/Farsa_de_In%C3%AAs_Pereira",
+    "pdf": "https://files.livrosdominiopublico.com.br/livros/pt/vicente-gil/farsa-de-ines-pereira.pdf"
+  },
+  "a-carta": {
+    "title": "A Carta",
+    "author": "Machado de Assis",
+    "year": 1884,
+    "lang": "PT",
+    "read": "https://pt.wikisource.org/wiki/A_Carta_(Machado_de_Assis)",
+    "pdf": "https://files.livrosdominiopublico.com.br/livros/pt/assis-machado-de/a-carta.pdf"
+  },
+  "a-carteira": {
+    "title": "A Carteira",
+    "author": "Machado de Assis",
+    "year": 1882,
+    "lang": "PT",
+    "read": "https://pt.wikisource.org/wiki/A_Carteira",
+    "pdf": "https://files.livrosdominiopublico.com.br/livros/pt/assis-machado-de/a-carteira.pdf"
+  },
+  "a-cartomante": {
+    "title": "A Cartomante",
+    "author": "Machado de Assis",
+    "year": 1884,
+    "lang": "PT",
+    "read": "https://pt.wikisource.org/wiki/A_Cartomante",
+    "pdf": "https://files.livrosdominiopublico.com.br/livros/pt/assis-machado-de/a-cartomante.pdf"
+  }
+}
+{
+  "vidas-secas": {
+    "title": "Vidas Secas",
+    "author": "Graciliano Ramos",
+    "year": 1938,
+    "lang": "PT",
+    "read": "https://pt.wikisource.org/wiki/Vidas_Secas",
+    "pdf": "https://files.livrosdominiopublico.com.br/livros/pt/ramos-graciliano/vidas-secas.pdf"
+  },
+  "angustia": {
+    "title": "Angústia",
+    "author": "Graciliano Ramos",
+    "year": 1936,
+    "lang": "PT",
+    "read": "https://pt.wikisource.org/wiki/Ang%C3%BAstia",
+    "pdf": "https://files.livrosdominiopublico.com.br/livros/pt/ramos-graciliano/angustia.pdf"
+  },
+  "sao-bernardo": {
+    "title": "São Bernardo",
+    "author": "Graciliano Ramos",
+    "year": 1934,
+    "lang": "PT",
+    "read": "https://pt.wikisource.org/wiki/S%C3%A3o_Bernardo",
+    "pdf": "https://files.livrosdominiopublico.com.br/livros/pt/ramos-graciliano/sao-bernardo.pdf"
+  },
+  "triste-fim-policarpo-quaresma": {
+    "title": "Triste Fim de Policarpo Quaresma",
+    "author": "Lima Barreto",
+    "year": 1915,
+    "lang": "PT",
+    "read": "https://pt.wikisource.org/wiki/Triste_Fim_de_Policarpo_Quaresma",
+    "pdf": "https://files.livrosdominiopublico.com.br/livros/pt/barreto-lima/triste-fim-de-policarpo-quaresma.pdf"
+  },
+  "recordacoes-escrivao-isaias-caminha": {
+    "title": "Recordações do Escrivão Isaías Caminha",
+    "author": "Lima Barreto",
+    "year": 1909,
+    "lang": "PT",
+    "read": "https://pt.wikisource.org/wiki/Recorda%C3%A7%C3%B5es_do_Escriv%C3%A3o_Isa%C3%ADas_Caminha",
+    "pdf": "https://files.livrosdominiopublico.com.br/livros/pt/barreto-lima/recordacoes-do-escrivao-isaias-caminha.pdf"
+  },
+  "o-homem-que-sabia-javanes": {
+    "title": "O Homem que Sabia Javanês",
+    "author": "Lima Barreto",
+    "year": 1911,
+    "lang": "PT",
+    "read": "https://pt.wikisource.org/wiki/O_Homem_que_Sabia_Javan%C3%AAs",
+    "pdf": "https://files.livrosdominiopublico.com.br/livros/pt/barreto-lima/o-homem-que-sabia-javanes.pdf"
+  },
+  "clara-dos-anjos": {
+    "title": "Clara dos Anjos",
+    "author": "Lima Barreto",
+    "year": 1922,
+    "lang": "PT",
+    "read": "https://pt.wikisource.org/wiki/Clara_dos_Anjos",
+    "pdf": "https://files.livrosdominiopublico.com.br/livros/pt/barreto-lima/clara-dos-anjos.pdf"
+  },
+  "o-ateneu": {
+    "title": "O Ateneu",
+    "author": "Raul Pompeia",
+    "year": 1888,
+    "lang": "PT",
+    "read": "https://pt.wikisource.org/wiki/O_Ateneu",
+    "pdf": "https://files.livrosdominiopublico.com.br/livros/pt/pompeia-raul/o-ateneu.pdf"
+  },
+  "inocencia": {
+    "title": "Inocência",
+    "author": "Visconde de Taunay",
+    "year": 1872,
+    "lang": "PT",
+    "read": "https://pt.wikisource.org/wiki/Inoc%C3%AAncia",
+    "pdf": "https://files.livrosdominiopublico.com.br/livros/pt/taunay-visconde/inocencia.pdf"
+  },
+  "o-mulato": {
+    "title": "O Mulato",
+    "author": "Aluísio Azevedo",
+    "year": 1881,
+    "lang": "PT",
+    "read": "https://pt.wikisource.org/wiki/O_Mulato",
+    "pdf": "https://files.livrosdominiopublico.com.br/livros/pt/azevedo-aluisio/o-mulato.pdf"
+  },
+  "casa-de-pensao": {
+    "title": "Casa de Pensão",
+    "author": "Aluísio Azevedo",
+    "year": 1884,
+    "lang": "PT",
+    "read": "https://pt.wikisource.org/wiki/Casa_de_Pens%C3%A3o",
+    "pdf": "https://files.livrosdominiopublico.com.br/livros/pt/azevedo-aluisio/casa-de-pensao.pdf"
+  },
+  "o-homem": {
+    "title": "O Homem",
+    "author": "Aluísio Azevedo",
+    "year": 1887,
+    "lang": "PT",
+    "read": "https://pt.wikisource.org/wiki/O_Homem",
+    "pdf": "https://files.livrosdominiopublico.com.br/livros/pt/azevedo-aluisio/o-homem.pdf"
+  },
+  "sertoes": {
+    "title": "Os Sertões",
+    "author": "Euclides da Cunha",
+    "year": 1902,
+    "lang": "PT",
+    "read": "https://pt.wikisource.org/wiki/Os_Sert%C3%B5es",
+    "pdf": "https://files.livrosdominiopublico.com.br/livros/pt/cunha-euclides/os-sertoes.pdf"
+  },
+  "conto-de-escola": {
+    "title": "Conto de Escola",
+    "author": "Machado de Assis",
+    "year": 1884,
+    "lang": "PT",
+    "read": "https://pt.wikisource.org/wiki/Conto_de_Escola",
+    "pdf": "https://files.livrosdominiopublico.com.br/livros/pt/assis-machado-de/conto-de-escola.pdf"
+  },
+  "pai-contra-mae": {
+    "title": "Pai contra Mãe",
+    "author": "Machado de Assis",
+    "year": 1906,
+    "lang": "PT",
+    "read": "https://pt.wikisource.org/wiki/Pai_contra_M%C3%A3e",
+    "pdf": "https://files.livrosdominiopublico.com.br/livros/pt/assis-machado-de/pai-contra-mae.pdf"
+  },
+  "teoria-do-medalhao": {
+    "title": "Teoria do Medalhão",
+    "author": "Machado de Assis",
+    "year": 1881,
+    "lang": "PT",
+    "read": "https://pt.wikisource.org/wiki/Teoria_do_Medalh%C3%A3o",
+    "pdf": "https://files.livrosdominiopublico.com.br/livros/pt/assis-machado-de/teoria-do-medalhao.pdf"
+  },
+  "a-missa-do-galo": {
+    "title": "A Missa do Galo",
+    "author": "Machado de Assis",
+    "year": 1893,
+    "lang": "PT",
+    "read": "https://pt.wikisource.org/wiki/A_Missa_do_Galo",
+    "pdf": "https://files.livrosdominiopublico.com.br/livros/pt/assis-machado-de/a-missa-do-galo.pdf"
+  },
+  "o-alienista": {
+    "title": "O Alienista",
+    "author": "Machado de Assis",
+    "year": 1882,
+    "lang": "PT",
+    "read": "https://pt.wikisource.org/wiki/O_Alienista",
+    "pdf": "https://files.livrosdominiopublico.com.br/livros/pt/assis-machado-de/o-alienista.pdf"
+  },
+  "o-espelho": {
+    "title": "O Espelho",
+    "author": "Machado de Assis",
+    "year": 1882,
+    "lang": "PT",
+    "read": "https://pt.wikisource.org/wiki/O_Espelho_(Machado_de_Assis)",
+    "pdf": "https://files.livrosdominiopublico.com.br/livros/pt/assis-machado-de/o-espelho.pdf"
+  },
+  "uns-bracos": {
+    "title": "Uns Braços",
+    "author": "Machado de Assis",
+    "year": 1895,
+    "lang": "PT",
+    "read": "https://pt.wikisource.org/wiki/Uns_Bra%C3%A7os",
+    "pdf": "https://files.livrosdominiopublico.com.br/livros/pt/assis-machado-de/uns-bracos.pdf"
+  }
+}
+
+{
+  "a-republica-platao": {
+    "title": "A República",
+    "author": "Platão",
+    "year": -380,
+    "lang": "GR→PT",
+    "read": "https://pt.wikisource.org/wiki/A_Rep%C3%BAblica",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/arepublica.pdf"
+  },
+  "banquete-platao": {
+    "title": "O Banquete",
+    "author": "Platão",
+    "year": -385,
+    "lang": "GR→PT",
+    "read": "https://pt.wikisource.org/wiki/O_Banquete",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/obanquete.pdf"
+  },
+  "apologia-de-socrates": {
+    "title": "Apologia de Sócrates",
+    "author": "Platão",
+    "year": -399,
+    "lang": "GR→PT",
+    "read": "https://pt.wikisource.org/wiki/Apologia_de_S%C3%B3crates",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/apologiasocrates.pdf"
+  },
+  "etica-a-nicomaco": {
+    "title": "Ética a Nicômaco",
+    "author": "Aristóteles",
+    "year": -340,
+    "lang": "GR→PT",
+    "read": "https://pt.wikisource.org/wiki/%C3%89tica_a_Nic%C3%B4maco",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/eticanicomaco.pdf"
+  },
+  "politica-aristoteles": {
+    "title": "Política",
+    "author": "Aristóteles",
+    "year": -330,
+    "lang": "GR→PT",
+    "read": "https://pt.wikisource.org/wiki/Pol%C3%ADtica_(Arist%C3%B3teles)",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/politicaaristoteles.pdf"
+  },
+  "discurso-do-metodo": {
+    "title": "Discurso do Método",
+    "author": "René Descartes",
+    "year": 1637,
+    "lang": "FR→PT",
+    "read": "https://pt.wikisource.org/wiki/Discurso_do_M%C3%A9todo",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/discursodometodo.pdf"
+  },
+  "meditacoes-metafisicas": {
+    "title": "Meditações Metafísicas",
+    "author": "René Descartes",
+    "year": 1641,
+    "lang": "FR→PT",
+    "read": "https://pt.wikisource.org/wiki/Medita%C3%A7%C3%B5es_Metaf%C3%ADsicas",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/meditacoesmetafisicas.pdf"
+  },
+  "ensaio-sobre-entendimento-humano": {
+    "title": "Ensaio sobre o Entendimento Humano",
+    "author": "John Locke",
+    "year": 1690,
+    "lang": "EN→PT",
+    "read": "https://pt.wikisource.org/wiki/Ensaio_sobre_o_Entendimento_Humano",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/entendimentohumano.pdf"
+  },
+  "segundo-tratado-governo": {
+    "title": "Segundo Tratado sobre o Governo",
+    "author": "John Locke",
+    "year": 1689,
+    "lang": "EN→PT",
+    "read": "https://pt.wikisource.org/wiki/Segundo_Tratado_sobre_o_Governo",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/segundotratado.pdf"
+  },
+  "o-espirito-das-leis": {
+    "title": "O Espírito das Leis",
+    "author": "Montesquieu",
+    "year": 1748,
+    "lang": "FR→PT",
+    "read": "https://pt.wikisource.org/wiki/O_Esp%C3%ADrito_das_Leis",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/espiritodasleis.pdf"
+  },
+  "contrato-social": {
+    "title": "Do Contrato Social",
+    "author": "Jean-Jacques Rousseau",
+    "year": 1762,
+    "lang": "FR→PT",
+    "read": "https://pt.wikisource.org/wiki/Do_Contrato_Social",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/contratosocial.pdf"
+  },
+  "discurso-desigualdade": {
+    "title": "Discurso sobre a Desigualdade",
+    "author": "Jean-Jacques Rousseau",
+    "year": 1755,
+    "lang": "FR→PT",
+    "read": "https://pt.wikisource.org/wiki/Discurso_sobre_a_Origem_da_Desigualdade",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/desigualdade.pdf"
+  },
+  "critica-razao-pratica": {
+    "title": "Crítica da Razão Prática",
+    "author": "Immanuel Kant",
+    "year": 1788,
+    "lang": "DE→PT",
+    "read": "https://pt.wikisource.org/wiki/Cr%C3%ADtica_da_Raz%C3%A3o_Pr%C3%A1tica",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/razaopratica.pdf"
+  },
+  "fundamentacao-metafisica-dos-costumes": {
+    "title": "Fundamentação da Metafísica dos Costumes",
+    "author": "Immanuel Kant",
+    "year": 1785,
+    "lang": "DE→PT",
+    "read": "https://pt.wikisource.org/wiki/Fundamenta%C3%A7%C3%A3o_da_Metaf%C3%ADsica_dos_Costumes",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/metafisicacostumes.pdf"
+  },
+  "manifesto-comunista": {
+    "title": "Manifesto do Partido Comunista",
+    "author": "Karl Marx & Friedrich Engels",
+    "year": 1848,
+    "lang": "DE→PT",
+    "read": "https://pt.wikisource.org/wiki/Manifesto_do_Partido_Comunista",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/manifestocomunista.pdf"
+  },
+  "a-origem-das-especies": {
+    "title": "A Origem das Espécies",
+    "author": "Charles Darwin",
+    "year": 1859,
+    "lang": "EN→PT",
+    "read": "https://pt.wikisource.org/wiki/A_Origem_das_Esp%C3%A9cies",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/origemdasespecies.pdf"
+  },
+  "viagem-ao-redor-do-mundo": {
+    "title": "Viagem ao Redor do Mundo no Beagle",
+    "author": "Charles Darwin",
+    "year": 1839,
+    "lang": "EN→PT",
+    "read": "https://pt.wikisource.org/wiki/Viagem_de_um_Naturalista_ao_Redor_do_Mundo",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/viagembeagle.pdf"
+  },
+  "utopia": {
+    "title": "Utopia",
+    "author": "Thomas More",
+    "year": 1516,
+    "lang": "LA→PT",
+    "read": "https://pt.wikisource.org/wiki/Utopia",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/utopia.pdf"
+  },
+  "o-principe": {
+    "title": "O Príncipe",
+    "author": "Nicolau Maquiavel",
+    "year": 1513,
+    "lang": "IT→PT",
+    "read": "https://pt.wikisource.org/wiki/O_Pr%C3%ADncipe",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/oprincipe.pdf"
+  },
+  "discursos-sobre-a-primeira-decada": {
+    "title": "Discursos sobre a Primeira Década de Tito Lívio",
+    "author": "Nicolau Maquiavel",
+    "year": 1517,
+    "lang": "IT→PT",
+    "read": "https://pt.wikisource.org/wiki/Discursos_sobre_a_primeira_d%C3%A9cada_de_Tito_L%C3%ADvio",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/discursoslivio.pdf"
+  }
+}
+
+{
+  "dom-quixote": {
+    "title": "Dom Quixote de la Mancha",
+    "author": "Miguel de Cervantes",
+    "year": 1605,
+    "lang": "ES→PT",
+    "read": "https://pt.wikisource.org/wiki/Dom_Quixote",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/domquixote.pdf"
+  },
+  "os-lusiadas": {
+    "title": "Os Lusíadas",
+    "author": "Luís de Camões",
+    "year": 1572,
+    "lang": "PT",
+    "read": "https://pt.wikisource.org/wiki/Os_Lus%C3%ADadas",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/lusiadas.pdf"
+  },
+  "romeu-julieta": {
+    "title": "Romeu e Julieta",
+    "author": "William Shakespeare",
+    "year": 1597,
+    "lang": "EN→PT",
+    "read": "https://pt.wikisource.org/wiki/Romeu_e_Julieta",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/romeuejulieta.pdf"
+  },
+  "hamlet": {
+    "title": "Hamlet",
+    "author": "William Shakespeare",
+    "year": 1603,
+    "lang": "EN→PT",
+    "read": "https://pt.wikisource.org/wiki/Hamlet",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/hamlet.pdf"
+  },
+  "a-divina-comedia": {
+    "title": "A Divina Comédia",
+    "author": "Dante Alighieri",
+    "year": 1320,
+    "lang": "IT→PT",
+    "read": "https://pt.wikisource.org/wiki/A_Divina_Com%C3%A9dia",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/divinacomedia.pdf"
+  },
+  "fausto": {
+    "title": "Fausto",
+    "author": "Johann Wolfgang von Goethe",
+    "year": 1808,
+    "lang": "DE→PT",
+    "read": "https://pt.wikisource.org/wiki/Fausto",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/fausto.pdf"
+  },
+  "viagens-de-gulliver": {
+    "title": "As Viagens de Gulliver",
+    "author": "Jonathan Swift",
+    "year": 1726,
+    "lang": "EN→PT",
+    "read": "https://pt.wikisource.org/wiki/As_Viagens_de_Gulliver",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/gulliver.pdf"
+  },
+  "robinson-crusoe": {
+    "title": "Robinson Crusoé",
+    "author": "Daniel Defoe",
+    "year": 1719,
+    "lang": "EN→PT",
+    "read": "https://pt.wikisource.org/wiki/Robinson_Cruso%C3%A9",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/robinsoncrusoe.pdf"
+  },
+  "viagem-ao-centro-da-terra": {
+    "title": "Viagem ao Centro da Terra",
+    "author": "Júlio Verne",
+    "year": 1864,
+    "lang": "FR→PT",
+    "read": "https://pt.wikisource.org/wiki/Viagem_ao_Centro_da_Terra",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/viagemcentroterra.pdf"
+  },
+  "vinte-mil-leguas": {
+    "title": "Vinte Mil Léguas Submarinas",
+    "author": "Júlio Verne",
+    "year": 1870,
+    "lang": "FR→PT",
+    "read": "https://pt.wikisource.org/wiki/Vinte_Mil_L%C3%A9guas_Submarinas",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/20000leguas.pdf"
+  },
+  "ilha-do-tesouro": {
+    "title": "A Ilha do Tesouro",
+    "author": "Robert Louis Stevenson",
+    "year": 1883,
+    "lang": "EN→PT",
+    "read": "https://pt.wikisource.org/wiki/A_Ilha_do_Tesouro",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/ilhadotesouro.pdf"
+  },
+  "alice-pais-maravilhas": {
+    "title": "Alice no País das Maravilhas",
+    "author": "Lewis Carroll",
+    "year": 1865,
+    "lang": "EN→PT",
+    "read": "https://pt.wikisource.org/wiki/Alice_no_Pa%C3%ADs_das_Maravilhas",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/alice.pdf"
+  },
+  "contos-de-grimm": {
+    "title": "Contos dos Irmãos Grimm",
+    "author": "Jacob e Wilhelm Grimm",
+    "year": 1812,
+    "lang": "DE→PT",
+    "read": "https://pt.wikisource.org/wiki/Contos_dos_Irm%C3%A3os_Grimm",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/grimm.pdf"
+  },
+  "peter-pan": {
+    "title": "Peter Pan",
+    "author": "J. M. Barrie",
+    "year": 1911,
+    "lang": "EN→PT",
+    "read": "https://pt.wikisource.org/wiki/Peter_Pan",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/peterpan.pdf"
+  },
+  "o-pequeno-principe": {
+    "title": "O Pequeno Príncipe",
+    "author": "Antoine de Saint-Exupéry",
+    "year": 1943,
+    "lang": "FR→PT",
+    "read": "https://www.ebooksbrasil.org/eLibris/pequenoprincipe.html",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/pequenoprincipe.pdf"
+  },
+  "frankenstein": {
+    "title": "Frankenstein",
+    "author": "Mary Shelley",
+    "year": 1818,
+    "lang": "EN→PT",
+    "read": "https://pt.wikisource.org/wiki/Frankenstein",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/frankenstein.pdf"
+  },
+  "dracula": {
+    "title": "Drácula",
+    "author": "Bram Stoker",
+    "year": 1897,
+    "lang": "EN→PT",
+    "read": "https://pt.wikisource.org/wiki/Dr%C3%A1cula",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/dracula.pdf"
+  },
+  "o-cortico": {
+    "title": "O Cortiço",
+    "author": "Aluísio Azevedo",
+    "year": 1890,
+    "lang": "PT-BR",
+    "read": "https://pt.wikisource.org/wiki/O_Corti%C3%A7o",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/ocortico.pdf"
+  },
+  "memorias-postumas": {
+    "title": "Memórias Póstumas de Brás Cubas",
+    "author": "Machado de Assis",
+    "year": 1881,
+    "lang": "PT-BR",
+    "read": "https://pt.wikisource.org/wiki/Mem%C3%B3rias_P%C3%B3stumas_de_Br%C3%A1s_Cubas",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/memoriasbras.pdf"
+  },
+  "dom-casmurro": {
+    "title": "Dom Casmurro",
+    "author": "Machado de Assis",
+    "year": 1899,
+    "lang": "PT-BR",
+    "read": "https://pt.wikisource.org/wiki/Dom_Casmurro",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/domcasmurro.pdf"
+  }
+}
+
+{
+  "sonetos-camoes": {
+    "title": "Sonetos",
+    "author": "Luís de Camões",
+    "year": 1580,
+    "lang": "PT",
+    "read": "https://pt.wikisource.org/wiki/Sonetos_(Lu%C3%ADs_de_Cam%C3%B5es)",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/sonetoscamoes.pdf"
+  },
+  "lira-dos-vinte-anos": {
+    "title": "Lira dos Vinte Anos",
+    "author": "Álvares de Azevedo",
+    "year": 1853,
+    "lang": "PT-BR",
+    "read": "https://pt.wikisource.org/wiki/Lira_dos_Vinte_Anos",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/liradosvinteanos.pdf"
+  },
+  "espumas-flutuantes": {
+    "title": "Espumas Flutuantes",
+    "author": "Castro Alves",
+    "year": 1870,
+    "lang": "PT-BR",
+    "read": "https://pt.wikisource.org/wiki/Espumas_Flutuantes",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/espumasflutuantes.pdf"
+  },
+  "poesias-bilac": {
+    "title": "Poesias",
+    "author": "Olavo Bilac",
+    "year": 1902,
+    "lang": "PT-BR",
+    "read": "https://pt.wikisource.org/wiki/Poesias_(Olavo_Bilac)",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/poesiasbilac.pdf"
+  },
+  "romanceiro-da-inconfidencia": {
+    "title": "Romanceiro da Inconfidência",
+    "author": "Cecília Meireles",
+    "year": 1953,
+    "lang": "PT-BR",
+    "read": "https://www.ebooksbrasil.org/eLibris/romanceiro.html",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/romanceiroinconfidencia.pdf"
+  },
+  "contos-fluminenses": {
+    "title": "Contos Fluminenses",
+    "author": "Machado de Assis",
+    "year": 1870,
+    "lang": "PT-BR",
+    "read": "https://pt.wikisource.org/wiki/Contos_Fluminenses",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/contosfluminenses.pdf"
+  },
+  "papeis-avulsos": {
+    "title": "Papéis Avulsos",
+    "author": "Machado de Assis",
+    "year": 1882,
+    "lang": "PT-BR",
+    "read": "https://pt.wikisource.org/wiki/Pap%C3%A9is_Avulsos",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/papeisavulsos.pdf"
+  },
+  "varias-historias": {
+    "title": "Várias Histórias",
+    "author": "Machado de Assis",
+    "year": 1896,
+    "lang": "PT-BR",
+    "read": "https://pt.wikisource.org/wiki/V%C3%A1rias_Hist%C3%B3rias",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/variashistorias.pdf"
+  },
+  "historias-sem-data": {
+    "title": "Histórias sem Data",
+    "author": "Machado de Assis",
+    "year": 1884,
+    "lang": "PT-BR",
+    "read": "https://pt.wikisource.org/wiki/Hist%C3%B3rias_sem_Data",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/historiassemdata.pdf"
+  },
+  "historias-da-meia-noite": {
+    "title": "Histórias da Meia-Noite",
+    "author": "Machado de Assis",
+    "year": 1873,
+    "lang": "PT-BR",
+    "read": "https://pt.wikisource.org/wiki/Hist%C3%B3rias_da_Meia-Noite",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/historiasmeianoite.pdf"
+  },
+  "otelo": {
+    "title": "Otelo",
+    "author": "William Shakespeare",
+    "year": 1604,
+    "lang": "EN→PT",
+    "read": "https://pt.wikisource.org/wiki/Otelo",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/otelo.pdf"
+  },
+  "macbeth": {
+    "title": "Macbeth",
+    "author": "William Shakespeare",
+    "year": 1606,
+    "lang": "EN→PT",
+    "read": "https://pt.wikisource.org/wiki/Macbeth",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/macbeth.pdf"
+  },
+  "rei-lear": {
+    "title": "Rei Lear",
+    "author": "William Shakespeare",
+    "year": 1606,
+    "lang": "EN→PT",
+    "read": "https://pt.wikisource.org/wiki/Rei_Lear",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/reilear.pdf"
+  },
+  "a-tempestade": {
+    "title": "A Tempestade",
+    "author": "William Shakespeare",
+    "year": 1611,
+    "lang": "EN→PT",
+    "read": "https://pt.wikisource.org/wiki/A_Tempestade",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/atempestade.pdf"
+  },
+  "fabulas-esopo": {
+    "title": "Fábulas",
+    "author": "Esopo",
+    "year": -600,
+    "lang": "GR→PT",
+    "read": "https://pt.wikisource.org/wiki/F%C3%A1bulas_de_Esopo",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/esopo.pdf"
+  },
+  "fabulas-la-fontaine": {
+    "title": "Fábulas",
+    "author": "Jean de La Fontaine",
+    "year": 1694,
+    "lang": "FR→PT",
+    "read": "https://pt.wikisource.org/wiki/F%C3%A1bulas_(La_Fontaine)",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/lafontaine.pdf"
+  },
+  "utopia": {
+    "title": "Utopia",
+    "author": "Thomas More",
+    "year": 1516,
+    "lang": "LA→PT",
+    "read": "https://pt.wikisource.org/wiki/Utopia",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/utopia.pdf"
+  },
+  "ensaio-sobre-a-cegueira": {
+    "title": "Ensaio sobre a Cegueira",
+    "author": "José Saramago",
+    "year": 1995,
+    "lang": "PT",
+    "read": "https://www.ebooksbrasil.org/eLibris/ensaiocegueira.html",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/ensaiocegueira.pdf"
+  },
+  "auto-da-barca-do-inferno": {
+    "title": "Auto da Barca do Inferno",
+    "author": "Gil Vicente",
+    "year": 1517,
+    "lang": "PT",
+    "read": "https://pt.wikisource.org/wiki/Auto_da_Barca_do_Inferno",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/barcainferno.pdf"
+  },
+  "sermoes": {
+    "title": "Sermões",
+    "author": "Padre Antônio Vieira",
+    "year": 1679,
+    "lang": "PT",
+    "read": "https://pt.wikisource.org/wiki/Serm%C3%B5es_(Padre_Ant%C3%B4nio_Vieira)",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/sermoesvieira.pdf"
+  }
+}
+
+{
+  "historia-do-brasil-coronelismo": {
+    "title": "História do Brasil – O Coronelismo",
+    "author": "Vários (acervo público)",
+    "year": 1920,
+    "lang": "PT",
+    "read": "https://www.dominiopublico.gov.br/pesquisa/PesquisaObraForm.do?select_action=&co_obra=coronelismo",
+    "pdf": ""
+  },
+  "historia-da-colonizacao-do-brazil": {
+    "title": "História da Colonização do Brasil",
+    "author": "Capistrano de Abreu",
+    "year": 1907,
+    "lang": "PT",
+    "read": "https://pt.wikisource.org/wiki/Hist%C3%B3ria_da_Coloniza%C3%A7%C3%A3o_do_Brasil",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/colonizacaobrasil.pdf"
+  },
+  "a-burguesia-triangular": {
+    "title": "A Burguesia Triangular",
+    "author": "Eduardo Prado",
+    "year": 1899,
+    "lang": "PT",
+    "read": "https://pt.wikisource.org/wiki/A_Burguesia_Triangular",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/burguesiatriangular.pdf"
+  },
+  "ensaios-sociologicos": {
+    "title": "Ensaios Sociológicos",
+    "author": "Sérgio Buarque de Holanda",
+    "year": 1936,
+    "lang": "PT",
+    "read": "https://www.ebooksbrasil.org/eLibris/ensaiosociologicos.html",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/ensaiosociologicos.pdf"
+  },
+  "raca-e-classe": {
+    "title": "Raça e Classe",
+    "author": "Florestan Fernandes",
+    "year": 1960,
+    "lang": "PT",
+    "read": "https://www.ebooksbrasil.org/eLibris/racaeclasse.html",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/racaeclasse.pdf"
+  },
+  "democracia-na-america": {
+    "title": "Democracia na América",
+    "author": "Alexis de Tocqueville",
+    "year": 1835,
+    "lang": "FR→PT",
+    "read": "https://pt.wikisource.org/wiki/Democracia_na_Am%C3%A9rica",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/democraciaamerica.pdf"
+  },
+  "o-contrato-social": {
+    "title": "Do Contrato Social",
+    "author": "Jean-Jacques Rousseau",
+    "year": 1762,
+    "lang": "FR→PT",
+    "read": "https://pt.wikisource.org/wiki/Do_Contrato_Social",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/contratosocial.pdf"
+  },
+  "o-espirito-das-leis": {
+    "title": "O Espírito das Leis",
+    "author": "Montesquieu",
+    "year": 1748,
+    "lang": "FR→PT",
+    "read": "https://pt.wikisource.org/wiki/O_Esp%C3%ADrito_das_Leis",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/espiritodasleis.pdf"
+  },
+  "a-lei-do-avanço-e-da-retração": {
+    "title": "A Lei do Avanço e da Retração",
+    "author": "Augusto Comte",
+    "year": 1850,
+    "lang": "FR→PT",
+    "read": "https://pt.wikisource.org/wiki/A_Lei_do_Avan%C3%A7o_e_da_Retra%C3%A7%C3%A3o",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/leiavanco.pdf"
+  },
+  "introducao-ao-socialismo": {
+    "title": "Introdução ao Socialismo",
+    "author": "Ferdinand Lassalle",
+    "year": 1860,
+    "lang": "DE→PT",
+    "read": "https://pt.wikisource.org/wiki/Introdu%C3%A7%C3%A3o_ao_Socialismo",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/introducaosocialismo.pdf"
+  },
+  "a-economia-politica": {
+    "title": "A Economia Política",
+    "author": "John Stuart Mill",
+    "year": 1848,
+    "lang": "EN→PT",
+    "read": "https://pt.wikisource.org/wiki/A_Economia_Pol%C3%ADtica",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/economiapolitica.pdf"
+  },
+  "o-principio-da-justica": {
+    "title": "O Princípio da Justiça",
+    "author": "Herbert Spencer",
+    "year": 1850,
+    "lang": "EN→PT",
+    "read": "https://pt.wikisource.org/wiki/O_Princ%C3%ADpio_da_Justi%C3%A7a",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/principiojustica.pdf"
+  },
+  "a-sociedade-e-o-individuo": {
+    "title": "A Sociedade e o Indivíduo",
+    "author": "Herbert Spencer",
+    "year": 1850,
+    "lang": "EN→PT",
+    "read": "https://pt.wikisource.org/wiki/A_Sociedade_e_o_Indiv%C3%ADduo",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/sociedadeindividuo.pdf"
+  },
+  "historia-do-pensamento-social": {
+    "title": "História do Pensamento Social",
+    "author": "Vários (coletânea pública)",
+    "year": 1910,
+    "lang": "PT",
+    "read": "https://www.ebooksbrasil.org/eLibris/histpensamentosocial.html",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/histpensamentosocial.pdf"
+  },
+  "o-sistema-economico": {
+    "title": "O Sistema Econômico",
+    "author": "J. B. Say",
+    "year": 1803,
+    "lang": "FR→PT",
+    "read": "https://pt.wikisource.org/wiki/O_Sistema_Econ%C3%B4mico",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/sistemaeconomico.pdf"
+  },
+  "a-teoria-das-classes": {
+    "title": "A Teoria das Classes",
+    "author": "Karl Marx",
+    "year": 1867,
+    "lang": "DE→PT",
+    "read": "https://pt.wikisource.org/wiki/A_Teoria_das_Classes",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/teoriadasclasses.pdf"
+  },
+  "o-tratado-da-natureza-humana": {
+    "title": "Tratado da Natureza Humana",
+    "author": "David Hume",
+    "year": 1739,
+    "lang": "EN→PT",
+    "read": "https://pt.wikisource.org/wiki/Tratado_da_Natureza_Humana",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/tratadonaturezahumana.pdf"
+  },
+  "a-civilizacao-e-seus-descontentes": {
+    "title": "O Mal-Estar na Civilização",
+    "author": "Sigmund Freud",
+    "year": 1930,
+    "lang": "DE→PT",
+    "read": "https://www.ebooksbrasil.org/eLibris/civilizacao.pdf",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/civilizacao.pdf"
+  },
+  "labor-and-wealth": {
+    "title": "Trabalho e Riqueza",
+    "author": "John Ruskin",
+    "year": 1863,
+    "lang": "EN→PT",
+    "read": "https://pt.wikisource.org/wiki/Trabalho_e_Riqueza",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/trabalhoriqueza.pdf"
+  },
+  "o-espirito-capitalista": {
+    "title": "A Ética Protestante e o Espírito do Capitalismo",
+    "author": "Max Weber",
+    "year": 1905,
+    "lang": "DE→PT",
+    "read": "https://www.ebooksbrasil.org/eLibris/espiritocapitalista.html",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/espiritocapitalista.pdf"
+  }
+}
+
+{
+  "dom-quixote": {
+    "title": "Dom Quixote de la Mancha",
+    "author": "Miguel de Cervantes",
+    "year": 1605,
+    "lang": "ES→PT",
+    "read": "https://pt.wikisource.org/wiki/Dom_Quixote",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/domquixote.pdf"
+  },
+  "os-lusiadas": {
+    "title": "Os Lusíadas",
+    "author": "Luís de Camões",
+    "year": 1572,
+    "lang": "PT",
+    "read": "https://pt.wikisource.org/wiki/Os_Lus%C3%ADadas",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/lusiadas.pdf"
+  },
+  "a-divina-comedia": {
+    "title": "A Divina Comédia",
+    "author": "Dante Alighieri",
+    "year": 1321,
+    "lang": "IT→PT",
+    "read": "https://pt.wikisource.org/wiki/A_Divina_Com%C3%A9dia",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/divinacomedia.pdf"
+  },
+  "iliada": {
+    "title": "Ilíada",
+    "author": "Homero",
+    "year": -750,
+    "lang": "GR→PT",
+    "read": "https://pt.wikisource.org/wiki/Il%C3%ADada",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/iliada.pdf"
+  },
+  "odisseia": {
+    "title": "Odisseia",
+    "author": "Homero",
+    "year": -720,
+    "lang": "GR→PT",
+    "read": "https://pt.wikisource.org/wiki/Odisseia",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/odisseia.pdf"
+  },
+  "hamlet": {
+    "title": "Hamlet",
+    "author": "William Shakespeare",
+    "year": 1603,
+    "lang": "EN→PT",
+    "read": "https://pt.wikisource.org/wiki/Hamlet",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/hamlet.pdf"
+  },
+  "romeu-e-julieta": {
+    "title": "Romeu e Julieta",
+    "author": "William Shakespeare",
+    "year": 1597,
+    "lang": "EN→PT",
+    "read": "https://pt.wikisource.org/wiki/Romeu_e_Julieta",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/romeuejulieta.pdf"
+  },
+  "macbeth": {
+    "title": "Macbeth",
+    "author": "William Shakespeare",
+    "year": 1606,
+    "lang": "EN→PT",
+    "read": "https://pt.wikisource.org/wiki/Macbeth",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/macbeth.pdf"
+  },
+  "o-conde-de-monte-cristo": {
+    "title": "O Conde de Monte Cristo",
+    "author": "Alexandre Dumas",
+    "year": 1844,
+    "lang": "FR→PT",
+    "read": "https://pt.wikisource.org/wiki/O_Conde_de_Monte_Cristo",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/condemontecristo.pdf"
+  },
+  "os-tres-mosqueteiros": {
+    "title": "Os Três Mosqueteiros",
+    "author": "Alexandre Dumas",
+    "year": 1844,
+    "lang": "FR→PT",
+    "read": "https://pt.wikisource.org/wiki/Os_Tr%C3%AAs_Mosqueteiros",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/tresmosqueteiros.pdf"
+  },
+  "os-miseraveis": {
+    "title": "Os Miseráveis",
+    "author": "Victor Hugo",
+    "year": 1862,
+    "lang": "FR→PT",
+    "read": "https://pt.wikisource.org/wiki/Os_Miser%C3%A1veis",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/miseraveis.pdf"
+  },
+  "o-corcunda-de-notre-dame": {
+    "title": "O Corcunda de Notre-Dame",
+    "author": "Victor Hugo",
+    "year": 1831,
+    "lang": "FR→PT",
+    "read": "https://pt.wikisource.org/wiki/O_Corcunda_de_Notre-Dame",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/corcundanotredame.pdf"
+  },
+  "madame-bovary": {
+    "title": "Madame Bovary",
+    "author": "Gustave Flaubert",
+    "year": 1857,
+    "lang": "FR→PT",
+    "read": "https://pt.wikisource.org/wiki/Madame_Bovary",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/madamebovary.pdf"
+  },
+  "crime-e-castigo": {
+    "title": "Crime e Castigo",
+    "author": "Fiódor Dostoiévski",
+    "year": 1866,
+    "lang": "RU→PT",
+    "read": "https://pt.wikisource.org/wiki/Crime_e_Castigo",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/crimeecastigo.pdf"
+  },
+  "os-irmaos-karamazov": {
+    "title": "Os Irmãos Karamázov",
+    "author": "Fiódor Dostoiévski",
+    "year": 1880,
+    "lang": "RU→PT",
+    "read": "https://pt.wikisource.org/wiki/Os_Irm%C3%A3os_Karam%C3%A1zov",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/irmaoskaramazov.pdf"
+  },
+  "guerra-e-paz": {
+    "title": "Guerra e Paz",
+    "author": "Liev Tolstói",
+    "year": 1869,
+    "lang": "RU→PT",
+    "read": "https://pt.wikisource.org/wiki/Guerra_e_Paz",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/guerrae paz.pdf"
+  },
+  "anna-karenina": {
+    "title": "Anna Kariênina",
+    "author": "Liev Tolstói",
+    "year": 1877,
+    "lang": "RU→PT",
+    "read": "https://pt.wikisource.org/wiki/Anna_Kari%C3%AAnina",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/annakarenina.pdf"
+  },
+  "o-retrato-de-dorian-gray": {
+    "title": "O Retrato de Dorian Gray",
+    "author": "Oscar Wilde",
+    "year": 1890,
+    "lang": "EN→PT",
+    "read": "https://pt.wikisource.org/wiki/O_Retrato_de_Dorian_Gray",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/doriangray.pdf"
+  },
+  "dracula": {
+    "title": "Drácula",
+    "author": "Bram Stoker",
+    "year": 1897,
+    "lang": "EN→PT",
+    "read": "https://pt.wikisource.org/wiki/Dr%C3%A1cula",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/dracula.pdf"
+  },
+  "frankenstein": {
+    "title": "Frankenstein",
+    "author": "Mary Shelley",
+    "year": 1818,
+    "lang": "EN→PT",
+    "read": "https://pt.wikisource.org/wiki/Frankenstein",
+    "pdf": "https://www.ebooksbrasil.org/adobeebook/frankenstein.pdf"
+  }
+}

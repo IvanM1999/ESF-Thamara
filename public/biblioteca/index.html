@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Biblioteca Comunitária</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- PWA -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#005c8a">
+
+<style>
+/* =======================
+   VARIÁVEIS
+======================= */
+:root{
+  --bg:#f5f7fa;
+  --card:#fff;
+  --primary:#005c8a;
+  --secondary:#0a8f65;
+  --text:#222;
+  --muted:#666;
+  --border:#ddd;
+  --radius:12px;
+  --shadow:0 4px 12px rgba(0,0,0,.08);
+}
+.dark{
+  --bg:#1c1c1c;
+  --card:#2a2a2a;
+  --text:#eee;
+  --muted:#bbb;
+  --border:#444;
+}
+
+/* =======================
+   BASE
+======================= */
+*{box-sizing:border-box;font-family:system-ui,sans-serif}
+body{margin:0;padding:16px;background:var(--bg);color:var(--text)}
+header{text-align:center;margin-bottom:16px}
+h1{color:var(--primary);margin-bottom:4px}
+
+/* =======================
+   BOTÃO TEMA
+======================= */
+#theme-toggle{
+  position:fixed;top:16px;right:16px;
+  border:1px solid var(--border);
+  background:var(--card);
+  border-radius:50%;
+  padding:10px;
+  cursor:pointer;
+}
+
+/* =======================
+   ABAS
+======================= */
+.tabs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:12px}
+.tab-btn{
+  padding:8px 14px;
+  border-radius:var(--radius);
+  border:1px solid var(--border);
+  background:var(--card);
+  cursor:pointer;
+}
+.tab-btn.active{background:var(--primary);color:#fff}
+
+/* =======================
+   STATS
+======================= */
+#stats{text-align:center;font-size:.85rem;color:var(--muted);margin-bottom:12px}
+
+/* =======================
+   BUSCA
+======================= */
+.search{
+  background:var(--card);
+  padding:12px;
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  margin-bottom:16px;
+}
+.search input,.search select{
+  width:100%;padding:8px;margin-top:6px;
+  border-radius:var(--radius);
+  border:1px solid var(--border);
+  background:var(--card);color:var(--text);
+}
+.filters{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin-top:8px}
+
+/* =======================
+   LIVROS
+======================= */
+.books{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:16px;
+}
+.book{
+  background:var(--card);
+  padding:14px;
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  animation:fade .3s;
+}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1}}
+
+.book-header{display:flex;gap:10px;align-items:center}
+.cover{
+  width:44px;height:60px;
+  border-radius:6px;
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-weight:bold;font-size:1.1rem;
+}
+.book h2{font-size:1.05rem;color:var(--primary);margin:0}
+.book p{margin:4px 0;color:var(--muted);font-size:.85rem}
+
+.actions{display:flex;gap:6px;margin:10px 0}
+.actions a{
+  flex:1;padding:6px;text-align:center;
+  border-radius:var(--radius);
+  text-decoration:none;font-weight:600;
+}
+.read{background:var(--primary);color:#fff}
+.pdf{background:#e6e6e6;color:#000}
+
+.status{display:flex;gap:6px}
+.status button{
+  flex:1;padding:6px;
+  border-radius:var(--radius);
+  border:1px solid var(--border);
+  background:#fafafa;
+  cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<button id="theme-toggle">🌙</button>
+
+<header>
+  <h1>Biblioteca Comunitária</h1>
+  <p>Domínio público • Offline • PWA</p>
+</header>
+
+<nav class="tabs">
+  <button class="tab-btn active" data-tab="todos">📚 Todos</button>
+  <button class="tab-btn" data-tab="favoritos">⭐ Favoritos</button>
+  <button class="tab-btn" data-tab="quero">📘 Quero ler</button>
+  <button class="tab-btn" data-tab="lidos">✔ Lidos</button>
+</nav>
+
+<div id="stats">
+  <span id="s-total">Total: 0</span> •
+  <span id="s-fav">Favoritos: 0</span> •
+  <span id="s-quero">Quero ler: 0</span> •
+  <span id="s-li">Lidos: 0</span>
+</div>
+
+<section class="search">
+  <input id="q" placeholder="Buscar por título, autor, ano ou gênero">
+  <div class="filters">
+    <select id="genre"><option value="">Todos os gêneros</option></select>
+    <input id="y1" type="number" placeholder="Ano de">
+    <input id="y2" type="number" placeholder="Ano até">
+  </div>
+</section>
+
+<section class="books" id="books"></section>
+
+<script>
+/* =======================
+   UTIL
+======================= */
+const $=id=>document.getElementById(id);
+const statusKey="bookStatus";
+
+/* =======================
+   ESTADO
+======================= */
+let LIB={}, GEN={}, TAB="todos";
+
+/* =======================
+   STATUS
+======================= */
+const getStatus=()=>JSON.parse(localStorage.getItem(statusKey)||"{}");
+const setStatus=s=>localStorage.setItem(statusKey,JSON.stringify(s));
+
+function toggle(id,k){
+  const s=getStatus();
+  if(!s[id])s[id]={favorito:false,quero:false,li:false};
+  s[id][k]=!s[id][k];
+  if(k==="li"&&s[id].li)s[id].quero=false;
+  setStatus(s);
+  render();
+}
+
+/* =======================
+   RENDER
+======================= */
+function render(){
+  const q=$("q").value.toLowerCase();
+  const g=$("genre").value;
+  const y1=parseInt($("y1").value)||0;
+  const y2=parseInt($("y2").value)||9999;
+  const s=getStatus();
+  $("books").innerHTML="";
+
+  let c={t:0,f:0,q:0,l:0};
+
+  Object.entries(LIB).forEach(([id,b])=>{
+    const st=s[id]||{};
+    if(TAB==="favoritos"&&!st.favorito)return;
+    if(TAB==="quero"&&!st.quero)return;
+    if(TAB==="lidos"&&!st.li)return;
+
+    const genres=GEN[id]||[];
+    const text=[b.title,b.author,b.year,...genres].join(" ").toLowerCase();
+    if(!text.includes(q))return;
+    if(g && !genres.includes(g))return;
+    if(b.year<y1||b.year>y2)return;
+
+    c.t++;
+    if(st.favorito)c.f++;
+    if(st.quero)c.q++;
+    if(st.li)c.l++;
+
+    const div=document.createElement("article");
+    div.className="book";
+    div.innerHTML=`
+      <div class="book-header">
+        <div class="cover" style="background:hsl(${id.length*40},70%,45%)">${b.title[0]}</div>
+        <div>
+          <h2>${b.title}</h2>
+          <p>${b.author} • ${b.year}</p>
+        </div>
+      </div>
+      <p>${genres.join(" • ")}</p>
+      <div class="actions">
+        <a class="read" href="${b.read}" target="_blank">Ler</a>
+        <a class="pdf" href="${b.pdf}" target="_blank">PDF</a>
+      </div>
+      <div class="status">
+        <button onclick="toggle('${id}','favorito')" style="background:${st.favorito?'#ffd700':'#fafafa'}">⭐</button>
+        <button onclick="toggle('${id}','quero')" style="background:${st.quero?'#cce8ff':'#fafafa'}">📘</button>
+        <button onclick="toggle('${id}','li')" style="background:${st.li?'#c8f7c5':'#fafafa'}">✔</button>
+      </div>
+    `;
+    $("books").appendChild(div);
+  });
+
+  $("s-total").textContent=`Total: ${Object.keys(LIB).length}`;
+  $("s-fav").textContent=`Favoritos: ${c.f}`;
+  $("s-quero").textContent=`Quero ler: ${c.q}`;
+  $("s-li").textContent=`Lidos: ${c.l}`;
+}
+
+/* =======================
+   INIT
+======================= */
+async function init(){
+  LIB=await fetch("library.json").then(r=>r.json());
+  GEN=await fetch("genres.json").then(r=>r.json());
+
+  [...new Set(Object.values(GEN).flat())].sort()
+    .forEach(g=>$("genre").innerHTML+=`<option>${g}</option>`);
+
+  document.querySelectorAll(".tab-btn").forEach(b=>{
+    b.onclick=()=>{document.querySelectorAll(".tab-btn").forEach(x=>x.classList.remove("active"));b.classList.add("active");TAB=b.dataset.tab;render();}
+  });
+
+  $("q").oninput=$("genre").onchange=$("y1").oninput=$("y2").oninput=render;
+
+  const t=localStorage.getItem("theme");
+  if(t==="dark"){document.body.classList.add("dark");$("theme-toggle").textContent="☀️"}
+
+  $("theme-toggle").onclick=()=>{
+    document.body.classList.toggle("dark");
+    localStorage.setItem("theme",document.body.classList.contains("dark")?"dark":"light");
+    $("theme-toggle").textContent=document.body.classList.contains("dark")?"☀️":"🌙";
+  };
+
+  if("serviceWorker"in navigator)navigator.serviceWorker.register("service-worker.js");
+
+  render();
+}
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("service-worker.js", {
+      scope: "./"
+    });
+  });
+}
+init();
+</script>
+<footer><p>“Os links externos apontam para bibliotecas públicas ou institucionais.
+Este projeto não hospeda, não distribui nem comercializa obras protegidas.”</p></footer>
+</body>
+</html>
