@@ -1,12 +1,19 @@
 /* ================================
-   ESTILO GERAL – WINDOWS XP
+   RESET E BASE
    ================================ */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
 
 body {
     margin: 0;
     font-family: Tahoma, sans-serif;
     background: #c0c0c0;
     color: #000;
+    font-size: clamp(13px, 1.2vw, 15px);
 }
 
 /* ================================
@@ -16,20 +23,24 @@ body {
 .xp-window-titlebar {
     background: linear-gradient(to bottom, #0a246a, #245edb);
     color: white;
-    padding: 5px 10px;
+    padding: 0.4rem 0.7rem;
     display: flex;
     align-items: center;
+    gap: 0.6rem;
     user-select: none;
+    flex-wrap: nowrap;
 }
 
 .xp-window-titlebar .logo {
-    height: 22px;
-    margin-right: 10px;
+    height: clamp(18px, 5vw, 22px);
 }
 
 .xp-window-titlebar .title {
     font-weight: bold;
-    font-size: 14px;
+    font-size: clamp(13px, 1.5vw, 14px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /* ================================
@@ -47,25 +58,25 @@ body {
     padding: 0;
     list-style: none;
     display: flex;
+    flex-wrap: wrap;
 }
 
 .xp-menu li {
-    margin: 0;
-    padding: 0;
+    flex: 0 1 auto;
 }
 
 .xp-menu li a {
-    padding: 6px 14px;
+    padding: 0.4rem 0.9rem;
     color: black;
     display: block;
     background: #ece9d8;
     text-decoration: none;
     border-right: 1px solid #b4b4b4;
-    font-size: 14px;
-
-    box-shadow: 
-        inset -1px -1px 1px rgba(0,0,0,0.2),
-        inset 1px 1px 1px rgba(255,255,255,0.6);
+    font-size: clamp(13px, 1.4vw, 14px);
+    
+    box-shadow:
+        inset -1px -1px 1px rgba(0, 0, 0, 0.2),
+        inset 1px 1px 1px rgba(255, 255, 255, 0.6);
 }
 
 .xp-menu li a:hover {
@@ -79,9 +90,10 @@ body {
 .xp-window {
     background: white;
     border: 2px solid #808080;
-    padding: 20px;
-    margin: 20px;
-    box-shadow: 
+    padding: clamp(14px, 3vw, 20px);
+    margin: clamp(10px, 3vw, 20px);
+    max-width: 100%;
+    box-shadow:
         2px 2px 0 #3a3a3a,
         -1px -1px 0 #d7d7d7;
 }
@@ -93,12 +105,14 @@ body {
 .xp-button {
     background: #ece9d8;
     border: 2px solid #d3d3d3;
-    padding: 6px 14px;
+    padding: 0.4rem 0.9rem;
     cursor: pointer;
     font-family: Tahoma;
+    font-size: clamp(13px, 1.4vw, 14px);
+    
     box-shadow:
-        inset -1px -1px 1px rgba(0,0,0,0.3),
-        inset 1px 1px 1px rgba(255,255,255,0.6);
+        inset -1px -1px 1px rgba(0, 0, 0, 0.3),
+        inset 1px 1px 1px rgba(255, 255, 255, 0.6);
 }
 
 .xp-button:hover {
@@ -106,23 +120,40 @@ body {
 }
 
 /* ================================
-   RESPONSIVIDADE
+   MOBILE FIRST – TELAS PEQUENAS
    ================================ */
 
-@media (max-width: 700px) {
+@media (max-width: 600px) {
+    
+    .xp-window-titlebar {
+        flex-wrap: wrap;
+    }
     
     .xp-menu {
         flex-direction: column;
         width: 100%;
     }
-
+    
     .xp-menu li a {
         border-right: 0;
         border-bottom: 1px solid #b4b4b4;
+        width: 100%;
     }
-
+    
     .xp-window {
-        margin: 10px;
-        padding: 15px;
+        margin: 8px;
+    }
+}
+
+/* ================================
+   TELAS GRANDES (DESKTOP WIDE)
+   ================================ */
+
+@media (min-width: 1200px) {
+    
+    .xp-window {
+        max-width: 1100px;
+        margin-left: auto;
+        margin-right: auto;
     }
 }

@@ -1,16 +1,170 @@
-:root{--bg:#f8fafc;--card:#ffffff;--muted:#6b7280;--accent:#0f172a;--primary:#0b5cff}
-*{box-sizing:border-box}
-html,body{height:100%;margin:0;font-family:Inter,system-ui,Arial;background:var(--bg);color:var(--accent);}
-.container{max-width:1100px;margin:28px auto;padding:20px;}
-.header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px;}
-.brand{font-weight:800;font-size:20px;color:var(--primary);}
-.nav{display:flex;gap:8px;align-items:center;}
-.nav a{padding:8px 12px;border-radius:8px;text-decoration:none;color:var(--accent);background:transparent;border:1px solid rgba(11,13,20,0.04);}
-.card{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 6px 18px rgba(15,23,42,0.06);margin-bottom:16px;}
-.grid{display:grid;grid-template-columns:1fr 320px;gap:18px;align-items:start;}
-.toc{background:transparent;padding:12px;border-radius:10px;border:1px solid rgba(11,13,42,0.03);}
-.table{width:100%;border-collapse:collapse;}
-.table th,.table td{padding:8px;border:1px solid #eef2f7;text-align:left}
-.calendar td{height:80px;vertical-align:top;padding:6px}
-.footer{margin-top:28px;padding:18px;text-align:center;color:var(--muted);font-size:13px;}
-@media (max-width:900px){.grid{grid-template-columns:1fr} .nav{flex-wrap:wrap}}
+:root{
+    --bg:#f8fafc;
+    --card:#ffffff;
+    --muted:#6b7280;
+    --accent:#0f172a;
+    --primary:#0b5cff;
+}
+
+/* ================================
+   BASE
+   ================================ */
+
+*,
+*::before,
+*::after{
+    box-sizing:border-box;
+}
+
+html,body{
+    height:100%;
+    margin:0;
+    font-family:Inter,system-ui,Arial;
+    background:var(--bg);
+    color:var(--accent);
+    font-size:clamp(14px,1.2vw,16px);
+}
+
+/* ================================
+   LAYOUT
+   ================================ */
+
+.container{
+    max-width:1100px;
+    margin:clamp(16px,4vw,28px) auto;
+    padding:clamp(14px,3vw,20px);
+}
+
+.header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:clamp(8px,2vw,12px);
+    margin-bottom:clamp(14px,3vw,18px);
+    flex-wrap:wrap;
+}
+
+.brand{
+    font-weight:800;
+    font-size:clamp(18px,2vw,20px);
+    color:var(--primary);
+}
+
+/* ================================
+   NAVEGAÇÃO
+   ================================ */
+
+.nav{
+    display:flex;
+    gap:8px;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+.nav a{
+    padding:0.45rem 0.75rem;
+    border-radius:8px;
+    text-decoration:none;
+    color:var(--accent);
+    background:transparent;
+    border:1px solid rgba(11,13,20,0.06);
+    font-size:clamp(13px,1.3vw,14px);
+    white-space:nowrap;
+}
+
+/* ================================
+   CARDS
+   ================================ */
+
+.card{
+    background:var(--card);
+    padding:clamp(14px,3vw,18px);
+    border-radius:12px;
+    box-shadow:0 6px 18px rgba(15,23,42,0.06);
+    margin-bottom:clamp(12px,3vw,16px);
+}
+
+/* ================================
+   GRID PRINCIPAL
+   ================================ */
+
+.grid{
+    display:grid;
+    grid-template-columns:1fr minmax(260px,320px);
+    gap:clamp(14px,3vw,18px);
+    align-items:start;
+}
+
+.toc{
+    background:transparent;
+    padding:clamp(10px,2.5vw,12px);
+    border-radius:10px;
+    border:1px solid rgba(11,13,42,0.04);
+}
+
+/* ================================
+   TABELAS
+   ================================ */
+
+.table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:clamp(13px,1.2vw,14px);
+}
+
+.table th,
+.table td{
+    padding:0.45rem;
+    border:1px solid #eef2f7;
+    text-align:left;
+}
+
+/* ================================
+   CALENDÁRIO
+   ================================ */
+
+.calendar td{
+    height:clamp(64px,10vw,80px);
+    vertical-align:top;
+    padding:0.4rem;
+}
+
+/* ================================
+   FOOTER
+   ================================ */
+
+.footer{
+    margin-top:clamp(20px,4vw,28px);
+    padding:clamp(14px,3vw,18px);
+    text-align:center;
+    color:var(--muted);
+    font-size:clamp(12px,1.1vw,13px);
+}
+
+/* ================================
+   BREAKPOINTS
+   ================================ */
+
+@media (max-width:900px){
+
+    .grid{
+        grid-template-columns:1fr;
+    }
+}
+
+@media (max-width:600px){
+
+    .header{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .nav{
+        width:100%;
+    }
+
+    .nav a{
+        flex:1 1 auto;
+        text-align:center;
+    }
+}

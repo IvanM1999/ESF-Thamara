@@ -48,33 +48,101 @@
       background: #d6e0f5;
     }
   </style>
+    <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f9;
+      margin: 0;
+    }
+
+    nav {
+      background: #0b5fa5;
+      color: #fff;
+      padding: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      font-weight: bold;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .container {
+      max-width: 900px;
+      width: 100%;
+      margin: 20px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .alert {
+      background: #fff3cd;
+      border: 1px solid #ffeeba;
+      padding: 10px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+    }
+
+    /* Tabela responsiva */
+    .table-wrapper {
+      overflow-x: auto;
+      margin-bottom: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 600px;
+    }
+
+    th, td {
+      padding: 8px;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+    }
+
+    th {
+      background: #0b5fa5;
+      color: #fff;
+    }
+
+    /* Quiz */
+    label {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    /* Ajustes para telas pequenas */
+    @media (max-width: 600px) {
+      h1 { font-size: 1.6rem; }
+      h2 { font-size: 1.3rem; }
+      nav a { font-size: 1rem; }
+      body { padding: 0 10px; }
+      button { padding: 10px 14px; font-size: 1rem; }
+    }
+  </style>
+
 </head>
 <body>
+    <!-- Barra de menus -->
+  <nav>
+    <a href="/index.html">🏠 Início</a>
+    <a href="/calendar.html">ℹ️ Agenda</a>
+    <a href="/equipe.html">👩‍⚕️ Nossa Equipe</a>
+  </nav>
 
 <div class="container">
-<!-- Seção natalina de recesso -->
-    <hr>
-<h2>🎄 Aviso de Recesso Natalino</h2>
-<div style="background:#f9f2ec; border:2px solid #d35400; padding:15px; border-radius:8px; box-shadow:2px 2px 6px rgba(0,0,0,0.2);">
-    <p style="font-size:16px; line-height:1.6;">
-        Informamos que a <strong>ESF Thamara Katryne Rodrigues Schmidt</strong> entrará em recesso 
-        a partir do dia <strong>22 de Dezembro de 2025</strong>, retornando às atividades em 
-        <strong>12 de Janeiro de 2026</strong>.
-    </p>
-    <p style="font-size:16px; line-height:1.6;">
-        Durante este período, todos os atendimentos devem ser <strong>redirecionados aos plantonistas</strong> 
-        da rede de serviço do <strong>Ambulatório Geral do Garcia</strong>.
-    </p>
-    <ul style="font-size:15px; margin-top:10px;">
-        <li><strong>Endereço:</strong> Rua Amazonas, 300 – Garcia, Blumenau (SC)</li>
-        <li><strong>Telefone:</strong> (47) 3381-7593</li>
-         <p> </p>
-        <li><a class="xp-button" href="https://www.google.com/maps/dir/ESF+Progresso/AG+Garcia" target="_blank">
-            📍 Ver rota no Google Maps
-        </a></li>
-    </ul>
-    <p> </p>
-</div>
+
   <!-- Título do Blog -->
   <div class="xp-window">
     <div class="xp-window-titlebar">📰 Blog Explicativo – Dinâmica de Atendimento</div>
@@ -117,8 +185,8 @@
           <!-- Segunda -->
           <td>
             <ul>
-              <li>07:00 – Intercorrências e agendamentos (clínico, enfermagem, dentista, curativos)</li>
-              <li>13:00 – Agendamentos e enfermagem</li>
+              <li> <p>07:00 – 12:00</p> <p><em>Intercorrências e agendamentos (clínico, enfermagem, dentista, curativos)</em></p></li>
+              <li>13:00 – 17:45 Agendamentos e enfermagem</li>
               <li>18:00 – Encerramento das atividades de saúde</li>
 
             </ul>
@@ -126,8 +194,8 @@
           <!-- Terça -->
           <td>
             <ul>
-              <li>07:00 – Intercorrências e agendamentos (clínico, enfermagem, dentista, curativos)</li>
-              <li>13:00 – Agendamentos e enfermagem</li>
+              <li> <p>07:00 – 12:00</p> <p><em>Intercorrências e agendamentos (clínico, enfermagem, dentista, curativos)</em></p></li>
+              <li>13:00 – 17:45 Agendamentos e enfermagem</li>
               <li>18:00 – Encerramento das atividades de saúde</li>
 
             </ul>
@@ -135,8 +203,8 @@
           <!-- Quarta -->
           <td>
             <ul>
-              <li>07:00 – Intercorrências</li>
-              <li>13:00 – Atendimento domiciliar</li>
+              <li> <p>07:00 – 12:00</p> <p><em>Intercorrências e agendamentos (clínico, enfermagem, dentista, curativos)</em></p></li>
+              <li><u>13:00 – 17:45 Agendamentos e enfermagem</u></li>
               <li>18:00 – Encerramento das atividades de saúde</li>
 
             </ul>
@@ -144,8 +212,8 @@
           <!-- Quinta -->
           <td>
             <ul>
-              <li>07:00 – Intercorrências e agendamentos (clínico, enfermagem, dentista, curativos)</li>
-              <li>13:00 – Agendamentos e enfermagem</li>
+              <li> <p>07:00 – 12:00</p> <p><em>Intercorrências e agendamentos (clínico, enfermagem, dentista, curativos)</em></p></li>
+              <li>13:00 – 17:45 Agendamentos e enfermagem</li>
               <li>18:00 – Encerramento das atividades de saúde</li>
 
             </ul>
@@ -154,8 +222,8 @@
           <!-- Sexta -->
           <td>
             <ul>
-              <li>07:00 – Intercorrências</li>
-              <li>13:00 – Formação dos profissionais de saúde</li>
+              <li> <p>07:00 – 12:00</p> <p><em>Intercorrências e agendamentos (clínico, enfermagem, dentista, curativos)</em></p></li>
+              <li><u>13:00 – Formação dos profissionais de saúde</u></li>
               <li>18:00 – Encerramento das atividades de saúde</li>
 
             </ul>
