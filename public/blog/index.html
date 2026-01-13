@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Blog Informativo | ESF Thamara Rodriguez</title>
+    <link rel="stylesheet" href="/public/css/blog.css">
+
+</head>
+
+<body>
+  <!-- Barra de menus -->
+  <nav style="background:#0b5fa5; color:#fff; padding:10px; display:flex; justify-content:center; gap:20px; font-weight:bold;">
+    <a href="../index.html" style="color:#fff; text-decoration:none;">🏠 Início</a>
+    <a href="/public/blog/index.html" style="color:#fff; text-decoration:none;">📰 Blog</a>
+    <a href="/sobre.html" style="color:#fff; text-decoration:none;">ℹ️ Sobre</a>
+    <a href="/contato.html" style="color:#fff; text-decoration:none;">📞 Contato</a>
+  </nav>
+
+  <!-- Container principal -->
+<header class="blog-header">
+  <div class="wrap">
+    <h1>Blog Informativo</h1>
+    <p>Conteúdo público, educativo e institucional</p>
+  </div>
+</header>
+
+<main class="wrap blog-main">
+  <section id="posts" aria-label="Artigos publicados">
+    <!-- Posts carregados automaticamente -->
+  </section>
+</main>
+
+<footer class="blog-footer">
+  <div class="wrap">
+    <p>
+      Conteúdo de interesse público.  
+      Informação clara, acessível e baseada em critérios técnicos.
+    </p>
+  </div>
+</footer>
+
+<script>
+async function carregarBlog() {
+  const postsContainer = document.getElementById("posts");
+  const index = await fetch("posts.json").then(r => r.json());
+
+  for (const post of index) {
+    const html = await fetch(post.file).then(r => r.text());
+
+    const doc = new DOMParser().parseFromString(html, "text/html");
+    const titulo = doc.querySelector("h1")?.innerText || post.title;
+    const paragrafo = doc.querySelector("p")?.innerText || "";
+
+    const artigo = document.createElement("article");
+    artigo.className = "post-preview";
+    artigo.innerHTML = `
+      <header>
+        <span class="category">${post.category}</span>
+        <h2>${titulo}</h2>
+        <time>${post.date}</time>
+      </header>
+      <p>${paragrafo.substring(0, 280)}...</p>
+      <a href="${post.file}" class="read">Ler artigo completo</a>
+    `;
+    postsContainer.appendChild(artigo);
+  }
+}
+
+carregarBlog();
+</script>
+
+</body>
+</html>
