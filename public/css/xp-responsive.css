@@ -1,0 +1,174 @@
+/* ================================
+   WINDOWS XP – RESPONSIVE THEME
+   ================================ */
+
+:root {
+  --xp-blue: #0a64ad;
+  --xp-light: #e6f0fb;
+  --xp-border: #3a6ea5;
+  --xp-bg: #d4e6f9;
+  --xp-white: #ffffff;
+  --xp-shadow: #1c3d63;
+}
+
+/* RESET */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Tahoma, Verdana, Segoe UI, sans-serif;
+}
+
+body {
+  background: linear-gradient(#7baee6, #d6e8fb);
+  min-height: 100vh;
+}
+
+/* =========================
+   BARRA SUPERIOR
+========================= */
+
+nav {
+  background: linear-gradient(#1b78d4, #0a4e9a);
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  box-shadow: inset 0 1px #7bb5f0, 0 3px 6px rgba(0,0,0,.3);
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  background: linear-gradient(#4da3ff, #1b6fd1);
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: 1px solid #0a4e9a;
+  box-shadow: inset 0 1px #9fd0ff;
+  font-weight: bold;
+}
+
+nav a:hover {
+  background: linear-gradient(#65b4ff, #2c82e0);
+}
+
+/* =========================
+   JANELA PRINCIPAL
+========================= */
+
+.xp-window {
+  background: var(--xp-white);
+  border: 2px solid var(--xp-border);
+  border-radius: 10px;
+  box-shadow: 4px 4px 0 var(--xp-shadow);
+  padding: 20px;
+}
+
+/* =========================
+   TÍTULOS
+========================= */
+
+h1, h2, h3 {
+  color: #003366;
+  margin-bottom: 10px;
+}
+
+h1 {
+  font-size: 1.8rem;
+}
+
+h2 {
+  border-bottom: 2px solid #7aaee8;
+  padding-bottom: 4px;
+  margin-top: 24px;
+}
+
+/* =========================
+   LISTAS
+========================= */
+
+ul {
+  list-style: none;
+  margin-top: 10px;
+}
+
+ul li {
+  background: #f1f7ff;
+  margin-bottom: 6px;
+  padding: 8px;
+  border: 1px solid #aac4e8;
+  border-radius: 6px;
+}
+
+/* =========================
+   BLOG / MENUS
+========================= */
+
+#blog {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+#menu-blog {
+  background: #f4f8ff;
+  border: 2px solid #7aaee8;
+  padding: 16px;
+  border-radius: 8px;
+}
+
+#menu-blog a {
+  text-decoration: none;
+  color: #003a7a;
+  font-weight: bold;
+}
+
+#menu-blog li {
+  background: linear-gradient(#ffffff, #e2efff);
+}
+
+/* =========================
+   BOTÕES XP
+========================= */
+
+.xp-button {
+  display: inline-block;
+  padding: 6px 14px;
+  background: linear-gradient(#ffffff, #cfe3ff);
+  border: 2px solid #3a6ea5;
+  border-radius: 4px;
+  color: #003366;
+  font-weight: bold;
+  box-shadow: inset 1px 1px #ffffff;
+}
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media (max-width: 900px) {
+  .xp-window {
+    margin: 10px;
+    padding: 16px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  nav {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  nav a {
+    text-align: center;
+  }
+
+  iframe {
+    height: 240px;
+  }
+}
