@@ -172,3 +172,130 @@ ul li {
     height: 240px;
   }
 }
+
+/* ================================
+   AGENDA – RESPONSIVE THEME
+   ================================ */
+   
+   body {
+      font-family: Arial, sans-serif;
+      background: #e0e0e0;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 960px;
+      margin: 20px auto;
+      padding: 20px;
+    }
+    .xp-window {
+      background: #fff;
+      border: 2px solid #808080;
+      box-shadow: 3px 3px 0 #3a3a3a;
+      margin-bottom: 20px;
+    }
+    .xp-window-titlebar {
+      background: #0055aa;
+      color: #fff;
+      padding: 8px;
+      font-weight: bold;
+    }
+    .xp-window-content {
+      padding: 15px;
+    }
+    table.calendar {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+    table.calendar th, table.calendar td {
+      border: 1px solid #808080;
+      padding: 8px;
+      text-align: left;
+      vertical-align: top;
+    }
+    table.calendar th {
+      background: #d6e0f5;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f9;
+      margin: 0;
+    }
+
+    nav {
+      background: #0b5fa5;
+      color: #fff;
+      padding: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      font-weight: bold;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .container {
+      max-width: 900px;
+      width: 100%;
+      margin: 20px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .alert {
+      background: #fff3cd;
+      border: 1px solid #ffeeba;
+      padding: 10px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+    }
+
+    /* Tabela responsiva */
+    .table-wrapper {
+      overflow-x: auto;
+      margin-bottom: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 600px;
+    }
+
+    th, td {
+      padding: 8px;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+    }
+
+    th {
+      background: #0b5fa5;
+      color: #fff;
+    }
+
+    /* Quiz */
+    label {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    /* Ajustes para telas pequenas */
+    @media (max-width: 600px) {
+      h1 { font-size: 1.6rem; }
+      h2 { font-size: 1.3rem; }
+      nav a { font-size: 1rem; }
+      body { padding: 0 10px; }
+      button { padding: 10px 14px; font-size: 1rem; }
+    }

@@ -4,291 +4,192 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Blog Informativo – ESF Thamara</title>
-  <link rel="stylesheet" href="/assets/css/xp-style.css">
-  <link rel="stylesheet" href="/assets/js/blog.js">  
+
+  <link rel="stylesheet" href="../css/xp-responsive.css">
+
+  <!-- CSS INLINE RESPONSIVO (já saneado) -->
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #e0e0e0;
       margin: 0;
-      padding: 0;
     }
+
     .container {
-      max-width: 960px;
-      margin: 20px auto;
-      padding: 20px;
+      max-width: 1100px;
+      margin: auto;
+      padding: 12px;
     }
+
     .xp-window {
-      background: #fff;
-      border: 2px solid #808080;
-      box-shadow: 3px 3px 0 #3a3a3a;
       margin-bottom: 20px;
     }
-    .xp-window-titlebar {
-      background: #0055aa;
-      color: #fff;
-      padding: 8px;
-      font-weight: bold;
-    }
-    .xp-window-content {
-      padding: 15px;
-    }
-    table.calendar {
+
+    /* CALENDÁRIO */
+    .calendar {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 10px;
     }
-    table.calendar th, table.calendar td {
-      border: 1px solid #808080;
-      padding: 8px;
-      text-align: left;
+
+    .calendar th,
+    .calendar td {
+      border: 1px solid #9bb7d9;
+      padding: 10px;
       vertical-align: top;
+      font-size: 14px;
     }
-    table.calendar th {
-      background: #d6e0f5;
+
+    .calendar th {
+      background: #e6f0ff;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+
+      nav {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      nav a {
+        text-align: center;
+        padding: 10px;
+        background: rgba(255,255,255,0.15);
+        border-radius: 6px;
+      }
+
+      /* Tabela vira cards */
+      .calendar,
+      .calendar thead,
+      .calendar tbody,
+      .calendar tr,
+      .calendar th,
+      .calendar td {
+        display: block;
+        width: 100%;
+      }
+
+      .calendar thead {
+        display: none;
+      }
+
+      .calendar tr {
+        margin-bottom: 16px;
+        border: 2px solid #7aaee8;
+        border-radius: 8px;
+        background: #f4f8ff;
+        box-shadow: 2px 2px 0 #3a6ea5;
+        padding: 10px;
+      }
+
+      .calendar td {
+        border: none;
+        padding: 8px 6px;
+      }
+
+      .calendar td::before {
+        display: block;
+        font-weight: bold;
+        color: #003366;
+        margin-bottom: 6px;
+      }
+
+      .calendar td:nth-child(1)::before { content: "Segunda-feira"; }
+      .calendar td:nth-child(2)::before { content: "Terça-feira"; }
+      .calendar td:nth-child(3)::before { content: "Quarta-feira"; }
+      .calendar td:nth-child(4)::before { content: "Quinta-feira"; }
+      .calendar td:nth-child(5)::before { content: "Sexta-feira"; }
     }
   </style>
-    <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f4f4f9;
-      margin: 0;
-    }
-
-    nav {
-      background: #0b5fa5;
-      color: #fff;
-      padding: 10px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 12px;
-      font-weight: bold;
-    }
-
-    nav a {
-      color: #fff;
-      text-decoration: none;
-    }
-
-    .container {
-      max-width: 900px;
-      width: 100%;
-      margin: 20px auto;
-      background: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-
-    .alert {
-      background: #fff3cd;
-      border: 1px solid #ffeeba;
-      padding: 10px;
-      border-radius: 6px;
-      margin-bottom: 20px;
-    }
-
-    /* Tabela responsiva */
-    .table-wrapper {
-      overflow-x: auto;
-      margin-bottom: 20px;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      min-width: 600px;
-    }
-
-    th, td {
-      padding: 8px;
-      border-bottom: 1px solid #ddd;
-      text-align: left;
-    }
-
-    th {
-      background: #0b5fa5;
-      color: #fff;
-    }
-
-    /* Quiz */
-    label {
-      display: block;
-      margin-bottom: 8px;
-    }
-
-    button {
-      cursor: pointer;
-    }
-
-    /* Ajustes para telas pequenas */
-    @media (max-width: 600px) {
-      h1 { font-size: 1.6rem; }
-      h2 { font-size: 1.3rem; }
-      nav a { font-size: 1rem; }
-      body { padding: 0 10px; }
-      button { padding: 10px 14px; font-size: 1rem; }
-    }
-  </style>
-
 </head>
+
 <body>
-    <!-- Barra de menus -->
-  <nav>
-    <a href="/index.html">🏠 Início</a>
-    <a href="/calendar.html">ℹ️ Agenda</a>
-    <a href="/equipe.html">👩‍⚕️ Nossa Equipe</a>
-  </nav>
 
-<div class="container">
+<!-- MENU -->
+<nav style="background:#0b5fa5; color:#fff; padding:10px; display:flex; justify-content:center; gap:20px; font-weight:bold;">
+  <a href="../index.html" style="color:#fff; text-decoration:none;">🏠 Início</a>
+  <a href="../blog/agenda.html" style="color:#fff; text-decoration:none;">ℹ️ Agenda</a>
+  <a href="../equipe.html" style="color:#fff; text-decoration:none;">👩‍⚕️ Nossa Equipe</a>
+</nav>
 
-  <!-- Título do Blog -->
-  <div class="xp-window">
+<main class="container">
+
+  <!-- TEXTO EXPLICATIVO -->
+  <section class="xp-window">
     <div class="xp-window-titlebar">📰 Blog Explicativo – Dinâmica de Atendimento</div>
     <div class="xp-window-content">
       <p>
-        Nosso posto de saúde funciona de um jeito bem organizado, para que todos recebam cuidado. 
-        Vem conosco que voce vai entender, porque vamos explicar de forma simples:
+        Nosso posto de saúde funciona de forma organizada para garantir atendimento adequado a todos.
+        Veja como funciona nossa rotina semanal:
       </p>
-      <ul>
-        <li><strong>Segunda, Terça e Quinta:</strong> de manhã atendemos os casos que aparecem na hora (intercorrências) e também os agendamentos. À tarde, seguimos com consultas marcadas e atendimentos de enfermagem.</li>
-        <li><strong>Quarta:</strong> de manhã cuidamos das intercorrências. À tarde, nossa equipe vai até as casas das pessoas que precisam de atendimento domiciliar.</li>
-        <li><strong>Sexta:</strong> de manhã atendemos intercorrências. À tarde, os profissionais participam de formações, aprendendo mais para cuidar melhor de você.</li>
-        <li><strong>Sábado e Domingo:</strong> não temos atendimento programado.</li>
-      </ul>
-      <p>
-        Assim, cada dia tem seu jeito de funcionar. É como uma rotina: de manhã resolvemos os casos urgentes, 
-        e à tarde seguimos com consultas ou atividades especiais.  
-        Tudo isso para garantir que você, mesmo sem precisar entender palavras difíceis, saiba quando pode contar com a nossa equipe.
-      </p>
-    </div>
-  </div>
 
-  <!-- Calendário Semanal -->
-  <div class="xp-window">
+      <ul>
+        <li><strong>Segunda, Terça e Quinta:</strong> manhã com intercorrências e agendamentos; tarde com consultas e enfermagem.</li>
+        <li><strong>Quarta:</strong> manhã com intercorrências; tarde com atendimentos domiciliares.</li>
+        <li><strong>Sexta:</strong> manhã com intercorrências; tarde com formação da equipe.</li>
+        <li><strong>Sábado e Domingo:</strong> sem atendimento programado.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CALENDÁRIO -->
+  <section class="xp-window">
     <div class="xp-window-titlebar">📅 Calendário Semanal de Atendimento</div>
     <div class="xp-window-content">
-      <table class="calendar">
-        <tr>
-    <div class="card">
-      <h1>CALENDÁRIO SEMANAL DE ATENDIMENTO</h1>
-      <table class="table calendar" style="width:100%">
-        <tr>
-          <th>Segunda</th>
-          <th>Terça</th>
-          <th>Quarta</th>
-          <th>Quinta</th>
-          <th>Sexta</th>
-       </tr>
-        <tr>
-          <!-- Segunda -->
-          <td>
-            <ul>
-              <li> <p>07:00 – 12:00</p> <p><em>Intercorrências e agendamentos (clínico, enfermagem, dentista, curativos)</em></p></li>
-              <li>13:00 – 17:45 Agendamentos e enfermagem</li>
-              <li>18:00 – Encerramento das atividades de saúde</li>
 
-            </ul>
-          </td>
-          <!-- Terça -->
-          <td>
-            <ul>
-              <li> <p>07:00 – 12:00</p> <p><em>Intercorrências e agendamentos (clínico, enfermagem, dentista, curativos)</em></p></li>
-              <li>13:00 – 17:45 Agendamentos e enfermagem</li>
-              <li>18:00 – Encerramento das atividades de saúde</li>
+      <table class="calendar" aria-label="Calendário semanal de atendimento da ESF">
+        <thead>
+          <tr>
+            <th>Segunda</th>
+            <th>Terça</th>
+            <th>Quarta</th>
+            <th>Quinta</th>
+            <th>Sexta</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <ul>
+                <li>07:00–12:00 Intercorrências e agendamentos</li>
+                <li>13:00–17:45 Agendamentos e enfermagem</li>
+                <li>18:00 Encerramento</li>
+              </ul>
+            </td>
+            <td>
+              <ul>
+                <li>07:00–12:00 Intercorrências e agendamentos</li>
+                <li>13:00–17:45 Agendamentos e enfermagem</li>
+                <li>18:00 Encerramento</li>
+              </ul>
+            </td>
+            <td>
+              <ul>
+                <li>07:00–12:00 Intercorrências</li>
+                <li>13:00–17:45 Atendimento domiciliar</li>
+                <li>18:00 Encerramento</li>
+              </ul>
+            </td>
+            <td>
+              <ul>
+                <li>07:00–12:00 Intercorrências e agendamentos</li>
+                <li>13:00–17:45 Agendamentos e enfermagem</li>
+                <li>18:00 Encerramento</li>
+              </ul>
+            </td>
+            <td>
+              <ul>
+                <li>07:00–12:00 Intercorrências</li>
+                <li>13:00 Formação da equipe</li>
+                <li>18:00 Encerramento</li>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
-            </ul>
-          </td>
-          <!-- Quarta -->
-          <td>
-            <ul>
-              <li> <p>07:00 – 12:00</p> <p><em>Intercorrências e agendamentos (clínico, enfermagem, dentista, curativos)</em></p></li>
-              <li><u>13:00 – 17:45 Agendamentos e enfermagem</u></li>
-              <li>18:00 – Encerramento das atividades de saúde</li>
+    </div>
+  </section>
 
-            </ul>
-          </td>
-          <!-- Quinta -->
-          <td>
-            <ul>
-              <li> <p>07:00 – 12:00</p> <p><em>Intercorrências e agendamentos (clínico, enfermagem, dentista, curativos)</em></p></li>
-              <li>13:00 – 17:45 Agendamentos e enfermagem</li>
-              <li>18:00 – Encerramento das atividades de saúde</li>
+</main>
 
-            </ul>
-
-          </td>
-          <!-- Sexta -->
-          <td>
-            <ul>
-              <li> <p>07:00 – 12:00</p> <p><em>Intercorrências e agendamentos (clínico, enfermagem, dentista, curativos)</em></p></li>
-              <li><u>13:00 – Formação dos profissionais de saúde</u></li>
-              <li>18:00 – Encerramento das atividades de saúde</li>
-
-            </ul>
-          </td>
-
-        </tr>
-      </table
-  </div>
-
-  <script src="/assets/js/main.js"></script>
-  <script src="assets/menu-superior.js"></script>
-<!-- BOTÃO FLUTUANTE DE VOLTAR | INÍCIO -->
-<style>
-  .btn-voltar-flutuante {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    width: 52px;
-    height: 52px;
-    background-color: #0f3d63;
-    color: #fff;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 22px;
-    font-weight: bold;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-    transition: background-color 0.2s ease, transform 0.2s ease;
-  }
-
-  .btn-voltar-flutuante:hover {
-    background-color: #1f5d8f;
-    transform: scale(1.05);
-  }
-
-  .btn-voltar-flutuante:active {
-    transform: scale(0.95);
-  }
-
-  .btn-voltar-flutuante:focus {
-    outline: none;
-  }
-</style>
-
-<button
-  class="btn-voltar-flutuante"
-  aria-label="Voltar página anterior"
-  title="Voltar"
-  onclick="voltarPagina()"
->
-  ←
-</button>
-
-<script>
-  function voltarPagina() {
-    if (window.history.length > 1) {
-      window.history.back();
-    } else {
-      window.location.href = "/public/index.html";
-    }
-  }
-</script>
-<!-- BOTÃO FLUTUANTE DE VOLTAR | FIM -->
-</body></html>
+</body>
+</html>
