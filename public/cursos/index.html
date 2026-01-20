@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Ambiente de Cursos Livres</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS institucional -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="taskbar">
+    <div class="taskbar-left">
+        <span class="logo">Cursos Livres</span>
+    </div>
+
+    <div class="taskbar-center">
+        <input 
+            type="search" 
+            id="searchInput" 
+            placeholder="Buscar cursos..."
+            aria-label="Buscar cursos"
+        >
+    </div>
+
+    <div class="taskbar-right">
+        <select id="filterArea" aria-label="Filtrar por área">
+            <option value="">Todas as áreas</option>
+            <option value="exatas">Exatas</option>
+            <option value="gestao">Gestão</option>
+            <option value="saude">Saúde</option>
+        </select>
+
+        <select id="filterType" aria-label="Filtrar por tipo">
+            <option value="">Todos os tipos</option>
+            <option value="interno">Interno</option>
+            <option value="externo">Externo</option>
+            <option value="gov">Gov.br</option>
+        </select>
+    </div>
+</header>
+
+<main>
+    <section id="coursesContainer" class="courses-grid" aria-live="polite">
+        <!-- Cursos carregados dinamicamente pelo JS -->
+    </section>
+</main>
+
+<footer class="system-footer">
+    <p> Este Ambiente de Cursos Livres – Plataforma Educacional Pública - Visa A Educação Pública Gratuita E Não Assumem Responsabilidade Pelos Conteúdos Dispostos Nos Cursos Anexados</p>
+</footer>
+
+<script src="assets/js/app.js"></script>
+</body>
+</html>

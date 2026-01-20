@@ -1,0 +1,121 @@
+[
+  {
+    "id": "gestao-publica-gov",
+    "titulo": "Gestão de Crises no Setor Público",
+    "descricao": "Neste curso, você entenderá como aplicar a gestão de crises no setor público, com foco em estratégias adequadas, em respostas eficazes e no aprendizado pós-crise. O conteúdo é baseado nas normas da ISO. Inscreva-se!",
+    "area": "gestao",
+    "tipo": "gov",
+    "link": "https://www.escolavirtual.gov.br/curso/1262",
+    "imagem": "assets/images/gestao.svg"
+  },
+  
+  {
+    "id": "politica-economia",
+    "titulo": "Avaliação de Políticas em Economia Criativa",
+    "descricao": "Com o avanço dos setores criativo e cultural na economia e o maior fomento gerado por políticas públicas, torna - se essencial avaliar essas ações para qualificar a gestão pública.O curso oferece os principais conhecimentos para avaliar políticas públicas, incluindo dados, indicadores e metodologias de análise.Quer saber mais ? Inscreva - se!",
+    "area": "direito",
+    "tipo": "gov",
+    "link": "https://www.escolavirtual.gov.br/curso/846",
+    "imagem": "assets/images/gestao.svg"
+  },
+  {
+    "id": "violencia-genero",
+    "titulo": "Gestão de Casos de Violência Baseada no Gênero ",
+    "descricao": "Neste curso, você aprenderá sobre padrões mínimos de resposta, gestão de casos, atuação intersetorial e atendimento humanizado para apoiar, sem causar danos, pessoas em situação de violência de gênero. ",
+    "area": "gestao",
+    "tipo": "gov",
+    "link": "https://www.escolavirtual.gov.br/curso/653",
+    "imagem": "assets/images/gestao.svg"
+  },
+  {
+    "id": "financa-idoso",
+    "titulo": "Gestão dos Fundos da Pessoa Idosa",
+    "descricao": "Este curso, fruto de uma iniciativa inovadora entre o TCE-RJ, o MPRJ e a Receita Federal, pretende fortalecer a compreensão de agentes públicos, especialmente membros dos Conselhos Municipais de Defesa dos Direitos da Pessoa Idosa, sobre o processo orçamentário, a captação de recursos e a prestação de contas dos Fundos.",
+    "area": "gestao",
+    "tipo": "gov",
+    "link": "https://www.escolavirtual.gov.br/curso/1386",
+    "imagem": "assets/images/gestao.svg"
+  },
+    {
+    "id": "gestao-pessoas",
+    "titulo": "Gestão de Pessoas",
+    "descricao": "A gestão de pessoas evoluiu para um papel estratégico nas organizações.Este curso apresenta os principais conceitos, técnicas e ferramentas que fazem parte do processo de gestão de pessoas.Aborda, ainda, o papel do gestor de pessoas e sua importância para o alcance dos objetivos institucionais.",
+    "area": "gestao",
+    "tipo": "gov",
+    "link": "https://www.escolavirtual.gov.br/curso/1338",
+    "imagem": "assets/images/gestao.svg"
+  },  
+    {
+    "id": "lideranca-trabalho",
+    "titulo": "Liderança e Gestão no Trabalho Híbrido",
+    "descricao": "O curso explora conceitos, técnicas e ferramentas para liderança e gestão no contexto do trabalho híbrido, além de boas práticas organizacionais para enfrentar desafios atuais para ajudar você a conhecer e aplicar recursos valiosos de gestão, bem como a entender os diferentes papéis de um líder nesse“ admirável mundo novo”.",
+    "area": "gestao",
+    "tipo": "gov",
+    "link": "https://www.escolavirtual.gov.br/curso/1350",
+    "imagem": "assets/images/gestao.svg"
+  },  
+    {
+    "id": "gestao-conflitos",
+    "titulo": "Gestão de Conflitos",
+    "descricao": "Este curso apresenta as práticas mais atuais e eficazes em gestão de conflitos, ajudando você a desenvolver habilidades essenciais para lidar com desafios e alcançar melhores resultados em sua vida pessoal e profissional.Ideal para quem busca se comunicar melhor e tomar decisões mais assertivas.",
+    "area": "gestao",
+    "tipo": "gov",
+    "link": "https://www.escolavirtual.gov.br/curso/1337",
+    "imagem": "assets/images/gestao.svg"
+  },  
+    {
+    "id": "PGD-fundamentos",
+    "titulo": "Fundamentos do Programa de Gestão e Desempenho(PGD)",
+    "descricao": "A capacitação possui como foco apresentar os Fundamentos do Programa de Gestão e Desempenho(PGD), explorando os fundamentos do programa, bases normativas, condições necessárias e mitos envolvidos.Servidores, gestores públicos e sociedade poderão compreender os caminhos para a formalização do PGD, os desafios envolvidos para a implementação e como o Programa pode afetar as entregas à sociedade.O que se objetiva é inspirar gestores e servidores na adoção de uma nova forma de trabalho, focando na geração de valor para a sociedade.",
+    "area": "gestao",
+    "tipo": "gov",
+    "link": "https://www.escolavirtual.gov.br/curso/1327",
+    "imagem": "assets/images/gestao.svg"
+  },
+    {
+    "id": "gestao",
+    "titulo": "",
+    "descricao": "",
+    "area": "gestao",
+    "tipo": "externo",
+    "link": "https://www.escolavirtual.gov.br/curso/",
+    "imagem": "assets/images/gestao.svg"
+  },
+    {
+    "id": "gestao",
+    "titulo": "",
+    "descricao": "",
+    "area": "gestao",
+    "tipo": "externo",
+    "link": "https://www.escolavirtual.gov.br/curso/",
+    "imagem": "assets/images/gestao.svg"
+  },
+    {
+    "id": "gestao",
+    "titulo": "",
+    "descricao": "",
+    "area": "gestao",
+    "tipo": "externo",
+    "link": "https://www.escolavirtual.gov.br/curso/",
+    "imagem": "assets/images/gestao.svg"
+  },
+    {
+    "id": "gestao",
+    "titulo": "",
+    "descricao": "",
+    "area": "gestao",
+    "tipo": "externo",
+    "link": "https://www.escolavirtual.gov.br/curso/",
+    "imagem": "assets/images/gestao.svg"
+  },
+    {
+    "id": "gestao",
+    "titulo": "",
+    "descricao": "",
+    "area": "gestao",
+    "tipo": "externo",
+    "link": "https://www.escolavirtual.gov.br/curso/",
+    "imagem": "assets/images/gestao.svg"
+  },
+  {}
+]

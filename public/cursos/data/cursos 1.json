@@ -1,0 +1,132 @@
+[
+  {
+    "id": "gestao-publica-gov",
+    "titulo": "Gestão de Crises no Setor Público",
+    "descricao": "Neste curso, você entenderá como aplicar a gestão de crises no setor público, com foco em estratégias adequadas, em respostas eficazes e no aprendizado pós-crise. O conteúdo é baseado nas normas da ISO. Inscreva-se!",
+    "area": "gestao",
+    "tipo": "gov",
+    "link": "https://www.escolavirtual.gov.br/curso/1262",
+    "imagem": "assets/images/gestao.svg"
+  },
+  
+  {
+    "id": "etica-gov",
+    "titulo": "Avaliação de Políticas em Economia Criativa",
+    "descricao": "Com o avanço dos setores criativo e cultural na economia e o maior fomento gerado por políticas públicas, torna - se essencial avaliar essas ações para qualificar a gestão pública.O curso oferece os principais conhecimentos para avaliar políticas públicas, incluindo dados, indicadores e metodologias de análise.Quer saber mais ? Inscreva - se!",
+    "area": "direito",
+    "tipo": "gov",
+    "link": "https://www.escolavirtual.gov.br/curso/846",
+    "imagem": "assets/images/gestao.svg"
+  },
+  
+  
+  
+  {
+    "id": "etica-gov",
+    "titulo": "Ética no Serviço Público",
+    "descricao": "Princípios éticos, conduta profissional e responsabilidade no setor público.",
+    "area": "gestao",
+    "tipo": "gov",
+    "link": "https://www.escolavirtual.gov.br/curso/26",
+    "imagem": "assets/images/gestao.svg"
+  },
+  {
+    "id": "governo-digital",
+    "titulo": "Introdução ao Governo Digital",
+    "descricao": "Transformação digital, serviços públicos digitais e inovação no governo.",
+    "area": "gestao",
+    "tipo": "gov",
+    "link": "https://www.escolavirtual.gov.br/curso/39",
+    "imagem": "assets/images/gestao.svg"
+  },
+  {
+    "id": "lgpd-setor-publico",
+    "titulo": "LGPD no Setor Público",
+    "descricao": "Aplicação da Lei Geral de Proteção de Dados na administração pública.",
+    "area": "gestao",
+    "tipo": "gov",
+    "link": "https://www.escolavirtual.gov.br/curso/465",
+    "imagem": "assets/images/gestao.svg"
+  },
+  {
+    "id": "logica-bradesco",
+    "titulo": "Lógica de Programação",
+    "descricao": "Fundamentos da lógica aplicada à programação de computadores.",
+    "area": "exatas",
+    "tipo": "externo",
+    "link": "https://www.ev.org.br/cursos/logica-de-programacao",
+    "imagem": "assets/images/exatas.svg"
+  },
+  {
+    "id": "excel-bradesco",
+    "titulo": "Excel Básico",
+    "descricao": "Introdução ao uso de planilhas eletrônicas com Microsoft Excel.",
+    "area": "exatas",
+    "tipo": "externo",
+    "link": "https://www.ev.org.br/cursos/excel-basico",
+    "imagem": "assets/images/exatas.svg"
+  },
+  {
+    "id": "data-science-ibm",
+    "titulo": "Introdução à Ciência de Dados",
+    "descricao": "Conceitos básicos de ciência de dados, análise e visualização.",
+    "area": "exatas",
+    "tipo": "externo",
+    "link": "https://www.coursera.org/learn/what-is-datascience",
+    "imagem": "assets/images/exatas.svg"
+  },
+  {
+    "id": "saude-mental-coursera",
+    "titulo": "Saúde Mental no Trabalho",
+    "descricao": "Bem-estar psicológico, estresse e saúde mental no ambiente profissional.",
+    "area": "saude",
+    "tipo": "externo",
+    "link": "https://www.coursera.org/learn/workplace-well-being",
+    "imagem": "assets/images/saude.svg"
+  },
+  {
+    "id": "logica-interno",
+    "titulo": "Lógica de Programação – Base Interna",
+    "descricao": "Material introdutório offline sobre lógica computacional.",
+    "area": "exatas",
+    "tipo": "interno",
+    "link": "cursos/exatas/logica-programacao.html",
+    "imagem": "assets/images/exatas.svg"
+  },
+  {
+    "id": "excel-interno",
+    "titulo": "Excel Básico – Base Interna",
+    "descricao": "Conteúdo offline para introdução ao Excel.",
+    "area": "exatas",
+    "tipo": "interno",
+    "link": "cursos/exatas/excel-basico.html",
+    "imagem": "assets/images/exatas.svg"
+  },
+  {
+    "id": "gestao-interno",
+    "titulo": "Gestão Pública – Base Interna",
+    "descricao": "Conteúdo institucional offline sobre gestão pública.",
+    "area": "gestao",
+    "tipo": "interno",
+    "link": "cursos/gestao/gestao-publica.html",
+    "imagem": "assets/images/gestao.svg"
+  },
+  {
+    "id": "etica-interno",
+    "titulo": "Ética no Serviço Público – Base Interna",
+    "descricao": "Conteúdo institucional offline sobre ética pública.",
+    "area": "gestao",
+    "tipo": "interno",
+    "link": "cursos/gestao/etica-servico-publico.html",
+    "imagem": "assets/images/gestao.svg"
+  },
+  {
+    "id": "saude-interno",
+    "titulo": "Saúde Mental – Base Interna",
+    "descricao": "Conteúdo offline sobre saúde mental no trabalho.",
+    "area": "saude",
+    "tipo": "interno",
+    "link": "cursos/saude/saude-mental.html",
+    "imagem": "assets/images/saude.svg"
+  }
+]

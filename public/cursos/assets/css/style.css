@@ -1,0 +1,68 @@
+:root {
+    --bg: #f2f4f7;
+    --primary: #1a3d6f;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --border: #d0d7de;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+}
+
+.taskbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--primary);
+    color: white;
+    padding: 10px;
+}
+
+.taskbar input, .taskbar select {
+    padding: 6px;
+    border-radius: 4px;
+    border: none;
+}
+
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+    padding: 16px;
+}
+
+.course-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.course-card a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    padding: 12px;
+}
+
+.course-card img {
+    width: 48px;
+    height: 48px;
+}
+
+.badge {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 4px 8px;
+    background: #e0e0e0;
+    font-size: 12px;
+    border-radius: 4px;
+}
