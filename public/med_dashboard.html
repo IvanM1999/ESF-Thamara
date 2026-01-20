@@ -1,22 +1,46 @@
 <!DOCTYPE html>
-
 <html lang="pt-BR">
-<head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
-<title>Dashboard Médico — ESF Thamara</title>
-<link href="/css/xp.css" rel="stylesheet"/>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<link href="assets/menu-superior.css" rel="stylesheet"/></head>
-<body class="xp-wallpaper"><div id="menu-container"></div>
+<head> 
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="author" content="Ivan Montibeller">
+  <meta name="description" content="ESF Thamara Katryne Rodrigues Schmidt - Unidade de Saúde da Família em Blumenau - SC">
+  <meta name="keywords" content="ESF, Saúde da Família, Blumenau, SC, Unidade de Saúde, Thamara Katryne Rodrigues Schmidt, Atendimento Médico, Saúde Comunitária">
+  <title>Dashboard Médico — ESF Thamara</title>
+  <link rel="stylesheet" href="./css/xp-responsive.css">
+</head>
+
+<body> 
+  <!-- Barra de menus -->
+  <div>
+  <nav style="background:#0b5fa5; color:#fff; padding:10px; display:flex; justify-content:center; gap:20px; font-weight:bold;">
+    <a href="/index.html" style="color:#fff; text-decoration:none;">🏠 Início</a>
+    <a href="./blog/agenda.html" style="color:#fff; text-decoration:none;">ℹ️ Agenda</a>
+    <a href="./equipe.html" style="color:#fff; text-decoration:none;">👩‍⚕️ Nossa Equipe</a>
+  </nav>
+    </div>
+</body>
+
+<body class="xp-wallpaper">
+<div id="menu-container"></div>
 <div class="xp-window" style="max-width:1100px;margin:20px auto;">
 <div class="xp-titlebar">Dashboard Médico — Triagens</div>
 <div class="xp-content">
 <div id="alerts"></div>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-<div><h3>Ocorrência por sintoma</h3><canvas id="symptomChart"></canvas></div>
-<div><h3>Triagens recentes</h3><div id="recentList" style="max-height:420px;overflow:auto"></div></div>
+<div>
+  <h3>Ocorrência por sintoma</h3>
+  <canvas id="symptomChart"></canvas>
+</div>
+<div>
+  <h3>Triagens recentes</h3>
+  <div id="recentList" style="max-height:420px;overflow:auto"></div>
 </div>
 </div>
 </div>
+
+
 <script>
 async function load(){
   const token = localStorage.getItem('adm_token') ? 'Bearer ' + localStorage.getItem('adm_token') : null;
@@ -40,5 +64,6 @@ async function load(){
 }
 load();
 </script>
-<script src="assets/menu-superior.js"></script></body>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
 </html>
