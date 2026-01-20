@@ -42,69 +42,73 @@
       text-align: center;
     }
 
-    @media (max-width: 768px) {
+@media (max-width: 768px) {
 
-      nav {
-        flex-direction: column;
-        gap: 10px;
-      }
+  nav {
+    flex-direction: column;
+    gap: 10px;
+  }
 
-      nav a {
-        text-align: center;
-        padding: 10px;
-        background: rgba(255,255,255,0.15);
-        border-radius: 6px;
-      }
+  nav a {
+    text-align: center;
+    padding: 10px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 6px;
+  }
 
-      /* Tabela vira cards */
-      .calendar,
-      .calendar thead,
-      .calendar tbody,
-      .calendar tr,
-      .calendar th,
-      .calendar td {
-        display: block;
-        width: 100%;
-      }
+  /* Remove qualquer comportamento de tabela */
+  .calendar,
+  .calendar thead,
+  .calendar tbody,
+  .calendar tr {
+    display: block;
+    width: 100%;
+  } 
 
-      .calendar thead {
-        display: none;
-      }
+  .calendar thead {
+    display: none;
+  }
 
-      .calendar tr {
-        margin-bottom: 16px;
-        border: 2px solid #7aaee8;
-        border-radius: 8px;
-        background: #f4f8ff;
-        box-shadow: 2px 2px 0 #3a6ea5;
-        padding: 10px;
-      }
+  /* Cada TD vira um card independente */
+  .calendar td {
+    display: block;
+    width: 70% !important;
+    box-sizing: border-box;
+    margin-bottom: 16px;
+    border: 2px solid #7aaee8;
+    border-radius: 8px;
+    background: #f4f8ff;
+    box-shadow: 2px 2px 0 #3a6ea5;
+    padding: 10px;
+  }
 
-      .calendar td {
-        border: none;
-        padding: 8px 6px;
-      }
+  /* Remove qualquer resquício de layout de tabela */
+  .calendar tr {
+    border: 0;
+    padding: 0;
+    margin: 0;
+  }
 
-      .calendar td::before {
-        display: block;
-        font-weight: bold;
-        color: #003366;
-        margin-bottom: 6px;
-      }
+  .calendar td::before {
+    display: block;
+    font-weight: bold;
+    color: #003366;
+    margin-bottom: 6px;
+  }
 
-      .calendar td:nth-child(1)::before { content: "Segunda-feira"; }
-      .calendar td:nth-child(2)::before { content: "Terça-feira"; }
-      .calendar td:nth-child(3)::before { content: "Quarta-feira"; }
-      .calendar td:nth-child(4)::before { content: "Quinta-feira"; }
-      .calendar td:nth-child(5)::before { content: "Sexta-feira"; }
-    }
+  .calendar td:nth-child(1)::before { content: "Segunda-feira"; }
+  .calendar td:nth-child(2)::before { content: "Terça-feira"; }
+  .calendar td:nth-child(3)::before { content: "Quarta-feira"; }
+  .calendar td:nth-child(4)::before { content: "Quinta-feira"; }
+  .calendar td:nth-child(5)::before { content: "Sexta-feira"; }
+}
   </style>
 </head>
 
 <body>
 
 <!-- MENU -->
-<nav style="background:#0b5fa5; color:#fff; padding:10px; display:flex; justify-content:center; gap:20px; font-weight:bold;">
+<nav style="background:#0b5fa5; color:#fff; padding:5px; display:flex; justify-content:center; gap:10px; font-weight:bold;">
   <a href="../index.html" style="color:#fff; text-decoration:none;">🏠 Início</a>
   <a href="../blog/agenda.html" style="color:#fff; text-decoration:none;">ℹ️ Agenda</a>
   <a href="../equipe.html" style="color:#fff; text-decoration:none;">👩‍⚕️ Nossa Equipe</a>
@@ -163,7 +167,7 @@
             </td>
             <td>
               <ul>
-                <li>07:00–12:00 Intercorrências</li>
+                <li>07:00–12:00 Intercorrências e agendamentos</li>
                 <li>13:00–17:45 Atendimento domiciliar</li>
                 <li>18:00 Encerramento</li>
               </ul>
@@ -177,7 +181,7 @@
             </td>
             <td>
               <ul>
-                <li>07:00–12:00 Intercorrências</li>
+                <li>07:00–12:00 Intercorrências e agendamentos</li>
                 <li>13:00 Formação da equipe</li>
                 <li>18:00 Encerramento</li>
               </ul>
