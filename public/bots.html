@@ -84,12 +84,29 @@
         { keys: ['quem', 'voce', 'bot', 'ia'], resp: "Eu sou o assistente virtual da ESF Thamara! Fui criado para facilitar o acesso às informações da unidade. 🤖" },
         { keys: ['obrigado', 'valeu', 'tchau'], resp: "Por nada! Cuide-se bem. 💙" }
     ];
+    let knowledgeBase = [];
+
+    // Carregar dicionário externo (dict.json)
+    fetch('dict.json')
+        .then(response => response.json())
+        .then(data => { knowledgeBase = data; })
+        .catch(err => console.error("Erro ao carregar inteligência do bot:", err));
+
+    // Função para normalizar texto (remove acentos e deixa minúsculo)
+    // Ex: "Horário" -> "horario", "É urgente" -> "e urgente"
+    function normalize(text) {
+        return text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+    }
 
     function findResponse(text) {
         text = text.toLowerCase();
+        const cleanText = normalize(text);
+        
         // Busca por palavras-chave
         for (let item of knowledgeBase) {
             if (item.keys.some(key => text.includes(key))) {
+            // Verifica se alguma chave (também normalizada) está presente no texto do usuário
+            if (item.keys.some(key => cleanText.includes(normalize(key)))) {
                 return item.resp;
             }
         }
