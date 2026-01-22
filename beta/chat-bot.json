@@ -43,8 +43,8 @@
   },
   {
     "id": "triagem",
-    "keys": ["estou passando mal", "muita dor", "emergencia", "sintomas de dengue", "febre alta", "preciso de atendimento urgente"],
-    "resp": "⚠️ **Acolhimento/Triagem:**<br>Se você está se sentindo mal, venha à unidade. A enfermeira fará a classificação de risco.<br><br>🚨 **Em caso de:** Dor no peito forte, falta de ar intensa ou desmaio, **LIGUE 192 (SAMU)**.",
+    "keys": ["estou passando mal", "muita dor", "emergencia", "sintomas de dengue", "febre alta", "preciso de atendimento urgente", "dor de barriga", "dor no estomago", "dor de garganta", "dor de ouvido", "enjoo", "vomito"],
+    "resp": "⚠️ **Acolhimento/Triagem:**<br>Para dores agudas (barriga, garganta, ouvido, etc) ou mal-estar geral, venha à unidade para classificação de risco.<br><br>🚨 **Em caso de:** Dor no peito forte, falta de ar intensa ou desmaio, **LIGUE 192 (SAMU)**.",
     "options": ["Ligar 192", "Ir para o posto"]
   },
   {
@@ -66,7 +66,7 @@
   },
   {
     "id": "dor_cotovelo_membros",
-    "keys": ["dor no cotovelo", "dor no braço", "machuquei o joelho", "torci o pé", "dor na perna", "dor nas juntas", "cotovelo doendo"],
+    "keys": ["dor no cotovelo", "dor de cotovelo", "dor no braço", "machuquei o joelho", "torci o pé", "dor na perna", "dor nas juntas", "cotovelo doendo", "dor no ombro", "pancada"],
     "resp": "⚠️ **Triagem Ortopédica (Membros):**<br>Para melhor orientação, analise:<br>1. Houve trauma (batida/queda) recente?<br>2. Há inchaço ou deformidade visível?<br>3. A dor impede o movimento?<br><br>🔴 **Vá ao Pronto Socorro se:** Houver deformidade evidente ou dor insuportável.<br>🟢 **Cuidados em casa:** Se for leve, aplique gelo e repouso.",
     "options": ["Onde fica o PS?", "Vou aplicar gelo", "Quero ver um médico"]
   },
@@ -87,5 +87,47 @@
     "keys": ["estou com febre", "meu filho tem febre", "temperatura alta", "corpo quente", "calafrios"],
     "resp": "🌡️ **Triagem: Febre**<br>• **Adultos:** Febre acima de 39°C ou por mais de 48h requer avaliação.<br>• **Crianças:** Se houver manchas na pele, vômitos ou prostração, venha imediatamente.<br><br>Beba bastante líquido e monitore a temperatura.",
     "options": ["É criança", "É adulto", "Tem manchas na pele"]
+  },
+  {
+    "id": "tabela_decisao",
+    "keys": ["tabela de sintomas", "onde devo ir", "quando ir ao hospital", "quando ir ao posto", "classificacao de risco", "estou em duvida"],
+    "resp": "🏥 **Guia Rápido de Decisão:**<br><table style='width:100%; border-collapse:collapse; font-size:13px; margin-top:5px;'><tr><th style='border:1px solid #ccc; padding:5px; background:#f0f0f0;'>Sintoma / Situação</th><th style='border:1px solid #ccc; padding:5px; background:#f0f0f0;'>Onde Ir?</th></tr><tr><td style='border:1px solid #ccc; padding:5px;'>Risco de Vida / Acidentes Graves</td><td style='border:1px solid #ccc; padding:5px; color:red; font-weight:bold;'>SAMU (192) / Hospital</td></tr><tr><td style='border:1px solid #ccc; padding:5px;'>Dores Agudas / Febre / Curativos</td><td style='border:1px solid #ccc; padding:5px; color:blue; font-weight:bold;'>ESF (Posto)</td></tr><tr><td style='border:1px solid #ccc; padding:5px;'>Dúvidas / Sintomas Leves</td><td style='border:1px solid #ccc; padding:5px; color:green; font-weight:bold;'>Alô Saúde (156)</td></tr><tr><td style='border:1px solid #ccc; padding:5px;'>Gripe Leve (sem falta de ar)</td><td style='border:1px solid #ccc; padding:5px;'>Isolamento (Casa)</td></tr></table>",
+    "options": ["Entendi", "Emergência"]
+  },
+  {
+    "id": "alo_saude",
+    "keys": ["alo saude", "atendimento por telefone", "consulta online", "telemedicina", "duvida simples", "preciso sair de casa"],
+    "resp": "📞 **Alô Saúde Blumenau (156 opção 2):**<br>Para orientações médicas sem sair de casa, ligue 156.<br>Ideal para: Sintomas leves, dúvidas sobre medicamentos e orientações gerais.<br>Evite filas desnecessárias e riscos de contágio!",
+    "options": ["Ligar 156", "Voltar"]
+  },
+  {
+    "id": "sindrome_gripal",
+    "keys": ["tosse", "coriza", "dor de garganta leve", "gripe", "resfriado", "nariz escorrendo", "espirrando"],
+    "resp": "😷 **Sintomas Gripais Leves:**<br>Se você tem apenas tosse, coriza e febre baixa:<br>1. **Use máscara** e evite contato social (Isolamento).<br>2. Hidrate-se e repouse.<br>3. Se piorar (falta de ar), procure o Ambulatório Geral (AG) ou Hospital.<br>⚠️ **Não venha ao ESF sem máscara!**",
+    "options": ["Tenho falta de ar", "É só gripe leve"]
+  },
+  {
+    "id": "emergencia_gestante",
+    "keys": ["estou gravida e com dor", "sangramento na gravidez", "perdi liquido", "bebe nao mexe", "gestante com dor", "gravida sangrando"],
+    "resp": "🚨 **Atenção Gestante:**<br>Vá imediatamente à **Maternidade ou Hospital** se tiver:<br>• Sangramento vaginal.<br>• Perda de líquido.<br>• Dor abdominal forte.<br>• Ausência de movimentos do bebê.<br>Não espere pelo ESF, isso é uma emergência.",
+    "options": ["Onde fica a maternidade?", "Ligar SAMU"]
+  },
+  {
+    "id": "emergencia_idoso",
+    "keys": ["idoso caiu", "minha avo caiu", "fala enrolada", "boca torta", "fraqueza de um lado", "idoso confuso", "avc", "derrame"],
+    "resp": "🚨 **Emergência com Idoso:**<br>Se houver **queda com dor/imobilidade** ou sinais de AVC (boca torta, fala enrolada, perda de força):<br>📞 **LIGUE 192 (SAMU) IMEDIATAMENTE.**<br>Não tente mover o paciente se houver suspeita de fratura no quadril/fêmur.",
+    "options": ["Ligar 192"]
+  },
+  {
+    "id": "emergencia_crianca",
+    "keys": ["meu filho nao respira bem", "bebe com febre alta", "crianca prostrada", "bebe roxo", "convulsao infantil"],
+    "resp": "🚨 **Emergência Pediátrica:**<br>Procure o **Hospital** imediatamente se a criança apresentar:<br>• Dificuldade para respirar (peito afundando).<br>• Lábios roxos.<br>• Convulsão.<br>• Sonolência excessiva (não acorda).<br>Para febre controlada, procure o ESF ou Alô Saúde.",
+    "options": ["Hospital Infantil", "Ligar 192"]
+  },
+  {
+    "id": "atendimento_inclusivo",
+    "keys": ["sou autista", "tenho autismo", "atendimento prioritario", "tea", "sensibilidade sensorial", "paciente autista"],
+    "resp": "💙 **Atendimento Inclusivo (TEA):**<br>Pessoas com TEA têm direito a atendimento prioritário e humanizado.<br>Informe na recepção sobre suas necessidades (ambiente calmo, menos barulho).<br>Em caso de crise sensorial aguda, nossa equipe está preparada para acolher.",
+    "options": ["Tenho carteirinha TEA", "Preciso de prioridade"]
   }
 ]
