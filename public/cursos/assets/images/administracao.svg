@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64">
   <rect width="64" height="64" fill="#1a3d6f"/>
   <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"
-        fill="#fff" font-size="22">⚕</text>
+        fill="#fff" font-size="20">🗂</text>
 </svg>

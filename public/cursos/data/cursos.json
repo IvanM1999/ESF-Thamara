@@ -16,7 +16,7 @@
     "area": "direito",
     "tipo": "gov",
     "link": "https://www.escolavirtual.gov.br/curso/846",
-    "imagem": "assets/images/gestao.svg"
+    "imagem": "assets/images/direito.svg"
   },
   {
     "id": "violencia-genero",
@@ -72,50 +72,133 @@
     "link": "https://www.escolavirtual.gov.br/curso/1327",
     "imagem": "assets/images/gestao.svg"
   },
-    {
-    "id": "gestao",
-    "titulo": "",
-    "descricao": "",
+  {
+    "id": "nova-lei-licitacoes",
+    "titulo": "Nova Lei de Licitações: Visão Geral",
+    "descricao": "O curso apresenta as principais inovações trazidas pela Lei nº 14.133/2021, abordando as modalidades de licitação, critérios de julgamento e as fases do processo licitatório.",
+    "area": "direito",
+    "tipo": "gov",
+    "link": "https://www.escolavirtual.gov.br/curso/758",
+    "imagem": "assets/images/direito.svg"
+  },
+  {
+    "id": "gestao-orcamentaria",
+    "titulo": "Noções de Gestão Orçamentária e Financeira",
+    "descricao": "Compreenda os conceitos básicos de orçamento público, o ciclo orçamentário, o PPA, a LDO e a LOA, além da Lei de Responsabilidade Fiscal.",
+    "area": "administracao",
+    "tipo": "gov",
+    "link": "https://www.escolavirtual.gov.br/curso/289",
+    "imagem": "assets/images/administracao.svg"
+  },
+  {
+    "id": "planejamento-estrategico-org",
+    "titulo": "Planejamento Estratégico para Organizações Públicas",
+    "descricao": "Apresenta processos de planejamento estratégico, análise de contexto e definição de metas para organizações públicas.",
+    "area": "administracao",
+    "tipo": "gov",
+    "link": "https://www.escolavirtual.gov.br/curso/107",
+    "imagem": "assets/images/administracao.svg"
+  },
+  {
+    "id": "gerenciamento-projetos-pratica",
+    "titulo": "Gerenciamento de Projetos na Prática",
+    "descricao": "Capacitação em práticas bem-sucedidas no gerenciamento de projetos com metodologias utilizadas nas organizações públicas e privadas.",
+    "area": "administracao",
+    "tipo": "gov",
+    "link": "https://www.escolavirtual.gov.br/curso/680",
+    "imagem": "assets/images/administracao.svg"
+  },
+  {
+    "id": "seguranca-paciente-qualidade",
+    "titulo": "Segurança do Paciente e Qualidade em Serviços de Saúde",
+    "descricao": "Visa ampliar o conhecimento sobre segurança do paciente, minimização de riscos e melhoria da qualidade do cuidado em serviços de saúde.",
+    "area": "saude",
+    "tipo": "gov",
+    "link": "https://www.escolavirtual.gov.br/curso/236",
+    "imagem": "assets/images/saude.svg"
+  },
+  {
+    "id": "regulacao-sistemas-saude",
+    "titulo": "Regulação de Sistemas de Saúde do SUS",
+    "descricao": "Aborda a política nacional de regulação da saúde, gestão do SUS, regionalização e redes de atenção à saúde.",
+    "area": "saude",
+    "tipo": "gov",
+    "link": "https://www.escolavirtual.gov.br/curso/894",
+    "imagem": "assets/images/saude.svg"
+  },
+  {
+    "id": "etica-servico-publico-gov-enap",
+    "titulo": "Ética e Serviço Público",
+    "descricao": "Apresenta os fundamentos da ética e sua relação com os desafios do setor público, visando a conduta ética na oferta e utilização de serviços públicos.",
+    "area": "etica",
+    "tipo": "gov",
+    "link": "https://www.escolavirtual.gov.br/curso/4",
+    "imagem": "assets/images/etica.svg"
+  },
+  {
+    "id": "intro-orcamento-publico",
+    "titulo": "Introdução ao Orçamento Público",
+    "descricao": "Noções de orçamento público para compreensão do processo orçamentário, instrumentos legais, receitas, despesas e transparência governamental.",
+    "area": "financeiro",
+    "tipo": "gov",
+    "link": "https://www.escolavirtual.gov.br/curso/116",
+    "imagem": "assets/images/financeiro.svg"
+  },
+  {
+    "id": "gestao-financas-pessoais",
+    "titulo": "Gestão de Finanças Pessoais",
+    "descricao": "Conceitos básicos de educação financeira: planejar o uso do dinheiro, poupar ativamente e usar o crédito de forma responsável.",
+    "area": "financeiro",
+    "tipo": "gov",
+    "link": "https://www.escolavirtual.gov.br/curso/170",
+    "imagem": "assets/images/financeiro.svg"
+  },
+  {
+    "id": "estado-democratico-direito",
+    "titulo": "Organização do Estado Democrático de Direito no Brasil",
+    "descricao": "Aborda a organização do Estado brasileiro, focando nos princípios do Estado Democrático de Direito e na estrutura dos poderes.",
+    "area": "direito",
+    "tipo": "gov",
+    "link": "https://www.escolavirtual.gov.br/curso/1387",
+    "imagem": "assets/images/direito.svg"
+  },
+  [
+  {
+    "id": "como-ser-aprovado-em-concursos",
+    "titulo": "Como Ser Aprovado em Concursos",
+    "descricao": "Estratégias de estudo, organização e preparação para concursos públicos.",
+    "area": "administracao",
+    "tipo": "edune",
+    "link": "https://www.edunecursos.com.br/curso/curso-online-gratuito-como-ser-aprovado-em-concursos",
+    "imagem": "assets/images/administracao.svg"
+  },
+  {
+    "id": "gestao-de-pessoas-edune",
+    "titulo": "Gestão de Pessoas",
+    "descricao": "Fundamentos de gestão de pessoas, liderança e desenvolvimento de equipes.",
     "area": "gestao",
-    "tipo": "externo",
-    "link": "https://www.escolavirtual.gov.br/curso/",
+    "tipo": "edune",
+    "link": "https://www.edunecursos.com.br/curso/curso-online-gratis-gestao-de-pessoas",
     "imagem": "assets/images/gestao.svg"
   },
-    {
-    "id": "gestao",
-    "titulo": "",
-    "descricao": "",
-    "area": "gestao",
-    "tipo": "externo",
-    "link": "https://www.escolavirtual.gov.br/curso/",
-    "imagem": "assets/images/gestao.svg"
+  {
+    "id": "desenvolvimento-sustentavel",
+    "titulo": "Desenvolvimento Sustentável",
+    "descricao": "Conceitos de sustentabilidade, responsabilidade social e desenvolvimento sustentável.",
+    "area": "etica",
+    "tipo": "edune",
+    "link": "https://www.edunecursos.com.br/curso/curso-online-gratis-desenvolvimento-sustentavel",
+    "imagem": "assets/images/etica.svg"
   },
-    {
-    "id": "gestao",
-    "titulo": "",
-    "descricao": "",
-    "area": "gestao",
-    "tipo": "externo",
-    "link": "https://www.escolavirtual.gov.br/curso/",
-    "imagem": "assets/images/gestao.svg"
-  },
-    {
-    "id": "gestao",
-    "titulo": "",
-    "descricao": "",
-    "area": "gestao",
-    "tipo": "externo",
-    "link": "https://www.escolavirtual.gov.br/curso/",
-    "imagem": "assets/images/gestao.svg"
-  },
-    {
-    "id": "gestao",
-    "titulo": "",
-    "descricao": "",
-    "area": "gestao",
-    "tipo": "externo",
-    "link": "https://www.escolavirtual.gov.br/curso/",
-    "imagem": "assets/images/gestao.svg"
-  },
-  {}
+  {
+    "id": "introducao-ead",
+    "titulo": "Introdução à Educação a Distância",
+    "descricao": "Noções básicas sobre educação a distância, ambientes virtuais e metodologias EAD.",
+    "area": "exatas",
+    "tipo": "edune",
+    "link": "https://www.edunecursos.com.br/curso/curso-online-gratuito-introducao-a-educacao-a-distancia",
+    "imagem": "assets/images/exatas.svg"
+  }
+]
+
 ]

@@ -1,7 +1,19 @@
 {
    "exatas": "assets/images/exatas.svg",
    "gestao": "assets/images/gestao.svg",
-   "saude": "assets/images/saude.svg"
-      ,
-   "direito": "assets/images/direito.svg"
+   "saude": "assets/images/saude.svg",
+   "administracao": "assets/images/administracao.svg",
+   "etica": "assets/images/etica.svg",
+   "financeiro": "assets/images/financeiro.svg",
+   "social": "assets/images/social.svg",
+   "direito": "assets/images/direito.svg",
+   "tecnologia": "assets/images/tecnologia.svg",
+   "linguagem": "assets/images/linguagem.svg",
+   "artes": "assets/images/artes.svg",
+   "biologia": "assets/images/biologia.svg",
+   "historia": "assets/images/historia.svg",
+   "filosofia": "assets/images/filosofia.svg",
+   "geografia": "assets/images/geografia.svg",
+   "literatura": "assets/images/literatura.svg"
+
 }

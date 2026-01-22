@@ -1,56 +1,93 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>Ambiente de Cursos Livres</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <title>Ambiente de Cursos Livres</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1a3d6f">
 
-    <!-- CSS institucional -->
-    <link rel="stylesheet" href="assets/css/style.css">
+  <!-- CSS institucional -->
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
+
 <body>
 
-<header class="taskbar">
+<header class="taskbar" role="banner">
+  <nav class="taskbar-content" aria-label="Barra principal do sistema">
+
+    <!-- Identidade -->
     <div class="taskbar-left">
-        <span class="logo">Cursos Livres</span>
+      <span class="logo" aria-label="Ambiente de Cursos Livres">
+        Cursos Livres
+      </span>
     </div>
 
+    <!-- Busca -->
     <div class="taskbar-center">
-        <input 
-            type="search" 
-            id="searchInput" 
-            placeholder="Buscar cursos..."
-            aria-label="Buscar cursos"
-        >
+      <label for="searchInput" class="visually-hidden">
+        Buscar cursos
+      </label>
+      <input 
+        type="search"
+        id="searchInput"
+        placeholder="Buscar cursos..."
+        aria-describedby="searchHelp"
+      >
+      <span id="searchHelp" class="visually-hidden">
+        Digite o nome ou tema do curso
+      </span>
     </div>
 
-    <div class="taskbar-right">
-        <select id="filterArea" aria-label="Filtrar por área">
-            <option value="">Todas as áreas</option>
-            <option value="exatas">Exatas</option>
-            <option value="gestao">Gestão</option>
-            <option value="saude">Saúde</option>
-        </select>
+    <!-- Filtros -->
+    <div class="taskbar-right" role="group" aria-label="Filtros de cursos">
+      <label for="filterArea" class="visually-hidden">Área</label>
+      <select id="filterArea">
+        <option value="">Todas as áreas</option>
+        <option value="exatas">Exatas</option>
+        <option value="gestao">Gestão</option>
+        <option value="administracao">Administração</option>
+        <option value="saude">Saúde</option>
+        <option value="direito">Direito</option>
+        <option value="etica">Ética</option>
+        <option value="financeiro">Financeiro</option>
+      </select>
 
-        <select id="filterType" aria-label="Filtrar por tipo">
-            <option value="">Todos os tipos</option>
-            <option value="interno">Interno</option>
-            <option value="externo">Externo</option>
-            <option value="gov">Gov.br</option>
-        </select>
+      <label for="filterType" class="visually-hidden">Tipo</label>
+      <select id="filterType">
+        <option value="">Todos os tipos</option>
+        <option value="interno">Interno</option>
+        <option value="externo">Externo</option>
+        <option value="gov">Gov.br</option>
+      </select>
     </div>
+
+  </nav>
 </header>
 
-<main>
-    <section id="coursesContainer" class="courses-grid" aria-live="polite">
-        <!-- Cursos carregados dinamicamente pelo JS -->
-    </section>
+<main id="main-content">
+
+  <section
+    id="coursesContainer"
+    class="courses-grid"
+    aria-live="polite"
+    aria-label="Lista de cursos disponíveis"
+  >
+    <!-- Cursos carregados dinamicamente pelo JS -->
+  </section>
+
 </main>
 
-<footer class="system-footer">
-    <p> Este Ambiente de Cursos Livres – Plataforma Educacional Pública - Visa A Educação Pública Gratuita E Não Assumem Responsabilidade Pelos Conteúdos Dispostos Nos Cursos Anexados</p>
+<footer class="system-footer" role="contentinfo">
+  <p>
+    Este Ambiente de Cursos Livres – Plataforma Educacional Pública –
+    visa à educação pública gratuita.  
+    Não assume responsabilidade pelos conteúdos dispostos nos cursos anexados.
+    <br><br>
+    <a href="mailto:dsbrti2022@gmail.com" style="color: inherit;">Reportar problemas técnicos ou de conteúdo</a>
+  </p>
 </footer>
 
-<script src="assets/js/app.js"></script>
+<script src="assets/js/app.js" defer></script>
+
 </body>
 </html>
