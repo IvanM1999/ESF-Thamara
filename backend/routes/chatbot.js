@@ -22,4 +22,17 @@ router.get('/', async (req, res) => {
     }
 });
 
+// POST /api/chatbot/feedback - Registrar erro da IA (Feedback do usuário)
+router.post('/feedback', async (req, res) => {
+    try {
+        const { query, response } = req.body;
+        const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+        await db.query('INSERT INTO ai_feedback (user_query, bot_response, ip) VALUES ($1, $2, $3)', [query, response, ip]);
+        res.json({ ok: true });
+    } catch (err) {
+        console.error("Erro ao salvar feedback:", err);
+        res.status(500).json({ error: 'Erro interno' });
+    }
+});
+
 module.exports = router;

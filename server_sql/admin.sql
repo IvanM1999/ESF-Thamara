@@ -17,6 +17,15 @@ CREATE TABLE IF NOT EXISTS access_logs (
     timestamp TIMESTAMP DEFAULT NOW()
 );
 
+-- Tabela de Feedback da IA (Erros reportados pelo usuário)
+CREATE TABLE IF NOT EXISTS ai_feedback (
+    id SERIAL PRIMARY KEY,
+    user_query TEXT,
+    bot_response TEXT,
+    ip VARCHAR(45),
+    timestamp TIMESTAMP DEFAULT NOW()
+);
+
 -- Tabela de IPs Permitidos (Controle de Acesso)
 CREATE TABLE IF NOT EXISTS allowed_ips (
     id SERIAL PRIMARY KEY,
