@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="author" content="Ivan Montibeller">
-    <meta name="description" content="Chatbot da ESF Thamara Katryne Rodrigues Schmidt">
+    <meta name="description" content="ESF Thamara Katryne Rodrigues Schmidt - Unidade de Saúde da Família em Blumenau - SC">
     <meta name="keywords" content="ESF, Saúde da Família, Blumenau, SC, Unidade de Saúde, Thamara Katryne Rodrigues Schmidt, Atendimento Médico, Saúde Comunitária">
     <title>Assistente Virtual – ESF Thamara</title>
 <link rel="stylesheet" href="./css/xp-responsive.css"></head>
@@ -34,7 +34,7 @@
     <a href="./blog/agenda.html" style="color:#fff; text-decoration:none;">ℹ️ Agenda</a>
     <a href="./equipe.html" style="color:#fff; text-decoration:none;">👩‍⚕️ Nossa Equipe</a>
   </nav>
-  </div>
+    </div>
 
 <!-- CHATBOT INTERFACE -->
 <div class="xp-window" style="max-width: 800px; margin: 20px auto; height: 70vh; display: flex; flex-direction: column;">
@@ -62,8 +62,12 @@
     </div>
 </div>
 
-<script>
-    // --- LÓGICA DO CHATBOT (Open Source Logic) ---
+<script type="module">
+    // --- LÓGICA DO CHATBOT COM IA (Transformers.js) ---
+    import { pipeline, env } from 'https://cdn.jsdelivr.net/npm/@xenova/transformers@2.6.0';
+    
+    // Configuração para rodar no navegador sem buscar modelos locais
+    env.allowLocalModels = false;
     
     const chatHistory = document.getElementById('chatHistory');
     const userInput = document.getElementById('userInput');
@@ -71,31 +75,79 @@
     const typingIndicator = document.getElementById('typingIndicator');
 
     let knowledgeBase = [];
+    let extractor = null;
 
-    // Carregar dicionário externo (dict.json)
-    fetch('dict.json')
-        .then(response => response.json())
-        .then(data => { knowledgeBase = data; })
-        .catch(err => console.error("Erro ao carregar inteligência do bot:", err));
+    // Inicialização
+    async function initAI() {
+        try {
+            // 1. Carregar dados
+            const resp = await fetch('chat-bot.json');
+            knowledgeBase = await resp.json();
 
-    // Função para normalizar texto (remove acentos e deixa minúsculo)
-    // Ex: "Horário" -> "horario", "É urgente" -> "e urgente"
-    function normalize(text) {
-        return text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+            // 2. Carregar Modelo de IA (pode demorar um pouco na primeira vez)
+            addMessage("<i>🔄 Inicializando sistema de IA... aguarde um momento.</i>", 'bot');
+            userInput.disabled = true;
+            
+            extractor = await pipeline('feature-extraction', 'Xenova/all-MiniLM-L6-v2');
+            
+            // 3. Pré-calcular embeddings (vetores) das perguntas conhecidas
+            for (let item of knowledgeBase) {
+                item.embeddings = [];
+                for (let key of item.keys) {
+                    const output = await extractor(key, { pooling: 'mean', normalize: true });
+                    item.embeddings.push(output.data);
+                }
+            }
+
+            // Pronto
+            const loadingMsg = chatHistory.querySelector('.bot:last-child');
+            if(loadingMsg && loadingMsg.innerHTML.includes('Inicializando')) loadingMsg.remove();
+            
+            addMessage("IA Pronta! 🧠 Pode perguntar naturalmente. Ex: 'Estou com dor de dente' ou 'Que horas abre?'", 'bot');
+            userInput.disabled = false;
+            userInput.focus();
+
+        } catch (e) {
+            console.error(e);
+            addMessage("Erro ao carregar a IA. Verifique sua conexão.", 'bot');
+        }
     }
 
-    function findResponse(text) {
-        const cleanText = normalize(text);
+    // Função matemática para comparar similaridade (Cosseno)
+    function cosineSimilarity(a, b) {
+        let dot = 0, normA = 0, normB = 0;
+        for (let i = 0; i < a.length; i++) {
+            dot += a[i] * b[i];
+            normA += a[i] * a[i];
+            normB += b[i] * b[i];
+        }
+        return dot / (Math.sqrt(normA) * Math.sqrt(normB));
+    }
+
+    async function findResponse(text) {
+        if (!extractor) return "A IA ainda está carregando...";
         
-        // Busca por palavras-chave
+        // Gera o vetor da pergunta do usuário
+        const output = await extractor(text, { pooling: 'mean', normalize: true });
+        const userEmbedding = output.data;
+
+        let bestScore = -1;
+        let bestResponse = "Desculpe, não entendi muito bem. Pode reformular?";
+
         for (let item of knowledgeBase) {
-            // Verifica se alguma chave (também normalizada) está presente no texto do usuário
-            if (item.keys.some(key => cleanText.includes(normalize(key)))) {
-                return item.resp;
+            for (let keyEmb of item.embeddings) {
+                const score = cosineSimilarity(userEmbedding, keyEmb);
+                if (score > bestScore) {
+                    bestScore = score;
+                    bestResponse = item.resp;
+                }
             }
         }
-        // Resposta padrão
-        return "Desculpe, ainda estou aprendendo e não entendi sua dúvida. 😕<br>Tente perguntar sobre **horários**, **endereço** ou **vacinas**.";
+        
+        // Se a confiança for muito baixa (< 0.35), assume que não entendeu
+        if (bestScore < 0.35) return "Desculpe, não tenho certeza sobre isso. Tente perguntar sobre horários, vacinas ou endereço.";
+        
+        return bestResponse;
     }
 
     function addMessage(text, sender) {
@@ -121,8 +173,8 @@
         // Delay artificial para parecer natural (1s a 2s)
         const delay = Math.floor(Math.random() * 1000) + 800;
         
-        setTimeout(() => {
-            const response = findResponse(text);
+        setTimeout(async () => {
+            const response = await findResponse(text);
             typingIndicator.style.display = 'none';
             addMessage(response, 'bot');
             userInput.disabled = false;
@@ -136,8 +188,8 @@
         if (e.key === 'Enter') handleUserMessage();
     });
 
-    // Foco inicial
-    setTimeout(() => userInput.focus(), 500);
+    // Iniciar
+    initAI();
 
 </script>
 
