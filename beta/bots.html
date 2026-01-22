@@ -70,26 +70,27 @@
     const sendBtn = document.getElementById('sendBtn');
     const typingIndicator = document.getElementById('typingIndicator');
 
-    // Base de Conhecimento (Simulando IA)
-    // Você pode expandir isso ou conectar a uma API real (ex: OpenAI, Ollama)
-    const knowledgeBase = [
-        { keys: ['ola', 'oi', 'bom dia', 'boa tarde', 'começar'], resp: "Olá! Tudo bem? Como posso ajudar você com a ESF Thamara hoje?" },
-        { keys: ['horario', 'hora', 'abre', 'fecha', 'funcionamento'], resp: "🕒 **Horário de Atendimento:**<br>Segunda a Sexta: 07:00 às 12:00 e 13:00 às 16:00.<br>A unidade fecha para almoço ao meio-dia." },
-        { keys: ['endereco', 'onde', 'local', 'fica', 'mapa'], resp: "📍 **Endereço:**<br>Rua Santa Maria, 2082 – Bairro Progresso, Blumenau (SC).<br>CEP: 89027-202." },
-        { keys: ['telefone', 'contato', 'ligar', 'numero'], resp: "📞 **Telefones:**<br>(47) 3381-7064<br>(47) 3381-6751" },
-        { keys: ['vacina', 'vacinacao', 'campanha'], resp: "💉 **Sala de Vacinas:**<br>Funciona no mesmo horário da unidade. Lembre-se de trazer a carteirinha de vacinação e o cartão do SUS!" },
-        { keys: ['medico', 'consulta', 'agendar', 'marcar'], resp: "👨‍⚕️ **Consultas:**<br>O agendamento é feito preferencialmente presencialmente na unidade. Para casos agudos, venha para a triagem (Acolhimento)." },
-        { keys: ['dentista', 'odonto', 'dente'], resp: "🦷 **Odontologia:**<br>Temos atendimento odontológico. É necessário passar pela recepção para verificar a disponibilidade de agendamento." },
-        { keys: ['triagem', 'dor', 'sintoma', 'mal'], resp: "⚠️ Se você está se sentindo mal, venha imediatamente à unidade para passar pelo Acolhimento (Triagem). Em casos de emergência grave, ligue 192 (SAMU)." },
-        { keys: ['quem', 'voce', 'bot', 'ia'], resp: "Eu sou o assistente virtual da ESF Thamara! Fui criado para facilitar o acesso às informações da unidade. 🤖" },
-        { keys: ['obrigado', 'valeu', 'tchau'], resp: "Por nada! Cuide-se bem. 💙" }
-    ];
+    let knowledgeBase = [];
+
+    // Carregar dicionário externo (dict.json)
+    fetch('dict.json')
+        .then(response => response.json())
+        .then(data => { knowledgeBase = data; })
+        .catch(err => console.error("Erro ao carregar inteligência do bot:", err));
+
+    // Função para normalizar texto (remove acentos e deixa minúsculo)
+    // Ex: "Horário" -> "horario", "É urgente" -> "e urgente"
+    function normalize(text) {
+        return text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+    }
 
     function findResponse(text) {
-        text = text.toLowerCase();
+        const cleanText = normalize(text);
+        
         // Busca por palavras-chave
         for (let item of knowledgeBase) {
-            if (item.keys.some(key => text.includes(key))) {
+            // Verifica se alguma chave (também normalizada) está presente no texto do usuário
+            if (item.keys.some(key => cleanText.includes(normalize(key)))) {
                 return item.resp;
             }
         }

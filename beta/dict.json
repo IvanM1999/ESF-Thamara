@@ -1,0 +1,57 @@
+[
+  {
+    "id": "saudacao",
+    "keys": ["ola", "oi", "bom dia", "boa tarde", "boa noite", "comecar", "eai", "opa", "oie", "hey"],
+    "resp": "Olá! Tudo bem? Sou a IA da ESF Thamara. Como posso te ajudar hoje?"
+  },
+  {
+    "id": "horarios",
+    "keys": ["horario", "hora", "abre", "fecha", "funcionamento", "agenda", "aberto", "fechado", "expediente"],
+    "resp": "🕒 **Dinâmica de Atendimento:**<br>• **Seg, Ter e Qui:** Manhã (intercorrências/agendamentos), Tarde (consultas/enfermagem).<br>• **Quarta:** Manhã (intercorrências), Tarde (visitas domiciliares).<br>• **Sexta:** Manhã (intercorrências), Tarde (formação equipe).<br>🚫 **Almoço:** 12h às 13h (fechado).<br>⚠️ Fora desses horários, procure o AG Garcia ou Hospitais."
+  },
+  {
+    "id": "endereco",
+    "keys": ["endereco", "onde", "local", "fica", "mapa", "localizacao", "rua", "bairro", "chegar"],
+    "resp": "📍 **Endereço:**<br>Rua Santa Maria, 2082 – Bairro Progresso, Blumenau (SC).<br>CEP: 89027-202."
+  },
+  {
+    "id": "contato",
+    "keys": ["telefone", "contato", "ligar", "numero", "zap", "whatsapp", "tel", "celular"],
+    "resp": "📞 **Telefones:**<br>(47) 3381-7064<br>(47) 3381-6751<br>No momento não temos WhatsApp oficial para agendamento."
+  },
+  {
+    "id": "vacinas",
+    "keys": ["vacina", "vacinacao", "campanha", "gotinha", "covid", "gripe", "vassina", "imunizacao", "injecao"],
+    "resp": "💉 **Sala de Vacinas:**<br>Segunda a Quinta: 09h às 11h30 e 13h às 15h.<br>Sexta: 09h às 11h30 (somente matutino).<br>Lembre-se de trazer a carteirinha de vacinação e o cartão do SUS!"
+  },
+  {
+    "id": "consultas",
+    "keys": ["medico", "consulta", "agendar", "marcar", "clinico", "geral", "doutor", "medica", "atendimento"],
+    "resp": "👨‍⚕️ **Consultas:**<br>O agendamento é feito preferencialmente presencialmente na unidade. Para casos agudos, venha para a triagem (Acolhimento)."
+  },
+  {
+    "id": "odonto",
+    "keys": ["dentista", "odonto", "dente", "boca", "dor de dente", "dentaria"],
+    "resp": "🦷 **Odontologia:**<br>Temos atendimento odontológico. É necessário passar pela recepção para verificar a disponibilidade de agendamento."
+  },
+  {
+    "id": "triagem",
+    "keys": ["triagem", "dor", "sintoma", "mal", "doente", "urgencia", "emergencia", "passar mal", "ruim"],
+    "resp": "⚠️ Se você está se sentindo mal, venha imediatamente à unidade para passar pelo Acolhimento (Triagem). Em casos de emergência grave, ligue 192 (SAMU)."
+  },
+  {
+    "id": "visitas",
+    "keys": ["visita", "domiciliar", "casa", "acamado", "visitar", "em casa"],
+    "resp": "🏠 **Visitas Domiciliares:**<br>Ocorrem geralmente nas quartas-feiras à tarde. São destinadas a pacientes acamados ou com dificuldade de locomoção. Converse com seu Agente de Saúde (ACS) para solicitar."
+  },
+  {
+    "id": "identidade",
+    "keys": ["quem", "voce", "bot", "ia", "robo", "atendente", "virtual"],
+    "resp": "Eu sou o assistente virtual da ESF Thamara! Fui criado para facilitar o acesso às informações da unidade. 🤖"
+  },
+  {
+    "id": "agradecimento",
+    "keys": ["obrigado", "valeu", "tchau", "grato", "agradecido", "top", "beleza", "falou", "ate mais"],
+    "resp": "Por nada! Cuide-se bem. 💙"
+  }
+]
