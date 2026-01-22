@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="Ivan Montibeller">
+    <meta name="description" content="ESF Thamara Katryne Rodrigues Schmidt - Unidade de Saúde da Família em Blumenau - SC">
+    <meta name="keywords" content="ESF, Saúde da Família, Blumenau, SC, Unidade de Saúde, Thamara Katryne Rodrigues Schmidt, Atendimento Médico, Saúde Comunitária">
+    <title>Assistente Virtual – ESF Thamara</title>
+<link rel="stylesheet" href="./css/xp-responsive.css"></head>
+    <style>
+        /* Estilos específicos do Chat Profissional */
+        .chat-wrapper { display: flex; flex-direction: column; height: 100%; }
+        .chat-history { flex: 1; overflow-y: auto; padding: 20px; background: #fff; display: flex; flex-direction: column; gap: 12px; scroll-behavior: smooth; }
+        .message { max-width: 85%; padding: 12px 16px; border-radius: 18px; font-size: 15px; line-height: 1.5; position: relative; animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 1px 2px rgba(0,0,0,0.1); }
+        .message.bot { align-self: flex-start; background: #f0f2f5; color: #1c1e21; border-bottom-left-radius: 4px; border: 1px solid #e4e6eb; }
+        .message.user { align-self: flex-end; background: #0084ff; color: white; border-bottom-right-radius: 4px; }
+        .chat-controls { padding: 15px; background: #f0f0f0; border-top: 1px solid #dcdcdc; display: flex; gap: 10px; align-items: center; }
+        .chat-input { flex: 1; padding: 12px; border: 1px solid #ccc; border-radius: 24px; outline: none; font-size: 15px; transition: border-color 0.2s; }
+        .chat-input:focus { border-color: #0084ff; box-shadow: 0 0 0 2px rgba(0,132,255,0.2); }
+        .send-btn { background: #0084ff; color: white; border: none; padding: 10px 24px; border-radius: 24px; cursor: pointer; font-weight: 600; transition: background 0.2s; }
+        .send-btn:hover { background: #0073e6; }
+        .typing { font-size: 12px; color: #65676b; margin-left: 20px; margin-bottom: 5px; display: none; font-style: italic; }
+        @keyframes popIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+    </style>
+
+
+<body> 
+  <!-- Barra de menus -->
+  <div>
+  <nav style="background:#0b5fa5; color:#fff; padding:10px; display:flex; justify-content:center; gap:20px; font-weight:bold;">
+    <a href="/index.html" style="color:#fff; text-decoration:none;">🏠 Início</a>
+    <a href="./blog/agenda.html" style="color:#fff; text-decoration:none;">ℹ️ Agenda</a>
+    <a href="./equipe.html" style="color:#fff; text-decoration:none;">👩‍⚕️ Nossa Equipe</a>
+  </nav>
+    </div>
+
+<!-- CHATBOT INTERFACE -->
+<div class="xp-window" style="max-width: 800px; margin: 20px auto; height: 70vh; display: flex; flex-direction: column;">
+    <div class="xp-titlebar">🤖 Assistente Virtual — ESF Thamara</div>
+    <div class="xp-content" style="flex: 1; padding: 0; overflow: hidden;">
+        
+        <div class="chat-wrapper">
+            <div id="chatHistory" class="chat-history">
+                <!-- Mensagem inicial -->
+                <div class="message bot">
+                    Olá! Sou a Inteligência Artificial da ESF Thamara. 🏥<br>
+                    Posso ajudar com horários, endereço, vacinas ou dúvidas sobre a unidade.<br>
+                    <strong>Como posso ajudar você hoje?</strong>
+                </div>
+            </div>
+            
+            <div id="typingIndicator" class="typing">Digitando...</div>
+            
+            <div class="chat-controls">
+                <input type="text" id="userInput" class="chat-input" placeholder="Digite sua dúvida aqui..." autocomplete="off">
+                <button id="sendBtn" class="send-btn">Enviar</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    // --- LÓGICA DO CHATBOT (Open Source Logic) ---
+    
+    const chatHistory = document.getElementById('chatHistory');
+    const userInput = document.getElementById('userInput');
+    const sendBtn = document.getElementById('sendBtn');
+    const typingIndicator = document.getElementById('typingIndicator');
+
+    // Base de Conhecimento (Simulando IA)
+    // Você pode expandir isso ou conectar a uma API real (ex: OpenAI, Ollama)
+    const knowledgeBase = [
+        { keys: ['ola', 'oi', 'bom dia', 'boa tarde', 'começar'], resp: "Olá! Tudo bem? Como posso ajudar você com a ESF Thamara hoje?" },
+        { keys: ['horario', 'hora', 'abre', 'fecha', 'funcionamento', 'agenda'], resp: "🕒 **Dinâmica de Atendimento:**<br>• **Seg, Ter e Qui:** Manhã (intercorrências/agendamentos), Tarde (consultas/enfermagem).<br>• **Quarta:** Manhã (intercorrências), Tarde (visitas domiciliares).<br>• **Sexta:** Manhã (intercorrências), Tarde (formação equipe).<br>🚫 **Almoço:** 12h às 13h (fechado).<br>⚠️ Fora desses horários, procure o AG Garcia ou Hospitais." },
+        { keys: ['endereco', 'onde', 'local', 'fica', 'mapa'], resp: "📍 **Endereço:**<br>Rua Santa Maria, 2082 – Bairro Progresso, Blumenau (SC).<br>CEP: 89027-202." },
+        { keys: ['telefone', 'contato', 'ligar', 'numero'], resp: "📞 **Telefones:**<br>(47) 3381-7064<br>(47) 3381-6751" },
+        { keys: ['vacina', 'vacinacao', 'campanha'], resp: "💉 **Sala de Vacinas:**<br>Segunda a Quinta: 09h às 11h30 e 13h às 15h.<br>Sexta: 09h às 11h30 (somente matutino).<br>Lembre-se de trazer a carteirinha de vacinação e o cartão do SUS!" },
+        { keys: ['medico', 'consulta', 'agendar', 'marcar'], resp: "👨‍⚕️ **Consultas:**<br>O agendamento é feito preferencialmente presencialmente na unidade. Para casos agudos, venha para a triagem (Acolhimento)." },
+        { keys: ['dentista', 'odonto', 'dente'], resp: "🦷 **Odontologia:**<br>Temos atendimento odontológico. É necessário passar pela recepção para verificar a disponibilidade de agendamento." },
+        { keys: ['triagem', 'dor', 'sintoma', 'mal'], resp: "⚠️ Se você está se sentindo mal, venha imediatamente à unidade para passar pelo Acolhimento (Triagem). Em casos de emergência grave, ligue 192 (SAMU)." },
+        { keys: ['quem', 'voce', 'bot', 'ia'], resp: "Eu sou o assistente virtual da ESF Thamara! Fui criado para facilitar o acesso às informações da unidade. 🤖" },
+        { keys: ['obrigado', 'valeu', 'tchau'], resp: "Por nada! Cuide-se bem. 💙" }
+    ];
+
+    function findResponse(text) {
+        text = text.toLowerCase();
+        // Busca por palavras-chave
+        for (let item of knowledgeBase) {
+            if (item.keys.some(key => text.includes(key))) {
+                return item.resp;
+            }
+        }
+        // Resposta padrão
+        return "Desculpe, ainda estou aprendendo e não entendi sua dúvida. 😕<br>Tente perguntar sobre **horários**, **endereço** ou **vacinas**.";
+    }
+
+    function addMessage(text, sender) {
+        const div = document.createElement('div');
+        div.className = `message ${sender}`;
+        div.innerHTML = text;
+        chatHistory.appendChild(div);
+        chatHistory.scrollTop = chatHistory.scrollHeight;
+    }
+
+    async function handleUserMessage() {
+        const text = userInput.value.trim();
+        if (!text) return;
+
+        // Adiciona msg do usuário
+        addMessage(text, 'user');
+        userInput.value = '';
+        userInput.disabled = true;
+
+        // Simula "pensando"
+        typingIndicator.style.display = 'block';
+        
+        // Delay artificial para parecer natural (1s a 2s)
+        const delay = Math.floor(Math.random() * 1000) + 800;
+        
+        setTimeout(() => {
+            const response = findResponse(text);
+            typingIndicator.style.display = 'none';
+            addMessage(response, 'bot');
+            userInput.disabled = false;
+            userInput.focus();
+        }, delay);
+    }
+
+    // Eventos
+    sendBtn.addEventListener('click', handleUserMessage);
+    userInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') handleUserMessage();
+    });
+
+    // Foco inicial
+    setTimeout(() => userInput.focus(), 500);
+
+</script>
+
+</body>
+</html>
