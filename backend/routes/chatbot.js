@@ -1,19 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const { Pool } = require('pg');
-
-// Configuração da conexão com o banco (Render fornece DATABASE_URL)
-const pool = new Pool({
-    connectionString: process.env.DATABASE_URL,
-    ssl: {
-        rejectUnauthorized: false // Necessário para conexão segura no Render
-    }
-});
+const db = require('../db'); // Importa a conexão centralizada
 
 router.get('/', async (req, res) => {
     try {
         // Busca todas as interações cadastradas
-        const result = await pool.query('SELECT * FROM chatbot_interactions');
+        const result = await db.query('SELECT * FROM chatbot_interactions');
         
         // Mapeia para o formato que o frontend já espera
         const data = result.rows.map(row => ({

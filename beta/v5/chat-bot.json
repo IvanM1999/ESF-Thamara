@@ -7,7 +7,7 @@
   },
   {
     "id": "horarios",
-    "keys": ["qual o horario de atendimento", "que horas o posto abre", "ate que horas funciona", "horario de funcionamento", "está aberto agora", "agenda da unidade"],
+    "keys": ["qual o horario de atendimento", "que horas o posto abre", "ate que horas funciona", "horario de funcionamento", "está aberto agora", "agenda da unidade", "quando abre", "que horas abre", "horario de abertura"],
     "resp": "🕒 **Dinâmica de Atendimento:**<br>• **Seg, Ter e Qui:** Manhã (intercorrências/agendamentos), Tarde (consultas/enfermagem).<br>• **Quarta:** Manhã (intercorrências), Tarde (visitas domiciliares).<br>• **Sexta:** Manhã (intercorrências), Tarde (formação equipe).<br>🚫 **Almoço:** 12h às 13h (fechado).<br>⚠️ Fora desses horários, procure o AG Garcia ou Hospitais.",
     "options": ["Como agendar consulta?", "Onde fica o AG Garcia?"]
   },
@@ -31,20 +31,32 @@
   },
   {
     "id": "consultas",
-    "keys": ["como marcar consulta", "agendar medico", "preciso de um clinico geral", "quero marcar uma consulta", "tem medico hoje"],
+    "keys": ["como marcar consulta", "agendar medico", "preciso de um clinico geral", "quero marcar uma consulta", "tem medico hoje", "quero ver um medico", "preciso passar no medico", "consulta medica"],
     "resp": "👨‍⚕️ **Consultas:**<br>O agendamento é feito preferencialmente presencialmente na unidade. Para casos agudos, venha para a triagem (Acolhimento).",
     "options": ["Estou com dor aguda", "É apenas rotina"]
   },
   {
     "id": "odonto",
-    "keys": ["dentista", "consulta dentista", "dor no dente", "dente doendo", "gengiva doendo", "arrancar dente", "canal no dente", "limpeza nos dentes"],
+    "keys": ["dentista", "consulta dentista", "dor no dente", "dente doendo", "gengiva doendo", "arrancar dente", "canal no dente", "limpeza nos dentes", "odontologia", "saude bucal", "dente quebrado", "estou com muita dor de dente", "dor de dente forte"],
     "resp": "🦷 **Odontologia:**<br>Temos atendimento odontológico. É necessário passar pela recepção para verificar a disponibilidade de agendamento.",
     "options": ["Estou com muita dor de dente", "Quero agendar limpeza"]
   },
   {
-    "id": "triagem",
-    "keys": ["estou passando mal", "tontura forte", "desmaio", "sangramento", "pressao baixa", "dor de barriga", "dor no estomago", "dor abdominal", "dor de garganta", "dor de ouvido", "enjoo", "vomito", "diarreia", "dor ao urinar"],
-    "resp": "⚠️ **Acolhimento/Triagem:**<br>Para dores agudas (barriga, garganta, ouvido, etc) ou mal-estar geral, venha à unidade para classificação de risco.<br><br>🚨 **Em caso de:** Dor no peito forte, falta de ar intensa ou desmaio, **LIGUE 192 (SAMU)**.",
+    "id": "dor_abdominal",
+    "keys": ["dor de barriga", "dor no estomago", "dor abdominal", "enjoo", "vomito", "diarreia", "azia", "queimação no estomago", "colica", "minha barriga doi", "estou com dor de barriga"],
+    "resp": "⚠️ **Dor Abdominal/Estômago:**<br>• **Leve/Moderada:** Venha ao Posto (ESF) para avaliação médica.<br>• **Grave (dor insuportável):** Vá ao Hospital.<br>• **Dúvida:** Ligue 156 (Alô Saúde).",
+    "options": ["Ir ao Posto", "Ligar 156"]
+  },
+  {
+    "id": "dor_garganta_ouvido",
+    "keys": ["dor de garganta", "dor de ouvido", "ouvido doendo", "garganta inflamada", "dificuldade para engolir", "dor ao engolir", "zumbido no ouvido"],
+    "resp": "⚠️ **Garganta ou Ouvido:**<br>Geralmente são infecções que precisam de avaliação clínica.<br>Venha ao Posto (ESF) no horário de acolhimento (07h-11h ou 13h-15h).",
+    "options": ["Ver Horários", "Endereço"]
+  },
+  {
+    "id": "triagem_geral",
+    "keys": ["estou passando mal", "tontura forte", "desmaio", "sangramento", "pressao baixa", "mal estar", "corpo ruim", "fraqueza"],
+    "resp": "⚠️ **Acolhimento/Triagem:**<br>Se você está se sentindo mal de forma geral, venha à unidade para aferir pressão e passar pela triagem.<br><br>🚨 **Desmaio ou Sangramento forte:** Ligue 192 (SAMU).",
     "options": ["Ligar 192", "Ir para o posto"]
   },
   {
@@ -90,7 +102,7 @@
   },
   {
     "id": "tabela_decisao",
-    "keys": ["tabela de sintomas", "onde devo ir", "quando ir ao hospital", "quando ir ao posto", "classificacao de risco", "estou em duvida"],
+    "keys": ["tabela de sintomas", "onde devo ir", "classificacao de risco", "estou em duvida", "guia de atendimento", "para onde eu vou"],
     "resp": "🏥 **Guia Rápido de Decisão:**<br><table style='width:100%; border-collapse:collapse; font-size:13px; margin-top:5px;'><tr><th style='border:1px solid #ccc; padding:5px; background:#f0f0f0;'>Sintoma / Situação</th><th style='border:1px solid #ccc; padding:5px; background:#f0f0f0;'>Onde Ir?</th></tr><tr><td style='border:1px solid #ccc; padding:5px;'>Risco de Vida / Acidentes Graves</td><td style='border:1px solid #ccc; padding:5px; color:red; font-weight:bold;'>SAMU (192) / Hospital</td></tr><tr><td style='border:1px solid #ccc; padding:5px;'>Dores Agudas / Febre / Curativos</td><td style='border:1px solid #ccc; padding:5px; color:blue; font-weight:bold;'>ESF (Posto)</td></tr><tr><td style='border:1px solid #ccc; padding:5px;'>Dúvidas / Sintomas Leves</td><td style='border:1px solid #ccc; padding:5px; color:green; font-weight:bold;'>Alô Saúde (156)</td></tr><tr><td style='border:1px solid #ccc; padding:5px;'>Gripe Leve (sem falta de ar)</td><td style='border:1px solid #ccc; padding:5px;'>Isolamento (Casa)</td></tr></table>",
     "options": ["Entendi", "Emergência"]
   },
@@ -132,8 +144,20 @@
   },
   {
     "id": "dor_generica",
-    "keys": ["estou com dor", "sinto dor", "muita dor", "dor no corpo", "doi tudo", "estou doendo", "dor forte", "tenho dor", "dor"],
+    "keys": ["estou com dor", "sinto dor", "dor no corpo", "doi tudo", "estou doendo", "tenho dor", "dor", "alguma dor"],
     "resp": "⚠️ **Onde é a sua dor?**<br>Para te orientar melhor, preciso saber onde dói.<br><br>Exemplos: \"Dor de cabeça\", \"Dor no peito\", \"Dor nas costas\", \"Dor de dente\".",
     "options": ["Cabeça", "Peito", "Barriga", "Dente", "Costas"]
+  },
+  {
+    "id": "hospital_ps",
+    "keys": ["onde fica o ps", "onde fica o hospital", "pronto socorro", "emergencia hospital", "endereco do hospital", "hospital santa isabel", "hospital santo antonio", "upa", "onde e a emergencia"],
+    "resp": "🏥 **Hospitais / Pronto Socorro:**<br>Para emergências, procure:<br>• **Hospital Santa Isabel:** R. Floriano Peixoto, 300.<br>• **Hospital Santo Antônio:** R. Itajaí, 545.<br>• **Hospital Misericórdia (Vila Itoupava).**<br><br>🚑 Em risco de vida, ligue **192**.",
+    "options": ["Ligar 192", "Voltar"]
+  },
+  {
+    "id": "feedback_negativo",
+    "keys": ["ta uma porcaria", "nao funciona", "bot burro", "que lixo", "nao ajuda", "pessimo", "horrivel", "idiota", "ruim"],
+    "resp": "😔 Sinto muito que você não esteja satisfeito. Sou uma inteligência artificial em aprendizado.<br>Por favor, ligue para **(47) 3381-7064** para falar com um atendente humano.",
+    "options": ["Ligar para o posto"]
   }
-]
+]  

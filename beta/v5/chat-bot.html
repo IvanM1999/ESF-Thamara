@@ -58,8 +58,8 @@
             <div id="typingIndicator" class="typing">Digitando...</div>
             
             <div class="chat-controls">
-                <input type="text" id="userInput" class="chat-input" placeholder="Digite sua dúvida aqui..." autocomplete="off">
-                <button id="sendBtn" class="send-btn">Enviar</button>
+                <input type="text" id="userInput" class="chat-input" placeholder="Digite sua dúvida aqui..." autocomplete="off" aria-label="Digite sua dúvida">
+                <button id="sendBtn" class="send-btn" aria-label="Enviar mensagem">Enviar</button>
             </div>
         </div>
 
@@ -84,7 +84,7 @@
     // Inicialização
     async function initAI() {
         try {
-            // 1. Carregar dados
+            // 1. Carregar dados do JSON BETA
             const resp = await fetch('chat-bot.json');
             knowledgeBase = await resp.json();
 
@@ -107,7 +107,7 @@
             const loadingMsg = chatHistory.querySelector('.bot:last-child');
             if(loadingMsg && loadingMsg.innerHTML.includes('Inicializando')) loadingMsg.remove();
             
-            addMessage("IA Pronta! 🧠 Pode perguntar naturalmente. Ex: 'Estou com dor de dente' ou 'Que horas abre?'", 'bot');
+            addMessage("IA Beta Pronta! 🧠 Teste: 'Estou com dor de barriga'", 'bot');
             userInput.disabled = false;
             userInput.focus();
 
@@ -209,7 +209,7 @@
             userInput.focus();
         }, delay);
     }
-
+ 
     // Eventos
     sendBtn.addEventListener('click', handleUserMessage);
     userInput.addEventListener('keypress', (e) => {
