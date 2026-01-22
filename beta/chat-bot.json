@@ -37,13 +37,13 @@
   },
   {
     "id": "odonto",
-    "keys": ["tem dentista", "estou com dor de dente", "agendar dentista", "atendimento odontologico", "arrancar dente"],
+    "keys": ["dentista", "consulta dentista", "dor no dente", "dente doendo", "gengiva doendo", "arrancar dente", "canal no dente", "limpeza nos dentes"],
     "resp": "🦷 **Odontologia:**<br>Temos atendimento odontológico. É necessário passar pela recepção para verificar a disponibilidade de agendamento.",
     "options": ["Estou com muita dor de dente", "Quero agendar limpeza"]
   },
   {
     "id": "triagem",
-    "keys": ["estou passando mal", "muita dor", "emergencia", "sintomas de dengue", "febre alta", "preciso de atendimento urgente", "dor de barriga", "dor no estomago", "dor de garganta", "dor de ouvido", "enjoo", "vomito"],
+    "keys": ["estou passando mal", "tontura forte", "desmaio", "sangramento", "pressao baixa", "dor de barriga", "dor no estomago", "dor abdominal", "dor de garganta", "dor de ouvido", "enjoo", "vomito", "diarreia", "dor ao urinar"],
     "resp": "⚠️ **Acolhimento/Triagem:**<br>Para dores agudas (barriga, garganta, ouvido, etc) ou mal-estar geral, venha à unidade para classificação de risco.<br><br>🚨 **Em caso de:** Dor no peito forte, falta de ar intensa ou desmaio, **LIGUE 192 (SAMU)**.",
     "options": ["Ligar 192", "Ir para o posto"]
   },
@@ -66,7 +66,7 @@
   },
   {
     "id": "dor_cotovelo_membros",
-    "keys": ["dor no cotovelo", "dor de cotovelo", "dor no braço", "machuquei o joelho", "torci o pé", "dor na perna", "dor nas juntas", "cotovelo doendo", "dor no ombro", "pancada"],
+    "keys": ["dor no cotovelo", "dor de cotovelo", "dor no braço", "machuquei o joelho", "torci o pé", "dor na perna", "dor nas juntas", "cotovelo doendo", "dor no ombro", "pancada", "dor nas costas", "dor na coluna", "dor no quadril", "dor no pe"],
     "resp": "⚠️ **Triagem Ortopédica (Membros):**<br>Para melhor orientação, analise:<br>1. Houve trauma (batida/queda) recente?<br>2. Há inchaço ou deformidade visível?<br>3. A dor impede o movimento?<br><br>🔴 **Vá ao Pronto Socorro se:** Houver deformidade evidente ou dor insuportável.<br>🟢 **Cuidados em casa:** Se for leve, aplique gelo e repouso.",
     "options": ["Onde fica o PS?", "Vou aplicar gelo", "Quero ver um médico"]
   },
@@ -129,5 +129,11 @@
     "keys": ["sou autista", "tenho autismo", "atendimento prioritario", "tea", "sensibilidade sensorial", "paciente autista"],
     "resp": "💙 **Atendimento Inclusivo (TEA):**<br>Pessoas com TEA têm direito a atendimento prioritário e humanizado.<br>Informe na recepção sobre suas necessidades (ambiente calmo, menos barulho).<br>Em caso de crise sensorial aguda, nossa equipe está preparada para acolher.",
     "options": ["Tenho carteirinha TEA", "Preciso de prioridade"]
+  },
+  {
+    "id": "dor_generica",
+    "keys": ["estou com dor", "sinto dor", "muita dor", "dor no corpo", "doi tudo", "estou doendo", "dor forte", "tenho dor", "dor"],
+    "resp": "⚠️ **Onde é a sua dor?**<br>Para te orientar melhor, preciso saber onde dói.<br><br>Exemplos: \"Dor de cabeça\", \"Dor no peito\", \"Dor nas costas\", \"Dor de dente\".",
+    "options": ["Cabeça", "Peito", "Barriga", "Dente", "Costas"]
   }
 ]
