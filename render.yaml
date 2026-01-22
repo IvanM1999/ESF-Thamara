@@ -1,38 +1,14 @@
 services:
   - type: web
-    name: esf-thamara-backend
+    name: esf-thamara
     env: node
-    plan: free
-    repo: https://github.com/IvanM1999/ESF-Thamara
-    branch: main
-    buildCommand: |
-      cd backend
-      npm install
-    startCommand: |
-      cd backend
-      node server.js
+    # Força o uso do NPM para evitar conflito com Yarn
+    buildCommand: npm install
+    startCommand: npm start
     envVars:
+      - key: NODE_VERSION
+        value: 20.11.0
       - key: DATABASE_URL
         fromDatabase:
-          name: esf-thamara-db
+          name: esf-db
           property: connectionString
-      - key: JWT_SECRET
-        sync: false   # definido manualmente no painel do Render
-
-  - type: web
-    name: esf-thamara-frontend
-    env: static
-    plan: free
-    repo: https://github.com/IvanM1999/ESF-Thamara
-    branch: main
-    buildCommand: |
-      cd frontend
-      npm install
-      npm run build
-    staticPublishPath: frontend/public
-
-databases:
-  - name: esf-thamara-db
-    plan: starter
-    databaseName: esf_thamara
-    user: esf_user
