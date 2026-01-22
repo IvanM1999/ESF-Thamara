@@ -23,6 +23,10 @@
         .send-btn:hover { background: #0073e6; }
         .typing { font-size: 12px; color: #65676b; margin-left: 20px; margin-bottom: 5px; display: none; font-style: italic; }
         @keyframes popIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+        /* Estilo para Botões de Opção */
+        .options-container { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 16px 20px; animation: popIn 0.3s ease; }
+        .option-btn { background: #fff; border: 1px solid #0084ff; color: #0084ff; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-size: 14px; transition: all 0.2s; font-family: inherit; }
+        .option-btn:hover { background: #0084ff; color: #fff; transform: translateY(-1px); box-shadow: 0 2px 4px rgba(0,132,255,0.2); }
     </style>
 
 
@@ -125,35 +129,52 @@
     }
 
     async function findResponse(text) {
-        if (!extractor) return "A IA ainda está carregando...";
+        if (!extractor) return { text: "A IA ainda está carregando..." };
         
         // Gera o vetor da pergunta do usuário
         const output = await extractor(text, { pooling: 'mean', normalize: true });
         const userEmbedding = output.data;
 
         let bestScore = -1;
-        let bestResponse = "Desculpe, não entendi muito bem. Pode reformular?";
+        let bestMatch = null;
 
         for (let item of knowledgeBase) {
             for (let keyEmb of item.embeddings) {
                 const score = cosineSimilarity(userEmbedding, keyEmb);
                 if (score > bestScore) {
                     bestScore = score;
-                    bestResponse = item.resp;
+                    bestMatch = item;
                 }
             }
         }
         
         // Se a confiança for muito baixa (< 0.35), assume que não entendeu
-        if (bestScore < 0.35) return "Desculpe, não tenho certeza sobre isso. Tente perguntar sobre horários, vacinas ou endereço.";
+        if (bestScore < 0.35) return { text: "Desculpe, não tenho certeza sobre isso. Tente ser mais específico sobre onde é a dor ou o que precisa." };
         
-        return bestResponse;
+        return { text: bestMatch.resp, options: bestMatch.options };
     }
 
     function addMessage(text, sender) {
         const div = document.createElement('div');
         div.className = `message ${sender}`;
         div.innerHTML = text;
+        chatHistory.appendChild(div);
+        chatHistory.scrollTop = chatHistory.scrollHeight;
+    }
+
+    function addOptions(options) {
+        const div = document.createElement('div');
+        div.className = 'options-container';
+        options.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'option-btn';
+            btn.innerText = opt;
+            btn.onclick = () => {
+                userInput.value = opt; // Preenche o input
+                handleUserMessage();   // Envia como se o usuário tivesse digitado
+            };
+            div.appendChild(btn);
+        });
         chatHistory.appendChild(div);
         chatHistory.scrollTop = chatHistory.scrollHeight;
     }
@@ -176,7 +197,14 @@
         setTimeout(async () => {
             const response = await findResponse(text);
             typingIndicator.style.display = 'none';
-            addMessage(response, 'bot');
+            
+            addMessage(response.text, 'bot');
+            
+            // Se houver opções (botões), renderiza
+            if(response.options && response.options.length > 0) {
+                addOptions(response.options);
+            }
+
             userInput.disabled = false;
             userInput.focus();
         }, delay);

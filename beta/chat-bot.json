@@ -2,56 +2,90 @@
   {
     "id": "saudacao",
     "keys": ["ola", "oi", "bom dia", "boa tarde", "boa noite", "gostaria de falar com alguem", "iniciar atendimento", "oi tudo bem"],
-    "resp": "Olá! Tudo bem? Sou a IA da ESF Thamara. Como posso te ajudar hoje?"
+    "resp": "Olá! Sou a IA da ESF Thamara. 🏥<br>Posso ajudar com informações administrativas ou fazer uma **pré-triagem** de sintomas.<br>Como posso ajudar?",
+    "options": ["Horários de Atendimento", "Estou com dor", "Vacinas", "Endereço"]
   },
   {
     "id": "horarios",
     "keys": ["qual o horario de atendimento", "que horas o posto abre", "ate que horas funciona", "horario de funcionamento", "está aberto agora", "agenda da unidade"],
-    "resp": "🕒 **Dinâmica de Atendimento:**<br>• **Seg, Ter e Qui:** Manhã (intercorrências/agendamentos), Tarde (consultas/enfermagem).<br>• **Quarta:** Manhã (intercorrências), Tarde (visitas domiciliares).<br>• **Sexta:** Manhã (intercorrências), Tarde (formação equipe).<br>🚫 **Almoço:** 12h às 13h (fechado).<br>⚠️ Fora desses horários, procure o AG Garcia ou Hospitais."
+    "resp": "🕒 **Dinâmica de Atendimento:**<br>• **Seg, Ter e Qui:** Manhã (intercorrências/agendamentos), Tarde (consultas/enfermagem).<br>• **Quarta:** Manhã (intercorrências), Tarde (visitas domiciliares).<br>• **Sexta:** Manhã (intercorrências), Tarde (formação equipe).<br>🚫 **Almoço:** 12h às 13h (fechado).<br>⚠️ Fora desses horários, procure o AG Garcia ou Hospitais.",
+    "options": ["Como agendar consulta?", "Onde fica o AG Garcia?"]
   },
   {
     "id": "endereco",
     "keys": ["qual o endereço", "onde fica o posto", "localização da unidade", "como chegar no posto", "mapa da unidade", "rua do posto"],
-    "resp": "📍 **Endereço:**<br>Rua Santa Maria, 2082 – Bairro Progresso, Blumenau (SC).<br>CEP: 89027-202."
+    "resp": "📍 **Endereço:**<br>Rua Santa Maria, 2082 – Bairro Progresso, Blumenau (SC).<br>CEP: 89027-202.",
+    "options": ["Ver no Mapa", "Horários"]
   },
   {
     "id": "contato",
     "keys": ["qual o telefone", "numero para contato", "como ligar para o posto", "tem whatsapp", "numero do zap"],
-    "resp": "📞 **Telefones:**<br>(47) 3381-7064<br>(47) 3381-6751<br>No momento não temos WhatsApp oficial para agendamento."
+    "resp": "📞 **Telefones:**<br>(47) 3381-7064<br>(47) 3381-6751<br>No momento não temos WhatsApp oficial para agendamento.",
+    "options": ["Voltar ao início"]
   },
   {
     "id": "vacinas",
     "keys": ["horario de vacinacao", "quero tomar vacina", "tem vacina da gripe", "campanha de vacinacao", "preciso me vacinar"],
-    "resp": "💉 **Sala de Vacinas:**<br>Segunda a Quinta: 09h às 11h30 e 13h às 15h.<br>Sexta: 09h às 11h30 (somente matutino).<br>Lembre-se de trazer a carteirinha de vacinação e o cartão do SUS!"
+    "resp": "💉 **Sala de Vacinas:**<br>Segunda a Quinta: 09h às 11h30 e 13h às 15h.<br>Sexta: 09h às 11h30 (somente matutino).<br>Lembre-se de trazer a carteirinha de vacinação e o cartão do SUS!",
+    "options": ["Quais documentos levar?", "Tem vacina da gripe?"]
   },
   {
     "id": "consultas",
     "keys": ["como marcar consulta", "agendar medico", "preciso de um clinico geral", "quero marcar uma consulta", "tem medico hoje"],
-    "resp": "👨‍⚕️ **Consultas:**<br>O agendamento é feito preferencialmente presencialmente na unidade. Para casos agudos, venha para a triagem (Acolhimento)."
+    "resp": "👨‍⚕️ **Consultas:**<br>O agendamento é feito preferencialmente presencialmente na unidade. Para casos agudos, venha para a triagem (Acolhimento).",
+    "options": ["Estou com dor aguda", "É apenas rotina"]
   },
   {
     "id": "odonto",
     "keys": ["tem dentista", "estou com dor de dente", "agendar dentista", "atendimento odontologico", "arrancar dente"],
-    "resp": "🦷 **Odontologia:**<br>Temos atendimento odontológico. É necessário passar pela recepção para verificar a disponibilidade de agendamento."
+    "resp": "🦷 **Odontologia:**<br>Temos atendimento odontológico. É necessário passar pela recepção para verificar a disponibilidade de agendamento.",
+    "options": ["Estou com muita dor de dente", "Quero agendar limpeza"]
   },
   {
     "id": "triagem",
     "keys": ["estou passando mal", "muita dor", "emergencia", "sintomas de dengue", "febre alta", "preciso de atendimento urgente"],
-    "resp": "⚠️ Se você está se sentindo mal, venha imediatamente à unidade para passar pelo Acolhimento (Triagem). Em casos de emergência grave, ligue 192 (SAMU)."
+    "resp": "⚠️ **Acolhimento/Triagem:**<br>Se você está se sentindo mal, venha à unidade. A enfermeira fará a classificação de risco.<br><br>🚨 **Em caso de:** Dor no peito forte, falta de ar intensa ou desmaio, **LIGUE 192 (SAMU)**.",
+    "options": ["Ligar 192", "Ir para o posto"]
   },
   {
     "id": "visitas",
     "keys": ["visita domiciliar", "atendimento em casa", "paciente acamado", "agente de saude visita", "medico vai em casa"],
-    "resp": "🏠 **Visitas Domiciliares:**<br>Ocorrem geralmente nas quartas-feiras à tarde. São destinadas a pacientes acamados ou com dificuldade de locomoção. Converse com seu Agente de Saúde (ACS) para solicitar."
+    "resp": "🏠 **Visitas Domiciliares:**<br>Ocorrem geralmente nas quartas-feiras à tarde. São destinadas a pacientes acamados ou com dificuldade de locomoção. Converse com seu Agente de Saúde (ACS) para solicitar.",
+    "options": ["Como falar com ACS?", "Voltar"]
   },
   {
     "id": "identidade",
     "keys": ["quem é voce", "voce é um robo", "falar com atendente humano", "quem criou esse bot"],
-    "resp": "Eu sou o assistente virtual da ESF Thamara! Fui criado para facilitar o acesso às informações da unidade. 🤖"
+    "resp": "Eu sou o assistente virtual da ESF Thamara! Fui criado para facilitar o acesso às informações da unidade. 🤖",
+    "options": ["O que você sabe fazer?"]
   },
   {
     "id": "agradecimento",
     "keys": ["obrigado", "valeu", "muito obrigado", "ajudou muito", "tchau", "ate logo"],
     "resp": "Por nada! Cuide-se bem. 💙"
+  },
+  {
+    "id": "dor_cotovelo_membros",
+    "keys": ["dor no cotovelo", "dor no braço", "machuquei o joelho", "torci o pé", "dor na perna", "dor nas juntas", "cotovelo doendo"],
+    "resp": "⚠️ **Triagem Ortopédica (Membros):**<br>Para melhor orientação, analise:<br>1. Houve trauma (batida/queda) recente?<br>2. Há inchaço ou deformidade visível?<br>3. A dor impede o movimento?<br><br>🔴 **Vá ao Pronto Socorro se:** Houver deformidade evidente ou dor insuportável.<br>🟢 **Cuidados em casa:** Se for leve, aplique gelo e repouso.",
+    "options": ["Onde fica o PS?", "Vou aplicar gelo", "Quero ver um médico"]
+  },
+  {
+    "id": "dor_cabeca",
+    "keys": ["dor de cabeça", "enxaqueca", "cabeça doendo muito", "pontada na cabeça", "cefaleia"],
+    "resp": "🧠 **Triagem: Dor de Cabeça**<br>Responda mentalmente:<br>• A dor é a pior da sua vida?<br>• Tem alterações na visão ou fala?<br>• Teve febre junto?<br><br>Se respondeu **SIM** para algo, procure atendimento imediato. Se for uma dor conhecida (enxaqueca comum), tome sua medicação de costume e repouse em local escuro.",
+    "options": ["É uma dor muito forte", "É uma dor comum", "Preciso de atestado"]
+  },
+  {
+    "id": "dor_peito_cardio",
+    "keys": ["dor no peito", "aperto no coração", "pontada no peito", "infarto", "dor toracica", "queimação no peito"],
+    "resp": "🚨 **ATENÇÃO - POSSÍVEL EMERGÊNCIA** 🚨<br>Dor no peito pode ser grave. Se a dor for forte, irradiar para o braço esquerdo ou vier acompanhada de falta de ar/suor frio:<br><br>📞 **LIGUE 192 (SAMU) IMEDIATAMENTE** ou vá à emergência hospitalar mais próxima (H. Santa Isabel).<br>Não espere por agendamento no posto.",
+    "options": ["Ligar 192", "Onde fica o Hospital?", "É só uma pontada leve"]
+  },
+  {
+    "id": "febre",
+    "keys": ["estou com febre", "meu filho tem febre", "temperatura alta", "corpo quente", "calafrios"],
+    "resp": "🌡️ **Triagem: Febre**<br>• **Adultos:** Febre acima de 39°C ou por mais de 48h requer avaliação.<br>• **Crianças:** Se houver manchas na pele, vômitos ou prostração, venha imediatamente.<br><br>Beba bastante líquido e monitore a temperatura.",
+    "options": ["É criança", "É adulto", "Tem manchas na pele"]
   }
 ]
