@@ -15,44 +15,43 @@
 
 <body> 
   <!-- Barra de menus -->
-  <div>
-  <nav style="background:#0b5fa5; color:#fff; padding:10px; display:flex; justify-content:center; gap:20px; font-weight:bold;">
-    <a href="/index.html" style="color:#fff; text-decoration:none;">🏠 Início</a>
-    <a href="./blog/agenda.html" style="color:#fff; text-decoration:none;">ℹ️ Agenda</a>
-    <a href="./equipe.html" style="color:#fff; text-decoration:none;">👩‍⚕️ Nossa Equipe</a>
+  <nav class="main-nav">
+    <a href="/index.html">🏠 Início</a>
+    <a href="./blog/agenda.html">ℹ️ Agenda</a>
+    <a href="./equipe.html">👩‍⚕️ Nossa Equipe</a>
   </nav>
-    </div>
 
 <!-- CHATBOT INTERFACE -->
-<div class="xp-window" style="max-width: 800px; margin: 20px auto; height: 70vh; display: flex; flex-direction: column;">
-    <div class="xp-titlebar">🤖 Assistente Virtual — ESF Thamara</div>
-    <div class="xp-content" style="flex: 1; padding: 0; overflow: hidden;">
-        
-        <div class="chat-wrapper">
-            <div id="chatHistory" class="chat-history">
-                <!-- Mensagem inicial -->
-                <div class="message bot">
-                    Olá! Sou a Inteligência Artificial da ESF Thamara. 🏥<br>
-                    Posso ajudar com horários, endereço, vacinas ou dúvidas sobre a unidade.<br>
-                    <strong>Como posso ajudar você hoje?</strong>
-                </div>
-            </div>
-            
-            <div id="typingIndicator" class="typing">Digitando...</div>
-            
-            <div class="chat-controls">
-                <input type="text" id="userInput" class="chat-input" placeholder="Digite sua dúvida aqui..." autocomplete="off" aria-label="Digite sua dúvida">
-                <button id="sendBtn" class="send-btn" aria-label="Enviar mensagem">Enviar</button>
-                <button id="emergencyBtn" class="emergency-btn" aria-label="Emergência">🚨 Emergência</button>
-            </div>
+<div class="chat-window">
+    <!-- Cabeçalho Personalizado -->
+    <div class="chat-header">
+        <div class="bot-avatar">🤖</div>
+        <div class="bot-info">
+            <h3>Assistente ESF Thamara</h3>
+            <div class="bot-status"><span class="status-dot"></span>Online agora</div>
         </div>
-
+    </div>
+        
+    <div id="chatHistory" class="chat-history">
+        <!-- Mensagem inicial -->
+        <div class="message bot">
+            Olá! Sou a Inteligência Artificial da ESF Thamara. 🏥<br>
+            Posso ajudar com horários, endereço, vacinas ou dúvidas sobre a unidade.<br>
+            <strong>Como posso ajudar você hoje?</strong>
+        </div>
+    </div>
+    
+    <div id="typingIndicator" class="typing">Digitando...</div>
+    
+    <div class="chat-controls">
+        <input type="text" id="userInput" class="chat-input" placeholder="Digite sua dúvida aqui..." autocomplete="off" aria-label="Digite sua dúvida">
+        <button id="sendBtn" class="send-btn" aria-label="Enviar mensagem">Enviar</button>
+        <button id="emergencyBtn" class="emergency-btn" aria-label="Emergência">🚨 Emergência</button>
     </div>
 </div>
 
 <!-- Link para o novo JS extraído -->
 <script type="module" src="./js/chat-bot.js"></script>
-<script src="assets/js/app.js"></script>
 
 </body>
 </html>

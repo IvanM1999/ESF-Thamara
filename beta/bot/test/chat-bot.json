@@ -1,0 +1,187 @@
+[
+  {
+    "id": "saudacao",
+    "keys": ["ola", "oi", "bom dia", "boa tarde", "boa noite", "gostaria de falar com alguem", "iniciar atendimento", "oi tudo bem"],
+    "resp": "Olá! Sou a IA da ESF Thamara. 🏥<br>Posso ajudar com informações administrativas ou fazer uma **pré-triagem** de sintomas.<br>Como posso ajudar?",
+    "options": ["Horários de Atendimento", "Estou com dor", "Vacinas", "Endereço"]
+  },
+  {
+    "id": "horarios",
+    "keys": ["qual o horario de atendimento", "que horas o posto abre", "ate que horas funciona", "horario de funcionamento", "está aberto agora", "agenda da unidade", "quando abre", "que horas abre", "horario de abertura"],
+    "resp": "🕒 **Dinâmica de Atendimento:**<br>• **Seg, Ter e Qui:** Manhã (intercorrências/agendamentos), Tarde (consultas/enfermagem).<br>• **Quarta:** Manhã (intercorrências), Tarde (visitas domiciliares).<br>• **Sexta:** Manhã (intercorrências), Tarde (formação equipe).<br>🚫 **Almoço:** 12h às 13h (fechado).<br>⚠️ Fora desses horários, procure o AG Garcia ou Hospitais.",
+    "options": ["Como agendar consulta?", "Onde fica o AG Garcia?"]
+  },
+  {
+    "id": "endereco",
+    "keys": ["qual o endereço", "onde fica o posto", "localização da unidade", "como chegar no posto", "mapa da unidade", "rua do posto"],
+    "resp": "📍 **Endereço:**<br>Rua Santa Maria, 2082 – Bairro Progresso, Blumenau (SC).<br>CEP: 89027-202.",
+    "options": ["Ver no Mapa", "Horários"]
+  },
+  {
+    "id": "contato",
+    "keys": ["qual o telefone", "numero para contato", "como ligar para o posto", "tem whatsapp", "numero do zap"],
+    "resp": "📞 **Telefones:**<br>(47) 3381-7064<br>(47) 3381-6751<br>No momento não temos WhatsApp oficial para agendamento.",
+    "options": ["Voltar ao início"]
+  },
+  {
+    "id": "vacinas",
+    "keys": ["horario de vacinacao", "quero tomar vacina", "tem vacina da gripe", "campanha de vacinacao", "preciso me vacinar"],
+    "resp": "💉 **Sala de Vacinas:**<br>Segunda a Quinta: 09h às 11h30 e 13h às 15h.<br>Sexta: 09h às 11h30 (somente matutino).<br>Lembre-se de trazer a carteirinha de vacinação e o cartão do SUS!",
+    "options": ["Quais documentos levar?", "Tem vacina da gripe?"]
+  },
+  {
+    "id": "consultas",
+    "keys": ["como marcar consulta", "agendar medico", "preciso de um clinico geral", "quero marcar uma consulta", "tem medico hoje", "quero ver um medico", "preciso passar no medico", "consulta medica"],
+    "resp": "👨‍⚕️ **Consultas:**<br>O agendamento é feito preferencialmente presencialmente na unidade. Para casos agudos, venha para a triagem (Acolhimento).",
+    "options": ["Estou com dor aguda", "É apenas rotina"]
+  },
+  {
+    "id": "odonto",
+    "keys": ["dentista", "consulta dentista", "dor no dente", "dente doendo", "gengiva doendo", "arrancar dente", "canal no dente", "limpeza nos dentes", "odontologia", "saude bucal", "dente quebrado", "estou com muita dor de dente", "dor de dente forte"],
+    "resp": "🦷 **Odontologia:**<br>Temos atendimento odontológico. É necessário passar pela recepção para verificar a disponibilidade de agendamento.",
+    "options": ["Estou com muita dor de dente", "Quero agendar limpeza"]
+  },
+  {
+    "id": "dor_abdominal",
+    "keys": ["dor de barriga", "dor no estomago", "dor abdominal", "enjoo", "vomito", "diarreia", "azia", "queimação no estomago", "minha barriga doi", "estou com dor de barriga"],
+    "resp": "⚠️ **Dor Abdominal/Estômago:**<br>• **Leve/Moderada:** Venha ao Posto (ESF) para avaliação médica.<br>• **Grave (dor insuportável):** Vá ao Hospital.<br>• **Dúvida:** Ligue 156 (Alô Saúde).",
+    "options": ["Ir ao Posto", "Ligar 156"]
+  },
+  {
+    "id": "dor_garganta_ouvido",
+    "keys": ["dor de garganta", "dor de ouvido", "ouvido doendo", "garganta inflamada", "dificuldade para engolir", "dor ao engolir", "zumbido no ouvido"],
+    "resp": "⚠️ **Garganta ou Ouvido:**<br>Geralmente são infecções que precisam de avaliação clínica.<br>Venha ao Posto (ESF) no horário de acolhimento (07h-11h ou 13h-15h).",
+    "options": ["Ver Horários", "Endereço"]
+  },
+  {
+    "id": "triagem_geral",
+    "keys": ["estou passando mal", "tontura forte", "desmaio", "sangramento", "pressao baixa", "mal estar", "corpo ruim", "fraqueza"],
+    "resp": "⚠️ **Acolhimento/Triagem:**<br>Se você está se sentindo mal de forma geral, venha à unidade para aferir pressão e passar pela triagem.<br><br>🚨 **Desmaio ou Sangramento forte:** Ligue 192 (SAMU).",
+    "options": ["Ligar 192", "Ir para o posto"]
+  },
+  {
+    "id": "visitas",
+    "keys": ["visita domiciliar", "atendimento em casa", "paciente acamado", "agente de saude visita", "medico vai em casa"],
+    "resp": "🏠 **Visitas Domiciliares:**<br>Ocorrem geralmente nas quartas-feiras à tarde. São destinadas a pacientes acamados ou com dificuldade de locomoção. Converse com seu Agente de Saúde (ACS) para solicitar.",
+    "options": ["Como falar com ACS?", "Voltar"]
+  },
+  {
+    "id": "identidade",
+    "keys": ["quem é voce", "voce é um robo", "falar com atendente humano", "quem criou esse bot", "o que voce sabe fazer", "o que voce faz", "quais suas funcoes", "ajuda"],
+    "resp": "Eu sou o assistente virtual da ESF Thamara! Fui criado para facilitar o acesso às informações da unidade. 🤖",
+    "options": ["O que você sabe fazer?"]
+  },
+  {
+    "id": "agradecimento",
+    "keys": ["obrigado", "valeu", "muito obrigado", "ajudou muito", "tchau", "ate logo"],
+    "resp": "Por nada! Cuide-se bem. 💙"
+  },
+  {
+    "id": "dor_cotovelo_membros",
+    "keys": ["dor no cotovelo", "dor de cotovelo", "dor no braço", "machuquei o joelho", "torci o pé", "dor na perna", "dor nas juntas", "cotovelo doendo", "dor no ombro", "pancada", "dor nas costas", "dor na coluna", "dor no quadril", "dor no pe"],
+    "resp": "⚠️ **Triagem Ortopédica (Membros):**<br>Para melhor orientação, analise:<br>1. Houve trauma (batida/queda) recente?<br>2. Há inchaço ou deformidade visível?<br>3. A dor impede o movimento?<br><br>🔴 **Vá ao Pronto Socorro se:** Houver deformidade evidente ou dor insuportável.<br>🟢 **Cuidados em casa:** Se for leve, aplique gelo e repouso.",
+    "options": ["Onde fica o PS?", "Vou aplicar gelo", "Quero ver um médico"]
+  },
+  {
+    "id": "dor_cabeca",
+    "keys": ["dor de cabeça", "enxaqueca", "cabeça doendo muito", "pontada na cabeça", "cefaleia"],
+    "resp": "🧠 **Triagem: Dor de Cabeça**<br>Responda mentalmente:<br>• A dor é a pior da sua vida?<br>• Tem alterações na visão ou fala?<br>• Teve febre junto?<br><br>Se respondeu **SIM** para algo, procure atendimento imediato. Se for uma dor conhecida (enxaqueca comum), tome sua medicação de costume e repouse em local escuro.",
+    "options": ["É uma dor muito forte", "É uma dor comum", "Preciso de atestado"]
+  },
+  {
+    "id": "dor_peito_cardio",
+    "keys": ["dor no peito", "aperto no coração", "pontada no peito", "infarto", "dor toracica", "queimação no peito"],
+    "resp": "🚨 **ATENÇÃO - POSSÍVEL EMERGÊNCIA** 🚨<br>Dor no peito pode ser grave. Se a dor for forte, irradiar para o braço esquerdo ou vier acompanhada de falta de ar/suor frio:<br><br>📞 **LIGUE 192 (SAMU) IMEDIATAMENTE** ou vá à emergência hospitalar mais próxima (H. Santa Isabel).<br>Não espere por agendamento no posto.",
+    "options": ["Ligar 192", "Onde fica o Hospital?", "É só uma pontada leve"]
+  },
+  {
+    "id": "febre",
+    "keys": ["estou com febre", "meu filho tem febre", "temperatura alta", "corpo quente", "calafrios"],
+    "resp": "🌡️ **Triagem: Febre**<br>• **Adultos:** Febre acima de 39°C ou por mais de 48h requer avaliação.<br>• **Crianças:** Se houver manchas na pele, vômitos ou prostração, venha imediatamente.<br><br>Beba bastante líquido e monitore a temperatura.",
+    "options": ["É criança", "É adulto", "Tem manchas na pele"]
+  },
+  {
+    "id": "tabela_decisao",
+    "keys": ["tabela de sintomas", "onde devo ir", "classificacao de risco", "estou em duvida", "guia de atendimento", "para onde eu vou"],
+    "resp": "🏥 **Guia Rápido de Decisão:**<br><table style='width:100%; border-collapse:collapse; font-size:13px; margin-top:5px;'><tr><th style='border:1px solid #ccc; padding:5px; background:#f0f0f0;'>Sintoma / Situação</th><th style='border:1px solid #ccc; padding:5px; background:#f0f0f0;'>Onde Ir?</th></tr><tr><td style='border:1px solid #ccc; padding:5px;'>Risco de Vida / Acidentes Graves</td><td style='border:1px solid #ccc; padding:5px; color:red; font-weight:bold;'>SAMU (192) / Hospital</td></tr><tr><td style='border:1px solid #ccc; padding:5px;'>Dores Agudas / Febre / Curativos</td><td style='border:1px solid #ccc; padding:5px; color:blue; font-weight:bold;'>ESF (Posto)</td></tr><tr><td style='border:1px solid #ccc; padding:5px;'>Dúvidas / Sintomas Leves</td><td style='border:1px solid #ccc; padding:5px; color:green; font-weight:bold;'>Alô Saúde (156)</td></tr><tr><td style='border:1px solid #ccc; padding:5px;'>Gripe Leve (sem falta de ar)</td><td style='border:1px solid #ccc; padding:5px;'>Isolamento (Casa)</td></tr></table>",
+    "options": ["Entendi", "Emergência"]
+  },
+  {
+    "id": "alo_saude",
+    "keys": ["alo saude", "atendimento por telefone", "consulta online", "telemedicina", "duvida simples", "preciso sair de casa"],
+    "resp": "📞 **Alô Saúde Blumenau (156 opção 2):**<br>Para orientações médicas sem sair de casa, ligue 156.<br>Ideal para: Sintomas leves, dúvidas sobre medicamentos e orientações gerais.<br>Evite filas desnecessárias e riscos de contágio!",
+    "options": ["Ligar 156", "Voltar"]
+  },
+  {
+    "id": "sindrome_gripal",
+    "keys": ["tosse", "coriza", "dor de garganta leve", "gripe", "resfriado", "nariz escorrendo", "espirrando"],
+    "resp": "😷 **Sintomas Gripais Leves:**<br>Se você tem apenas tosse, coriza e febre baixa:<br>1. **Use máscara** e evite contato social (Isolamento).<br>2. Hidrate-se e repouse.<br>3. Se piorar (falta de ar), procure o Ambulatório Geral (AG) ou Hospital.<br>⚠️ **Não venha ao ESF sem máscara!**",
+    "options": ["Tenho falta de ar", "É só gripe leve"]
+  },
+  {
+    "id": "emergencia_gestante",
+    "keys": ["estou gravida e com dor", "sangramento na gravidez", "perdi liquido", "bebe nao mexe", "gestante com dor", "gravida sangrando"],
+    "resp": "🚨 **Atenção Gestante:**<br>Vá imediatamente à **Maternidade ou Hospital** se tiver:<br>• Sangramento vaginal.<br>• Perda de líquido.<br>• Dor abdominal forte.<br>• Ausência de movimentos do bebê.<br>Não espere pelo ESF, isso é uma emergência.",
+    "options": ["Onde fica a maternidade?", "Ligar SAMU"]
+  },
+  {
+    "id": "emergencia_idoso",
+    "keys": ["idoso caiu", "minha avo caiu", "fala enrolada", "boca torta", "fraqueza de um lado", "idoso confuso", "avc", "derrame"],
+    "resp": "🚨 **Emergência com Idoso:**<br>Se houver **queda com dor/imobilidade** ou sinais de AVC (boca torta, fala enrolada, perda de força):<br>📞 **LIGUE 192 (SAMU) IMEDIATAMENTE.**<br>Não tente mover o paciente se houver suspeita de fratura no quadril/fêmur.",
+    "options": ["Ligar 192"]
+  },
+  {
+    "id": "emergencia_crianca",
+    "keys": ["meu filho nao respira bem", "bebe com febre alta", "crianca prostrada", "bebe roxo", "convulsao infantil"],
+    "resp": "🚨 **Emergência Pediátrica:**<br>Procure o **Hospital** imediatamente se a criança apresentar:<br>• Dificuldade para respirar (peito afundando).<br>• Lábios roxos.<br>• Convulsão.<br>• Sonolência excessiva (não acorda).<br>Para febre controlada, procure o ESF ou Alô Saúde.",
+    "options": ["Hospital Infantil", "Ligar 192"]
+  },
+  {
+    "id": "atendimento_inclusivo",
+    "keys": ["sou autista", "tenho autismo", "atendimento prioritario", "tea", "sensibilidade sensorial", "paciente autista"],
+    "resp": "💙 **Atendimento Inclusivo (TEA):**<br>Pessoas com TEA têm direito a atendimento prioritário e humanizado.<br>Informe na recepção sobre suas necessidades (ambiente calmo, menos barulho).<br>Em caso de crise sensorial aguda, nossa equipe está preparada para acolher.",
+    "options": ["Tenho carteirinha TEA", "Preciso de prioridade"]
+  },
+  {
+    "id": "dor_generica",
+    "keys": ["estou com dor", "sinto dor", "dor no corpo", "doi tudo", "estou doendo", "tenho dor", "dor", "alguma dor"],
+    "resp": "⚠️ **Onde é a sua dor?**<br>Para te orientar melhor, preciso saber onde dói.<br><br>Exemplos: \"Dor de cabeça\", \"Dor no peito\", \"Dor nas costas\", \"Dor de dente\".",
+    "options": ["Cabeça", "Peito", "Barriga", "Dente", "Costas"]
+  },
+  {
+    "id": "hospital_ps",
+    "keys": ["onde fica o ps", "onde fica o hospital", "pronto socorro", "emergencia hospital", "endereco do hospital", "hospital santa isabel", "hospital santo antonio", "upa", "onde e a emergencia"],
+    "resp": "🏥 **Hospitais / Pronto Socorro:**<br>Para emergências, procure:<br>• **Hospital Santa Isabel:** R. Floriano Peixoto, 300.<br>• **Hospital Santo Antônio:** R. Itajaí, 545.<br>• **Hospital Misericórdia (Vila Itoupava).**<br><br>🚑 Em risco de vida, ligue **192**.",
+    "options": ["Ligar 192", "Voltar"]
+  },
+  {
+    "id": "feedback_negativo",
+    "keys": ["ta uma porcaria", "nao funciona", "bot burro", "que lixo", "nao ajuda", "pessimo", "horrivel", "idiota", "ruim"],
+    "resp": "😔 Sinto muito que você não esteja satisfeito. Sou uma inteligência artificial em aprendizado.<br>Por favor, ligue para **(47) 3381-7064** para falar com um atendente humano.",
+    "options": ["Ligar para o posto"]
+  },
+  {
+    "id": "colica_investigacao",
+    "keys": ["colica", "estou com colica", "tenho colica", "muita colica", "colica forte", "dor tipo colica"],
+    "resp": "⚠️ **Investigação de Cólica:**<br>Para te orientar melhor, preciso saber a origem da dor.<br>É uma cólica **intestinal** (barriga/diarreia) ou **ginecológica** (menstrual/gravidez)?",
+    "options": ["É Intestinal", "É Menstrual/Gravidez"]
+  },
+  {
+    "id": "colica_menstrual_gestante",
+    "keys": ["é menstrual", "é ginecologica", "dor no utero", "colica menstrual", "dor de periodo", "estou menstruada", "é gravidez", "estou gravida", "sou gestante"],
+    "resp": "🌸 **Saúde da Mulher:**<br>• **Menstrual:** Se for suportável, analgésico e calor local ajudam.<br>• **Gestante:** ⚠️ Cólica na gravidez requer atenção! Se houver sangramento ou dor contínua, vá à **Maternidade** imediatamente.",
+    "options": ["Onde fica a Maternidade?", "Voltar"]
+  },
+  {
+    "id": "atendimento_prioritario",
+    "keys": ["sou idoso", "tenho prioridade", "sou deficiente", "cadeirante", "tenho deficiencia", "fila preferencial", "atendimento para idoso", "acessibilidade", "sou pcd"],
+    "resp": "💙 **Atendimento Prioritário:**<br>Garantimos prioridade legal para:<br>• **Idosos (60+)**<br>• **Gestantes**<br>• **Pessoas com Deficiência (PCD)**<br>• **Autistas (TEA)**<br><br>Informe sua condição na recepção para agilizar o cadastro e a triagem.",
+    "options": ["Horários", "Endereço"]
+  },
+  {
+    "id": "ag_garcia",
+    "keys": ["onde fica o ag garcia", "endereco ag garcia", "horario ag garcia", "telefone ag garcia", "ag garcia", "ambulatorio geral garcia", "irma marta elisabetha kunzmann", "posto do garcia"],
+    "resp": "🏥 **AG Garcia (Ambulatório Geral):**<br>📍 **Endereço:** R. Progresso, 141 - Progresso (Intendência).<br>📞 **Telefone:** (47) 3381-7593<br>🕒 **Horário:**<br>• Seg a Sex: 07h às 22h<br>• Sáb e Dom: 08h às 17h",
+    "options": ["Voltar", "Ligar para AG Garcia"]
+  }
+]  
