@@ -1,4 +1,4 @@
-import { ChatEngine } from "../assets/js/app.js";
+import { ChatEngine } from "./app.js";
 
 const engine = new ChatEngine();
 

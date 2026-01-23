@@ -1,4 +1,4 @@
-import { knowledgeBase } from "./knowledge-base.js";
+import { knowledgeBase } from "../../knowledge-base.js";
 
 export class ChatEngine {
     constructor() {
