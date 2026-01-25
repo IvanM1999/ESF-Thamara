@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Estágio Não Obrigatório — ESF Thamara Rodriguez</title>
+
+  <style>
+    :root{
+      --primary:#0f6b5f;
+      --secondary:#e6f2f0;
+      --dark:#1b2a2f;
+      --muted:#6b7c85;
+      --bg:#f7faf9;
+      --radius:14px;
+      --shadow:0 10px 30px rgba(0,0,0,.08);
+    }
+
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Helvetica,Arial,sans-serif;
+      color:var(--dark);
+      background:linear-gradient(180deg,#ffffff 0%, var(--bg) 100%);
+    }
+
+    header{
+      background:#ffffffcc; backdrop-filter:blur(8px);
+      border-bottom:1px solid #e5efec;
+    }
+
+    .nav{
+      max-width:1100px; margin:auto; padding:14px 20px;
+      display:flex; align-items:center; justify-content:space-between;
+    }
+
+    .brand{display:flex; gap:12px; align-items:center; font-weight:700}
+
+    .logo{
+      width:40px; height:40px; border-radius:50%;
+      background:conic-gradient(from 0deg, var(--primary), #2fb3a2);
+      display:grid; place-items:center; color:#fff; font-weight:900;
+    }
+
+    .container{max-width:1100px; margin:auto; padding:60px 20px}
+
+    .card{
+      background:#fff; border-radius:var(--radius); box-shadow:var(--shadow);
+      padding:32px
+    }
+
+    h1{font-size:40px; margin:0 0 12px}
+    h2{font-size:26px; margin:0 0 12px}
+    h3{margin:0 0 8px}
+    p{color:var(--muted); line-height:1.6}
+
+    ul{margin-left:20px}
+
+    .badge{
+      display:inline-block; padding:6px 12px; border-radius:999px;
+      background:var(--secondary); color:var(--primary); font-weight:600; margin-bottom:12px
+    }
+
+    .grid{display:grid; gap:24px}
+    .grid-2{grid-template-columns:repeat(2,1fr)}
+    .grid-3{grid-template-columns:repeat(3,1fr)}
+    @media(max-width:900px){.grid-2,.grid-3{grid-template-columns:1fr}}
+
+    .feature{border:1px solid #e6efec; border-radius:12px; padding:20px}
+
+    footer{
+      background:#0e3f3a; color:#cfe9e6; padding:40px 20px
+    }
+
+    @media print{
+      body{background:#fff}
+      .card{box-shadow:none; border:1px solid #ddd}
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="brand">
+      <div class="logo">ESF</div>
+      <span>ESF Thamara Rodriguez</span>
+    </div>
+  </div>
+</header>
+
+<section class="container">
+  <span class="badge">Guia do Estudante</span>
+  <h1>Como funciona o estágio não obrigatório</h1>
+  <p>
+    Esta página explica de forma simples o que é o estágio não obrigatório, como ele funciona,
+    quais são as regras principais e o que é necessário para que ele seja aceito pela faculdade
+    e pela unidade de saúde.
+  </p>
+</section>
+
+<section class="container">
+  <div class="card">
+    <h2>O que é o estágio não obrigatório?</h2>
+    <p>
+      É um estágio que não faz parte das disciplinas obrigatórias do curso, mas que pode ser feito
+      para ganhar experiência prática e cumprir horas complementares ou extensionistas.
+    </p>
+
+    <p>
+      Mesmo não sendo obrigatório, ele precisa seguir regras da lei e da instituição de ensino.
+    </p>
+  </div>
+</section>
+
+<section class="container">
+  <div class="grid grid-2">
+
+    <div class="card">
+      <h2>Quem pode fazer</h2>
+      <ul>
+        <li>Estudantes regularmente matriculados</li>
+        <li>Alunos com curso compatível com as atividades</li>
+        <li>Quem tem autorização da faculdade</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Onde pode ser feito</h2>
+      <ul>
+        <li>Unidades do SUS</li>
+        <li>ESF (Estratégia Saúde da Família)</li>
+        <li>Órgãos públicos e instituições conveniadas</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<section class="container">
+  <div class="card">
+    <h2>Documentos necessários</h2>
+    <ul>
+      <li>Termo de compromisso de estágio</li>
+      <li>Plano de atividades</li>
+      <li>Ficha de frequência</li>
+      <li>Relatórios periódicos ou final</li>
+    </ul>
+
+    <p>
+      Todos os documentos devem ser assinados pela faculdade, pelo estudante e pelo responsável da unidade.
+    </p>
+  </div>
+</section>
+
+<section class="container">
+  <h2>Regras principais</h2>
+  <div class="grid grid-3">
+
+    <div class="feature">
+      <h3>Carga horária</h3>
+      <p>Máximo de 6 horas por dia e 30 horas por semana.</p>
+    </div>
+
+    <div class="feature">
+      <h3>Duração</h3>
+      <p>Pode durar até 2 anos na mesma instituição.</p>
+    </div>
+
+    <div class="feature">
+      <h3>Supervisão</h3>
+      <p>Deve ter um profissional responsável acompanhando.</p>
+    </div>
+
+  </div>
+</section>
+
+<section class="container">
+  <div class="card">
+    <h2>O que o estudante pode fazer no ESF</h2>
+    <ul>
+      <li>Apoiar na organização de sistemas e documentos</li>
+      <li>Ajudar na digitalização de arquivos</li>
+      <li>Auxiliar em relatórios simples</li>
+      <li>Desenvolver páginas ou pequenos sistemas institucionais</li>
+      <li>Ajudar na comunicação interna</li>
+    </ul>
+  </div>
+</section>
+
+<section class="container">
+  <div class="card">
+    <h2>Direitos do estagiário</h2>
+    <ul>
+      <li>Receber orientação e acompanhamento</li>
+      <li>Ter carga horária respeitada</li>
+      <li>Receber certificado ou declaração ao final</li>
+      <li>Receber bolsa, se houver previsão</li>
+    </ul>
+  </div>
+</section>
+
+<section class="container">
+  <div class="card">
+    <h2>Deveres do estagiário</h2>
+    <ul>
+      <li>Cumprir horários combinados</li>
+      <li>Respeitar regras da unidade</li>
+      <li>Manter sigilo sobre dados dos pacientes</li>
+      <li>Entregar relatórios no prazo</li>
+    </ul>
+  </div>
+</section>
+
+<section class="container">
+  <div class="card">
+    <h2>Resumo do processo</h2>
+    <ol>
+      <li>Encontrar a unidade onde fará o estágio</li>
+      <li>Conversar com o responsável técnico</li>
+      <li>Solicitar autorização da faculdade</li>
+      <li>Assinar o termo de compromisso</li>
+      <li>Iniciar o estágio</li>
+      <li>Registrar horas e entregar relatórios</li>
+    </ol>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p><strong>ESF Thamara Rodriguez</strong></p>
+    <p>Material explicativo simples sobre estágio não obrigatório no contexto do SUS.</p>
+  </div>
+</footer>
+
+</body>
+</html>

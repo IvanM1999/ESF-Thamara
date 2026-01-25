@@ -1,0 +1,3 @@
+:root{--primary:#0f6b5f}
+.logo{animation:float 3s infinite}
+@keyframes float{50%{transform:translateY(-5px)}}

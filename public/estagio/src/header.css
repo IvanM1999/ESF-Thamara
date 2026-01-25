@@ -1,0 +1,72 @@
+:root{
+--primary:#0f6b5f;
+--secondary:#e6f2f0;
+--dark:#1b2a2f;
+--muted:#6b7c85;
+--bg:#f7faf9;
+--radius:14px;
+--shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+
+.main-header{
+position:sticky;
+top:0;
+z-index:100;
+background:#ffffffcc;
+backdrop-filter:blur(8px);
+border-bottom:1px solid #e5efec;
+}
+
+
+.nav{
+max-width:1100px;
+margin:auto;
+padding:14px 20px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+}
+
+
+.brand{display:flex;align-items:center;gap:12px;font-weight:700}
+
+
+.brand-name{font-size:16px;color:var(--dark)}
+
+
+.logo{
+width:42px;height:42px;border-radius:50%;
+background:conic-gradient(from 0deg, var(--primary), #2fb3a2, var(--primary));
+display:grid;place-items:center;color:#fff;font-weight:900;
+box-shadow:var(--shadow)
+}
+
+
+.menu a{
+margin-left:20px;text-decoration:none;font-weight:500;color:var(--dark);
+position:relative;transition:.3s
+}
+
+
+.menu a:hover{color:var(--primary)}
+
+
+.menu a::after{
+content:'';position:absolute;left:0;bottom:-6px;width:0%;height:2px;
+background:var(--primary);transition:.3s
+}
+
+
+.menu a:hover::after{width:100%}
+
+
+.animated-logo{animation:float 3.5s ease-in-out infinite;cursor:pointer}
+.animated-logo:hover{animation:spin 1s linear}
+
+
+@keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-6px)}100%{transform:translateY(0)}}
+@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+
+
+@media(max-width:800px){.menu{display:none}}

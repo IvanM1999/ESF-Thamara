@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Proposta de Website — ESF Thamara Rodriguez</title>
+  <meta name="description" content="Proposta profissional de desenvolvimento de website institucional para a ESF Thamara Rodriguez." />
+  <style>
+    :root{
+      --primary:#0f6b5f;        /* verde institucional saúde */
+      --secondary:#e6f2f0;
+      --dark:#1b2a2f;
+      --muted:#6b7c85;
+      --accent:#2fb3a2;
+      --bg:#f7faf9;
+      --radius:14px;
+      --shadow:0 10px 30px rgba(0,0,0,.08);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Helvetica,Arial,sans-serif;
+      color:var(--dark);
+      background:linear-gradient(180deg,#ffffff 0%, var(--bg) 100%);
+    }
+
+    header{
+      position:sticky; top:0; z-index:10;
+      background:#ffffffcc; backdrop-filter:blur(8px);
+      border-bottom:1px solid #e5efec;
+    }
+    .nav{
+      max-width:1200px; margin:auto; padding:14px 20px;
+      display:flex; align-items:center; justify-content:space-between;
+    }
+    .brand{display:flex; gap:12px; align-items:center; font-weight:700}
+    .logo{
+      width:42px; height:42px; border-radius:50%;
+      background:conic-gradient(from 0deg, var(--primary), var(--accent));
+      display:grid; place-items:center; color:#fff; font-weight:900;
+      box-shadow:var(--shadow)
+    }
+    .nav a{color:var(--dark); text-decoration:none; margin-left:16px; font-weight:500}
+
+    .container{max-width:1200px; margin:auto; padding:60px 20px}
+
+    .hero{
+      display:grid; grid-template-columns:1.1fr .9fr; gap:40px; align-items:center
+    }
+    @media(max-width:900px){.hero{grid-template-columns:1fr}}
+
+    .card{
+      background:#fff; border-radius:var(--radius); box-shadow:var(--shadow);
+      padding:28px
+    }
+
+    h1{font-size:42px; line-height:1.1; margin:0 0 14px}
+    h2{font-size:28px; margin:0 0 14px}
+    h3{margin:0 0 8px}
+    p{color:var(--muted); line-height:1.6}
+
+    .badge{
+      display:inline-block; padding:6px 12px; border-radius:999px;
+      background:var(--secondary); color:var(--primary); font-weight:600; margin-bottom:12px
+    }
+
+    .grid{display:grid; gap:24px}
+    .grid-3{grid-template-columns:repeat(3,1fr)}
+    .grid-2{grid-template-columns:repeat(2,1fr)}
+    @media(max-width:900px){.grid-3,.grid-2{grid-template-columns:1fr}}
+
+    .feature{
+      border:1px solid #e6efec; border-radius:12px; padding:20px
+    }
+
+    .icon{
+      width:42px; height:42px; border-radius:10px; background:var(--secondary);
+      display:grid; place-items:center; color:var(--primary); font-weight:900; margin-bottom:10px
+    }
+
+    .timeline{position:relative; padding-left:28px}
+    .timeline:before{
+      content:""; position:absolute; left:8px; top:0; bottom:0; width:4px; background:#e1efeb; border-radius:2px
+    }
+    .step{position:relative; margin-bottom:24px}
+    .step:before{
+      content:""; position:absolute; left:-28px; top:4px; width:20px; height:20px; border-radius:50%;
+      background:var(--primary); box-shadow:0 0 0 6px var(--secondary)
+    }
+
+    .mockup{
+      width:100%; aspect-ratio:16/10; border-radius:14px; overflow:hidden; border:1px solid #e6efec; background:#f0f6f4
+    }
+    .mockup svg{width:100%; height:100%}
+
+    footer{
+      background:#0e3f3a; color:#cfe9e6; padding:40px 20px
+    }
+    footer .container{padding:0}
+
+    .btn{
+      display:inline-block; padding:14px 22px; border-radius:10px; font-weight:700;
+      background:var(--primary); color:#fff; text-decoration:none; box-shadow:var(--shadow)
+    }
+
+    /* impressão para PDF */
+    @media print{
+      header, .btn{display:none}
+      body{background:#fff}
+      .card{box-shadow:none; border:1px solid #ddd}
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="brand">
+      <div class="logo">ESF</div>
+      <span>ESF Thamara Rodriguez</span>
+    </div>
+    <nav>
+      <a href="#objetivo">Objetivo</a>
+      <a href="#beneficios">Benefícios</a>
+      <a href="#funcionalidades">Funcionalidades</a>
+      <a href="#cronograma">Cronograma</a>
+    </nav>
+  </div>
+</header>
+
+<section class="container hero">
+  <div>
+    <span class="badge">Proposta Institucional</span>
+    <h1>Website Oficial<br>ESF Thamara Rodriguez</h1>
+    <p>
+      Proposta profissional para criação de um website institucional moderno, acessível e seguro,
+      com foco em comunicação pública, transparência e apoio digital ao atendimento da unidade.
+    </p>
+    <a class="btn" href="#objetivo">Ver proposta</a>
+  </div>
+
+  <div class="card">
+    <div class="mockup" aria-label="Prévia visual do site">
+      <!-- Mockup vetorial (imagem pública, sem direitos autorais) -->
+      <svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+        <rect width="800" height="500" rx="16" fill="#ffffff" />
+        <rect x="0" y="0" width="800" height="60" fill="#0f6b5f" />
+        <rect x="20" y="90" width="360" height="26" rx="6" fill="#e6f2f0" />
+        <rect x="20" y="130" width="520" height="18" rx="6" fill="#eef6f4" />
+        <rect x="20" y="170" width="480" height="18" rx="6" fill="#eef6f4" />
+        <rect x="20" y="220" width="240" height="140" rx="10" fill="#e6f2f0" />
+        <rect x="280" y="220" width="240" height="140" rx="10" fill="#e6f2f0" />
+        <rect x="540" y="220" width="240" height="140" rx="10" fill="#e6f2f0" />
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section id="objetivo" class="container">
+  <div class="grid grid-2">
+    <div class="card">
+      <h2>Objetivo do Projeto</h2>
+      <p>
+        Desenvolver um website institucional para a ESF Thamara Rodriguez, centralizando informações
+        essenciais, serviços, horários, avisos e canais de contato, com padrão visual moderno e
+        arquitetura simples, segura e de fácil manutenção.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>Escopo Entregável</h2>
+      <ul>
+        <li>Página institucional completa</li>
+        <li>Estrutura de serviços e equipes</li>
+        <li>Área de avisos e comunicados</li>
+        <li>Formulários simples de contato</li>
+        <li>Layout responsivo (celular, tablet e desktop)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="beneficios" class="container">
+  <h2>Benefícios para a Unidade</h2>
+  <div class="grid grid-3">
+    <div class="feature">
+      <div class="icon">✓</div>
+      <h3>Comunicação Clara</h3>
+      <p>Centralização de informações oficiais e redução de dúvidas presenciais.</p>
+    </div>
+    <div class="feature">
+      <div class="icon">✓</div>
+      <h3>Imagem Institucional</h3>
+      <p>Fortalecimento da identidade digital e profissionalização da presença online.</p>
+    </div>
+    <div class="feature">
+      <div class="icon">✓</div>
+      <h3>Apoio à Gestão</h3>
+      <p>Divulgação de horários, campanhas e serviços de forma organizada.</p>
+    </div>
+  </div>
+</section>
+
+<section id="funcionalidades" class="container">
+  <h2>Funcionalidades Propostas</h2>
+  <div class="grid grid-3">
+    <div class="feature"><h3>Institucional</h3><p>Histórico, missão e equipe da unidade.</p></div>
+    <div class="feature"><h3>Serviços</h3><p>Descrição clara dos atendimentos oferecidos.</p></div>
+    <div class="feature"><h3>Horários</h3><p>Funcionamento e plantões atualizados.</p></div>
+    <div class="feature"><h3>Contato</h3><p>Telefone, endereço e formulário eletrônico.</p></div>
+    <div class="feature"><h3>Avisos</h3><p>Campanhas, comunicados e notícias locais.</p></div>
+    <div class="feature"><h3>Acessibilidade</h3><p>Layout legível e navegação simplificada.</p></div>
+  </div>
+</section>
+
+<section id="cronograma" class="container">
+  <h2>Cronograma de Execução</h2>
+  <div class="card timeline">
+    <div class="step">
+      <h3>Levantamento de Requisitos</h3>
+      <p>Entendimento das necessidades da unidade e definição do conteúdo.</p>
+    </div>
+    <div class="step">
+      <h3>Desenvolvimento</h3>
+      <p>Implementação das páginas, layout e estrutura funcional.</p>
+    </div>
+    <div class="step">
+      <h3>Testes</h3>
+      <p>Validação de funcionamento, responsividade e acessibilidade.</p>
+    </div>
+    <div class="step">
+      <h3>Entrega Final</h3>
+      <p>Publicação, documentação e orientação básica de uso.</p>
+    </div>
+  </div>
+</section>
+
+<section class="container">
+  <div class="card">
+    <h2>Contrapartida Acadêmica e Enquadramento como Estágio</h2>
+    <p>
+      Este projeto está totalmente alinhado com o curso de Análise e Desenvolvimento de Sistemas e
+      atende aos critérios institucionais para caracterização como <strong>Estágio Não Obrigatório</strong>.
+      O desenvolvimento do website envolve programação, levantamento de requisitos, testes e documentação técnica,
+      configurando atividade prática supervisionada em tecnologia da informação.
+    </p>
+    <ul>
+      <li>Atividade diretamente vinculada à área de ADS</li>
+      <li>Aplicação prática de conhecimentos acadêmicos</li>
+      <li>Possibilidade de supervisão técnica local</li>
+      <li>Geração de relatório e evidências formais</li>
+    </ul>
+  </div>
+</section>
+
+<section class="container">
+  <div class="card">
+    <h2>Justificativa Institucional para Estágio Não Obrigatório</h2>
+    <p>
+      A execução deste projeto como estágio não obrigatório é necessária para a formação prática do estudante,
+      permitindo o cumprimento da carga horária extensionista exigida pela instituição de ensino e garantindo
+      experiência real em ambiente público de saúde. <a href="\src\estagio.pdf" >Ver documento</a>
+    </p>
+    <p>
+      Para a unidade ESF Thamara Rodriguez, o projeto representa ganho institucional permanente, modernização da
+      comunicação oficial e fortalecimento da transparência com a comunidade atendida. <a href="estagio.html" >Ver Mais Sobre o Estagio</a>
+    </p>
+    <p>
+      O estágio possibilita:
+    </p>
+    <ul>
+      <li>Formalização da atividade acadêmica</li>
+      <li>Acompanhamento por supervisor da unidade</li>
+      <li>Registro oficial de horas e competências desenvolvidas</li>
+      <li>Entrega de produto tecnológico funcional para a instituição</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p><strong>ESF Thamara Rodriguez</strong></p>
+    <p>Proposta técnica de desenvolvimento de website institucional.</p>
+  </div>
+</footer>
+
+<script>
+  // Teste lógico básico: verificação de navegação interna
+  (function(){
+    const links = document.querySelectorAll('a[href^="#"]');
+    links.forEach(l => {
+      l.addEventListener('click', e => {
+        const id = l.getAttribute('href').substring(1);
+        const target = document.getElementById(id);
+        if(!target){ console.warn('Âncora não encontrada:', id); }
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
