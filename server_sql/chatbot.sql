@@ -5,6 +5,7 @@
 -- 1. Limpeza das tabelas antigas (Evita duplicidade de estrutura)
 DROP TABLE IF EXISTS chatbot_keywords;
 DROP TABLE IF EXISTS chatbot_intents;
+DROP TABLE IF EXISTS ai_feedback; -- Limpando tabela antiga de admin.sql
 
 -- 2. Criação da nova tabela de interações (Modelo com Arrays)
 CREATE TABLE IF NOT EXISTS chatbot_interactions (
@@ -18,120 +19,162 @@ CREATE TABLE IF NOT EXISTS chatbot_interactions (
 -- 3. Índice GIN para busca rápida dentro do array de chaves
 CREATE INDEX IF NOT EXISTS idx_chatbot_interactions_keys ON chatbot_interactions USING GIN(keys);
 
+-- Tabela de Logs de Interação para Treinamento e Análise
+-- Esta tabela armazena cada interação e o feedback do usuário,
+-- servindo como base para futuro aprendizado de máquina (fine-tuning).
+DROP TABLE IF EXISTS ai_logs;
+
+CREATE TABLE IF NOT EXISTS ai_logs (
+    id SERIAL PRIMARY KEY,
+    user_query TEXT NOT NULL,
+    bot_response TEXT,
+    matched_intent_id VARCHAR(100),
+    score REAL,
+    was_context_used BOOLEAN DEFAULT FALSE,
+    feedback VARCHAR(10), -- 'positive', 'neutral', 'negative'
+    created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+
 -- 4. Limpeza e Inserção de Dados (Base Original + Novos Conteúdos)
 TRUNCATE chatbot_interactions RESTART IDENTITY;
 
 INSERT INTO chatbot_interactions (intent_id, keys, response, options) VALUES
-('saudacao', ARRAY['ola', 'oi', 'bom dia', 'boa tarde', 'boa noite', 'gostaria de falar com alguem', 'iniciar atendimento', 'oi tudo bem', 'opa', 'eai', 'preciso de ajuda', 'alo', 'como vai', 'tudo bem?'], 'Olá! Sou a assistente virtual da ESF Thamara. 🏥<br>Posso te ajudar com informações sobre a unidade ou com uma **pré-triagem de sintomas**.<br><br>Sobre o que você gostaria de falar?', ARRAY['Horários de Atendimento', 'Estou com sintomas', 'Vacinas', 'Endereço']),
-
-('horarios', ARRAY['qual o horario de atendimento', 'que horas o posto abre', 'ate que horas funciona', 'horario de funcionamento', 'está aberto agora', 'agenda da unidade', 'que horas fecha', 'tem gente no posto agora', 'expediente', 'dias de funcionamento', 'quando abre', 'que horas abre', 'horario de abertura', 'horarios'], '🕒 **Dinâmica de Atendimento:**<br>• **Seg, Ter e Qui:** Manhã (intercorrências/agendamentos), Tarde (consultas/enfermagem).<br>• **Quarta:** Manhã (intercorrências), Tarde (visitas domiciliares).<br>• **Sexta:** Manhã (intercorrências), Tarde (formação equipe).<br>🚫 **Almoço:** 12h às 13h (fechado).<br>⚠️ Fora desses horários, procure o AG Garcia ou Hospitais.', ARRAY['Como agendar consulta?', 'Onde fica o AG Garcia?']),
-
-('endereco', ARRAY['qual o endereço', 'onde fica o posto', 'localização da unidade', 'como chegar no posto', 'mapa da unidade', 'rua do posto', 'bairro progresso', 'perto de onde'], '📍 **Endereço:**<br>Rua Santa Maria, 2082 – Bairro Progresso, Blumenau (SC).<br>CEP: 89027-202.', ARRAY['Ver no Mapa', 'Horários']),
-
-('contato', ARRAY['qual o telefone', 'numero para contato', 'como ligar para o posto', 'tem whatsapp', 'numero do zap', 'telefone fixo', 'contato da recepcao', 'falar com humano', 'falar com atendente', 'falar com pessoa', 'atendimento humano'], '📞 **Telefones do Posto:**<br>Para falar com a gente, clique nos números abaixo:<br><br>☎️ <a href="tel:4733817064" style="font-weight:bold; color:#0084ff;">(47) 3381-7064</a><br>☎️ <a href="tel:4733816751" style="font-weight:bold; color:#0084ff;">(47) 3381-6751</a><br><br>Atendemos das 07h às 12h e das 13h às 16h.<br>Ainda não temos WhatsApp.', ARRAY['Voltar ao início', 'Horários']),
-
-('vacinas', ARRAY['horario de vacinacao', 'quero tomar vacina', 'tem vacina da gripe', 'campanha de vacinacao', 'preciso me vacinar', 'vacina covid', 'vacina bcg', 'gotinha', 'atualizar carteirinha', 'vacinas', 'sala de vacina'], '💉 **Sala de Vacinas:**<br>Segunda a Quinta: 09h às 11h30 e 13h às 15h.<br>Sexta: 09h às 11h30 (somente matutino).<br>Lembre-se de trazer a carteirinha de vacinação e o cartão do SUS!', ARRAY['Quais documentos levar?', 'Tem vacina da gripe?']),
-
-('consultas', ARRAY['como marcar consulta', 'agendar medico', 'preciso de um clinico geral', 'quero marcar uma consulta', 'tem medico hoje', 'consulta de rotina', 'mostrar exames', 'agendamento', 'quero ver um medico', 'preciso passar no medico', 'consulta medica', 'agendar retorno'], '👨‍⚕️ **Agendamento de Consultas:**<br>Para agendar uma consulta de rotina ou retorno, o ideal é vir pessoalmente à recepção.<br>Se for um caso de **urgência (dor ou mal-estar)**, venha para o Acolhimento, onde a equipe de enfermagem fará a primeira avaliação.', ARRAY['Estou com dor', 'É consulta de rotina']),
-
-('odonto', ARRAY['dentista', 'consulta dentista', 'dor no dente', 'dente doendo', 'gengiva doendo', 'arrancar dente', 'canal no dente', 'limpeza nos dentes', 'odontologia', 'saude bucal', 'dente quebrado', 'restauracao', 'estou com muita dor de dente', 'dor de dente forte', 'abcesso', 'dente inflamado'], '🦷 **Saúde Bucal (Dentista):**<br>Para agendar uma consulta odontológica, você precisa ir até a recepção para verificar a disponibilidade na agenda.<br>Em caso de **dor de dente forte ou abscesso**, informe na recepção para uma avaliação de urgência.', ARRAY['É uma urgência (dor forte)', 'Quero agendar avaliação']),
-
-('dor_abdominal', ARRAY['dor de barriga', 'dor no estomago', 'dor abdominal', 'enjoo', 'vomito', 'diarreia', 'azia', 'queimação no estomago', 'minha barriga doi', 'estou com dor de barriga', 'gases', 'barriga inchada', 'colica intestinal'], '⚠️ **Sintomas Gastrointestinais:**<br>Para dores de barriga, enjoo, vômitos ou diarreia:<br>• **Sintomas Leves a Moderados:** Venha ao Posto (ESF) para uma avaliação.<br>• **Dor Forte ou Insuportável:** Procure a emergência de um **Hospital**.<br>• **Se estiver em dúvida:** Ligue para o **Alô Saúde (156)** para orientação.', ARRAY['Onde fica o Hospital?', 'Ligar para o Alô Saúde']),
-
-('dor_garganta_ouvido', ARRAY['dor de garganta', 'dor de ouvido', 'ouvido doendo', 'garganta inflamada', 'dificuldade para engolir', 'dor ao engolir', 'zumbido no ouvido', 'otalgia', 'odinofagia', 'amigdalite'], '👂 **Dor de Garganta ou Ouvido:**<br>Dores de garganta (odinofagia) ou de ouvido (otalgia) geralmente indicam uma infecção e precisam de avaliação.<br>Venha ao Posto (ESF) durante o horário de acolhimento para ser examinado.', ARRAY['Ver Horários de Atendimento', 'Ver Endereço']),
-
-('triagem_geral', ARRAY['estou passando mal', 'tontura forte', 'desmaio', 'sangramento', 'pressao baixa', 'mal estar', 'corpo ruim', 'fraqueza', 'vertigem', 'sincope', 'hipotensao'], '⚠️ **Mal-Estar Geral:**<br>Se você está com fraqueza, tontura (vertigem) ou mal-estar geral, venha à unidade para uma avaliação (Acolhimento), onde vamos verificar seus sinais vitais.<br><br>🚨 Em caso de **desmaio (síncope) ou sangramento intenso**, ligue para o **SAMU (192)**.', ARRAY['Ligar para o SAMU (192)', 'Ir para o Posto']),
-
-('visitas', ARRAY['visita domiciliar', 'atendimento em casa', 'paciente acamado', 'agente de saude visita', 'medico vai em casa', 'minha mae nao anda', 'visita do acs'], '🏠 **Visitas Domiciliares:**<br>Ocorrem geralmente nas quartas-feiras à tarde. São destinadas a pacientes acamados ou com dificuldade de locomoção. Converse com seu Agente de Saúde (ACS) para solicitar.', ARRAY['Como falar com ACS?', 'Voltar']),
-
-('dor_cotovelo_membros', ARRAY['dor no cotovelo', 'dor de cotovelo', 'dor no braço', 'machuquei o joelho', 'torci o pé', 'dor na perna', 'dor nas juntas', 'cotovelo doendo', 'pulso aberto', 'dor nas costas', 'travei a coluna', 'dor no ombro', 'dor muscular', 'pancada', 'dor no tornozelo', 'dor no quadril', 'dor na mao', 'dor no pe', 'dor na coluna', 'lombar doendo', 'lombalgia', 'artralgia', 'mialgia', 'trauma'], '🦴 **Dores Musculares ou Articulares:**<br>Para dores no corpo (costas, ombro, pernas, etc.), avalie:<br>1. Houve alguma **queda ou trauma**?<br>2. O local está **inchado (edema)** ou com **deformidade**?<br>3. A dor **impede o movimento**?<br><br>🔴 **Procure um Hospital se:** houver deformidade visível, o trauma foi forte ou a dor é insuportável.<br>🔵 **Venha ao Posto se:** a dor é persistente, mas você consegue se movimentar.<br>🟢 **Cuide em casa se:** for uma dor muscular leve (mialgia). Repouso e gelo podem ajudar.', ARRAY['Onde fica o Hospital?', 'Vou cuidar em casa']),
-
-('dor_cabeca', ARRAY['dor de cabeça', 'enxaqueca', 'cabeça doendo muito', 'pontada na cabeça', 'cefaleia', 'visao turva', 'cabeca explodindo', 'dor na nuca'], '🧠 **Cefaleia (Dor de Cabeça):**<br>🚨 **SINAIS DE ALERTA:** Procure um **Hospital IMEDIATAMENTE** ou ligue para o **SAMU (192)** se a dor de cabeça for:<br>• A **pior dor da sua vida** (súbita e explosiva).<br>• Acompanhada de **visão dupla, fala enrolada, fraqueza** em um lado do corpo ou **febre alta**.<br><br>Se for uma dor que você já conhece (como enxaqueca), tome a medicação que seu médico prescreveu e repouse. Se não melhorar, ligue para o Alô Saúde (156).', ARRAY['É uma dor muito forte (sinal de alerta)', 'É uma dor que já conheço', 'Ligar para o Alô Saúde']),
-
-('dor_peito_cardio', ARRAY['dor no peito', 'aperto no coração', 'pontada no peito', 'infarto', 'dor toracica', 'queimação no peito', 'formigamento no braco', 'coracao acelerado', 'palpitacao', 'angina'], '🚨 **EMERGÊNCIA CARDÍACA** 🚨<br>Dor no peito pode ser um **infarto**. Preste atenção nestes sinais:<br>• Dor forte no peito, tipo **aperto, peso ou queimação**.<br>• A dor irradia para o **braço esquerdo, mandíbula ou costas**.<br>• Acompanhada de **falta de ar, suor frio ou náuseas**.<br><br>📞 <a href="tel:192" style="color:red; font-size:18px; font-weight:bold;">NÃO ESPERE! CLIQUE E LIGUE PARA O SAMU (192)</a><br><br>Não venha ao posto. Cada minuto conta.', ARRAY['Ligar para o SAMU (192)', 'Onde fica o Hospital mais próximo?']),
-
-('febre_adulto', ARRAY['estou com febre', 'temperatura alta', 'corpo quente', 'calafrios', '39 graus', 'febre em adulto', 'hipertermia'], '🌡️ **Febre em Adulto:**<br>• **Febre alta (acima de 38.5°C)** que não baixa com antitérmico ou que dura **mais de 48 horas** precisa de avaliação. Venha ao posto.<br>• **Febre baixa:** Hidrate-se bem, repouse e use medicamentos sintomáticos (dipirona, paracetamol).<br>• Se tiver dúvida ou outros sintomas, ligue para o **Alô Saúde (156)**.', ARRAY['Ligar para o Alô Saúde', 'Ir ao Posto']),
-
-('identidade', ARRAY['quem é voce', 'voce é um robo', 'quem criou esse bot', 'voce e real'], 'Eu sou o assistente virtual da ESF Thamara! Fui criado para facilitar o acesso às informações da unidade. 🤖', ARRAY['O que você sabe fazer?']),
-
-('agradecimento', ARRAY['obrigado', 'valeu', 'muito obrigado', 'ajudou muito', 'tchau', 'ate logo', 'grato', 'beleza'], 'Por nada! Cuide-se bem. 💙', NULL),
-
-('dor_generica', ARRAY['estou com dor', 'sinto dor', 'dor no corpo', 'doi tudo', 'estou doendo', 'tenho dor', 'dor', 'alguma dor'], '🤔 **Sobre sua dor...**<br>Para que eu possa te orientar melhor, me diga **onde** é a dor.<br><br>Por exemplo: "dor de cabeça", "dor nas costas", "dor de dente".', ARRAY['Cabeça', 'Peito', 'Barriga', 'Dente', 'Costas']),
-
-('renovacao_receita', ARRAY['renovar receita', 'acabou o remedio', 'preciso de losartana', 'pegar remedio de pressao', 'receita venceu', 'receita azul', 'receita controlada', 'renovar medicacao', 'receituario'], '💊 **Renovação de Receitas:**<br>• **Receitas de Uso Contínuo (para pressão, diabetes, etc.):** Traga sua receita antiga e um documento na recepção para solicitar a renovação.<br>• **Receitas de Controle Especial (tarja preta/azul):** A renovação exige uma avaliação médica. Verifique na recepção a disponibilidade de encaixe ou a necessidade de agendar uma nova consulta.', ARRAY['É para pressão/diabetes', 'É receita controlada', 'Ver horário da farmácia']),
-
-('saude_mulher', ARRAY['fazer preventivo', 'papanicolau', 'estou gravida', 'teste de gravidez', 'pré natal', 'consulta ginecologica', 'saude da mulher', 'atraso menstrual', 'pilula anticoncepcional', 'corrimento', 'colposcopia'], '🌸 **Saúde da Mulher:**<br>• **Preventivo (Papanicolau):** O agendamento é feito com a enfermeira da sua equipe. Procure a recepção.<br>• **Suspeita de Gravidez:** Se sua menstruação está atrasada, venha à unidade pela manhã para fazer um teste rápido (TIG).<br>• **Pré-Natal:** Se o teste for positivo, já iniciamos seu acompanhamento pré-natal aqui mesmo.', ARRAY['Agendar Preventivo', 'Acho que estou grávida']),
-
-('dengue_zika', ARRAY['dor no corpo todo', 'manchas vermelhas', 'dor atras dos olhos', 'acho que estou com dengue', 'picada de mosquito', 'zika', 'chikungunya', 'dor nas juntas forte', 'arbovirose', 'exantema'], '🦟 **Suspeita de Dengue/Arboviroses:**<br>Os principais sintomas são: febre alta, dor de cabeça (principalmente atrás dos olhos), dores intensas no corpo e articulações, e manchas vermelhas na pele (exantema).<br><br>1. **Hidrate-se intensamente** (água, soro caseiro).<br>2. **NÃO TOME ANTI-INFLAMATÓRIOS** (como Aspirina/AAS, Ibuprofeno, Nimesulida). Use apenas Dipirona ou Paracetamol.<br>3. **Venha ao posto** para avaliação e notificação.', ARRAY['O que não posso tomar?', 'Como fazer soro caseiro?']),
-
-('saude_mental', ARRAY['estou muito triste', 'ansiedade', 'depressao', 'quero morrer', 'preciso de psicologo', 'crise de ansiedade', 'panico', 'nao aguento mais', 'tristeza profunda', 'ideacao suicida', 'saude mental'], '🧠 **Saúde Mental Importa:**<br>Falar sobre o que você sente é o primeiro passo. Você não está sozinho(a). 💙<br>Nossa equipe está aqui para te acolher e conversar. Oferecemos suporte e encaminhamento, se necessário.<br><br>🆘 Se você está em **crise, com pensamentos suicidas ou precisa de ajuda urgente**, não hesite:<br>• Ligue **188** (CVV - Centro de Valorização da Vida) - é gratuito e sigiloso.<br>• Procure o **CAPS** ou a emergência de um **Hospital**.', ARRAY['Ligar para o CVV (188)', 'Quero conversar no posto']),
-
-('curativos', ARRAY['fazer curativo', 'trocar curativo', 'tirar pontos', 'ferida na perna', 'machucado feio', 'ponto cirurgico', 'deiscencia', 'retirar sutura'], '🩹 **Procedimentos de Enfermagem:**<br>Para **curativos, troca de sondas ou retirada de pontos (sutura)**, o atendimento é realizado pela equipe de enfermagem durante o horário de funcionamento.<br>Se for uma ferida nova ou um pós-operatório, traga o encaminhamento médico, se tiver.', ARRAY['Ver Horários', 'Voltar']),
-
-('documentos_cadastro', ARRAY['o que precisa para cadastro', 'fazer cartao sus', 'me mudar para o bairro', 'documentos necessarios', 'comprovante de residencia', 'como me cadastrar'], 'guia **Cadastro na Unidade:**<br>Para se cadastrar na ESF Thamara, traga:<br>• RG e CPF<br>• Cartão do SUS (se tiver)<br>• Comprovante de residência atualizado em seu nome (ou declaração).<br>Atendemos apenas moradores da área de abrangência.', ARRAY['Verificar área', 'Horário de cadastro']),
-
-('tabela_decisao', ARRAY['tabela de sintomas', 'onde devo ir', 'classificacao de risco', 'estou em duvida', 'guia de atendimento', 'para onde eu vou'], '🏥 **Guia Rápido de Decisão:**<br><table style="width:100%; border-collapse:collapse; font-size:13px; margin-top:5px;"><tr><th style="border:1px solid #ccc; padding:5px; background:#f0f0f0;">Sintoma / Situação</th><th style="border:1px solid #ccc; padding:5px; background:#f0f0f0;">Onde Ir?</th></tr><tr><td style="border:1px solid #ccc; padding:5px;">Risco de Vida / Acidentes Graves</td><td style="border:1px solid #ccc; padding:5px; color:red; font-weight:bold;">SAMU (192) / Hospital</td></tr><tr><td style="border:1px solid #ccc; padding:5px;">Dores Agudas / Febre / Curativos</td><td style="border:1px solid #ccc; padding:5px; color:blue; font-weight:bold;">ESF (Posto)</td></tr><tr><td style="border:1px solid #ccc; padding:5px;">Dúvidas / Sintomas Leves</td><td style="border:1px solid #ccc; padding:5px; color:green; font-weight:bold;">Alô Saúde (156)</td></tr><tr><td style="border:1px solid #ccc; padding:5px;">Gripe Leve (sem falta de ar)</td><td style="border:1px solid #ccc; padding:5px;">Isolamento (Casa)</td></tr></table>', ARRAY['Entendi', 'Emergência']),
-
-('alo_saude', ARRAY['alo saude', 'atendimento por telefone', 'consulta online', 'telemedicina', 'duvida simples', 'preciso sair de casa', 'atendimento remoto', 'falar com medico pelo celular'], '📞 **Alô Saúde Blumenau (156 opção 2):**<br>Para falar com um médico sem sair de casa, clique no número abaixo:<br><br><h2><a href="tel:156" style="color:green; text-decoration:none;">CLIQUE AQUI PARA LIGAR 156</a></h2><br>É de graça e você não pega fila.<br>Ideal para: Gripe leve, dúvidas de remédio e dor de garganta.', ARRAY['Ligar 156', 'Voltar']),
-
-('sindrome_gripal', ARRAY['tosse', 'coriza', 'dor de garganta leve', 'gripe', 'resfriado', 'nariz escorrendo', 'espirrando', 'sintomas de gripe'], '😷 **Gripe Leve:**<br>Se você tem apenas tosse, nariz escorrendo e febre baixa:<br>1. **Use máscara** se sair de casa.<br>2. Beba água e descanse.<br>3. Se sentir **falta de ar**, vá para o Hospital.<br>⚠️ **Não venha ao ESF sem máscara!**', ARRAY['Tenho falta de ar', 'É só gripe leve']),
-
-('emergencia_gestante', ARRAY['estou gravida e com dor', 'sangramento na gravidez', 'perdi liquido', 'bebe nao mexe', 'gestante com dor', 'gravida sangrando', 'dor na barriga gravida', 'sangramento vaginal', 'diminuicao movimento fetal'], '🚨 **Emergência Obstétrica:**<br>Gestante, vá **IMEDIATAMENTE** para a **Maternidade ou Hospital de Referência** se apresentar:<br>• **Sangramento vaginal** (qualquer quantidade).<br>• **Perda de líquido** ("bolsa estourou").<br>• **Dor abdominal forte** e contínua.<br>• **Diminuição ou ausência dos movimentos do bebê**.<br>Não espere, sua vida e a do seu bebê são prioridade.', ARRAY['Onde fica a Maternidade?', 'Ligar para o SAMU (192)']),
-
-('emergencia_idoso', ARRAY['idoso caiu', 'minha avo caiu', 'fala enrolada', 'boca torta', 'fraqueza de um lado', 'idoso confuso', 'avc', 'derrame', 'idoso nao acorda', 'queda de idoso', 'sinais de avc', 'rebaixamento de consciencia'], '🚨 **Emergência Geriátrica:**<br>Atenção a sinais de **AVC (Derrame)**:<br>• **Boca torta** ao sorrir.<br>• **Perda de força** em um braço ou perna.<br>• **Fala enrolada** ou dificuldade para entender.<br>Em caso de **queda com suspeita de fratura** ou **confusão mental súbita**:<br><br>📞 <a href="tel:192" style="color:red; font-weight:bold;">LIGUE PARA O SAMU (192) IMEDIATAMENTE</a><br><br>Não mova a pessoa se houver suspeita de fratura grave.', ARRAY['Ligar para o SAMU (192)']),
-
-('emergencia_crianca', ARRAY['meu filho nao respira bem', 'bebe com febre alta', 'crianca prostrada', 'bebe roxo', 'convulsao infantil', 'crianca nao para de chorar', 'bebe engasgado', 'febre em crianca', 'cianose', 'tiragem intercostal'], '🚨 **Emergência Pediátrica:**<br>Leve a criança **IMEDIATAMENTE ao Hospital Infantil** se ela apresentar:<br>• **Dificuldade para respirar** (afundando a costela - tiragem intercostal).<br>• **Lábios ou pontas dos dedos arroxeados** (cianose).<br>• **Convulsão**.<br>• **Sonolência excessiva** (não acorda para mamar/brincar) ou **prostração**.<br>Para febre controlada em uma criança ativa, ligue para o Alô Saúde (156).', ARRAY['Onde fica o Hospital Infantil?', 'Ligar para o SAMU (192)']),
-
-('atendimento_inclusivo', ARRAY['sou autista', 'tenho autismo', 'atendimento prioritario', 'tea', 'sensibilidade sensorial', 'paciente autista', 'mae de autista', 'crise sensorial'], '💙 **Acolhimento Inclusivo (TEA):**<br>Pessoas no Espectro Autista (TEA) têm direito a atendimento prioritário.<br>Por favor, informe na recepção sobre a condição para que possamos oferecer um ambiente mais tranquilo e adequado, se necessário.<br>Nossa equipe está preparada para um atendimento humanizado e respeitoso.', ARRAY['Tenho carteirinha TEA', 'Preciso de prioridade']),
-
-('acessibilidade_leitura', ARRAY['nao sei ler', 'nao sei escrever', 'tenho dificuldade de leitura', 'pode mandar audio', 'ajuda para ler', 'sou analfabeto', 'nao entendo letras'], '🗣️ **Ajuda:**<br>Se estiver difícil de ler, você pode pedir para alguém ligar para nós ou vir aqui no posto e falar direto com a recepcionista.<br><br>📞 <a href="tel:4733817064">Ligar (47) 3381-7064</a>', ARRAY['Ligar para o posto']),
-
+('saudacao', ARRAY['ola', 'oi', 'bom dia', 'boa tarde', 'boa noite', 'gostaria de falar com alguem', 'iniciar atendimento', 'oi tudo bem'], 'Olá! Sou a IA da ESF Thamara. 🏥<br>Posso ajudar com informações administrativas ou fazer uma **pré-triagem** de sintomas.<br>Como posso ajudar?', ARRAY['Horários de Atendimento', 'Estou com dor', 'Vacinas', 'Endereço']),
+('horarios', ARRAY['qual o horario de atendimento', 'que horas o posto abre', 'ate que horas funciona', 'horario de funcionamento', 'está aberto agora', 'agenda da unidade', 'quando abre', 'que horas abre', 'horario de abertura'], '🕒 **Dinâmica de Atendimento:**<br>• **Seg, Ter e Qui:** Manhã (intercorrências/agendamentos), Tarde (consultas/enfermagem).<br>• **Quarta:** Manhã (intercorrências), Tarde (visitas domiciliares).<br>• **Sexta:** Manhã (intercorrências), Tarde (formação equipe).<br>🚫 **Almoço:** 12h às 13h (fechado).<br>⚠️ Fora desses horários, procure o AG Garcia ou Hospitais.', ARRAY['Como agendar consulta?', 'Onde fica o AG Garcia?']),
+('endereco', ARRAY['qual o endereço', 'onde fica o posto', 'localização da unidade', 'como chegar no posto', 'mapa da unidade', 'rua do posto'], '📍 **Endereço:**<br>Rua Santa Maria, 2082 – Bairro Progresso, Blumenau (SC).<br>CEP: 89027-202.', ARRAY['Ver no Mapa', 'Horários']),
+('contato', ARRAY['qual o telefone', 'numero para contato', 'como ligar para o posto', 'tem whatsapp', 'numero do zap'], '📞 **Telefones:**<br>(47) 3381-7064<br>(47) 3381-6751<br>No momento não temos WhatsApp oficial para agendamento.', ARRAY['Voltar ao início']),
+('vacinas', ARRAY['horario de vacinacao', 'quero tomar vacina', 'tem vacina da gripe', 'campanha de vacinacao', 'preciso me vacinar'], '💉 **Sala de Vacinas:**<br>Segunda a Quinta: 09h às 11h30 e 13h às 15h.<br>Sexta: 09h às 11h30 (somente matutino).<br>Lembre-se de trazer a carteirinha de vacinação e o cartão do SUS!', ARRAY['Quais documentos levar?', 'Tem vacina da gripe?']),
+('consultas', ARRAY['como marcar consulta', 'agendar medico', 'preciso de um clinico geral', 'quero marcar uma consulta', 'tem medico hoje', 'quero ver um medico', 'preciso passar no medico', 'consulta medica'], '👨‍⚕️ **Consultas:**<br>O agendamento é feito preferencialmente presencialmente na unidade. Para casos agudos, venha para a triagem (Acolhimento).', ARRAY['Estou com dor aguda', 'É apenas rotina']),
+('odonto', ARRAY['dentista', 'consulta dentista', 'dor no dente', 'dente doendo', 'gengiva doendo', 'arrancar dente', 'canal no dente', 'limpeza nos dentes', 'odontologia', 'saude bucal', 'dente quebrado', 'estou com muita dor de dente', 'dor de dente forte'], '🦷 **Odontologia:**<br>Temos atendimento odontológico. É necessário passar pela recepção para verificar a disponibilidade de agendamento.', ARRAY['Estou com muita dor de dente', 'Quero agendar limpeza']),
+('dor_abdominal', ARRAY['dor de barriga', 'dor no estomago', 'dor abdominal', 'enjoo', 'vomito', 'diarreia', 'azia', 'queimação no estomago', 'colica', 'minha barriga doi', 'estou com dor de barriga'], '⚠️ **Dor Abdominal/Estômago:**<br>• **Leve/Moderada:** Venha ao Posto (ESF) para avaliação médica.<br>• **Grave (dor insuportável):** Vá ao Hospital.<br>• **Dúvida:** Ligue 156 (Alô Saúde).', ARRAY['Ir ao Posto', 'Ligar 156']),
+('dor_garganta_ouvido', ARRAY['dor de garganta', 'dor de ouvido', 'ouvido doendo', 'garganta inflamada', 'dificuldade para engolir', 'dor ao engolir', 'zumbido no ouvido'], '⚠️ **Garganta ou Ouvido:**<br>Geralmente são infecções que precisam de avaliação clínica.<br>Venha ao Posto (ESF) no horário de acolhimento (07h-11h ou 13h-15h).', ARRAY['Ver Horários', 'Endereço']),
+('triagem_geral', ARRAY['estou passando mal', 'tontura forte', 'desmaio', 'sangramento', 'pressao baixa', 'mal estar', 'corpo ruim', 'fraqueza'], '⚠️ **Acolhimento/Triagem:**<br>Se você está se sentindo mal de forma geral, venha à unidade para aferir pressão e passar pela triagem.<br><br>🚨 **Desmaio ou Sangramento forte:** Ligue 192 (SAMU).', ARRAY['Ligar 192', 'Ir para o posto']),
+('visitas', ARRAY['visita domiciliar', 'atendimento em casa', 'paciente acamado', 'agente de saude visita', 'medico vai em casa'], '🏠 **Visitas Domiciliares:**<br>Ocorrem geralmente nas quartas-feiras à tarde. São destinadas a pacientes acamados ou com dificuldade de locomoção. Converse com seu Agente de Saúde (ACS) para solicitar.', ARRAY['Como falar com ACS?', 'Voltar']),
+('identidade', ARRAY['quem é voce', 'voce é um robo', 'falar com atendente humano', 'quem criou esse bot'], 'Eu sou o assistente virtual da ESF Thamara! Fui criado para facilitar o acesso às informações da unidade. 🤖', ARRAY['O que você sabe fazer?']),
+('agradecimento', ARRAY['obrigado', 'valeu', 'muito obrigado', 'ajudou muito', 'tchau', 'ate logo'], 'Por nada! Cuide-se bem. 💙', NULL),
+('dor_cotovelo_membros', ARRAY['dor no cotovelo', 'dor de cotovelo', 'dor no braço', 'machuquei o joelho', 'torci o pé', 'dor na perna', 'dor nas juntas', 'cotovelo doendo', 'dor no ombro', 'pancada', 'dor nas costas', 'dor na coluna', 'dor no quadril', 'dor no pe'], '⚠️ **Triagem Ortopédica (Membros):**<br>Para melhor orientação, analise:<br>1. Houve trauma (batida/queda) recente?<br>2. Há inchaço ou deformidade visível?<br>3. A dor impede o movimento?<br><br>🔴 **Vá ao Pronto Socorro se:** Houver deformidade evidente ou dor insuportável.<br>🟢 **Cuidados em casa:** Se for leve, aplique gelo e repouso.', ARRAY['Onde fica o PS?', 'Vou aplicar gelo', 'Quero ver um médico']),
+('dor_cabeca', ARRAY['dor de cabeça', 'enxaqueca', 'cabeça doendo muito', 'pontada na cabeça', 'cefaleia'], '🧠 **Triagem: Dor de Cabeça**<br>Responda mentalmente:<br>• A dor é a pior da sua vida?<br>• Tem alterações na visão ou fala?<br>• Teve febre junto?<br><br>Se respondeu **SIM** para algo, procure atendimento imediato. Se for uma dor conhecida (enxaqueca comum), tome sua medicação de costume e repouse em local escuro.', ARRAY['É uma dor muito forte', 'É uma dor comum', 'Preciso de atestado']),
+('dor_peito_cardio', ARRAY['dor no peito', 'aperto no coração', 'pontada no peito', 'infarto', 'dor toracica', 'queimação no peito'], '🚨 **ATENÇÃO - POSSÍVEL EMERGÊNCIA** 🚨<br>Dor no peito pode ser grave. Se a dor for forte, irradiar para o braço esquerdo ou vier acompanhada de falta de ar/suor frio:<br><br>📞 **LIGUE 192 (SAMU) IMEDIATAMENTE** ou vá à emergência hospitalar mais próxima (H. Santa Isabel).<br>Não espere por agendamento no posto.', ARRAY['Ligar 192', 'Onde fica o Hospital?', 'É só uma pontada leve']),
+('febre', ARRAY['estou com febre', 'meu filho tem febre', 'temperatura alta', 'corpo quente', 'calafrios'], '🌡️ **Triagem: Febre**<br>• **Adultos:** Febre acima de 39°C ou por mais de 48h requer avaliação.<br>• **Crianças:** Se houver manchas na pele, vômitos ou prostração, venha imediatamente.<br><br>Beba bastante líquido e monitore a temperatura.', ARRAY['É criança', 'É adulto', 'Tem manchas na pele']),
+('tabela_decisao', ARRAY['tabela de sintomas', 'onde devo ir', 'classificacao de risco', 'estou em duvida', 'guia de atendimento', 'para onde eu vou'], '🏥 **Guia Rápido de Decisão:**<br><table style=''width:100%; border-collapse:collapse; font-size:13px; margin-top:5px;''><tr><th style=''border:1px solid #ccc; padding:5px; background:#f0f0f0;''>Sintoma / Situação</th><th style=''border:1px solid #ccc; padding:5px; background:#f0f0f0;''>Onde Ir?</th></tr><tr><td style=''border:1px solid #ccc; padding:5px;''>Risco de Vida / Acidentes Graves</td><td style=''border:1px solid #ccc; padding:5px; color:red; font-weight:bold;''>SAMU (192) / Hospital</td></tr><tr><td style=''border:1px solid #ccc; padding:5px;''>Dores Agudas / Febre / Curativos</td><td style=''border:1px solid #ccc; padding:5px; color:blue; font-weight:bold;''>ESF (Posto)</td></tr><tr><td style=''border:1px solid #ccc; padding:5px;''>Dúvidas / Sintomas Leves</td><td style=''border:1px solid #ccc; padding:5px; color:green; font-weight:bold;''>Alô Saúde (156)</td></tr><tr><td style=''border:1px solid #ccc; padding:5px;''>Gripe Leve (sem falta de ar)</td><td style=''border:1px solid #ccc; padding:5px;''>Isolamento (Casa)</td></tr></table>', ARRAY['Entendi', 'Emergência']),
+('alo_saude', ARRAY['alo saude', 'atendimento por telefone', 'consulta online', 'telemedicina', 'duvida simples', 'preciso sair de casa'], '📞 **Alô Saúde Blumenau (156 opção 2):**<br>Para orientações médicas sem sair de casa, ligue 156.<br>Ideal para: Sintomas leves, dúvidas sobre medicamentos e orientações gerais.<br>Evite filas desnecessárias e riscos de contágio!', ARRAY['Ligar 156', 'Voltar']),
+('sindrome_gripal', ARRAY['tosse', 'coriza', 'dor de garganta leve', 'gripe', 'resfriado', 'nariz escorrendo', 'espirrando'], '😷 **Sintomas Gripais Leves:**<br>Se você tem apenas tosse, coriza e febre baixa:<br>1. **Use máscara** e evite contato social (Isolamento).<br>2. Hidrate-se e repouse.<br>3. Se piorar (falta de ar), procure o Ambulatório Geral (AG) ou Hospital.<br>⚠️ **Não venha ao ESF sem máscara!**', ARRAY['Tenho falta de ar', 'É só gripe leve']),
+('emergencia_gestante', ARRAY['estou gravida e com dor', 'sangramento na gravidez', 'perdi liquido', 'bebe nao mexe', 'gestante com dor', 'gravida sangrando'], '🚨 **Atenção Gestante:**<br>Vá imediatamente à **Maternidade ou Hospital** se tiver:<br>• Sangramento vaginal.<br>• Perda de líquido.<br>• Dor abdominal forte.<br>• Ausência de movimentos do bebê.<br>Não espere pelo ESF, isso é uma emergência.', ARRAY['Onde fica a maternidade?', 'Ligar SAMU']),
+('emergencia_idoso', ARRAY['idoso caiu', 'minha avo caiu', 'fala enrolada', 'boca torta', 'fraqueza de um lado', 'idoso confuso', 'avc', 'derrame'], '🚨 **Emergência com Idoso:**<br>Se houver **queda com dor/imobilidade** ou sinais de AVC (boca torta, fala enrolada, perda de força):<br>📞 **LIGUE 192 (SAMU) IMEDIATAMENTE.**<br>Não tente mover o paciente se houver suspeita de fratura no quadril/fêmur.', ARRAY['Ligar 192']),
+('emergencia_crianca', ARRAY['meu filho nao respira bem', 'bebe com febre alta', 'crianca prostrada', 'bebe roxo', 'convulsao infantil'], '🚨 **Emergência Pediátrica:**<br>Procure o **Hospital** imediatamente se a criança apresentar:<br>• Dificuldade para respirar (peito afundando).<br>• Lábios roxos.<br>• Convulsão.<br>• Sonolência excessiva (não acorda).<br>Para febre controlada, procure o ESF ou Alô Saúde.', ARRAY['Hospital Infantil', 'Ligar 192']),
+('atendimento_inclusivo', ARRAY['sou autista', 'tenho autismo', 'atendimento prioritario', 'tea', 'sensibilidade sensorial', 'paciente autista'], '💙 **Atendimento Inclusivo (TEA):**<br>Pessoas com TEA têm direito a atendimento prioritário e humanizado.<br>Informe na recepção sobre suas necessidades (ambiente calmo, menos barulho).<br>Em caso de crise sensorial aguda, nossa equipe está preparada para acolher.', ARRAY['Tenho carteirinha TEA', 'Preciso de prioridade']),
+('dor_generica', ARRAY['estou com dor', 'sinto dor', 'dor no corpo', 'doi tudo', 'estou doendo', 'tenho dor', 'dor', 'alguma dor', 'pico de dor', 'dor muito forte', 'dor intensa', 'estou com muita dor', 'dor insuportavel', 'estou com dor aguda'], '⚠️ **Onde é a sua dor?**<br>Para te orientar melhor, preciso saber onde dói.<br><br>Exemplos: "Dor de cabeça", "Dor no peito", "Dor nas costas", "Dor de dente".', ARRAY['Cabeça', 'Peito', 'Barriga', 'Dente', 'Costas']),
 ('hospital_ps', ARRAY['onde fica o ps', 'onde fica o hospital', 'pronto socorro', 'emergencia hospital', 'endereco do hospital', 'hospital santa isabel', 'hospital santo antonio', 'upa', 'onde e a emergencia'], '🏥 **Hospitais / Pronto Socorro:**<br>Para emergências, procure:<br>• **Hospital Santa Isabel:** R. Floriano Peixoto, 300.<br>• **Hospital Santo Antônio:** R. Itajaí, 545.<br>• **Hospital Misericórdia (Vila Itoupava).**<br><br>🚑 Em risco de vida, ligue **192**.', ARRAY['Ligar 192', 'Voltar']),
+('feedback_negativo', ARRAY['ta uma porcaria', 'nao funciona', 'bot burro', 'que lixo', 'nao ajuda', 'pessimo', 'horrivel', 'idiota', 'ruim'], '😔 Sinto muito que você não esteja satisfeito. Sou uma inteligência artificial em aprendizado.<br>Por favor, ligue para **(47) 3381-7064** para falar com um atendente humano.', ARRAY['Ligar para o posto']);
 
-('feedback_negativo', ARRAY['ta uma porcaria', 'nao funciona', 'bot burro', 'que lixo', 'nao ajuda', 'pessimo', 'horrivel', 'idiota', 'ruim'], '😔 Sinto muito que você não esteja satisfeito. Sou uma inteligência artificial em aprendizado.<br>Por favor, ligue para **(47) 3381-7064** para falar com um atendente humano.', ARRAY['Ligar para o posto']),
+-- 5. Função de Aprendizado Automático (Auto-Training)
+-- Esta função consolida os feedbacks positivos e atualiza as chaves de busca
+CREATE OR REPLACE FUNCTION train_ai_from_feedback() RETURNS text AS $$
+DECLARE
+    rows_updated INT;
+BEGIN
+    WITH new_keys_agg AS (
+        SELECT matched_intent_id, array_agg(DISTINCT user_query) as phrases
+        FROM ai_logs
+        WHERE feedback = 'positive' AND length(user_query) > 3
+        GROUP BY matched_intent_id
+    )
+    UPDATE chatbot_interactions ci
+    SET keys = (SELECT array_agg(DISTINCT x) FROM unnest(ci.keys || nka.phrases) x)
+    FROM new_keys_agg nka
+    WHERE ci.intent_id = nka.matched_intent_id;
 
-('colica_investigacao', ARRAY['colica', 'estou com colica', 'tenho colica', 'muita colica', 'colica forte', 'dor tipo colica'], '🤔 **Sobre a Cólica:**<br>Para te ajudar melhor, essa cólica parece ser de qual tipo?<br>• **Intestinal:** Associada a gases, diarreia ou problemas de digestão.<br>• **Ginecológica:** Relacionada ao ciclo menstrual ou a uma possível gravidez.', ARRAY['É cólica intestinal', 'É cólica ginecológica']),
+    GET DIAGNOSTICS rows_updated = ROW_COUNT;
+    RETURN 'Inteligência atualizada! Intenções aprimoradas: ' || rows_updated;
+END;
+$$ LANGUAGE plpgsql;
 
-('colica_menstrual_gestante', ARRAY['é menstrual', 'é ginecologica', 'dor no utero', 'colica menstrual', 'dor de periodo', 'estou menstruada', 'é gravidez', 'estou gravida', 'sou gestante'], '🌸 **Cólica Ginecológica:**<br>• **Cólica Menstrual (Dismenorreia):** Se for a dor habitual do seu ciclo, o uso de analgésicos e uma bolsa de água morna pode aliviar.<br>• **Cólica na Gestação:** ⚠️ ATENÇÃO! Se você está grávida e com cólica, especialmente se acompanhada de sangramento, procure a **Maternidade** imediatamente.', ARRAY['Onde fica a Maternidade?', 'Voltar']),
+-- 6. View para Visualizar Frases Aprendidas (Feedback Positivo)
+-- Mostra as frases que os usuários digitaram e avaliaram positivamente,
+-- que servem de base para o treinamento da IA.
+CREATE OR REPLACE VIEW ai_learned_phrases_view AS
+SELECT 
+    user_query AS frase_aprendida,
+    matched_intent_id AS intencao,
+    COUNT(*) AS frequencia,
+    MAX(created_at) AS ultima_ocorrencia
+FROM ai_logs
+WHERE feedback = 'positive'
+GROUP BY user_query, matched_intent_id
+ORDER BY frequencia DESC, ultima_ocorrencia DESC;
 
-('atendimento_prioritario', ARRAY['sou idoso', 'tenho prioridade', 'sou deficiente', 'cadeirante', 'tenho deficiencia', 'fila preferencial', 'atendimento para idoso', 'acessibilidade', 'sou pcd'], '💙 **Atendimento Prioritário:**<br>Garantimos prioridade legal para:<br>• **Idosos (60+)**<br>• **Gestantes**<br>• **Pessoas com Deficiência (PCD)**<br>• **Autistas (TEA)**<br><br>Informe sua condição na recepção para agilizar o cadastro e a triagem.', ARRAY['Horários', 'Endereço']),
+-- 7. View para Análise de Erros (Feedback Negativo)
+-- Mostra onde a IA errou, ajudando a identificar ajustes necessários nas chaves ou respostas.
+CREATE OR REPLACE VIEW ai_negative_feedback_view AS
+SELECT 
+    user_query AS frase_usuario,
+    matched_intent_id AS intencao_incorreta,
+    AVG(score)::NUMERIC(4,3) AS media_confianca,
+    COUNT(*) AS frequencia,
+    MAX(created_at) AS ultima_ocorrencia
+FROM ai_logs
+WHERE feedback = 'negative'
+GROUP BY user_query, matched_intent_id
+ORDER BY frequencia DESC, ultima_ocorrencia DESC;
 
-('ag_garcia', ARRAY['onde fica o ag garcia', 'endereco ag garcia', 'horario ag garcia', 'telefone ag garcia', 'ag garcia', 'ambulatorio geral garcia', 'irma marta elisabetha kunzmann', 'posto do garcia', 'ag da progresso'], '🏥 **AG Garcia (Ambulatório Geral):**<br>📍 **Endereço:** R. Progresso, 141 - Progresso (Intendência).<br>📞 **Telefone:** (47) 3381-7593<br>🕒 **Horário:**<br>• Seg a Sex: 07h às 22h<br>• Sáb e Dom: 08h às 17h', ARRAY['Voltar', 'Ligar para AG Garcia']),
+-- 8. Função de Limpeza de Logs Antigos (Manutenção)
+-- Remove registros antigos da tabela ai_logs para evitar crescimento excessivo do banco.
+-- Exemplo de uso: SELECT cleanup_ai_logs(90); -- Mantém apenas os últimos 90 dias.
+CREATE OR REPLACE FUNCTION cleanup_ai_logs(days_to_keep INT DEFAULT 90) RETURNS text AS $$
+DECLARE
+    rows_deleted INT;
+BEGIN
+    DELETE FROM ai_logs
+    WHERE created_at < NOW() - (days_to_keep || ' days')::INTERVAL;
 
--- NOVAS INTENÇÕES ADICIONADAS (Expansão)
+    GET DIAGNOSTICS rows_deleted = ROW_COUNT;
+    RETURN 'Limpeza concluída. Logs removidos: ' || rows_deleted;
+END;
+$$ LANGUAGE plpgsql;
 
-('resultados_exames', ARRAY['resultado de exame', 'pegar exame', 'exame de sangue pronto', 'ver exame', 'laudo medico', 'exame de urina'], '📄 **Resultados de Exames:**<br>A entrega de resultados de exames laboratoriais e de imagem acontece na recepção, preferencialmente no período da tarde (13h às 16h).<br>Lembre-se de trazer um documento de identificação.', ARRAY['Horários', 'Voltar']),
+-- 9. Função de Sincronização via JSON (Manutenção Avançada)
+-- Permite o "upsert" (INSERT/UPDATE) em lote da base de conhecimento a partir de um payload JSON.
+-- Isso facilita a atualização da IA via API, sem editar o arquivo .sql manualmente.
+-- Exemplo de uso: SELECT sync_interactions_from_json('[{"id":"new_intent", "keys":["k1"], "resp":"r1"}]'::jsonb);
+CREATE OR REPLACE FUNCTION sync_interactions_from_json(json_data JSONB)
+RETURNS TEXT AS $$
+DECLARE
+    intent_record JSONB;
+    upserted_count INT := 0;
+    intent_id_text TEXT;
+    keys_array TEXT[];
+    response_text TEXT;
+    options_array TEXT[];
+BEGIN
+    -- Itera sobre cada objeto no array JSON
+    FOR intent_record IN SELECT * FROM jsonb_array_elements(json_data)
+    LOOP
+        intent_id_text := intent_record->>'id';
+        
+        -- Extrai o array 'keys'
+        SELECT array_agg(value) INTO keys_array FROM jsonb_array_elements_text(intent_record->'keys');
+        
+        response_text := intent_record->>'resp';
+        
+        -- Extrai o array 'options', tratando o caso de não existir
+        IF intent_record ? 'options' THEN
+            SELECT array_agg(value) INTO options_array FROM jsonb_array_elements_text(intent_record->'options');
+        ELSE
+            options_array := NULL;
+        END IF;
 
-('farmacia', ARRAY['tem remedio', 'farmacia', 'pegar medicacao', 'horario farmacia', 'farmacia popular', 'remedio gratuito', 'disponibilidade de remedio'], '💊 **Dispensação de Medicamentos:**<br>A nossa farmácia funciona durante o horário de atendimento da unidade.<br>Para retirar medicamentos, é indispensável apresentar a **receita médica válida** e o **Cartão do SUS**.', ARRAY['Renovação de Receita', 'Horários']),
+        -- Insere um novo registro ou atualiza um existente se o intent_id já existir
+        INSERT INTO chatbot_interactions (intent_id, keys, response, options)
+        VALUES (intent_id_text, keys_array, response_text, options_array)
+        ON CONFLICT (intent_id) DO UPDATE SET
+            keys = EXCLUDED.keys,
+            response = EXCLUDED.response,
+            options = EXCLUDED.options;
 
-('teste_pezinho', ARRAY['teste do pezinho', 'exame do pezinho', 'recem nascido', 'bebe nasceu', 'triagem neonatal'], '👣 **Triagem Neonatal (Teste do Pezinho):**<br>Este exame é fundamental e deve ser coletado, idealmente, **entre o 3º e o 5º dia de vida** do recém-nascido.<br>O procedimento é realizado na sala de vacinas, no período da manhã. Traga a certidão de nascimento (ou declaração) e o cartão da mãe.', ARRAY['Vacinas', 'Endereço']),
+        upserted_count := upserted_count + 1;
+    END LOOP;
 
-('planejamento_familiar', ARRAY['diu', 'anticoncepcional', 'pilula', 'laqueadura', 'vasectomia', 'planejamento familiar', 'evitar filhos', 'camisinha'], '👨‍👩‍👧‍👦 **Planejamento Reprodutivo:**<br>Oferecemos orientação sobre métodos contraceptivos (pílulas, injetáveis, DIU, preservativos) e planejamento familiar.<br>Para procedimentos como **inserção de DIU, laqueadura ou vasectomia**, é preciso participar de um grupo de orientação. Informe-se na recepção sobre as datas.', ARRAY['Horários', 'Saúde da Mulher']),
-
-('nutricionista', ARRAY['nutricionista', 'preciso emagrecer', 'dieta', 'encaminhamento nutricionista', 'reeducacao alimentar'], '🍎 **Nutricionista:**<br>O atendimento é realizado mediante encaminhamento médico ou de enfermagem.<br>Passe por uma consulta clínica primeiro para avaliação.', ARRAY['Agendar Consulta', 'Voltar']),
-
-('fisioterapia', ARRAY['fisioterapia', 'fisio', 'reabilitacao', 'dor cronica', 'sessao de fisio'], '🤸 **Fisioterapia:**<br>O encaminhamento é feito pelo médico da unidade.<br>Após ter o encaminhamento, você deve levá-lo à regulação (AG Garcia) para entrar na fila.', ARRAY['Onde fica o AG Garcia?', 'Voltar']),
-
-('ouvidoria', ARRAY['reclamacao', 'denuncia', 'elogio', 'ouvidoria', 'falar com gerente', 'reclamar', 'sugestao'], '📢 **Ouvidoria:**<br>Sua opinião é importante.<br>Você pode registrar elogios ou reclamações na Ouvidoria da Saúde pelo telefone 156 (opção 4) ou pelo site da Prefeitura de Blumenau.', ARRAY['Ligar 156', 'Voltar']),
-
-('violencia_domestica', ARRAY['violencia contra mulher', 'agressao', 'marido bateu', 'medo', 'denunciar', 'lei maria da penha', 'violencia familiar'], '💜 **Rede de Apoio Contra a Violência:**<br>Se você está em uma situação de violência doméstica ou familiar, saiba que não está sozinha. Nossa equipe pode te acolher, orientar e acionar a rede de proteção.<br><br>• **Para emergências (risco imediato):** Ligue **190 (Polícia Militar)**.<br>• **Para denunciar ou buscar orientação:** Ligue **180 (Central de Atendimento à Mulher)**.', ARRAY['Ligar 180', 'Endereço']),
-
-('bolsa_familia', ARRAY['pesagem bolsa familia', 'auxilio brasil', 'pesar crianca', 'condicionalidades', 'acompanhamento bolsa familia'], '⚖️ **Acompanhamento Bolsa Família:**<br>As condicionalidades da saúde (pesagem e acompanhamento de crianças e gestantes) são realizadas na unidade.<br>Fique atento aos calendários de pesagem divulgados na recepção. É obrigatório trazer o cartão do benefício e a carteira de vacinação.', ARRAY['Horários', 'Voltar']),
-
-('hiperdia', ARRAY['hiperdia', 'grupo de hipertensos', 'grupo de diabeticos', 'pressao alta', 'diabetes', 'insulina'], '💙 **Hiperdia (Hipertensos e Diabéticos):**<br>Realizamos o acompanhamento contínuo de pacientes com Hipertensão Arterial e Diabetes.<br>Participe dos grupos para receber orientações, aferir a pressão e verificar a glicemia. Converse com seu Agente Comunitário de Saúde (ACS) sobre as datas.', ARRAY['Renovação de Receita', 'Voltar']),
-
--- EXPANSÃO SOCIAL E DIGITAL (Gov.br, CRAS, Site, Blog)
-
-('cras_cadunico', ARRAY['cras', 'cadunico', 'cadastro unico', 'assistencia social', 'cesta basica', 'auxilio gas', 'atualizar cadastro', 'bolsa familia bloqueado', 'assistente social'], '🤝 **CRAS e Assistência Social:**<br>Para assuntos do CadÚnico, Bolsa Família, Auxílio Gás ou Cesta Básica, você deve procurar o **CRAS** de referência da nossa região.<br>📍 **CRAS Garcia:** R. da Glória, 459.<br>📞 **Telefone:** (47) 3381-6300.', ARRAY['Onde fica o CRAS?', 'Voltar']),
-
-('gov_br', ARRAY['gov.br', 'conta gov', 'recuperar senha gov', 'nivel prata', 'nivel ouro', 'nao consigo acessar gov', 'senha do gov', 'entrar no gov'], '🔐 **Conta Gov.br:**<br>A conta Gov.br é sua identidade digital para acessar o SUS, INSS e Receita Federal.<br>• **Esqueceu a senha?** Acesse acesso.gov.br e clique em "Esqueci minha senha".<br>• **Precisa aumentar o nível?** Use o reconhecimento facial no app Gov.br.<br>Se tiver muita dificuldade, peça ajuda na recepção.', ARRAY['Acessar Gov.br', 'Voltar']),
-
-('documentos_civis', ARRAY['fazer rg', 'segunda via rg', 'cpf', 'certidao de nascimento', 'perdi meus documentos', 'fazer documentos', 'identidade nova', 'onde faz rg'], '📄 **Documentos Civis:**<br>O posto de saúde **não emite** RG ou CPF, apenas o Cartão do SUS.<br>• **RG:** Agende no site do IGP/SC ou procure a Praça do Cidadão.<br>• **CPF:** Pode ser emitido online no site da Receita Federal.<br>• **Certidões:** Procure o Cartório de Registro Civil.', ARRAY['Onde fazer RG?', 'Voltar']),
-
-('carteira_trabalho', ARRAY['carteira de trabalho', 'ctps digital', 'assinar carteira', 'carteira digital', 'aplicativo carteira de trabalho', 'minha carteira'], '💼 **Carteira de Trabalho Digital:**<br>A Carteira de Trabalho agora é digital!<br>Você não precisa mais da caderneta azul. Basta baixar o aplicativo **"Carteira de Trabalho Digital"** no seu celular e entrar com sua conta Gov.br para ver seus contratos.', ARRAY['Baixar App', 'Voltar']),
-
-('esocial', ARRAY['esocial', 'e-social', 'guia esocial', 'pagar inss domestica', 'folha de pagamento esocial', 'patrao domestico'], '💼 **eSocial Doméstico:**<br>Para emitir guias de pagamento (DAE) ou gerenciar contratos domésticos, acesse o site oficial do eSocial ou baixe o App.<br>É necessário ter a conta Gov.br (Nível Prata ou Ouro).', ARRAY['Acessar eSocial', 'Voltar']),
-
-('site_esf', ARRAY['site do posto', 'acessar site', 'link do site', 'portal esf', 'pagina na internet', 'ver site', 'entrar no site'], '🌐 **Portal ESF Thamara:**<br>Acesse nosso site oficial para ver o calendário completo, notícias e informações detalhadas da unidade:<br><br>👉 <a href="https://esf-thamara.onrender.com" target="_blank" style="font-size:16px; font-weight:bold;">Acessar esf-thamara.onrender.com</a>', ARRAY['Abrir Site', 'Voltar']),
-
-('blog_saude', ARRAY['blog', 'noticias', 'artigos de saude', 'dicas de saude', 'ler noticias', 'novidades do posto', 'postagem'], '📰 **Blog da Saúde:**<br>Fique por dentro das novidades, campanhas de vacinação e dicas de saúde no nosso blog:<br><br>👉 <a href="https://esf-thamara.onrender.com/blog/" target="_blank" style="font-size:16px; font-weight:bold;">Ler o Blog</a>', ARRAY['Ler Artigos', 'Voltar']);
+    RETURN 'Sincronização via JSON concluída. ' || upserted_count || ' intenções processadas.';
+END;
+$$ LANGUAGE plpgsql;

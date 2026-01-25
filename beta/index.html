@@ -28,6 +28,14 @@
         .option-btn { background: #fff; border: 1px solid #0084ff; color: #0084ff; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-size: 14px; transition: all 0.2s; font-family: inherit; }
         .option-btn:hover { background: #0084ff; color: #fff; transform: translateY(-1px); box-shadow: 0 2px 4px rgba(0,132,255,0.2); }
     </style>
+    <style>
+        /* Estilos para o Feedback */
+        .feedback-container { display: flex; gap: 8px; margin: 12px 0 5px 20px; align-items: center; animation: popIn 0.4s ease; }
+        .feedback-container span { font-size: 13px; color: #65676b; font-style: italic; }
+        .feedback-btn { background: #f0f2f5; border: 1px solid #dcdcdc; border-radius: 50%; width: 34px; height: 34px; cursor: pointer; font-size: 16px; transition: all 0.2s; display: flex; align-items: center; justify-content: center; }
+        .feedback-btn:hover:not(:disabled) { background: #e4e6eb; transform: scale(1.1); }
+        .feedback-btn:disabled { cursor: not-allowed; filter: grayscale(80%); opacity: 0.7; }
+    </style>
 
 
 <body> 
@@ -80,26 +88,38 @@
 
     let knowledgeBase = [];
     let extractor = null;
+    let lastBotContext = ""; // Memória de curto prazo para contexto
 
     // Inicialização
     async function initAI() {
         try {
-            // 1. Carregar dados do JSON BETA
-            const resp = await fetch('chat-bot.json');
+            // 1. Carregar base de conhecimento do Backend (unificado com o DB)
+            const resp = await fetch('api/get-interactions.php'); // << UNIFICAÇÃO
             knowledgeBase = await resp.json();
 
-            // 2. Carregar Modelo de IA (pode demorar um pouco na primeira vez)
-            addMessage("<i>🔄 Inicializando sistema de IA... aguarde um momento.</i>", 'bot');
+            // 2. Carregar Modelo de IA (Multilíngue para melhor precisão em PT-BR)
+            addMessage("<i>🔄 Inicializando motor neural (Multilíngue)... isso pode levar alguns segundos.</i>", 'bot');
             userInput.disabled = true;
             
-            extractor = await pipeline('feature-extraction', 'Xenova/all-MiniLM-L6-v2');
+            // Upgrade: Modelo Multilíngue + Quantizado para performance
+            extractor = await pipeline('feature-extraction', 'Xenova/paraphrase-multilingual-MiniLM-L12-v2');
             
             // 3. Pré-calcular embeddings (vetores) das perguntas conhecidas
+            // Otimização: Processamento em lote (Batch) para inicialização mais rápida
             for (let item of knowledgeBase) {
-                item.embeddings = [];
-                for (let key of item.keys) {
-                    const output = await extractor(key, { pooling: 'mean', normalize: true });
-                    item.embeddings.push(output.data);
+                if (item.keys && item.keys.length > 0) {
+                    const output = await extractor(item.keys, { pooling: 'mean', normalize: true });
+                    
+                    // O output.data é um Float32Array plano. Precisamos fatiar pelos dims.
+                    const embeddingSize = output.dims[output.dims.length - 1];
+                    const batchSize = item.keys.length;
+                    item.embeddings = [];
+
+                    for (let i = 0; i < batchSize; i++) {
+                        const start = i * embeddingSize;
+                        const end = start + embeddingSize;
+                        item.embeddings.push(output.data.slice(start, end));
+                    }
                 }
             }
 
@@ -107,13 +127,13 @@
             const loadingMsg = chatHistory.querySelector('.bot:last-child');
             if(loadingMsg && loadingMsg.innerHTML.includes('Inicializando')) loadingMsg.remove();
             
-            addMessage("IA Beta Pronta! 🧠 Teste: 'Estou com dor de barriga'", 'bot');
+            addMessage("IA Pronta (Motor v3.0 - DB Powered)! 🧠 Teste: 'Estou com dor de barriga'", 'bot');
             userInput.disabled = false;
             userInput.focus();
 
         } catch (e) {
             console.error(e);
-            addMessage("Erro ao carregar a IA. Verifique sua conexão.", 'bot');
+            addMessage("❌ Erro ao conectar com o motor da IA. O serviço de backend pode estar offline. Verifique o console para mais detalhes.", 'bot');
         }
     }
 
@@ -128,30 +148,79 @@
         return dot / (Math.sqrt(normA) * Math.sqrt(normB));
     }
 
+    // Função auxiliar para buscar matches
+    function getMatches(embedding) {
+        let matches = [];
+        for (let item of knowledgeBase) {
+            let maxScore = -1;
+            if(item.embeddings) {
+                for (let keyEmb of item.embeddings) {
+                    const score = cosineSimilarity(embedding, keyEmb);
+                    if (score > maxScore) maxScore = score;
+                }
+            }
+            matches.push({ item: item, score: maxScore });
+        }
+        return matches.sort((a, b) => b.score - a.score);
+    }
+
     async function findResponse(text) {
         if (!extractor) return { text: "A IA ainda está carregando..." };
         
-        // Gera o vetor da pergunta do usuário
+        // 1. Análise Direta (Input do usuário)
         const output = await extractor(text, { pooling: 'mean', normalize: true });
         const userEmbedding = output.data;
+        let results = getMatches(userEmbedding);
+        let contextUsed = false;
 
-        let bestScore = -1;
-        let bestMatch = null;
+        // 2. Análise Contextual (Se o score for baixo ou texto curto, tenta combinar com a última fala do bot)
+        // Ex: Bot disse "Onde é a dor?" e user disse "Barriga". Contexto ajuda a diferenciar de apenas "Barriga".
+        if (lastBotContext && (text.length < 50 || results[0].score < 0.60)) {
+            const contextQuery = lastBotContext + " " + text;
+            const contextOutput = await extractor(contextQuery, { pooling: 'mean', normalize: true });
+            const contextResults = getMatches(contextOutput.data);
 
-        for (let item of knowledgeBase) {
-            for (let keyEmb of item.embeddings) {
-                const score = cosineSimilarity(userEmbedding, keyEmb);
-                if (score > bestScore) {
-                    bestScore = score;
-                    bestMatch = item;
-                }
+            // Se o contexto melhorou significativamente a confiança (> 5%), usamos o resultado contextual
+            if (contextResults[0].score > results[0].score + 0.05) {
+                console.log("Contexto utilizado:", contextQuery);
+                results = contextResults;
+                contextUsed = true;
             }
         }
         
-        // Se a confiança for muito baixa (< 0.35), assume que não entendeu
-        if (bestScore < 0.35) return { text: "Desculpe, não tenho certeza sobre isso. Tente ser mais específico sobre onde é a dor ou o que precisa." };
+        const bestMatch = results[0];
+        const bestScore = bestMatch.score;
+        const responseData = {
+            text: "Desculpe, não tenho certeza sobre isso. Tente ser mais específico sobre onde é a dor ou o que precisa.",
+            options: [],
+            intentId: 'fallback',
+            score: bestScore,
+            contextUsed: contextUsed
+        };
+
+        // Se a confiança for muito baixa (< 0.40), assume que não entendeu
+        // Ajustado para 0.40 pois o modelo multilíngue é mais preciso
+        if (bestScore < 0.40) return responseData;
         
-        return { text: bestMatch.resp, options: bestMatch.options };
+        // 3. Detecção de Múltiplas Variáveis (Ex: "Dor de cabeça e febre")
+        // Se o segundo melhor resultado também for muito bom e próximo do primeiro
+        const secondMatch = results[1];
+        if (secondMatch && secondMatch.score > 0.50 && (bestScore - secondMatch.score) < 0.08) {
+            // Evita duplicar se for o mesmo ID ou muito similar
+            if (bestMatch.item.id !== secondMatch.item.id) {
+                responseData.text = `Entendi que você pode estar com mais de um sintoma. Veja:<br><br>1️⃣ ${bestMatch.item.resp}<br><hr style='margin:10px 0; opacity:0.3'>2️⃣ ${secondMatch.item.resp}`;
+                responseData.options = [...(bestMatch.item.options || []), ...(secondMatch.item.options || [])].slice(0, 4);
+                responseData.intentId = `${bestMatch.item.id}+${secondMatch.item.id}`;
+                return responseData;
+            }
+        }
+
+        // Resposta padrão com melhor match
+        responseData.text = bestMatch.item.resp;
+        responseData.options = bestMatch.item.options;
+        responseData.intentId = bestMatch.item.id;
+
+        return responseData;
     }
 
     function addMessage(text, sender) {
@@ -179,12 +248,61 @@
         chatHistory.scrollTop = chatHistory.scrollHeight;
     }
 
+    function addFeedbackControls(userQuery, responsePayload) {
+        const container = document.createElement('div');
+        container.className = 'feedback-container';
+
+        const label = document.createElement('span');
+        label.innerText = 'A resposta foi útil?';
+        container.appendChild(label);
+
+        const feedbacks = [
+            { emoji: '👍', value: 'positive' },
+            { emoji: '😐', value: 'neutral' },
+            { emoji: '👎', value: 'negative' }
+        ];
+
+        feedbacks.forEach(fb => {
+            const btn = document.createElement('button');
+            btn.className = 'feedback-btn';
+            btn.innerText = fb.emoji;
+            btn.title = fb.value;
+            btn.onclick = () => {
+                // Desabilita todos os botões de feedback neste container
+                container.querySelectorAll('.feedback-btn').forEach(b => b.disabled = true);
+                label.innerText = 'Obrigado pelo feedback!';
+                handleFeedback(userQuery, responsePayload, fb.value);
+            };
+            container.appendChild(btn);
+        });
+
+        chatHistory.appendChild(container);
+        chatHistory.scrollTop = chatHistory.scrollHeight;
+    }
+
+    async function handleFeedback(userQuery, responsePayload, feedbackValue) {
+        const logData = {
+            query: userQuery,
+            response: responsePayload.text,
+            intentId: responsePayload.intentId,
+            score: responsePayload.score,
+            contextUsed: responsePayload.contextUsed,
+            feedback: feedbackValue
+        };
+        // Envia o log para o backend para ser salvo no DB
+        fetch('api/log-interaction.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(logData)
+        });
+    }
+
     async function handleUserMessage() {
-        const text = userInput.value.trim();
-        if (!text) return;
+        const userQuery = userInput.value.trim();
+        if (!userQuery) return;
 
         // Adiciona msg do usuário
-        addMessage(text, 'user');
+        addMessage(userQuery, 'user');
         userInput.value = '';
         userInput.disabled = true;
 
@@ -195,9 +313,13 @@
         const delay = Math.floor(Math.random() * 1000) + 800;
         
         setTimeout(async () => {
-            const response = await findResponse(text);
+            const response = await findResponse(userQuery);
             typingIndicator.style.display = 'none';
             
+            // Atualiza o contexto (remove tags HTML para não sujar o embedding futuro)
+            // Guarda a resposta do bot para ajudar na próxima interpretação
+            lastBotContext = response.text.replace(/<[^>]*>?/gm, '').substring(0, 100);
+
             addMessage(response.text, 'bot');
             
             // Se houver opções (botões), renderiza
@@ -205,6 +327,7 @@
                 addOptions(response.options);
             }
 
+            addFeedbackControls(userQuery, response); // Adiciona botões de feedback
             userInput.disabled = false;
             userInput.focus();
         }, delay);
