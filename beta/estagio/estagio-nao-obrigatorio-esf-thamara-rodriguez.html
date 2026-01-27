@@ -1,35 +1,84 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Estágio Não Obrigatório — ESF Thamara Rodriguez</title>
 
-  <title>Estágio Não Obrigatório no SUS — ESF Thamara Rodriguez</title>
+  <style>
+    :root{
+      --primary:#0f6b5f;
+      --secondary:#e6f2f0;
+      --dark:#1b2a2f;
+      --muted:#6b7c85;
+      --bg:#f7faf9;
+      --radius:14px;
+      --shadow:0 10px 30px rgba(0,0,0,.08);
+    }
 
-  <!-- ÍCONE NA ABA -->
-  <link rel="icon" type="image/png" href="favicon.png">
+    *{box-sizing:border-box}
 
-  <!-- SEO -->
-  <meta name="description" content="Guia simples sobre como funciona o estágio não obrigatório na ESF Thamara Rodriguez, unidade do SUS vinculada à Estratégia Saúde da Família.">
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Helvetica,Arial,sans-serif;
+      color:var(--dark);
+      background:linear-gradient(180deg,#ffffff 0%, var(--bg) 100%);
+    }
 
-  <meta name="keywords" content="
-    estágio não obrigatório SUS,
-    estágio em saúde pública,
-    estágio estratégia saúde da família,
-    estudante no SUS,
-    estágio administrativo em saúde
-  ">
+    header{
+      background:#ffffffcc; backdrop-filter:blur(8px);
+      border-bottom:1px solid #e5efec;
+    }
 
-  <meta name="author" content="ESF Thamara Rodriguez">
-  <meta name="robots" content="index, follow">
+    .nav{
+      max-width:1100px; margin:auto; padding:14px 20px;
+      display:flex; align-items:center; justify-content:space-between;
+    }
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="estagio.css">
+    .brand{display:flex; gap:12px; align-items:center; font-weight:700}
+
+    .logo{
+      width:40px; height:40px; border-radius:50%;
+      background:conic-gradient(from 0deg, var(--primary), #2fb3a2);
+      display:grid; place-items:center; color:#fff; font-weight:900;
+    }
+
+    .container{max-width:1100px; margin:auto; padding:60px 20px}
+
+    .card{
+      background:#fff; border-radius:var(--radius); box-shadow:var(--shadow);
+      padding:32px
+    }
+
+    h1{font-size:40px; margin:0 0 12px}
+    h2{font-size:26px; margin:0 0 12px}
+    h3{margin:0 0 8px}
+    p{color:var(--muted); line-height:1.6}
+
+    ul{margin-left:20px}
+
+    .badge{
+      display:inline-block; padding:6px 12px; border-radius:999px;
+      background:var(--secondary); color:var(--primary); font-weight:600; margin-bottom:12px
+    }
+
+    .grid{display:grid; gap:24px}
+    .grid-2{grid-template-columns:repeat(2,1fr)}
+    .grid-3{grid-template-columns:repeat(3,1fr)}
+    @media(max-width:900px){.grid-2,.grid-3{grid-template-columns:1fr}}
+
+    .feature{border:1px solid #e6efec; border-radius:12px; padding:20px}
+
+    footer{
+      background:#0e3f3a; color:#cfe9e6; padding:40px 20px
+    }
+
+    @media print{
+      body{background:#fff}
+      .card{box-shadow:none; border:1px solid #ddd}
+    }
+  </style>
 </head>
-
-
-
 <body>
 
 <header>
@@ -123,7 +172,7 @@
       <h3>Supervisão</h3>
       <p>Deve ter um profissional responsável acompanhando.</p>
     </div>
-
+</div>
   </div>
 </section>
 
@@ -138,9 +187,6 @@
       <li>Ajudar na comunicação interna</li>
     </ul>
   </div>
-</section>
-
-<section class="container">
   <div class="card">
     <h2>Direitos do estagiário</h2>
     <ul>
@@ -150,9 +196,6 @@
       <li>Receber bolsa, se houver previsão</li>
     </ul>
   </div>
-</section>
-
-<section class="container">
   <div class="card">
     <h2>Deveres do estagiário</h2>
     <ul>
