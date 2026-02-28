@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Proposta Comercial – Plataforma Digital Completa</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-alt: #0b1020;
+      --card: #111827;
+      --accent: #8b5cf6;
+      --accent-soft: rgba(139, 92, 246, 0.15);
+      --accent-strong: #f97316;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border: #1f2937;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.55);
+      --shadow-chip: 0 10px 25px rgba(0, 0, 0, 0.45);
+      --gradient-main: radial-gradient(circle at top left, #22d3ee 0, #4f46e5 35%, #a855f7 70%, #f97316 100%);
+      --gradient-card: linear-gradient(135deg, rgba(79, 70, 229, 0.18), rgba(248, 113, 113, 0.08));
+      --font-main: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-main);
+      background: radial-gradient(circle at top, #020617 0, #020617 40%, #020617 100%);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(56, 189, 248, 0.12), transparent 55%),
+        radial-gradient(circle at 100% 0%, rgba(168, 85, 247, 0.12), transparent 55%),
+        radial-gradient(circle at 50% 100%, rgba(248, 113, 113, 0.12), transparent 55%),
+        var(--bg);
+      padding: 32px 16px 48px;
+    }
+
+    .shell {
+      max-width: 1080px;
+      margin: 0 auto;
+      background: linear-gradient(145deg, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.98));
+      border-radius: 28px;
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      box-shadow: 0 30px 80px rgba(15, 23, 42, 0.9);
+      padding: 28px 22px 32px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    @media (min-width: 900px) {
+      .shell {
+        padding: 36px 40px 40px;
+      }
+    }
+
+    .shell::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 55%);
+      opacity: 0.4;
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+
+    .shell-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      margin-bottom: 28px;
+    }
+
+    @media (min-width: 720px) {
+      .header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+
+    .brand-block {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-logo {
+      width: 52px;
+      height: 52px;
+      border-radius: 18px;
+      background: var(--gradient-main);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .brand-logo::after {
+      content: "";
+      position: absolute;
+      inset: 1px;
+      border-radius: 16px;
+      background: radial-gradient(circle at 30% 0%, rgba(248, 250, 252, 0.18), transparent 55%);
+      mix-blend-mode: screen;
+    }
+
+    .brand-symbol {
+      position: relative;
+      z-index: 1;
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      border: 2px solid rgba(248, 250, 252, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #f9fafb;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.7);
+      background: radial-gradient(circle at 30% 0%, rgba(248, 250, 252, 0.25), transparent 60%);
+    }
+
+    .brand-text h1 {
+      font-size: 1.4rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #e5e7eb;
+    }
+
+    .brand-text p {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .pill-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 11px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      background: radial-gradient(circle at top left, rgba(148, 163, 184, 0.18), rgba(15, 23, 42, 0.9));
+      color: #e5e7eb;
+      box-shadow: var(--shadow-chip);
+      backdrop-filter: blur(10px);
+    }
+
+    .pill-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.25);
+    }
+
+    .pill-accent {
+      border-color: rgba(139, 92, 246, 0.7);
+      background: radial-gradient(circle at top left, rgba(139, 92, 246, 0.3), rgba(15, 23, 42, 0.95));
+      color: #f9fafb;
+    }
+
+    /* Hero */
+    .hero {
+      margin-bottom: 26px;
+      padding: 18px 18px 18px;
+      border-radius: 22px;
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.16), transparent 55%), var(--bg-alt);
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    @media (min-width: 900px) {
+      .hero {
+        padding: 22px 22px 20px;
+      }
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 80% 0%, rgba(248, 250, 252, 0.08), transparent 60%);
+      opacity: 0.7;
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 18px;
+    }
+
+    @media (min-width: 900px) {
+      .hero-inner {
+        grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.1fr);
+        align-items: center;
+        gap: 20px;
+      }
+    }
+
+    .hero-title {
+      font-size: 1.8rem;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    @media (min-width: 720px) {
+      .hero-title {
+        font-size: 2rem;
+      }
+    }
+
+    .hero-title span {
+      background: var(--gradient-main);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 0.95rem;
+      color: var(--muted);
+      max-width: 520px;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .badge {
+      font-size: 0.78rem;
+      padding: 5px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: #e5e7eb;
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .badge-strong {
+      border-color: rgba(248, 113, 113, 0.7);
+      color: #fed7aa;
+      background: radial-gradient(circle at top left, rgba(248, 113, 113, 0.35), rgba(15, 23, 42, 0.95));
+    }
+
+    .hero-highlight {
+      margin-top: 14px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px dashed rgba(148, 163, 184, 0.5);
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .hero-highlight strong {
+      color: #e5e7eb;
+      font-weight: 600;
+    }
+
+    .hero-right {
+      display: grid;
+      gap: 10px;
+    }
+
+    .hero-metric-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .metric-card {
+      flex: 1 1 120px;
+      min-width: 0;
+      padding: 10px 12px;
+      border-radius: 16px;
+      background: radial-gradient(circle at top left, rgba(79, 70, 229, 0.3), rgba(15, 23, 42, 0.96));
+      border: 1px solid rgba(129, 140, 248, 0.7);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .metric-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #c7d2fe;
+      margin-bottom: 4px;
+    }
+
+    .metric-value {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #e5e7eb;
+    }
+
+    .metric-note {
+      font-size: 0.78rem;
+      color: #a5b4fc;
+    }
+
+    .metric-card-alt {
+      background: radial-gradient(circle at top left, rgba(248, 113, 113, 0.28), rgba(15, 23, 42, 0.96));
+      border-color: rgba(248, 113, 113, 0.7);
+    }
+
+    .hero-tagline {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-align: right;
+    }
+
+    /* Layout sections */
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.1fr);
+      gap: 18px;
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 900px) {
+      .layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .column {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .section {
+      background: var(--card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 16px 16px 14px;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--gradient-card);
+      opacity: 0.7;
+      mix-blend-mode: soft-light;
+      pointer-events: none;
+    }
+
+    .section-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #e5e7eb;
+    }
+
+    .section-tag {
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .section-tag strong {
+      color: #e5e7eb;
+      font-weight: 600;
+    }
+
+    .section-body p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .section-body p strong {
+      color: #e5e7eb;
+      font-weight: 600;
+    }
+
+    .section-body ul {
+      list-style: none;
+      margin: 6px 0 0;
+      padding: 0;
+      display: grid;
+      gap: 4px;
+    }
+
+    .section-body li {
+      font-size: 0.88rem;
+      color: #d1d5db;
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+    }
+
+    .bullet {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      margin-top: 6px;
+      background: linear-gradient(135deg, #22d3ee, #a855f7);
+      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.25);
+      flex-shrink: 0;
+    }
+
+    .price-tag {
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px dashed rgba(148, 163, 184, 0.5);
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .price-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+    }
+
+    .price-value {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #f97316;
+    }
+
+    .price-note {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    /* Orçamento detalhado (cards) */
+    .grid-modulos {
+      display: grid;
+      gap: 10px;
+    }
+
+    .modulo-card {
+      background: rgba(15, 23, 42, 0.96);
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      padding: 10px 11px 9px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .modulo-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 55%);
+      opacity: 0.7;
+      mix-blend-mode: soft-light;
+      pointer-events: none;
+    }
+
+    .modulo-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .modulo-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .modulo-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #e5e7eb;
+    }
+
+    .modulo-chip {
+      font-size: 0.75rem;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      color: #e5e7eb;
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .modulo-body ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 3px;
+    }
+
+    .modulo-body li {
+      font-size: 0.84rem;
+      color: #d1d5db;
+      display: flex;
+      gap: 6px;
+      align-items: flex-start;
+    }
+
+    .modulo-price {
+      margin-top: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+      font-size: 0.85rem;
+    }
+
+    .modulo-price span:last-child {
+      color: #f97316;
+      font-weight: 600;
+    }
+
+    /* Tabela de preços */
+    .table-wrapper {
+      margin-top: 6px;
+      border-radius: 14px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      overflow: hidden;
+      background: rgba(15, 23, 42, 0.96);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+
+    thead {
+      background: radial-gradient(circle at top left, rgba(79, 70, 229, 0.4), rgba(15, 23, 42, 0.98));
+    }
+
+    th,
+    td {
+      padding: 7px 10px;
+      text-align: left;
+    }
+
+    th {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #e5e7eb;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.5);
+    }
+
+    tbody tr:nth-child(odd) {
+      background: rgba(15, 23, 42, 0.98);
+    }
+
+    tbody tr:nth-child(even) {
+      background: rgba(15, 23, 42, 0.92);
+    }
+
+    td {
+      color: #e5e7eb;
+      border-bottom: 1px solid rgba(30, 64, 175, 0.35);
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .table-total-row td {
+      font-weight: 600;
+      color: #f97316;
+      border-top: 1px solid rgba(248, 113, 113, 0.7);
+    }
+
+    /* Blocos de info */
+    .info-block {
+      margin-top: 6px;
+      padding: 8px 10px;
+      border-radius: 12px;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px dashed rgba(148, 163, 184, 0.6);
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .info-block strong {
+      color: #e5e7eb;
+      font-weight: 600;
+    }
+
+    .info-inline {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .info-pill {
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      background: rgba(15, 23, 42, 0.96);
+    }
+
+    .info-pill strong {
+      color: #f97316;
+    }
+
+    /* Texto de valor */
+    .value-block {
+      margin-top: 4px;
+      display: grid;
+      gap: 6px;
+    }
+
+    .value-block p {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .value-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 4px;
+    }
+
+    .value-list li {
+      font-size: 0.88rem;
+      color: #d1d5db;
+      display: flex;
+      gap: 6px;
+      align-items: flex-start;
+    }
+
+    .value-badge {
+      font-size: 0.78rem;
+      padding: 3px 7px;
+      border-radius: 999px;
+      border: 1px solid rgba(248, 250, 252, 0.35);
+      color: #e5e7eb;
+      background: radial-gradient(circle at top left, rgba(248, 250, 252, 0.18), rgba(15, 23, 42, 0.96));
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .value-badge span {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #22d3ee, #a855f7);
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(30, 64, 175, 0.7);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .footer-left {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .footer-right {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .footer-pill {
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.96);
+      color: #e5e7eb;
+    }
+
+    .footer-pill strong {
+      color: #f97316;
+    }
+
+    .footer-note {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    /* Small helper */
+    .mt-4 {
+      margin-top: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="shell">
+      <div class="shell-inner">
+        <!-- Header -->
+        <header class="header">
+          <div class="brand-block">
+            <div class="brand-logo">
+              <div class="brand-symbol">T</div>
+            </div>
+            <div class="brand-text">
+              <h1>Plataforma Digital Completa</h1>
+              <p>Site • Agendamentos • Tarot semanal • Painel administrativo • SaaS pronto para escalar</p>
+            </div>
+          </div>
+          <div class="pill-group">
+            <div class="pill">
+              <span class="pill-dot"></span>
+              Projeto pronto para SaaS
+            </div>
+            <div class="pill pill-accent">
+              Valor Base: R$ 24.000
+            </div>
+          </div>
+        </header>
+
+        <!-- Hero -->
+        <section class="hero">
+          <div class="hero-inner">
+            <div>
+              <p class="hero-title">
+                Proposta Comercial – <span>Plataforma Digital Completa</span> para Clínica / Terapeuta
+              </p>
+              <p class="hero-subtitle">
+                Desenvolvimento de um ecossistema digital moderno, seguro e escalável, pensado para clínicas e terapeutas
+                que desejam profissionalizar sua presença online e automatizar processos internos.
+              </p>
+              <div class="hero-badges">
+                <span class="badge">Site institucional profissional</span>
+                <span class="badge">Sistema completo de agendamento</span>
+                <span class="badge">Controle de usuários</span>
+                <span class="badge badge-strong">Aplicativo de tarot semanal exclusivo</span>
+                <span class="badge">Painel administrativo e blog com SEO</span>
+              </div>
+              <div class="hero-highlight">
+                <strong>Olá!</strong> Segue o orçamento detalhado para o desenvolvimento da plataforma digital completa,
+                incluindo site institucional, sistema de agendamento, controle de usuários e aplicativo de tarot semanal.
+              </div>
+            </div>
+            <div class="hero-right">
+              <div class="hero-metric-row">
+                <div class="metric-card">
+                  <div class="metric-label">Investimento total</div>
+                  <div class="metric-value">R$ 24.000</div>
+                  <div class="metric-note">Plataforma completa, pronta para crescer como SaaS.</div>
+                </div>
+                <div class="metric-card metric-card-alt">
+                  <div class="metric-label">Prazo estimado da primeira entrega</div>
+                  <div class="metric-value">45 a 60 dias</div>
+                  <div class="metric-note">Do planejamento à publicação em produção.</div>
+                </div>
+              </div>
+              <div class="hero-metric-row">
+                <div class="metric-card" style="flex: 1 1 100%;">
+                  <div class="metric-label">Condições de pagamento</div>
+                  <div class="metric-value">30% • 40% • 30%</div>
+                  <div class="metric-note">30% início • 40% meio • 30% entrega.</div>
+                </div>
+              </div>
+              <p class="hero-tagline">
+                Arquitet
