@@ -1,0 +1,262 @@
+<!DOCTYPE html><html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abril Azul — Conscientização do Autismo</title>  <style>
+    :root{
+      --primary:#0b5fa5;
+      --primary-600:#0a4f8a;
+      --bg:#f4f6fb;
+      --card:#ffffff;
+      --muted:#6b7280;
+      --border:#e5e7eb;
+      --warn:#fff3cd;
+      --info:#e3f2fd;
+      --radius:14px;
+    }
+
+    *{box-sizing:border-box}
+
+    body{
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: var(--bg);
+      margin:0;
+      color:#111827;
+      line-height:1.5;
+    }
+
+    nav{
+      position:sticky; top:0; z-index:10;
+      background:var(--primary);
+      color:#fff;
+      padding:10px 12px;
+      display:flex; flex-wrap:wrap; justify-content:center; gap:12px;
+      font-weight:600;
+    }
+    nav a{ color:#fff; text-decoration:none; opacity:.95 }
+    nav a:hover{ text-decoration:underline }
+
+    .container{
+      max-width:980px;
+      margin:16px auto 28px;
+      padding:0 14px;
+    }
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:0 6px 18px rgba(0,0,0,.06);
+      padding:16px;
+      margin-bottom:16px;
+    }
+
+    .hero{
+      display:grid; gap:10px;
+    }
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      background:rgba(11,95,165,.08);
+      color:var(--primary);
+      padding:6px 10px; border-radius:999px; font-weight:600; width:max-content;
+    }
+
+    h1{ font-size:clamp(1.4rem, 2.6vw, 2rem); margin:4px 0 }
+    h2{ font-size:clamp(1.2rem, 2.2vw, 1.5rem); color:var(--primary); margin:8px 0 }
+    p{ margin:6px 0 }
+    ul{ margin:6px 0 0 18px }
+
+    .grid{
+      display:grid; gap:12px;
+    }
+    .grid-3{ grid-template-columns:repeat(3, 1fr) }
+    .grid-2{ grid-template-columns:repeat(2, 1fr) }
+
+    @media (max-width:900px){
+      .grid-3{ grid-template-columns:1fr 1fr }
+    }
+    @media (max-width:600px){
+      .grid-3, .grid-2{ grid-template-columns:1fr }
+    }
+
+    .mini-card{
+      border:1px solid var(--border);
+      border-radius:12px;
+      padding:12px;
+      background:#fff;
+    }
+
+    .tag{ font-weight:700 }
+    .tag.blue{ color:#2563eb }
+    .tag.yellow{ color:#ca8a04 }
+    .tag.purple{ color:#7c3aed }
+
+    .alert{ background:var(--info); border:1px solid #bbdefb; border-radius:12px; padding:12px }
+    .highlight{ background:var(--warn); border:1px solid #ffeeba; border-radius:12px; padding:12px }
+
+    /* Table -> cards on mobile */
+    .table-wrap{ overflow:auto; border-radius:12px; border:1px solid var(--border) }
+    table{ width:100%; border-collapse:collapse; min-width:640px }
+    th,td{ padding:10px; border-bottom:1px solid var(--border); text-align:left }
+    th{ background:var(--primary); color:#fff; position:sticky; top:0 }
+
+    @media (max-width:700px){
+      table{ display:none }
+      .table-cards{ display:grid; gap:10px }
+      .tcard{ border:1px solid var(--border); border-radius:12px; padding:12px }
+      .trow{ display:flex; justify-content:space-between; gap:10px; padding:6px 0; border-bottom:1px dashed var(--border) }
+      .trow:last-child{ border-bottom:none }
+      .trow span:first-child{ color:var(--muted) }
+    }
+    @media (min-width:701px){ .table-cards{ display:none } }
+
+    button{
+      cursor:pointer; padding:10px 14px; border:none; border-radius:10px;
+      background:var(--primary); color:#fff; font-weight:600;
+    }
+    button:hover{ background:var(--primary-600) }
+
+    .quiz label{ display:block; padding:8px 10px; border:1px solid var(--border); border-radius:10px; margin-bottom:8px }
+
+    .footer-note{ color:var(--muted); font-size:.95rem }
+  </style></head><body><nav>
+  <a href="#">🏠 Início</a>
+  <a href="#">ℹ️ Informações</a>
+  <a href="#">👩‍⚕️ Equipe</a>
+</nav><div class="container">  <div class="card hero">
+    <span class="badge">💙 Abril Azul</span>
+    <h1>Autismo não é tudo igual — entenda as diferenças</h1>
+    <p>
+      Autismo, TDAH e Deficiência Intelectual podem coexistir, mas são condições diferentes.
+      Entender isso reduz rótulos e preconceitos.
+    </p>
+    <div class="alert"><strong>Informação gera empatia.</strong> Empatia promove inclusão.</div>
+  </div>  <div class="card">
+    <h2>Condições explicadas</h2>
+    <div class="grid grid-3">
+      <div class="mini-card">
+        <div class="tag blue">🔵 Autismo (TEA)</div>
+        <ul>
+          <li>Comunicação e interação diferentes</li>
+          <li>Padrões repetitivos</li>
+          <li>Sensibilidade sensorial</li>
+          <li>Inteligência variável</li>
+        </ul>
+      </div>
+      <div class="mini-card">
+        <div class="tag yellow">🟡 TDAH</div>
+        <ul>
+          <li>Desatenção</li>
+          <li>Impulsividade</li>
+          <li>Agitação</li>
+          <li>Distração fácil</li>
+        </ul>
+      </div>
+      <div class="mini-card">
+        <div class="tag purple">🟣 DI</div>
+        <ul>
+          <li>Dificuldade de aprendizado</li>
+          <li>Raciocínio mais lento</li>
+          <li>Necessidade de apoio</li>
+        </ul>
+      </div>
+    </div>
+  </div>  <div class="card">
+    <h2>📊 Comparação direta</h2><div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Aspecto</th>
+        <th>Autismo</th>
+        <th>TDAH</th>
+        <th>DI</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Interação social</td><td>Diferente</td><td>Preservada</td><td>Pode ser limitada</td></tr>
+      <tr><td>Atenção</td><td>Seletiva</td><td>Prejudicada</td><td>Variável</td></tr>
+      <tr><td>Comportamento</td><td>Repetitivo</td><td>Impulsivo</td><td>Depende do grau</td></tr>
+      <tr><td>Capacidade intelectual</td><td>Variável</td><td>Normal</td><td>Reduzida</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Mobile cards -->
+<div class="table-cards">
+  <div class="tcard">
+    <div class="trow"><span>Interação social</span><strong>Autismo: Diferente</strong></div>
+    <div class="trow"><span></span><strong>TDAH: Preservada</strong></div>
+    <div class="trow"><span></span><strong>DI: Pode ser limitada</strong></div>
+  </div>
+  <div class="tcard">
+    <div class="trow"><span>Atenção</span><strong>Autismo: Seletiva</strong></div>
+    <div class="trow"><span></span><strong>TDAH: Prejudicada</strong></div>
+    <div class="trow"><span></span><strong>DI: Variável</strong></div>
+  </div>
+  <div class="tcard">
+    <div class="trow"><span>Comportamento</span><strong>Autismo: Repetitivo</strong></div>
+    <div class="trow"><span></span><strong>TDAH: Impulsivo</strong></div>
+    <div class="trow"><span></span><strong>DI: Depende do grau</strong></div>
+  </div>
+  <div class="tcard">
+    <div class="trow"><span>Capacidade intelectual</span><strong>Autismo: Variável</strong></div>
+    <div class="trow"><span></span><strong>TDAH: Normal</strong></div>
+    <div class="trow"><span></span><strong>DI: Reduzida</strong></div>
+  </div>
+</div>
+
+<div class="highlight">⚠️ Uma pessoa pode apresentar mais de uma condição.</div>
+
+  </div>  <div class="card grid grid-2">
+    <div>
+      <h2>🚫 Quebrando preconceitos</h2>
+      <ul>
+        <li>Não é falta de educação</li>
+        <li>Não é “preguiça”</li>
+        <li>Cada pessoa é única</li>
+        <li>Respeito muda tudo</li>
+      </ul>
+    </div>
+    <div>
+      <h2>📌 Quando avaliar?</h2>
+      <ul>
+        <li>Atraso na fala/interação</li>
+        <li>Desatenção intensa</li>
+        <li>Comportamentos repetitivos</li>
+        <li>Dificuldade de aprendizado</li>
+      </ul>
+    </div>
+  </div>  <div class="card">
+    <h2>🧩 Mini quiz</h2>
+    <p class="footer-note">Instrumento educativo — não substitui avaliação.</p>
+    <form id="quiz" class="quiz">
+      <label><input type="checkbox" data-score="2"> Dificuldade de interação social</label>
+      <label><input type="checkbox" data-score="2"> Sensibilidade a sons/luz</label>
+      <label><input type="checkbox" data-score="2"> Distração constante</label>
+      <label><input type="checkbox" data-score="2"> Impulsividade</label>
+      <label><input type="checkbox" data-score="2"> Dificuldade de aprendizado</label>
+      <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px">
+        <button type="button" onclick="calcular()">Ver resultado</button>
+        <button type="reset">Limpar</button>
+      </div>
+    </form>
+    <p id="resultado" style="margin-top:10px; font-weight:700"></p>
+  </div></div><script>
+function calcular(){
+  const checks = document.querySelectorAll('#quiz input:checked');
+  let total = 0;
+  checks.forEach(c => total += Number(c.dataset.score));
+
+  let msg = '';
+  if(total <= 2){
+    msg = 'Poucos sinais. Observe.';
+  } else if(total <= 6){
+    msg = 'Alguns sinais. Vale acompanhar.';
+  } else {
+    msg = 'Vários sinais. Procure avaliação profissional.';
+  }
+
+  document.getElementById('resultado').textContent = `Pontuação: ${total} — ${msg}`;
+}
+</script></body>
+</html>
