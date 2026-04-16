@@ -1,0 +1,99 @@
+/* =========================
+   ESTILO MODERNO ESF
+========================= */
+
+body {
+  font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+  background: linear-gradient(#e8f3ff, #cfe8ff);
+  margin: 0;
+  color: #003366;
+}
+
+/* Cabeçalho */
+.site-header {
+  background: linear-gradient(90deg, #0b5fa5, #009688);
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo-area img {
+  height: 60px;
+  border-radius: 8px;
+}
+
+.main-nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 0 10px;
+  padding: 8px 14px;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+
+.main-nav a:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+/* Janelas */
+.xp-window {
+  background: white;
+  border: 2px solid #0b5fa5;
+  border-radius: 10px;
+  box-shadow: 4px 4px 0 #004d80;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 900px;
+}
+
+/* Títulos */
+h1, h2, h3 {
+  color: #0b5fa5;
+  margin-bottom: 10px;
+}
+
+/* Listas */
+ul li {
+  background: #f1f7ff;
+  margin-bottom: 6px;
+  padding: 8px;
+  border: 1px solid #aac4e8;
+  border-radius: 6px;
+}
+
+/* Rodapé */
+footer {
+  background: #004d80;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 40px;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .site-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .main-nav {
+    margin-top: 10px;
+  }
+
+  .xp-window {
+    margin: 10px;
+    padding: 16px;
+  }
+}

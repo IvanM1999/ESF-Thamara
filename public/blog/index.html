@@ -5,71 +5,71 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Blog Informativo | ESF Thamara Rodriguez</title>
-    <link rel="stylesheet" href="/public/css/blog.css">
-
+  <link rel="stylesheet" href="/public/css/styles.css">
 </head>
 
 <body>
   <!-- Barra de menus -->
-  <nav style="background:#0b5fa5; color:#fff; padding:10px; display:flex; justify-content:center; gap:20px; font-weight:bold;">
-    <a href="../index.html" style="color:#fff; text-decoration:none;">🏠 Início</a>
-    <a href="/blog/index.html" style="color:#fff; text-decoration:none;">📰 Blog</a>
-    <a href="/about.html" style="color:#fff; text-decoration:none;">ℹ️ Sobre</a>
-    <a href="/equipe.html" style="color:#fff; text-decoration:none;">📞 Contato</a>
-  </nav>
+  <header class="site-header">
+    <div class="logo-area">
+      <img src="/public/src/logo.jpeg" alt="Logo ESF Thamara Rodriguez">
+    </div>
+    <nav class="main-nav">
+      <a href="../index.html">🏠 Início</a>
+      <a href="/blog/index.html">📰 Blog</a>
+      <a href="/about.html">ℹ️ Sobre</a>
+      <a href="/equipe.html">📞 Contato</a>
+    </nav>
+  </header>
 
-  <!-- Container principal -->
-<header class="blog-header">
-  <div class="wrap">
-    <h1>Blog Informativo</h1>
-    <p>Conteúdo público, educativo e institucional</p>
-  </div>
-</header>
-
-<main class="wrap blog-main">
-  <section id="posts" aria-label="Artigos publicados">
-    <!-- Posts carregados automaticamente -->
+  <!-- Cabeçalho do blog -->
+  <section class="blog-header">
+    <div class="wrap">
+      <h1>Blog Informativo</h1>
+      <p>Conteúdo público, educativo e institucional</p>
+    </div>
   </section>
-</main>
 
-<footer class="blog-footer">
-  <div class="wrap">
-    <p>
-      Conteúdo de interesse público.  
-      Informação clara, acessível e baseada em critérios técnicos.
-    </p>
-  </div>
-</footer>
+  <!-- Conteúdo principal -->
+  <main class="wrap blog-main">
+    <section id="posts" aria-label="Artigos publicados">
+      <!-- Posts carregados automaticamente -->
+    </section>
+  </main>
 
-<script>
-async function carregarBlog() {
-  const postsContainer = document.getElementById("posts");
-  const index = await fetch("posts.json").then(r => r.json());
+  <!-- Rodapé -->
+    <footer>
+    <p>© 2026 ESF Thamara Rodriguez. Todos os direitos reservados.</p>
+    <a href="https://estado.sc.gov.br/"> Governo de Santa Catarina | </a>
+    <a href="https://www.saude.sc.gov.br/"> Secretaria da Saúde </a>
+  </footer>
 
-  for (const post of index) {
-    const html = await fetch(post.file).then(r => r.text());
+  <script>
+  async function carregarBlog() {
+    const postsContainer = document.getElementById("posts");
+    const index = await fetch("posts.json").then(r => r.json());
 
-    const doc = new DOMParser().parseFromString(html, "text/html");
-    const titulo = doc.querySelector("h1")?.innerText || post.title;
-    const paragrafo = doc.querySelector("p")?.innerText || "";
+    for (const post of index) {
+      const html = await fetch(post.file).then(r => r.text());
+      const doc = new DOMParser().parseFromString(html, "text/html");
+      const titulo = doc.querySelector("h1")?.innerText || post.title;
+      const paragrafo = doc.querySelector("p")?.innerText || "";
 
-    const artigo = document.createElement("article");
-    artigo.className = "post-preview";
-    artigo.innerHTML = `
-      <header>
-        <span class="category">${post.category}</span>
-        <h2>${titulo}</h2>
-        <time>${post.date}</time>
-      </header>
-      <p>${paragrafo.substring(0, 280)}...</p>
-      <a href="${post.file}" class="read">Ler artigo completo</a>
-    `;
-    postsContainer.appendChild(artigo);
+      const artigo = document.createElement("article");
+      artigo.className = "post-preview";
+      artigo.innerHTML = `
+        <header>
+          <span class="category">${post.category}</span>
+          <h2>${titulo}</h2>
+          <time>${post.date}</time>
+        </header>
+        <p>${paragrafo.substring(0, 280)}...</p>
+        <a href="${post.file}" class="read">Ler artigo completo</a>
+      `;
+      postsContainer.appendChild(artigo);
+    }
   }
-}
-
-carregarBlog();
-</script>
-
+  carregarBlog();
+  </script>
 </body>
 </html>
